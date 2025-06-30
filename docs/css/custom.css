@@ -1,0 +1,27 @@
+/* Para que ocupe todo el ancho de pantalla */
+.md-grid {
+    max-width: initial;
+}
+
+/* Titulo */
+.titulo {
+  /* --- Tus estilos de apariencia (se mantienen) --- */
+  background-color: navy;
+  padding: 20px; 
+  color: white; 
+  font-size: 1.5em; 
+  border-radius: 10px;
+
+  /* --- Cambios y añadidos para Flexbox --- */
+  display: flex;
+  align-items: center;    /* Centra el contenido verticalmente */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  gap: 15px;               /* (Opcional) Añade espacio entre la imagen y el texto */
+}
+
+
+/* Autor */
+.autor {
+  text-align: right;
+  margin-top: 20px;
+  }
