@@ -23,7 +23,7 @@ Un sistema informático es una combinación de componentes que trabajan juntos p
 
 La **interacción hardware-software** es fundamental para el funcionamiento de un sistema informático. El software envía instrucciones al hardware, y el hardware las ejecuta y devuelve los resultados. El SO es el director de orquesta que coordina toda esta interacción, asegurándose de que los programas accedan al hardware cuando lo necesiten y de forma ordenada.
 
-```
+```mermaid
 graph TD
     A[Usuario] --> B[Aplicaciones]
     B --> C[Sistema Operativo]
@@ -60,16 +60,17 @@ Los ordenadores, a diferencia de los humanos, solo entienden y procesan informac
   - El **audio** se representa muestreando la onda sonora en puntos discretos y convirtiendo la amplitud de cada muestra en un número binario.
   - El **video** es una secuencia de imágenes (fotogramas) que se muestran rápidamente, combinadas con una pista de audio, todo representado digitalmente.
 
-```
+
+```mermaid
 graph LR
     A[Información del Mundo Real] --> B[Digitalización]
-    B --> C[Bits (0s y 1s)]
-    C --> D{Representación Numérica?}
-    D -- Binario --> E[Procesamiento por CPU]
+    B --> C[Bits 0s y 1s]
+    C --> D{Representación Numérica}
+    D --> Binario --> E[Procesamiento por CPU]
     D -- Octal/Hexadecimal --> F[Visualización/Interacción Humana]
-    C --> G{Codificación Caracteres?}
+    C --> G{Codificación Caracteres}
     G -- ASCII/Unicode --> H[Texto en Pantalla]
-    C --> I{Datos Multimedia?}
+    C --> I{Datos Multimedia}
     I -- Píxeles/Muestras --> J[Imágenes/Sonidos]
 ```
 

@@ -25,3 +25,18 @@
   text-align: right;
   margin-top: 20px;
   }
+
+
+  /* Estilos para el contenedor de las columnas */
+.columns-container {
+    display: flex; /* Usa Flexbox para las columnas */
+    gap: 20px;     /* Espacio entre las columnas */
+    flex-wrap: wrap; /* Permite que las columnas se envuelvan en pantallas pequeñas */
+}
+
+/* Estilos para cada columna */
+.column {
+    flex: 1; /* Esto hace que cada columna ocupe el mismo espacio disponible */
+    min-width: 280px; /* Ancho mínimo para evitar que se colapsen demasiado */
+    padding: 15px;
+ }

@@ -44,10 +44,24 @@ markdown_extensions:
       alternate_style: true
   - admonition         # Adds boxes for Notes, Warnings, etc.
   - pymdownx.details
-
+  - pymdownx.blocks.html
+  
 copyright: "<a href='https://creativecommons.org/licenses/by/4.0/' target='_blank'>CC BY-NC-SA 4.0 (Reconeixement - NoComercial - CompartirIgual) © Luis Garcia Bonifaz</a>."
 
 plugins:
   - git-revision-date-localized:
       type: date  # Puedes usar "datetime" si quieres tener fecha y hora
       locale: es  # Configura el idioma (opcional, "es" para español)
+
+nav:
+- Inicio: 'index.md'
+- Sistemas Operativos Monopuesto:
+    - 'T1 - Fundamentos de los Sistemes Operativos': T_01_Fundamentos_SO/Fundamentos_SO.md
+    - 'T2 - Sistemes Operatius': Tema02/SistemesOperatius.md
+    - 'T3 - Gestión de Recursos': Tema03/GestionRecursos.md
+    - 'T4 - Virtualització': Tema04/Virtualitzacio.md
+    - 'T5 - Instalació Sistemes Operatius': Tema05/InstalacionSO.md
+    - 'T6 - Configuració bàsica Windows': Tema06/ConfiguracionBasicaWindows.md
+    - 'T7 - Gestió de fitxers i directoris en Windows': Tema07/FicherosDirectoriosWindows.md
+    - 'T8 - Gestió de usuaris i grups en Windows': Tema08/UsuariosGruposWindows.md
+    - 'T9 - Administració del Sistema en Windows': Tema09/AdministracionWindows.md
