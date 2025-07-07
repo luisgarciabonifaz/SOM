@@ -25,6 +25,10 @@ Y me lo puedes poner en formato markdown para mkdocs de forma que pueda copiar e
 ----------------
 Ahora me puedes preparar un documento único con html,css y javascript con actividades para repasar los contenidos de este tema.
 Al documento de html, css y javascript le puedes añadir en la cabecera un logo y el texto " SMR - Sistemas Operativos Monopuesto "
+--------------------
+Hola,  estoy preparando unos apuntes para mis alumnos de grado medio de informática sobre los sistemas informáticos. De momento tengo esta propuesta en formato mkdocs, me la podrias ampliar para incluir información sobre la arquitectura Von Neuman y sus componentes.
+
+
 
 ## RA1: Genérico a todos los S.O. (10 horas)
 Este módulo sienta las bases de los sistemas operativos, cubriendo conceptos fundamentales aplicables a cualquier entorno.

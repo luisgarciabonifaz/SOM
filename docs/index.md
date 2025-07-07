@@ -1,6 +1,6 @@
 
 <div class="titulo">
-  <img alt="Logo" src="imagenes/Logo_SOM.png" /> Sistemas Operativos Monopuesto 
+  <img alt="Logo" src="Imagenes/Logo_SOM.png" /> Sistemas Operativos Monopuesto 
 </div>
 
 <div class="autor">
