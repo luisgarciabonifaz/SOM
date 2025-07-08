@@ -2,7 +2,7 @@
 
 Este tema introduce los conceptos fundamentales de los **sistemas operativos (SO)**, aplicables a cualquier entorno, ya sea Windows, Linux, macOS, o incluso en el ámbito de la virtualización. Comprender estos pilares es crucial para cualquier profesional de la informática, ya que son la base sobre la que se construyen y ejecutan todos los programas y aplicaciones.
 
-## 1.1. Elementos Funcionales de un Sistema Informático
+## 1. Elementos Funcionales de un Sistema Informático
 
 Un sistema informático es una combinación de componentes que trabajan juntos para procesar información. Podemos dividirlos en dos grandes categorías principales: **Hardware** y **Software**.
 
@@ -37,38 +37,38 @@ graph LR
 ///
 
 
-## 1.2. La Arquitectura Von Neumann: El Corazón de los Ordenadores Modernos
+## 2. La Arquitectura Von Neumann: El Corazón de los Ordenadores Modernos
 
 Para entender realmente cómo interactúan el hardware y el software en un sistema informático, es crucial conocer la **Arquitectura Von Neumann**. La gran mayoría de los ordenadores actuales, desde tu teléfono móvil hasta los superordenadores, se basan en este diseño propuesto por el matemático y científico **John Von Neumann** en la década de 1940.
 
 La idea central de la arquitectura Von Neumann es que tanto las **instrucciones de los programas como los datos se almacenan en una misma memoria principal**. Antes de esta idea, los ordenadores solían tener memorias separadas para las instrucciones y los datos, lo que limitaba su flexibilidad. Al unificar la memoria, se simplificó el diseño y se permitió que los ordenadores fueran más versátiles.
 
-### Componentes Clave de la Arquitectura Von Neumann
+### 2.1. Componentes Clave de la Arquitectura Von Neumann
 
 La arquitectura Von Neumann se compone de cuatro unidades funcionales principales:
 
-* **Unidad Central de Procesamiento (CPU)**: Ya la hemos mencionado, ¡pero aquí la desglosamos más! Es el cerebro del sistema y se encarga de ejecutar las instrucciones. Dentro de la CPU, encontramos dos subcomponentes esenciales:
-    * **Unidad Aritmético-Lógica (UAL o ALU - Arithmetic Logic Unit)**: Es la parte de la CPU que realiza las operaciones matemáticas (sumas, restas, multiplicaciones, divisiones) y las operaciones lógicas (comparaciones, AND, OR, NOT). Piensa en ella como la "calculadora" y el "comparador" del ordenador.
-    * **Unidad de Control (UC o CU - Control Unit)**: Es el "director de orquesta" de la CPU. Su función es interpretar las instrucciones de los programas y generar las señales necesarias para controlar todas las demás partes del ordenador. Se encarga de coordinar el flujo de datos, decidir qué operación debe realizar la UAL, y qué datos deben ir a la memoria o a los periféricos. También incluye los **Registros**, que son pequeñas unidades de memoria de muy alta velocidad dentro de la CPU, utilizadas para almacenar temporalmente datos e instrucciones con los que la CPU está trabajando en ese momento.
+- **Unidad Central de Procesamiento (CPU)**: Ya la hemos mencionado, ¡pero aquí la desglosamos más! Es el cerebro del sistema y se encarga de ejecutar las instrucciones. Dentro de la CPU, encontramos dos subcomponentes esenciales:
+    - **Unidad Aritmético-Lógica (UAL o ALU - Arithmetic Logic Unit)**: Es la parte de la CPU que realiza las operaciones matemáticas (sumas, restas, multiplicaciones, divisiones) y las operaciones lógicas (comparaciones, AND, OR, NOT). Piensa en ella como la "calculadora" y el "comparador" del ordenador.
+    - **Unidad de Control (UC o CU - Control Unit)**: Es el "director de orquesta" de la CPU. Su función es interpretar las instrucciones de los programas y generar las señales necesarias para controlar todas las demás partes del ordenador. Se encarga de coordinar el flujo de datos, decidir qué operación debe realizar la UAL, y qué datos deben ir a la memoria o a los periféricos. También incluye los **Registros**, que son pequeñas unidades de memoria de muy alta velocidad dentro de la CPU, utilizadas para almacenar temporalmente datos e instrucciones con los que la CPU está trabajando en ese momento.
 
-* **Memoria Principal**: Esta es la memoria RAM que ya conoces. En la arquitectura Von Neumann, es aquí donde se almacenan tanto los programas (sus instrucciones) como los datos que estos programas necesitan para funcionar. Es una memoria de acceso rápido, pero volátil.
-    * **Direcciones de Memoria**: Cada posición de la memoria tiene una dirección única, como la dirección de una casa. La CPU utiliza estas direcciones para encontrar y acceder a las instrucciones y datos que necesita.
+- **Memoria Principal**: Esta es la memoria RAM que ya conoces. En la arquitectura Von Neumann, es aquí donde se almacenan tanto los programas (sus instrucciones) como los datos que estos programas necesitan para funcionar. Es una memoria de acceso rápido, pero volátil.
+    - **Direcciones de Memoria**: Cada posición de la memoria tiene una dirección única, como la dirección de una casa. La CPU utiliza estas direcciones para encontrar y acceder a las instrucciones y datos que necesita.
 
-* **Unidad de Entrada/Salida (E/S)**: Esta unidad es la encargada de gestionar la comunicación entre el ordenador y el mundo exterior a través de los periféricos. Por ejemplo, cuando escribes algo en el teclado (entrada) o cuando ves una imagen en la pantalla (salida), la unidad de E/S es la que facilita esa interacción.
+- **Unidad de Entrada/Salida (E/S)**: Esta unidad es la encargada de gestionar la comunicación entre el ordenador y el mundo exterior a través de los periféricos. Por ejemplo, cuando escribes algo en el teclado (entrada) o cuando ves una imagen en la pantalla (salida), la unidad de E/S es la que facilita esa interacción.
 
-* **Buses**: Son los "caminos" o "autopistas" por los que se transmite la información entre todos los componentes del sistema. Podemos distinguir principalmente tres tipos de buses:
-    * **Bus de Datos**: Transporta los datos entre la CPU, la memoria y los dispositivos de E/S.
-    * **Bus de Direcciones**: Lleva las direcciones de memoria a las que la CPU quiere acceder (leer o escribir).
-    * **Bus de Control**: Transporta las señales de control y de estado entre los diferentes componentes, indicando qué operación se va a realizar (por ejemplo, leer, escribir, etc.).
+- **Buses**: Son los "caminos" o "autopistas" por los que se transmite la información entre todos los componentes del sistema. Podemos distinguir principalmente tres tipos de buses:
+    - **Bus de Datos**: Transporta los datos entre la CPU, la memoria y los dispositivos de E/S.
+    - **Bus de Direcciones**: Lleva las direcciones de memoria a las que la CPU quiere acceder (leer o escribir).
+    - **Bus de Control**: Transporta las señales de control y de estado entre los diferentes componentes, indicando qué operación se va a realizar (por ejemplo, leer, escribir, etc.).
 
-### ¿Cómo Funciona? El Ciclo de Instrucción
+### 2.2. ¿Cómo Funciona? El Ciclo de Instrucción
 
 La Arquitectura Von Neumann permite que la CPU ejecute programas siguiendo un ciclo repetitivo llamado **ciclo de instrucción** o ciclo de máquina. Este ciclo tiene principalmente dos fases que se repiten constantemente:
 
 1.  **Fase de Búsqueda (Fetch)**: La Unidad de Control de la CPU busca (lee) la siguiente instrucción del programa desde la Memoria Principal, usando el Bus de Direcciones para localizarla y el Bus de Datos para traerla.
 2.  **Fase de Ejecución (Execute)**: Una vez que la instrucción está en la CPU, la Unidad de Control la interpreta. Si la instrucción implica realizar cálculos o comparaciones, la UAL entra en acción. Si necesita acceder a más datos de la memoria o interactuar con un periférico, la Unidad de Control coordina esas acciones. Finalmente, el resultado se guarda en la memoria o se envía a un periférico.
 
-## 1.3. Sistemas de Representación de la Información
+## 3. Sistemas de Representación de la Información
 
 Los ordenadores, a diferencia de los humanos, solo entienden y procesan información en un formato binario.
 
@@ -108,7 +108,7 @@ graph LR
     I -- Píxeles/Muestras --> J[Imágenes/Sonidos]
 ```
 
-## 1.4. Procesos y sus Estados
+## 4. Procesos y sus Estados
 
 Un **proceso** es la piedra angular de la ejecución de software en un sistema operativo. Es una instancia de un programa en ejecución. Cuando abres una aplicación (por ejemplo, tu navegador web), el sistema operativo crea uno o más procesos para que funcione.
 
@@ -134,9 +134,9 @@ Un **proceso** es la piedra angular de la ejecución de software en un sistema o
   <figcaption>https://commons.wikimedia.org/wiki/File:Diagrama_de_estados5.PNG</figcaption>
 </figure>
 
-## 1.5. Estructura y Organización del Sistema de Archivos
+## 5. Estructura y Organización del Sistema de Archivos
 
-### 1.5.1. Sistemas de Archivos
+### 5.1. Sistemas de Archivos
 
 El **sistema de archivos** es el método por el cual el sistema operativo organiza, almacena, nombra y recupera los archivos y directorios (carpetas) en un dispositivo de almacenamiento. Es como el índice de una biblioteca para tus datos.
 
@@ -155,7 +155,7 @@ El **sistema de archivos** es el método por el cual el sistema operativo organi
         - **XFS y Btrfs:** Alternativas avanzadas para Linux con características como snapshots y pools de almacenamiento.
         - **exFAT:** Un sistema de archivos de Microsoft diseñado para memorias flash, sin las limitaciones de FAT32 en tamaño de archivo, y con mayor compatibilidad que NTFS en otros SO.
 
-### 1.5.2. Jerarquía de Directorios y Archivos
+### 5.2. Jerarquía de Directorios y Archivos
 
 Los sistemas de archivos organizan la información en una estructura de árbol, similar a cómo organizas documentos en carpetas dentro de otras carpetas:
 
@@ -163,7 +163,7 @@ Los sistemas de archivos organizan la información en una estructura de árbol, 
   - **Directorios (Carpetas):** Contenedores que organizan archivos y otros subdirectorios. Permiten una organización lógica de la información.
   - **Archivos:** Las unidades básicas de almacenamiento de datos. Un archivo contiene información específica (un documento de texto, una imagen, un programa ejecutable).
 
-### 1.5.3. Rutas Absolutas y Relativas
+### 5.3. Rutas Absolutas y Relativas
 
 - **Ruta Absoluta:** Especifica la ubicación completa y exacta de un archivo o directorio desde la raíz del sistema de archivos. Es única y no depende de la ubicación actual del usuario.
     - Ejemplo en Windows: `C:\Users\Juan\Documents\informe.docx`
@@ -176,7 +176,7 @@ Los sistemas de archivos organizan la información en una estructura de árbol, 
         - `..` representa el directorio padre.
 
 
-## 1.6. Atributos de Archivos y Directorios
+## 6. Atributos de Archivos y Directorios
 
 Los **atributos** son propiedades especiales o banderas asociadas a archivos y directorios que controlan su comportamiento o indican ciertas características. No son parte del contenido del archivo, sino metadatos sobre el archivo.
 
@@ -195,7 +195,7 @@ Los **atributos** son propiedades especiales o banderas asociadas a archivos y d
 
 La gestión de atributos se realiza normalmente a través de las propiedades del archivo o directorio en la interfaz gráfica del sistema operativo, o mediante comandos específicos en la línea de comandos (ej. `attrib` en Windows, `chattr` en Linux para atributos extendidos).
 
-## 1.7. Permisos de Archivos y Directorios
+## 7. Permisos de Archivos y Directorios
 
 Los **permisos** son reglas fundamentales de seguridad que definen quién puede acceder a un archivo o directorio y qué acciones puede realizar sobre él (leer, escribir, ejecutar). Son vitales para la privacidad y la integridad de los datos en entornos multiusuario.
 
@@ -225,9 +225,9 @@ Los **permisos** son reglas fundamentales de seguridad que definen quién puede 
     - En **Linux (ext4, etc.):** Los permisos se suelen gestionar a través de la línea de comandos con comandos como `chmod` (para cambiar permisos), `chown` (para cambiar propietario) y `chgrp` (para cambiar grupo). Los permisos se representan a menudo de forma numérica (octal), donde R=4, W=2, X=1. Por ejemplo, `755` significa `rwx` para el propietario, `r-x` para el grupo y `r-x` para otros.
 
 
-## 1.8. Sistemas Transaccionales y Selección de Sistemas de Archivos
+## 8. Sistemas Transaccionales y Selección de Sistemas de Archivos
 
-### 1.8.1 ¿Qué es una transacción? 
+### 8.1 ¿Qué es una transacción? 
 
 ¡Piénsalo como comprar en una máquina expendedora! vending machine. Imagina que quieres comprar un refresco. Metes el dinero y pulsas el botón. Pueden pasar dos cosas:
 
@@ -244,7 +244,7 @@ Esto se conoce como las propiedades **ACID**:
 - **Duradera:** Una vez que la máquina te ha dado el refresco, la compra es definitiva. No puede "deshacerse" sola.
 
 
-### 1.8.2. El Journaling
+### 8.2. El Journaling
 
 ¿Y esto qué tiene que ver con los archivos de mi PC?.
 
@@ -273,7 +273,7 @@ Gracias a esto, tu sistema de archivos siempre está en un estado **consistente 
 * **Sistemas SIN Journaling (más antiguos y arriesgados):** **FAT32** (el que usan muchos pendrives antiguos). Es más simple, pero un apagón durante una escritura puede causar un desastre.
 
 
-### 1.8.3. Elección del sistema de archivos
+### 8.3. Elección del sistema de archivos
 
 No todos los sistemas de archivos son iguales. Al formatear un disco duro, un SSD o un pendrive, tienes que elegir uno. Aquí tienes los factores clave a considerar:
 
@@ -289,3 +289,112 @@ No todos los sistemas de archivos son iguales. Al formatear un disco duro, un SS
     - **Disco principal de tu PC:** NTFS (si usas Windows), ext4 (si usas Linux) o APFS (si usas Mac).
     - **Pendrive o disco externo:** **exFAT** es la opción más segura y compatible.
     - **Servidor o base de datos:** Se usan sistemas de archivos aún más avanzados y robustos.
+
+## Actividades
+
+### Actividad 1: Configuración y Mantenimiento de un Servidor de Archivos
+
+**Objetivo:**  
+Repasar y aplicar conceptos avanzados de sistemas operativos relacionados con la arquitectura, la gestión de procesos, la codificación de información y, especialmente, la administración de sistemas de archivos y permisos en un entorno de servidor.
+
+**Escenario:**  
+Eres el nuevo administrador de sistemas en una pequeña startup. Tu primera tarea es configurar un servidor de archivos para la oficina, que será utilizado por todos los empleados, y asegurar que la información esté organizada, sea accesible para los usuarios correctos y protegida contra fallos.
+
+#### Parte 1: Fundamentos del Hardware y la Arquitectura del Servidor
+
+El servidor que te han asignado es una máquina robusta con múltiples procesadores y mucha memoria.
+
+1. El servidor cuenta con varios procesadores multinúcleo. Aunque el texto describe una CPU individual, ¿cómo se relaciona la presencia de múltiples núcleos de CPU con la Arquitectura Von Neumann a un nivel conceptual, especialmente en términos de la Unidad Aritmético-Lógica (UAL) y la Unidad de Control (UC) dentro de cada núcleo?
+
+2. Explica cómo la Memoria Principal (RAM) juega un papel crucial en la eficiencia del Ciclo de Instrucción cuando la CPU del servidor necesita ejecutar programas y acceder a grandes volúmenes de datos.
+
+3. Imagina que necesitas interpretar un registro de eventos del servidor que muestra códigos de error en formato hexadecimal. Explica por qué el sistema hexadecimal es una forma conveniente de representar grandes números binarios en comparación con el formato binario puro para un administrador de sistemas.
+
+
+#### Parte 2: Gestión de Procesos y Codificación de Datos en el Servidor
+
+El servidor ejecutará varios servicios críticos, como un servidor web y un servicio de sincronización de archivos.
+
+1. Cuando inicias el servicio de sincronización de archivos en el servidor, ¿cuáles son los dos estados iniciales por los que pasa su proceso antes de que comience a funcionar activamente? Si el servicio necesita esperar a que un archivo grande se transfiera por la red antes de poder procesarlo, ¿en qué estado se encontraría el proceso?
+
+2. Define la diferencia clave entre un "programa" y un "proceso", usando como ejemplo el software del servidor web que está instalado pero no siempre activo en el servidor, en contraste con cuando recibe una solicitud y genera una instancia de ejecución.
+
+3. Algunos usuarios de la empresa utilizan software heredado y están reportando que los nombres de los archivos en el servidor con caracteres especiales (como "año" o "información") aparecen corruptos. ¿Qué estándar de codificación de caracteres es probable que esté causando este problema (el antiguo), y cuál estándar moderno deberías asegurar que se use en el servidor para garantizar la compatibilidad global y evitar estos problemas?
+
+#### Parte 3: Configuración Avanzada del Sistema de Archivos y Seguridad
+
+Debes formatear los discos del servidor y configurar las carpetas compartidas con la seguridad adecuada.
+
+1. El sistema operativo del servidor será Linux. Para la partición principal donde se almacenarán los datos críticos, ¿qué tipo de sistema de archivos recomendarías utilizar (de los mencionados en las fuentes para Linux)? Explica dos razones clave por las que este sistema de archivos es una elección robusta para un servidor, haciendo énfasis en la fiabilidad.
+
+2. Explica en detalle cómo la técnica de **Journaling** en el sistema de archivos que elegiste en la pregunta anterior contribuye a la consistencia y seguridad del sistema de archivos del servidor, incluso si hay un apagón inesperado. Relaciona esta explicación con la propiedad **Atómica** de las transacciones.
+
+3. La carpeta compartida para el departamento de Marketing se encuentra en `/srv/shares/Marketing`.  
+    - Si tu "directorio de trabajo" actual es `/srv`, proporciona la ruta **relativa** para acceder a un subdirectorio llamado `Campañas` dentro de `Marketing`.  
+    - Si tu directorio de trabajo fuera `/`, proporciona la ruta **absoluta** al mismo subdirectorio `Campañas`.
+
+4. La carpeta `/srv/shares/Marketing` debe tener permisos para que:
+    - Solo el **Propietario** (el administrador) pueda leer, escribir y ejecutar (entrar en el directorio).
+    - Los miembros del **Grupo** `marketing_group` puedan leer y escribir archivos, pero no borrar la carpeta en sí (es decir, puedan leer y escribir, y ejecutar para entrar).
+    - **Otros** usuarios no puedan acceder a la carpeta ni a su contenido de ninguna manera.
+    - Si el sistema operativo es Linux, especifica los tipos de permisos (Lectura, Escritura, Ejecución) que asignarías a cada categoría (Propietario, Grupo, Otros) para este directorio.
+
+5. Un archivo de configuración crucial del sistema operativo del servidor debe ser visible solo por administradores y no por usuarios normales que exploren los directorios del sistema.  
+    - ¿Qué atributo especial de archivo (común en varios SO) podrías usar para lograr que este archivo **no se muestre por defecto** en el explorador de archivos?  
+    - ¿Qué otro atributo indica que un archivo ha sido **modificado desde la última vez que se hizo una copia de seguridad**, siendo útil para los programas de respaldo?
+
+
+### Actividad 2: Administrando el Sistema de Oficina
+
+**Objetivo:**  
+Repasar y aplicar los conceptos fundamentales de los sistemas operativos (SO) a través de un escenario práctico de configuración y resolución de problemas.
+
+**Escenario:**  
+Eres el nuevo técnico informático en una pequeña empresa. Te han asignado la tarea de configurar un nuevo equipo para un empleado y resolver algunos problemas existentes en la infraestructura de TI.
+
+
+#### Parte 1: El Nuevo Equipo y su Funcionamiento Interno
+
+Te entregan un ordenador nuevo para un empleado y te piden que expliques brevemente sus componentes principales y cómo funcionan juntos.
+
+1. Describe al menos tres componentes **Hardware** esenciales del nuevo equipo y explica brevemente su función principal. Además, especifica por qué una mayor cantidad de **Memoria RAM** es crucial para manejar múltiples tareas simultáneamente y con fluidez.
+
+2. Menciona el tipo de **Software** principal sin el cual la mayoría de los ordenadores modernos no podrían funcionar, y explica su rol como intermediario entre el usuario/aplicaciones y el hardware. Luego, nombra un ejemplo de **Software de Aplicación** y su propósito.
+
+3. Considerando la **Arquitectura Von Neumann**, ¿en qué componente se almacenan tanto las instrucciones de los programas como los datos que estos necesitan para funcionar? Dentro de la **CPU**, ¿qué subcomponente es el responsable de realizar las operaciones matemáticas y lógicas, y cuál actúa como el "director de orquesta" interpretando instrucciones y coordinando el flujo de datos?
+
+4. Si el usuario del nuevo equipo abre un programa y luego guarda un archivo, describe brevemente las dos fases principales del **Ciclo de Instrucción** que la CPU seguiría para procesar estas acciones (**Fase de Búsqueda** y **Fase de Ejecución**).
+
+
+#### Parte 2: Manejo de Información y Procesos
+
+El empleado se queja de que una aplicación específica a veces se "congela" o funciona muy lento. Además, tiene problemas con la visualización de caracteres especiales en documentos.
+
+1. Cuando una aplicación se "congela" o no responde, ¿en qué **estado de proceso** es más probable que se encuentre, y por qué? Si el sistema operativo decide terminar ese proceso debido a un error o tú lo cierras manualmente, ¿a qué **estado final** pasaría?
+
+2. Explica la **diferencia fundamental entre un "programa" y un "proceso"** utilizando el ejemplo de la aplicación que se "congela".
+
+3. El empleado recibe un documento donde los acentos y la "ñ" aparecen como símbolos extraños. Para evitar este problema en el futuro y asegurar la compatibilidad con caracteres de todos los idiomas, ¿qué **estándar de codificación de caracteres** recomendarías utilizar, en contraste con uno más antiguo y limitado como **ASCII**?
+
+
+#### Parte 3: Organización y Seguridad de Archivos
+
+Necesitas configurar una unidad de almacenamiento externa para copias de seguridad y asegurar algunos documentos sensibles.
+
+1. Un empleado necesita un pendrive para transferir archivos entre su equipo de **Windows**, un ordenador antiguo con **Linux** y una **Mac**. ¿Qué tipo de **sistema de archivos** le recomendarías para el pendrive que garantice la mayor compatibilidad entre estos sistemas operativos, especialmente si puede haber archivos muy grandes (más de 4 GB)?
+
+2. Para el disco principal del ordenador del empleado, que usa **Windows** (y, por lo tanto, **NTFS**), explica la importancia de que este sistema de archivos utilice la técnica de **Journaling**. ¿Cómo ayuda el Journaling a asegurar que el sistema de archivos siempre esté en un estado consistente y seguro incluso después de un apagón inesperado? Relaciona esto con el concepto de **transacción** y la propiedad **Atómica**.
+
+3. El empleado guarda sus documentos importantes en la siguiente ubicación:  
+   `C:\Users\Empleado\Documentos`  
+    - Si tu "directorio de trabajo" actual en la consola es `C:\Users\Empleado`, proporciona un ejemplo de **ruta absoluta** y un ejemplo de **ruta relativa** para acceder a un archivo llamado `informe_ventas.xlsx` que se encuentra dentro de la carpeta `Documentos`.
+
+4. Un archivo confidencial ha sido creado por el empleado. Quiere asegurarse de que solo él (el **Propietario**) pueda ver y modificar el contenido del archivo, y que nadie más en el sistema pueda acceder a él.  
+    - Si el sistema operativo es **Linux**, ¿qué tipos de **permisos** (Lectura, Escritura, Ejecución) asignarías específicamente al "Propietario" y qué permisos asignarías a "Otros" para este archivo?
+
+5. Menciona **dos atributos especiales de archivo** (distintos del tamaño o las fechas de modificación/creación) que podrías usar en un sistema **Windows** para:  
+    - Hacer que un archivo **no sea visible por defecto** en el explorador de archivos.  
+    - Indicar que un archivo ha sido **modificado desde la última copia de seguridad**, lo cual es útil para programas de respaldo.
+
+
+

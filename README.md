@@ -24,10 +24,13 @@ La duración del tema es de 10 horas y el contenido el siguiente:
 Y me lo puedes poner en formato markdown para mkdocs de forma que pueda copiar el contenido que me des en un fichero md.
 ----------------
 Ahora me puedes preparar un documento único con html,css y javascript con actividades para repasar los contenidos de este tema.
-Al documento de html, css y javascript le puedes añadir en la cabecera un logo y el texto " SMR - Sistemas Operativos Monopuesto "
+Al documento de html, css y javascript le puedes añadir en la cabecera un logo y el texto " SOM - Instalacion y Gestion de Sistemas Operativos ".... Este para los repasos el del tema 2 esta muy bien. Falta el Logo.
 --------------------
 Hola,  estoy preparando unos apuntes para mis alumnos de grado medio de informática sobre los sistemas informáticos. De momento tengo esta propuesta en formato mkdocs, me la podrias ampliar para incluir información sobre la arquitectura Von Neuman y sus componentes.
-
+-------------------
+Ahora me puedes preparar un cuestionario de 20 preguntas sobre este tema en formato gift para moodle con cuatro opciones por pregunta y asignando un 100% si la respuesta es correcta y un -25% si es falsa.
+-------------
+Los html de repaso solo para Semi y se añaden directamente en Aules
 
 
 ## RA1: Genérico a todos los S.O. (10 horas)

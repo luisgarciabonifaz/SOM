@@ -13,7 +13,7 @@
 /// html | div[style='display: inline-block;width:33%;']
 ## 1ª Evaluación
 * [T1 Fundamentos de los Sistemes Operativos](T_01_Fundamentos_SO/Fundamentos_SO.md)
-* [T2 Sistemes Operatius](Tema02/SistemesOperatius.md) 
+* [T2 Instalacion de un Sistema Operativo](T_02_Instalacion_SO/Instalacion_SO.md) 
 * [T3 Gestión de Recursos](Tema03/GestionRecursos.md) 
 ///
 
