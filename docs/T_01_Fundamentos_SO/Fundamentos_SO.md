@@ -81,7 +81,7 @@ Los ordenadores, a diferencia de los humanos, solo entienden y procesan informac
 
 - **Codificación de Caracteres**:
 
-    - Los caracteres (letras, números, símbolos) también deben ser representados como números binarios para que el ordenador los entienda.
+    - Los caracteres (letras, números, símbolos) también deben ser representados como datos binarios para que el ordenador los entienda.
 
     - **ASCII (American Standard Code for Information Interchange):** Uno de los primeros estándares ampliamente adoptados para representar caracteres. Originalmente usaba 7 bits (128 caracteres), y luego 8 bits (256 caracteres), limitando la representación a caracteres latinos básicos.
     - **Unicode:** Un estándar mucho más moderno y amplio que busca codificar prácticamente todos los caracteres de todos los idiomas del mundo. Utiliza un número variable de bits por carácter (UTF-8, UTF-16, UTF-32) y ha sustituido a ASCII en la mayoría de las aplicaciones modernas, permitiendo la compatibilidad global de texto.
@@ -171,7 +171,9 @@ Los sistemas de archivos organizan la información en una estructura de árbol, 
 - **Ruta Relativa:** Especifica la ubicación de un archivo o directorio respecto a la ubicación actual del usuario (el "directorio de trabajo"). Es más corta pero solo funciona desde una posición específica.
     - Ejemplo: Si estás en el directorio `C:\Users\Juan` (Windows), la ruta relativa a `informe.docx` sería `Documents\informe.docx`.
     - Ejemplo: Si estás en `/home/juan` (Linux), la ruta relativa a `informe.pdf` sería `documentos/informe.pdf`.
-    - Los puntos `.` y `..` se usan comúnmente: `.` representa el directorio actual, `..` representa el directorio padre.
+    - Los puntos `.` y `..` se usan comúnmente: 
+        - `.` representa el directorio actual
+        - `..` representa el directorio padre.
 
 
 ## 1.6. Atributos de Archivos y Directorios
