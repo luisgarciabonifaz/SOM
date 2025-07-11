@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repaso: Fundamentos y Gestión de Máquinas Virtuales</title>
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #e9ecef;
+            color: #343a40;
+        }
+
+        header {
+            background: linear-gradient(to right, #0056b3, #007bff);
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .logo {
+            height: 60px; /* Tamaño del logo */
+            margin-right: 20px;
+            border-radius: 50%; /* Opcional: para logos circulares */
+            border: 2px solid #fff;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        main {
+            padding: 30px;
+            max-width: 900px;
+            margin: 30px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .activity-section {
+            margin-bottom: 40px;
+            padding: 25px;
+            border: 1px solid #cce5ff;
+            border-radius: 8px;
+            background-color: #f8faff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .activity-section h2 {
+            color: #0056b3;
+            margin-top: 0;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .question-block {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px dashed #a7d9f7;
+            border-radius: 6px;
+            background-color: #fff;
+        }
+
+        input[type="text"], textarea, select {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box; /* Ensures padding doesn't add to total width */
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1em;
+            margin-top: 15px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: block; /* Make button full width for better click area */
+            width: fit-content;
+        }
+
+        button:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: none; /* Hidden by default */
+            font-size: 0.95em;
+        }
+
+        .feedback.correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .feedback.incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        .match-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            background-color: #e9f7fe;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .match-item p {
+            margin: 0;
+            flex: 1;
+            font-weight: bold;
+        }
+
+        .match-item select {
+            flex: 2;
+            margin-left: 15px;
+            max-width: 60%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="ruta/a/tu/logo.png" alt="Logo SOM" class="logo">
+        <h1>SOM - Virtualización</h1>
+    </header>
+
+    <main>
+        <section id="activity1" class="activity-section">
+            <h2>Actividad 1: Conceptos Básicos de Virtualización</h2>
+            <p><strong>Instrucciones:</strong> Completa los espacios en blanco con la palabra o frase correcta, basándote en la información de las fuentes.</p>
+            <div class="question-block">
+                <p>La <input type="text" id="q1_virtualizacion" placeholder="tu respuesta"> es la tecnología que nos permite crear versiones virtuales (simuladas por software) de recursos informáticos [1].</p>
+                <p>Piensa en la virtualización como una "<input type="text" id="q2_computadora_dentro_de_otra" placeholder="tu respuesta">" [2].</p>
+                <p>El hardware <input type="text" id="q3_fisico" placeholder="tu respuesta"> es el tangible que puedes tocar, mientras que el hardware <input type="text" id="q4_virtualizado" placeholder="tu respuesta"> es el simulado por software que utiliza recursos del hardware real [2]. Por ejemplo, si tu máquina real tiene 16 GB de RAM, puedes asignar 4 GB a una máquina virtual, los cuales son una parte de los 16 GB totales [3].</p>
+                <button onclick="checkActivity1()">Comprobar Actividad 1</button>
+                <div id="feedback1" class="feedback"></div>
+            </div>
+        </section>
+
+        <section id="activity2" class="activity-section">
+            <h2>Actividad 2: Ventajas y Desventajas de las Máquinas Virtuales</h2>
+            <p><strong>Instrucciones:</strong> Selecciona la opción que mejor responde a cada pregunta.</p>
+            <div class="question-block">
+                <p>¿Cuál de las siguientes es una **ventaja** clave de las máquinas virtuales según las fuentes?</p>
+                <label><input type="radio" id="q5a" name="q5" value="a"> Ofrecen un rendimiento idéntico al hardware físico.</label><br>
+                <label><input type="radio" id="q5b" name="q5" value="b"> Permiten el aislamiento del sistema operativo anfitrión.</label><br>
+                <label><input type="radio" id="q5c" name="q5" value="c"> Eliminan por completo la necesidad de hardware real.</label><br>
+                <label><input type="radio" id="q5d" name="q5" value="d"> Solo funcionan con un único sistema operativo invitado.</label><br>
+                <div id="feedback5" class="feedback"></div>
+            </div>
+             <div class="question-block">
+                <p>Según las fuentes, ¿cuál es un **inconveniente** principal de las máquinas virtuales?</p>
+                <label><input type="radio" id="q6a" name="q6" value="a"> No permiten la instalación de sistemas operativos Linux.</label><br>
+                <label><input type="radio" id="q6b" name="q6" value="b"> Siempre requieren conexión a internet para funcionar.</label><br>
+                <label><input type="radio" id="q6c" name="q6" value="c"> Generalmente tienen un rendimiento inferior al de un sistema operativo instalado directamente en el hardware físico.</label><br>
+                <label><input type="radio" id="q6d" name="q6" value="d"> Son imposibles de clonar o guardar su estado.</label><br>
+                <div id="feedback6" class="feedback"></div>
+            </div>
+            <button onclick="checkActivity2()">Comprobar Actividad 2</button>
+            <div id="feedback2" class="feedback"></div>
+        </section>
+
+        <section id="activity3" class="activity-section">
+            <h2>Actividad 3: Tipos de Hipervisores y Herramientas de Integración</h2>
+            <p><strong>Instrucciones:</strong> Relaciona cada concepto con su descripción correcta.</p>
+            <div class="matching-container">
+                <div class="match-item">
+                    <p>1. Hipervisor Tipo 1 (Bare-metal) [4]</p>
+                    <select id="match1">
+                        <option value="">Selecciona</option>
+                        <option value="a">Se instala como una aplicación dentro de un sistema operativo anfitrión, como VirtualBox.</option>
+                        <option value="b">Se instala directamente sobre el hardware físico del servidor, sin SO anfitrión (ej. VMware ESXi).</option>
+                        <option value="c">Software que mejora el rendimiento gráfico y la integración del ratón en una MV.</option>
+                    </select>
+                </div>
+                <div class="match-item">
+                    <p>2. Hipervisor Tipo 2 (Hosted) [5]</p>
+                    <select id="match2">
+                        <option value="">Selecciona</option>
+                        <option value="a">Se instala como una aplicación dentro de un sistema operativo anfitrión, como VirtualBox.</option>
+                        <option value="b">Se instala directamente sobre el hardware físico del servidor, sin SO anfitrión (ej. VMware ESXi).</option>
+                        <option value="c">Software que mejora el rendimiento gráfico y la integración del ratón en una MV.</option>
+                    </select>
+                </div>
+                <div class="match-item">
+                    <p>3. VirtualBox Guest Additions [6, 7]</p>
+                    <select id="match3">
+                        <option value="">Selecciona</option>
+                        <option value="a">Se instala como una aplicación dentro de un sistema operativo anfitrión, como VirtualBox.</option>
+                        <option value="b">Se instala directamente sobre el hardware físico del servidor, sin SO anfitrión (ej. VMware ESXi).</option>
+                        <option value="c">Software que mejora el rendimiento gráfico y la integración del ratón en una MV.</option>
+                    </select>
+                </div>
+            </div>
+            <button onclick="checkActivity3()">Comprobar Actividad 3</button>
+            <div id="feedback3" class="feedback"></div>
+        </section>
+
+        <section id="activity4" class="activity-section">
+            <h2>Actividad 4: Gestión Avanzada de MV</h2>
+            <p><strong>Instrucciones:</strong> Describe brevemente la diferencia entre una Clonación Completa y una Clonación Enlazada en VirtualBox, y menciona cuándo es más apropiado usar cada una. [8-10]</p>
+            <div class="question-block">
+                <textarea id="q7_clonacion" rows="8" cols="70" placeholder="Escribe tu respuesta aquí..."></textarea>
+                <button onclick="checkActivity4()">Comprobar Actividad 4</button>
+                <div id="feedback4" class="feedback"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Lógica JavaScript
+        function checkActivity1() {
+            const q1 = document.getElementById('q1_virtualizacion').value.trim().toLowerCase();
+            const q2 = document.getElementById('q2_computadora_dentro_de_otra').value.trim().toLowerCase();
+            const q3 = document.getElementById('q3_fisico').value.trim().toLowerCase();
+            const q4 = document.getElementById('q4_virtualizado').value.trim().toLowerCase();
+            const feedbackDiv = document.getElementById('feedback1');
+
+            let correctCount = 0;
+            let totalQuestions = 4;
+
+            if (q1 === 'virtualización' || q1 === 'virtualizacion') {
+                correctCount++;
+            }
+            if (q2 === 'computadora dentro de una computadora') {
+                correctCount++;
+            }
+            if (q3 === 'físico' || q3 === 'fisico') { // Acepta con y sin tilde
+                correctCount++;
+            }
+            if (q4 === 'virtualizado') {
+                correctCount++;
+            }
+
+            if (correctCount === totalQuestions) {
+                feedbackDiv.className = 'feedback correct';
+                feedbackDiv.textContent = '¡Excelente! Todas las respuestas son correctas en esta sección.';
+            } else {
+                feedbackDiv.className = 'feedback incorrect';
+                feedbackDiv.textContent = `Has acertado ${correctCount} de ${totalQuestions} respuestas. Revisa los conceptos básicos de virtualización.`;
+            }
+        }
+
+        function checkActivity2() {
+            // q5b es la respuesta correcta para la pregunta 5 (Aislamiento)
+            const q5_correct = document.getElementById('q5b').checked;
+            // q6c es la respuesta correcta para la pregunta 6 (Rendimiento inferior)
+            const q6_correct = document.getElementById('q6c').checked;
+            const feedbackDiv = document.getElementById('feedback2');
+
+            let correctCount = 0;
+            let totalQuestions = 2;
+
+            if (q5_correct) {
+                correctCount++;
+            }
+            if (q6_correct) {
+                correctCount++;
+            }
+
+            if (correctCount === totalQuestions) {
+                feedbackDiv.className = 'feedback correct';
+                feedbackDiv.textContent = '¡Muy bien! Todas las respuestas son correctas en esta sección.';
+            } else {
+                feedbackDiv.className = 'feedback incorrect';
+                feedbackDiv.textContent = `Has acertado ${correctCount} de ${totalQuestions} respuestas. Repasa las ventajas y desventajas de las máquinas virtuales.`;
+            }
+        }
+
+        function checkActivity3() {
+            const match1 = document.getElementById('match1').value; // Hipervisor Tipo 1
+            const match2 = document.getElementById('match2').value; // Hipervisor Tipo 2
+            const match3 = document.getElementById('match3').value; // Guest Additions
+            const feedbackDiv = document.getElementById('feedback3');
+
+            let correctCount = 0;
+            let totalQuestions = 3;
+
+            if (match1 === 'b') { // Hipervisor Tipo 1 se instala directamente sobre el hardware físico
+                correctCount++;
+            }
+            if (match2 === 'a') { // Hipervisor Tipo 2 se instala como una aplicación
+                correctCount++;
+            }
+            if (match3 === 'c') { // Guest Additions mejora rendimiento e integración
+                correctCount++;
+            }
+
+            if (correctCount === totalQuestions) {
+                feedbackDiv.className = 'feedback correct';
+                feedbackDiv.textContent = '¡Perfecto! Todas las relaciones son correctas en esta sección.';
+            } else {
+                feedbackDiv.className = 'feedback incorrect';
+                feedbackDiv.textContent = `Has acertado ${correctCount} de ${totalQuestions} relaciones. Revisa los tipos de hipervisores y las herramientas de integración.`;
+            }
+        }
+
+        function checkActivity4() {
+            const q7_text = document.getElementById('q7_clonacion').value.trim().toLowerCase();
+            const feedbackDiv = document.getElementById('feedback4');
+
+            // Palabras clave esperadas para una respuesta correcta
+            const hasFullCloneConcept = q7_text.includes('completa') && (q7_text.includes('independiente') || q7_text.includes('autónoma')) && q7_text.includes('más espacio');
+            const hasLinkedCloneConcept = q7_text.includes('enlazada') && (q7_text.includes('depende') || q7_text.includes('comparte disco')) && q7_text.includes('poco espacio');
+            const hasWhenToUseFull = q7_text.includes('proyecto largo plazo') || q7_text.includes('dar a otra persona');
+            const hasWhenToUseLinked = q7_text.includes('pruebas cortas') || q7_text.includes('varias copias');
+
+            if (hasFullCloneConcept && hasLinkedCloneConcept && hasWhenToUseFull && hasWhenToUseLinked) {
+                feedbackDiv.className = 'feedback correct';
+                feedbackDiv.textContent = '¡Muy bien! Has comprendido la diferencia entre la clonación completa y enlazada y cuándo usar cada una.';
+            } else {
+                feedbackDiv.className = 'feedback incorrect';
+                feedbackDiv.textContent = 'Tu respuesta es incompleta o requiere más precisión. Asegúrate de explicar la independencia/dependencia, el espacio en disco, y cuándo usar cada tipo de clonación.';
+            }
+        }
+    </script>
+</body>
+</html>
