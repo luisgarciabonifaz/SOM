@@ -19,7 +19,7 @@
 
 /// html | div[style='display: inline-block;width:33%;']
 ## 2ª Evaluación
-* [T4 Virtualització](Tema04/Virtualitzacio.md) 
+* [T4 Windows Congiguración Basica](T_04_Windows_Configuracion/ConfiguracionBasica.md)
 * [T5 Instalació Sistemes Operatius](Tema05/InstalacionSO.md) 
 * [T6 Configuració bàsica Windows](Tema06/ConfiguracionBasicaWindows.md) 
 ///

@@ -19,7 +19,7 @@ Este curso está diseñado para proporcionar a los estudiantes de grado medio en
 ## Plantilla
 Hola, me podrías preparar unos apuntes de un tema sobre sistemas operativos monopuesto, para mis alumnos de grado medio de informática, para utilizarlos como  material de clase en formato markdown para mkdocs. 
 
-La duración del tema es de 12 horas y el contenido el siguiente:
+La duración del tema es de 15 horas y el contenido el siguiente:
 --------------
 Y me lo puedes poner en formato markdown para mkdocs de forma que pueda copiar el contenido que me des en un fichero md.
 
@@ -37,6 +37,8 @@ Los html de repaso solo para Semi y se añaden directamente en Aules
 Me puedes preparar una actividad practica sobre el contenido de este tema
 ---------------
 Ahora me puedes preparar un examen con una combinación de preguntas de tipo test y preguntas de desarrollo breve sobre este tema. Las preguntas de tipo test en formato gift para moodle con cuatro opciones por pregunta y asignando un 100% si la respuesta es correcta y un -25% si es falsa.
+---------
+Me puedes preparar una rúbrica con pesos para los criterios de evaluación en formato tabla para esta actividad.
 
 
 ## RA1: Genérico a todos los S.O. (10 horas)
@@ -219,8 +221,8 @@ Herramientas de integración (Guest Additions en VirtualBox).
 Monitorización del uso de recursos.
 
 Comparación de rendimiento entre MV y sistema real (conceptual).
-
-## RA1 Windows: Sistemas de Archivos y Fundamentos (15 horas)
+ 
+## RA1 Windows: Sistemas de Archivos y Fundamentos(15 horas)
 Profundización en los conceptos del RA1 aplicados específicamente a entornos Windows.
 
 1.1. Estructura y organización del sistema de archivos en Windows

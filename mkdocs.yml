@@ -63,7 +63,7 @@ nav:
     - 'T1 - Fundamentos de los Sistemes Operativos': T_01_Fundamentos_SO/Fundamentos_SO.md
     - 'T2 - Instalacion de un Sistema Operativo': T_02_Instalacion_SO/Instalacion_SO.md
     - 'T3 - Virtualización': T_03_Virtualizacion/Virtualizacion.md
-    - 'T4 - Virtualització': Tema04/Virtualitzacio.md
+    - 'T4 - Windows Configuración Básica': T_04_Windows_Configuracion/ConfiguracionBasica.md
     - 'T5 - Instalació Sistemes Operatius': Tema05/InstalacionSO.md
     - 'T6 - Configuració bàsica Windows': Tema06/ConfiguracionBasicaWindows.md
     - 'T7 - Gestió de fitxers i directoris en Windows': Tema07/FicherosDirectoriosWindows.md
