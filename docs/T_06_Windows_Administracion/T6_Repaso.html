@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repaso - SOM Windows Administración</title>
+    <style>
+        /* Estilos CSS integrados */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header img {
+            height: 60px;
+            margin-right: 20px;
+            /* Placeholder para un logo, si tuvieras uno real, lo enlazarías aquí */
+            /* filter: invert(1); para logos oscuros sobre fondo claro */
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            font-weight: 300;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1000px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 30px;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            font-size: 1.4em;
+            margin-top: 25px;
+        }
+
+        .activity {
+            background-color: #ecf0f1;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .question {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 4px solid #3498db;
+            background-color: #fdfdfd;
+            border-radius: 4px;
+        }
+
+        .question p {
+            margin-top: 0;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .options label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+        }
+
+        .options input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        .options input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 8px 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .options select {
+            width: calc(100% - 20px);
+            padding: 8px 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: white;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .feedback.correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .feedback.incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .explanation {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 10px;
+            padding-left: 15px;
+            border-left: 3px solid #ccc;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background-color: #2c3e50;
+            color: white;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Puedes reemplazar esto con una URL real de un logo si lo tienes -->
+        <img src="https://via.placeholder.com/60x60?text=Logo" alt="Logo SOM">
+        <h1>SOM - Windows Administración</h1>
+    </header>
+
+    <main>
+        <h2>Actividades de Repaso</h2>
+        <p>Pon a prueba tus conocimientos sobre la administración y optimización de Windows.</p>
+
+        <!-- Actividad 1: Cuentas de Usuario y Grupos -->
+        <div class="activity">
+            <h3>Parte 1: Cuentas de Usuario y Grupos Locales</h3>
+            <div class="question">
+                <p>1.1. ¿Qué tipo de cuenta de usuario local en Windows tiene control total sobre el sistema y puede instalar programas o cambiar configuraciones que afecten a otros usuarios?</p>
+                <div class="options">
+                    <label><input type="radio" name="q1_1" value="a"> Estándar</label>
+                    <label><input type="radio" name="q1_1" value="b"> Invitado</label>
+                    <label><input type="radio" name="q1_1" value="c"> Administrador</label>
+                </div>
+                <button onclick="checkAnswer('q1_1', 'c', 'La cuenta de **Administrador** tiene control total sobre el sistema, permitiendo instalar programas, cambiar configuraciones y acceder a todos los archivos [1].')">Comprobar</button>
+                <div id="feedback_q1_1" class="feedback"></div>
+            </div>
+
+            <div class="question">
+                <p>1.2. Para una gestión avanzada de usuarios, grupos y para establecer contraseñas o asignar pertenencias a grupos, ¿qué herramienta de Windows es más recomendable?</p>
+                <div class="options">
+                    <label><input type="radio" name="q1_2" value="a"> Configuración de Windows (Cuentas)</label>
+                    <label><input type="radio" name="q1_2" value="b"> Administración de equipos (compmgmt.msc)</label>
+                    <label><input type="radio" name="q1_2" value="c"> Símbolo del sistema (CMD)</label>
+                </div>
+                <button onclick="checkAnswer('q1_2', 'b', 'La **Administración de equipos (compmgmt.msc)** es una herramienta más avanzada para gestionar usuarios, grupos, establecer contraseñas y asignar pertenencias a grupos [2].')">Comprobar</button>
+                <div id="feedback_q1_2" class="feedback"></div>
+            </div>
+        </div>
+
+        <!-- Actividad 2: Directivas de Contraseñas -->
+        <div class="activity">
+            <h3>Parte 2: Directivas de Contraseñas</h3>
+            <div class="question">
+                <p>2.1. ¿Cuál de las siguientes NO es una configuración clave de las directivas de contraseñas en Windows?</p>
+                <div class="options">
+                    <label><input type="radio" name="q2_1" value="a"> Requerir complejidad de la contraseña</label>
+                    <label><input type="radio" name="q2_1" value="b"> Vigencia máxima de la contraseña</label>
+                    <label><input type="radio" name="q2_1" value="c"> Detección de ataques de fuerza bruta</label>
+                    <label><input type="radio" name="q2_1" value="d"> Historial de contraseñas</label>
+                </div>
+                <button onclick="checkAnswer('q2_1', 'c', 'La **detección de ataques de fuerza bruta** se gestiona a través de las directivas de bloqueo de cuentas, no directamente desde las directivas de contraseñas [3-5].')">Comprobar</button>
+                <div id="feedback_q2_1" class="feedback"></div>
+            </div>
+
+            <div class="question">
+                <p>2.2. Según las recomendaciones actuales, ¿cuál es la longitud mínima de contraseña que se considera buena práctica?</p>
+                <div class="options">
+                    <input type="text" id="q2_2_answer" placeholder="Introduce un número">
+                </div>
+                <button onclick="checkNumericAnswer('q2_2_answer', 8, 12, 'Se recomienda una longitud mínima de **8 a 12 caracteres** o más para las contraseñas [3].')">Comprobar</button>
+                <div id="feedback_q2_2_answer" class="feedback"></div>
+            </div>
+        </div>
+
+        <!-- Actividad 3: Directivas de Bloqueo de Cuentas -->
+        <div class="activity">
+            <h3>Parte 3: Directivas de Bloqueo de Cuentas</h3>
+            <div class="question">
+                <p>3.1. ¿Qué directiva define cuántos intentos de inicio de sesión fallidos se permiten antes de que una cuenta se bloquee temporalmente?</p>
+                <div class="options">
+                    <label><input type="radio" name="q3_1" value="a"> Duración del bloqueo de cuenta</label>
+                    <label><input type="radio" name="q3_1" value="b"> Umbral de bloqueo de cuenta</label>
+                    <label><input type="radio" name="q3_1" value="c"> Restablecer contador de bloqueo de cuenta después de</label>
+                </div>
+                <button onclick="checkAnswer('q3_1', 'b', 'El **Umbral de bloqueo de cuenta** define el número de intentos fallidos antes del bloqueo, siendo un valor común de 3 a 5 intentos [5].')">Comprobar</button>
+                <div id="feedback_q3_1" class="feedback"></div>
+            </div>
+
+            <div class="question">
+                <p>3.2. Si una cuenta se bloquea por intentos fallidos, ¿qué configuración determina el tiempo que permanecerá bloqueada?</p>
+                <div class="options">
+                    <input type="text" id="q3_2_answer" placeholder="Introduce la directiva">
+                </div>
+                <button onclick="checkTextAnswer('q3_2_answer', 'Duración del bloqueo de cuenta', 'La **Duración del bloqueo de cuenta** especifica cuánto tiempo (en minutos) permanecerá bloqueada la cuenta [5].')">Comprobar</button>
+                <div id="feedback_q3_2_answer" class="feedback"></div>
+            </div>
+        </div>
+
+        <!-- Actividad 4: Administración de Discos -->
+        <div class="activity">
+            <h3>Parte 4: Administración de Discos</h3>
+            <div class="question">
+                <p>4.1. ¿Cuál de las siguientes acciones NO se puede realizar con el Administrador de discos (diskmgmt.msc)?</p>
+                <div class="options">
+                    <label><input type="radio" name="q4_1" value="a"> Crear y eliminar particiones</label>
+                    <label><input type="radio" name="q4_1" value="b"> Desfragmentar un disco duro</label>
+                    <label><input type="radio" name="q4_1" value="c"> Asignar letras de unidad a las particiones</label>
+                    <label><input type="radio" name="q4_1" value="d"> Formatear unidades</label>
+                </div>
+                <button onclick="checkAnswer('q4_1', 'b', 'La **desfragmentación de un disco duro** se realiza con el Optimizador de unidades de Windows, no directamente desde el Administrador de discos [6, 7].')">Comprobar</button>
+                <div id="feedback_q4_1" class="feedback"></div>
+            </div>
+
+            <div class="question">
+                <p>4.2. ¿Qué tipo de volumen dinámico combina el espacio de varios discos para crear una única unidad lógica, distribuyendo los datos en "franjas" de manera simultánea para aumentar la velocidad?</p>
+                <div class="options">
+                    <input type="text" id="q4_2_answer" placeholder="Introduce el tipo de volumen">
+                </div>
+                <button onclick="checkTextAnswer('q4_2_answer', 'Volumen Seccionado', 'El **Volumen Seccionado** (Striped o RAID 0) distribuye los datos en "franjas" de manera simultánea entre todos los discos, aumentando la velocidad de lectura y escritura [6].')">Comprobar</button>
+                <div id="feedback_q4_2_answer" class="feedback"></div>
+            </div>
+        </div>
+
+        <!-- Actividad 5: Procesos y Servicios -->
+        <div class="activity">
+            <h3>Parte 5: Procesos y Servicios del Sistema</h3>
+            <div class="question">
+                <p>5.1. Si un programa no responde, ¿qué herramienta puedes usar para detenerlo forzosamente y qué pestaña te muestra los procesos en ejecución?</p>
+                <div class="options">
+                    <input type="text" id="q5_1_answer" placeholder="Herramienta y Pestaña (ej: Administrador de Tareas, Procesos)">
+                </div>
+                <button onclick="checkTextAnswer('q5_1_answer', 'Administrador de Tareas, Procesos', 'El **Administrador de tareas** te permite detener una aplicación o proceso que no responde desde la **Pestaña Procesos** [8].')">Comprobar</button>
+                <div id="feedback_q5_1_answer" class="feedback"></div>
+            </div>
+
+            <div class="question">
+                <p>5.2. ¿Qué tipo de inicio de servicio hace que un servicio se inicie automáticamente con Windows, pero con un ligero retraso para mejorar el tiempo de arranque del sistema?</p>
+                <div class="options">
+                    <select id="q5_2_answer">
+                        <option value="">Selecciona una opción</option>
+                        <option value="Manual">Manual</option>
+                        <option value="Automático (Inicio retrasado)">Automático (Inicio retrasado)</option>
+                        <option value="Automático">Automático</option>
+                        <option value="Deshabilitado">Deshabilitado</option>
+                    </select>
+                </div>
+                <button onclick="checkAnswer('q5_2_answer', 'Automático (Inicio retrasado)', 'El tipo de inicio **Automático (Inicio retrasado)** hace que el servicio se inicie automáticamente con un ligero retardo [9].')">Comprobar</button>
+                <div id="feedback_q5_2_answer" class="feedback"></div>
+            </div>
+        </div>
+
+        <!-- Actividad 6: Optimización de Almacenamiento -->
+        <div class="activity">
+            <h3>Parte 6: Optimización de Dispositivos de Almacenamiento</h3>
+            <div class="question">
+                <p>6.1. ¿Es beneficioso desfragmentar una unidad de estado sólido (SSD) para mejorar su rendimiento?</p>
+                <div class="options">
+                    <label><input type="radio" name="q6_1" value="true"> Sí</label>
+                    <label><input type="radio" name="q6_1" value="false"> No</label>
+                </div>
+                <button onclick="checkAnswer('q6_1', 'false', '¡**No desfragmentar SSDs!** La desfragmentación no mejora el rendimiento de un SSD y puede reducir su vida útil [10].')">Comprobar</button>
+                <div id="feedback_q6_1" class="feedback"></div>
+            </div>
+
+            <div class="question">
+                <p>6.2. ¿Qué operación realiza el "Optimizador de unidades" de Windows en los SSDs para ayudar a mantener su rendimiento y alargar su vida útil?</p>
+                <div class="options">
+                    <input type="text" id="q6_2_answer" placeholder="Nombre de la operación">
+                </div>
+                <button onclick="checkTextAnswer('q6_2_answer', 'TRIM', 'El "Optimizador de unidades" realiza la operación **TRIM** en los SSDs, la cual informa al SSD qué bloques de datos ya no están en uso y pueden ser borrados [10].')">Comprobar</button>
+                <div id="feedback_q6_2_answer" class="feedback"></div>
+            </div>
+        </div>
+
+        <!-- Actividad 7: Permisos Compartidos -->
+        <div class="activity">
+            <h3>Parte 7: Recursos Compartibles y Permisos</h3>
+            <div class="question">
+                <p>7.1. Si un usuario tiene "Control Total" en los permisos de compartición, pero solo "Lectura" en los permisos NTFS para una carpeta compartida, ¿cuál será su acceso efectivo?</p>
+                <div class="options">
+                    <label><input type="radio" name="q7_1" value="a"> Control Total</label>
+                    <label><input type="radio" name="q7_1" value="b"> Lectura</label>
+                    <label><input type="radio" name="q7_1" value="c"> Escritura</label>
+                </div>
+                <button onclick="checkAnswer('q7_1', 'b', 'El permiso más restrictivo es el que prevalece. En este caso, el acceso efectivo será **Lectura** [11].')">Comprobar</button>
+                <div id="feedback_q7_1" class="feedback"></div>
+            </div>
+
+            <div class="question">
+                <p>7.2. ¿Qué comando de línea de comandos te permite ver la configuración de red de tu equipo, incluyendo la dirección IP y la máscara de subred?</p>
+                <div class="options">
+                    <input type="text" id="q7_2_answer" placeholder="Comando">
+                </div>
+                <button onclick="checkTextAnswer('q7_2_answer', 'ipconfig', 'El comando **ipconfig** muestra la configuración de red de tu equipo [12].')">Comprobar</button>
+                <div id="feedback_q7_2_answer" class="feedback"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2023 SOM - Windows Administración. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Lógica JavaScript para las actividades
+        function checkAnswer(questionName, correctAnswer, explanationText) {
+            const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+            const feedbackElement = document.getElementById(`feedback_${questionName}`);
+            const explanationElementId = `explanation_${questionName}`;
+            let explanationElement = document.getElementById(explanationElementId);
+
+            // Eliminar explicación previa si existe
+            if (explanationElement) {
+                explanationElement.remove();
+            }
+
+            if (selectedOption) {
+                if (selectedOption.value === correctAnswer) {
+                    feedbackElement.textContent = '¡Correcto!';
+                    feedbackElement.className = 'feedback correct';
+                } else {
+                    feedbackElement.textContent = 'Incorrecto. Inténtalo de nuevo.';
+                    feedbackElement.className = 'feedback incorrect';
+                    // Añadir explicación
+                    explanationElement = document.createElement('p');
+                    explanationElement.id = explanationElementId;
+                    explanationElement.className = 'explanation';
+                    explanationElement.innerHTML = `**Explicación:** ${explanationText}`;
+                    feedbackElement.parentNode.insertBefore(explanationElement, feedbackElement.nextSibling);
+                }
+            } else {
+                feedbackElement.textContent = 'Por favor, selecciona una opción.';
+                feedbackElement.className = 'feedback incorrect';
+            }
+        }
+
+        function checkTextAnswer(inputId, correctAnswer, explanationText) {
+            const inputElement = document.getElementById(inputId);
+            const userAnswer = inputElement.value.trim();
+            const feedbackElement = document.getElementById(`feedback_${inputId}`);
+            const explanationElementId = `explanation_${inputId}`;
+            let explanationElement = document.getElementById(explanationElementId);
+
+            // Eliminar explicación previa si existe
+            if (explanationElement) {
+                explanationElement.remove();
+            }
+
+            if (userAnswer) {
+                // Para respuestas de texto, permite variaciones de mayúsculas/minúsculas y espacios
+                if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                    feedbackElement.textContent = '¡Correcto!';
+                    feedbackElement.className = 'feedback correct';
+                } else {
+                    feedbackElement.textContent = 'Incorrecto. Inténtalo de nuevo.';
+                    feedbackElement.className = 'feedback incorrect';
+                    // Añadir explicación
+                    explanationElement = document.createElement('p');
+                    explanationElement.id = explanationElementId;
+                    explanationElement.className = 'explanation';
+                    explanationElement.innerHTML = `**Explicación:** ${explanationText}`;
+                    feedbackElement.parentNode.insertBefore(explanationElement, feedbackElement.nextSibling);
+                }
+            } else {
+                feedbackElement.textContent = 'Por favor, introduce una respuesta.';
+                feedbackElement.className = 'feedback incorrect';
+            }
+        }
+
+        function checkNumericAnswer(inputId, minCorrect, maxCorrect, explanationText) {
+            const inputElement = document.getElementById(inputId);
+            const userAnswer = parseInt(inputElement.value.trim()); // Convertir a número entero
+            const feedbackElement = document.getElementById(`feedback_${inputId}`);
+            const explanationElementId = `explanation_${inputId}`;
+            let explanationElement = document.getElementById(explanationElementId);
+
+            // Eliminar explicación previa si existe
+            if (explanationElement) {
+                explanationElement.remove();
+            }
+
+            if (!isNaN(userAnswer)) { // Verificar si es un número válido
+                if (userAnswer >= minCorrect && userAnswer <= maxCorrect) {
+                    feedbackElement.textContent = '¡Correcto!';
+                    feedbackElement.className = 'feedback correct';
+                } else {
+                    feedbackElement.textContent = 'Incorrecto. Inténtalo de nuevo.';
+                    feedbackElement.className = 'feedback incorrect';
+                    // Añadir explicación
+                    explanationElement = document.createElement('p');
+                    explanationElement.id = explanationElementId;
+                    explanationElement.className = 'explanation';
+                    explanationElement.innerHTML = `**Explicación:** ${explanationText}`;
+                    feedbackElement.parentNode.insertBefore(explanationElement, feedbackElement.nextSibling);
+                }
+            } else {
+                feedbackElement.textContent = 'Por favor, introduce un número válido.';
+                feedbackElement.className = 'feedback incorrect';
+            }
+        }
+        
+        // Función para checkear respuestas de tipo select (dropdown)
+        function checkSelectAnswer(selectId, correctAnswer, explanationText) {
+            const selectElement = document.getElementById(selectId);
+            const selectedValue = selectElement.value;
+            const feedbackElement = document.getElementById(`feedback_${selectId}`);
+            const explanationElementId = `explanation_${selectId}`;
+            let explanationElement = document.getElementById(explanationElementId);
+
+            // Eliminar explicación previa si existe
+            if (explanationElement) {
+                explanationElement.remove();
+            }
+
+            if (selectedValue === correctAnswer) {
+                feedbackElement.textContent = '¡Correcto!';
+                feedbackElement.className = 'feedback correct';
+            } else {
+                feedbackElement.textContent = 'Incorrecto. Inténtalo de nuevo.';
+                feedbackElement.className = 'feedback incorrect';
+                // Añadir explicación
+                explanationElement = document.createElement('p');
+                explanationElement.id = explanationElementId;
+                explanationElement.className = 'explanation';
+                explanationElement.innerHTML = `**Explicación:** ${explanationText}`;
+                feedbackElement.parentNode.insertBefore(explanationElement, feedbackElement.nextSibling);
+            }
+        }
+
+    </script>
+</body>
+</html>

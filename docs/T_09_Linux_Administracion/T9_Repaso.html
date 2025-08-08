@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOM - Linux Administración y Optimización</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos CSS */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --danger-color: #e74c3c;
+            --text-color: #333;
+            --background-color: #f4f7f6;
+            --card-background: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.2em;
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to top to prevent vertical centering on short content */
+        }
+
+        #quiz-container {
+            background-color: var(--card-background);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            max-width: 700px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        #question-area {
+            margin-bottom: 20px;
+        }
+
+        #question-text {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        #options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-button {
+            background-color: #f0f0f0;
+            color: var(--text-color);
+            border: 1px solid #ddd;
+            padding: 15px 20px;
+            border-radius: var(--border-radius);
+            font-size: 1.1em;
+            cursor: pointer;
+            text-align: left;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        }
+
+        .option-button:not([disabled]):hover {
+            background-color: #e0e0e0;
+            border-color: var(--primary-color);
+        }
+
+        .option-button[disabled] {
+            cursor: not-allowed;
+        }
+
+        .option-button.correct {
+            background-color: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+
+        .option-button.incorrect {
+            background-color: var(--danger-color);
+            color: white;
+            border-color: var(--danger-color);
+        }
+
+        #feedback {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: 700;
+            text-align: center;
+            min-height: 2em; /* To prevent layout shift */
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-top: 25px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        #next-button, #restart-button {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        #next-button:hover, #restart-button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        #score-area {
+            text-align: center;
+            padding: 20px;
+        }
+
+        #score-area h2 {
+            color: var(--primary-color);
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        #final-score {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--secondary-color);
+        }
+
+        footer {
+            margin-top: auto; /* Pushes footer to the bottom */
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9em;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            #quiz-container {
+                padding: 20px;
+                margin-top: 10px;
+            }
+            #question-text {
+                font-size: 1.3em;
+            }
+            .option-button {
+                font-size: 1em;
+                padding: 12px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                flex-direction: column;
+                padding: 15px;
+                gap: 10px;
+            }
+            .logo {
+                width: 50px;
+                height: 50px;
+            }
+            h1 {
+                font-size: 1.5em;
+                text-align: center;
+            }
+            main {
+                padding: 10px;
+            }
+            #quiz-container {
+                padding: 15px;
+            }
+            #question-text {
+                font-size: 1.1em;
+            }
+            .option-button {
+                font-size: 0.9em;
+                padding: 10px 12px;
+            }
+            #feedback {
+                font-size: 1em;
+            }
+            button {
+                font-size: 1em;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="../Imagenes/Logo_SOM.png" alt="Logo">
+        <h1>SOM - Linux Administración y Optimización</h1>
+    </header>
+    <main>
+        <div id="quiz-container">
+            <div id="question-area">
+                <p id="question-text">Cargando pregunta...</p>
+                <div id="options-container"></div>
+                <div id="feedback"></div>
+                <button id="next-button" style="display:none;">Siguiente Pregunta</button>
+            </div>
+            <div id="score-area" style="display:none;">
+                <h2>Cuestionario Finalizado</h2>
+                <p id="final-score"></p>
+                <button id="restart-button">Reiniciar Cuestionario</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Curso de Linux Administración</p>
+    </footer>
+
+    <script>
+        // Lógica JavaScript para el cuestionario interactivo
+        const questions = [
+            {
+                question: "¿Qué opción del comando 'useradd' se utiliza para especificar el directorio inicial del usuario?",
+                options: ["-s", "-g", "-G", "-d"],
+                correctAnswerIndex: 3
+            },
+            {
+                question: "Al usar el comando 'usermod -l nuevo_login_usuario antiguo_login_usuario', ¿qué ocurre con el directorio HOME del usuario?",
+                options: [
+                    "El directorio HOME del usuario se renombra automáticamente al nuevo login.",
+                    "No cambia el nombre del directorio HOME del usuario, debe cambiarse manualmente.",
+                    "Se crea un nuevo directorio HOME con el nuevo login y se elimina el antiguo.",
+                    "El comando usermod -l también mueve el contenido del antiguo directorio al nuevo."
+                ],
+                correctAnswerIndex: 1
+            },
+            {
+                question: "¿Cuál es el propósito principal del comando 'sudo' en Linux?",
+                options: [
+                    "Permitir a cualquier usuario ejecutar comandos como root sin contraseña.",
+                    "Permitir a usuarios autorizados ejecutar comandos con privilegios de superusuario (root) de forma segura y controlada.",
+                    "Configurar un nuevo usuario como administrador del sistema.",
+                    "Cambiar la contraseña del usuario root."
+                ],
+                correctAnswerIndex: 1
+            },
+            {
+                question: "Para buscar archivos regulares mayores de 1 GB en el directorio `/var/log`, ¿cuál de los siguientes comandos 'find' sería el más adecuado?",
+                options: [
+                    "find /var/log -name \"*.log\" -size +1G",
+                    "find /var/log -max-depth 1 -size +1G",
+                    "find /var/log -type f -size +1G",
+                    "find /var/log -perm 777 -size +1G"
+                ],
+                correctAnswerIndex: 2
+            },
+            {
+                question: "¿Cuál es la función principal del comando 'grep'?",
+                options: [
+                    "Buscar archivos en una base de datos preindexada del sistema.",
+                    "Mostrar los procesos en ejecución en un momento dado.",
+                    "Buscar patrones de texto dentro de archivos.",
+                    "Mostrar el espacio libre y usado en los sistemas de archivos montados."
+                ],
+                correctAnswerIndex: 2
+            },
+            {
+                question: "En el editor de texto 'nano', ¿qué combinación de teclas se utiliza para guardar el archivo?",
+                options: [
+                    "Ctrl + X",
+                    "Ctrl + O",
+                    "Ctrl + W",
+                    "Ctrl + K"
+                ],
+                correctAnswerIndex: 1
+            },
+            {
+                question: "El editor 'vi/vim' opera principalmente en dos modos. ¿Cuáles son?",
+                options: [
+                    "Modo Edición y Modo Visual.",
+                    "Modo Lectura y Modo Escritura.",
+                    "Modo Gráfico y Modo Texto.",
+                    "Modo Normal (o de comandos) y Modo de Inserción."
+                ],
+                correctAnswerIndex: 3
+            },
+            {
+                question: "Dentro de la aplicación 'top', ¿qué tecla se utiliza para matar un proceso (después de pedir el PID)?",
+                options: [
+                    "q",
+                    "k",
+                    "M",
+                    "P"
+                ],
+                correctAnswerIndex: 1
+            },
+            {
+                question: "¿Cuál es el propósito de la señal `-9` al usar el comando 'kill' (ejemplo: `kill -9 PID_del_proceso`)?",
+                options: [
+                    "Envía la señal TERM, que intenta terminar el proceso amistosamente.",
+                    "Pausa el proceso en segundo plano.",
+                    "Reinicia el proceso.",
+                    "Envía la señal KILL, que termina el proceso de forma forzada y sin preguntar."
+                ],
+                correctAnswerIndex: 3
+            },
+            {
+                question: "¿Qué acción realiza la combinación de teclas 'Ctrl + Z' sobre un proceso en ejecución en el terminal?",
+                options: [
+                    "Mata el proceso inmediatamente.",
+                    "Pausa el proceso y lo trae al primer plano.",
+                    "Envía el proceso actual a segundo plano y lo detiene (stop).",
+                    "Reanuda un proceso detenido en segundo plano."
+                ],
+                correctAnswerIndex: 2
+            },
+            {
+                question: "Para iniciar un servicio del sistema usando 'systemctl', ¿cuál es el comando correcto?",
+                options: [
+                    "sudo systemctl enable nombre_del_servicio",
+                    "sudo systemctl reload nombre_del_servicio",
+                    "sudo systemctl start nombre_del_servicio",
+                    "systemctl status nombre_del_servicio"
+                ],
+                correctAnswerIndex: 2
+            },
+            {
+                question: "¿Cuál es la función principal de la 'partición swap' en Linux?",
+                options: [
+                    "Almacenar los archivos temporales del sistema.",
+                    "Es un área en el disco duro que Linux utiliza como memoria virtual cuando la RAM física se agota.",
+                    "Contener el kernel del sistema operativo.",
+                    "Guardar copias de seguridad automáticas del sistema."
+                ],
+                correctAnswerIndex: 1
+            },
+            {
+                question: "¿Cuál de los siguientes es considerado el archivo de registro (log) más importante, que contiene mensajes generales del sistema como arranques, eventos del kernel y errores en distribuciones Debian/Ubuntu?",
+                options: [
+                    "/var/log/auth.log",
+                    "/var/log/dpkg.log",
+                    "/var/log/apt/history.log",
+                    "/var/log/syslog"
+                ],
+                correctAnswerIndex: 3
+            },
+            {
+                question: "¿Qué muestra el comando 'df -h'?",
+                options: [
+                    "El uso de espacio de un archivo o directorio específico en formato legible.",
+                    "Estadísticas de I/O para dispositivos y particiones.",
+                    "Los 10 archivos o directorios más grandes en un path determinado.",
+                    "El espacio libre y usado en los sistemas de archivos montados en formato legible para humanos (KB, MB, GB)."
+                ],
+                correctAnswerIndex: 3
+            },
+            {
+                question: "¿Qué información proporciona el comando 'ip a' (o 'ip addr show')?",
+                options: [
+                    "La tabla de enrutamiento del sistema.",
+                    "Información sobre sockets de red, incluyendo conexiones TCP/UDP.",
+                    "Las direcciones IP asignadas a las interfaces de red, el estado de las interfaces y otra información de red.",
+                    "Resultados de consultas a servidores DNS."
+                ],
+                correctAnswerIndex: 2
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const feedback = document.getElementById('feedback');
+        const nextButton = document.getElementById('next-button');
+        const quizContainer = document.getElementById('quiz-container');
+        const questionArea = document.getElementById('question-area');
+        const scoreArea = document.getElementById('score-area');
+        const finalScore = document.getElementById('final-score');
+        const restartButton = document.getElementById('restart-button');
+
+        // Función para cargar una pregunta
+        function loadQuestion() {
+            if (currentQuestionIndex < questions.length) {
+                const currentQuestion = questions[currentQuestionIndex];
+                questionText.innerHTML = currentQuestion.question; // Usar innerHTML para interpretar negritas
+
+                optionsContainer.innerHTML = '';
+                currentQuestion.options.forEach((option, index) => {
+                    const button = document.createElement('button');
+                    button.classList.add('option-button');
+                    button.textContent = option;
+                    button.addEventListener('click', () => checkAnswer(index));
+                    optionsContainer.appendChild(button);
+                });
+
+                feedback.textContent = '';
+                nextButton.style.display = 'none';
+            } else {
+                showResult();
+            }
+        }
+
+        // Función para verificar la respuesta
+        function checkAnswer(selectedIndex) {
+            const currentQuestion = questions[currentQuestionIndex];
+            const optionButtons = optionsContainer.querySelectorAll('.option-button');
+
+            // Deshabilitar todos los botones de opción
+            optionButtons.forEach(button => {
+                button.disabled = true;
+            });
+
+            // Marcar la respuesta correcta
+            optionButtons[currentQuestion.correctAnswerIndex].classList.add('correct');
+
+            if (selectedIndex === currentQuestion.correctAnswerIndex) {
+                score += 1; // 100%
+                feedback.textContent = '¡Correcto!';
+                feedback.style.color = varToHex('--secondary-color');
+            } else {
+                score -= 0.25; // -25%
+                optionButtons[selectedIndex].classList.add('incorrect');
+                feedback.textContent = 'Incorrecto.';
+                feedback.style.color = varToHex('--danger-color');
+            }
+            nextButton.style.display = 'block';
+        }
+
+        // Función para pasar a la siguiente pregunta
+        function nextQuestion() {
+            currentQuestionIndex++;
+            loadQuestion();
+        }
+
+        // Función para mostrar los resultados finales
+        function showResult() {
+            questionArea.style.display = 'none';
+            scoreArea.style.display = 'block';
+            finalScore.textContent = `Tu puntuación final es: ${score.toFixed(2)} / ${questions.length} puntos.`;
+        }
+
+        // Función para reiniciar el cuestionario
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            questionArea.style.display = 'block';
+            scoreArea.style.display = 'none';
+            loadQuestion();
+        }
+
+        // Helper para obtener valores de variables CSS (necesario para asignar colores en JS)
+        function varToHex(variable) {
+            return getComputedStyle(document.documentElement).getPropertyValue(variable);
+        }
+
+        // Event listeners
+        nextButton.addEventListener('click', nextQuestion);
+        restartButton.addEventListener('click', restartQuiz);
+
+        // Cargar la primera pregunta al iniciar
+        document.addEventListener('DOMContentLoaded', loadQuestion);
+    </script>
+</body>
+</html>

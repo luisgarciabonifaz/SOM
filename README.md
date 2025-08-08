@@ -26,17 +26,17 @@ Y me lo puedes poner en formato markdown para mkdocs de forma que pueda copiar e
 Hola, me puedes crear un fichero .md para mkdocs con este contenido:   (con gemini pro)
 ----------------
 Ahora me puedes preparar un documento único con html,css y javascript con actividades para repasar los contenidos de este tema.
-Al documento de html, css y javascript le puedes añadir en la cabecera un logo y el texto " SOM - Virtualización".... Este para los repasos el del tema 2 esta muy bien. Falta el Logo.
+Al documento de html, css y javascript le puedes añadir en la cabecera un logo y el texto " SOM - Linux Configuración básica".... Este para los repasos el del tema 2 esta muy bien. Falta el Logo.
 --------------------
 Hola,  estoy preparando unos apuntes para mis alumnos de grado medio de informática sobre los sistemas informáticos. De momento tengo esta propuesta en formato mkdocs, me la podrias ampliar para incluir información sobre la arquitectura Von Neuman y sus componentes.
 -------------------
-Ahora me puedes preparar un cuestionario de 20 preguntas sobre este tema en formato gift para moodle con cuatro opciones por pregunta y asignando un 100% si la respuesta es correcta y un -25% si es falsa.
+Ahora me puedes preparar un cuestionario de 15 preguntas sobre este tema en formato gift para moodle con cuatro opciones por pregunta y asignando un 100% si la respuesta es correcta y un -25% si es falsa.
 -------------
 Los html de repaso solo para Semi y se añaden directamente en Aules
 ---------------
 Me puedes preparar una actividad practica sobre el contenido de este tema
 ---------------
-Ahora me puedes preparar un examen con una combinación de preguntas de tipo test y preguntas de desarrollo breve sobre este tema. Las preguntas de tipo test en formato gift para moodle con cuatro opciones por pregunta y asignando un 100% si la respuesta es correcta y un -25% si es falsa.
+Ahora me puedes preparar un examen con una combinación de preguntas de tipo test, preguntas de desarrollo breve y preguntas prácticas sobre este tema. Las preguntas de tipo test en formato gift para moodle con cuatro opciones por pregunta y asignando un 100% si la respuesta es correcta y un -25% si es falsa.
 ---------
 Me puedes preparar una rúbrica con pesos para los criterios de evaluación en formato tabla para esta actividad.
 
@@ -249,13 +249,6 @@ Herencia de permisos.
 
 Modificación de permisos y propiedad.
 
-1.4. Identificación y descripción de los elementos funcionales de un sistema informático en el entorno Windows
-
-Administrador de tareas: procesos, rendimiento, historial de aplicaciones.
-
-Visor de eventos: tipos de eventos y su interpretación.
-
-Información del sistema.
 
 ## RA3 Windows: Configuración Básica (15 horas)
 Tareas de configuración y personalización del sistema operativo Windows.
@@ -382,6 +375,15 @@ Acceso a recursos compartidos.
 Comandos de línea de comandos (ipconfig, systeminfo, tasklist).
 
 Registro de Windows (regedit - conceptual, con precauciones).
+
+4.10. Identificación y descripción de los elementos funcionales de un sistema informático en el entorno Windows
+
+Administrador de tareas: procesos, rendimiento, historial de aplicaciones.
+
+Visor de eventos: tipos de eventos y su interpretación.
+
+Información del sistema.
+
 
 ## RA1 Linux: Sistemas de Archivos y Fundamentos (15 horas)
 Profundización en los conceptos del RA1 aplicados específicamente a entornos Linux.

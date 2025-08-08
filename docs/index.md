@@ -19,16 +19,16 @@
 
 /// html | div[style='display: inline-block;width:33%;']
 ## 2ª Evaluación
-* [T4 Windows Congiguración Basica](T_04_Windows_Configuracion/ConfiguracionBasica.md)
-* [T5 Instalació Sistemes Operatius](Tema05/InstalacionSO.md) 
-* [T6 Configuració bàsica Windows](Tema06/ConfiguracionBasicaWindows.md) 
+* [T4 Windows Congiguración Básica](T_04_Windows_Configuracion/ConfiguracionBasica.md)
+* [T5 Windows Gestion de Archivos](T_05_Windows_Archivos/W_Gestion_Archivos.md)
+* [T6 Windows Administración](T_06_Windows_Administracion/Windows_Administracion.md)
 ///
 
 /// html | div[style='display: inline-block;width:33%;'] 
 ## 3ª Evaluación
-* [T7 Gestió de fitxers i directoris en Windows](Tema07/FicherosDirectoriosWindows.md)
-* [T8 Gestió de usuaris i grups en Windows](Tema08/UsuariosGruposWindows.md)
-* [T9 Adminsitració del Sistema en Windows](Tema09/AdministracionWindows.md)
+* [T7 Linux Configuración Básica](T_07_Linux_Configuracion/Linux_Configuracion_Basica.md)
+* [T8 Linux Gestión de Archivos](T_08_Linux_Archivos/Linux_Gestion_Archivos.md)
+* [T9 Linux Administración](T_09_Linux_Administracion/Linux_Administracion.md)
 ///
 
 <!-- **Última actualización:** {{ git_revision_date_localized }} -->
