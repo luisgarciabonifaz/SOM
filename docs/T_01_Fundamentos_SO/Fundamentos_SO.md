@@ -304,11 +304,11 @@ Eres el nuevo administrador de sistemas en una pequeña startup. Tu primera tare
 
 El servidor que te han asignado es una máquina robusta con múltiples procesadores y mucha memoria.
 
-1. El servidor cuenta con varios procesadores multinúcleo. Aunque el texto describe una CPU individual, ¿cómo se relaciona la presencia de múltiples núcleos de CPU con la Arquitectura Von Neumann a un nivel conceptual, especialmente en términos de la Unidad Aritmético-Lógica (UAL) y la Unidad de Control (UC) dentro de cada núcleo?
+1. Un procesador moderno tiene varios "núcleos", y cada núcleo es como una pequeña CPU. Pensando en la arquitectura Von Neumann, ¿qué dos componentes principales se repiten dentro de cada uno de esos núcleos?
 
-2. Explica cómo la Memoria Principal (RAM) juega un papel crucial en la eficiencia del Ciclo de Instrucción cuando la CPU del servidor necesita ejecutar programas y acceder a grandes volúmenes de datos.
+2. La CPU necesita constantemente buscar instrucciones y datos en la memoria RAM para poder trabajar. ¿Por qué es fundamental que la RAM sea muy rápida para que el servidor funcione de forma ágil, especialmente cuando usa programas o archivos muy pesados?
 
-3. Imagina que necesitas interpretar un registro de eventos del servidor que muestra códigos de error en formato hexadecimal. Explica por qué el sistema hexadecimal es una forma conveniente de representar grandes números binarios en comparación con el formato binario puro para un administrador de sistemas.
+3. Los códigos de error de un servidor suelen ser números binarios muy largos, pero se nos muestran en formato hexadecimal. Para un técnico, ¿por qué es mucho más cómodo y práctico leer estos códigos en hexadecimal en lugar de en binario?
 
 
 #### Parte 2: Gestión de Procesos y Codificación de Datos en el Servidor
