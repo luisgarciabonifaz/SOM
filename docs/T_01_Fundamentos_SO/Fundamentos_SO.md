@@ -1,4 +1,6 @@
-# Fundamentos de los Sistemas Operativos
+<div class="titulo">
+   T1 - Fundamentos de los Sistemas Operativos
+</div>
 
 Este tema introduce los conceptos fundamentales de los **sistemas operativos (SO)**, aplicables a cualquier entorno, ya sea Windows, Linux, macOS, o incluso en el ámbito de la virtualización. Comprender estos pilares es crucial para cualquier profesional de la informática, ya que son la base sobre la que se construyen y ejecutan todos los programas y aplicaciones.
 
@@ -94,19 +96,9 @@ Los ordenadores, a diferencia de los humanos, solo entienden y procesan informac
     - El **audio** se representa muestreando la onda sonora en puntos discretos y convirtiendo la amplitud de cada muestra en un número binario.
     - El **video** es una secuencia de imágenes (fotogramas) que se muestran rápidamente, combinadas con una pista de audio, todo representado digitalmente.
 
-
-```mermaid
-graph LR
-    A[Información del Mundo Real] --> B[Digitalización]
-    B --> C[Bits 0s y 1s]
-    C --> D{Representación Numérica}
-    D --> Binario --> E[Procesamiento por CPU]
-    D -- Octal/Hexadecimal --> F[Visualización/Interacción Humana]
-    C --> G{Codificación Caracteres}
-    G -- ASCII/Unicode --> H[Texto en Pantalla]
-    C --> I{Datos Multimedia}
-    I -- Píxeles/Muestras --> J[Imágenes/Sonidos]
-```
+<figure markdown="span">
+  ![Representación de la Información](Imagenes/Representacion_Informacion.png){ width=100%}
+</figure>
 
 ## 4. Procesos y sus Estados
 
@@ -130,8 +122,7 @@ Un **proceso** es la piedra angular de la ejecución de software en un sistema o
     - **Comunicación entre Procesos (IPC - Inter-Process Communication):** Permitir que los procesos se intercambien información entre sí de forma controlada.
 
 <figure markdown="span">
-  ![Estados_Procesos](Imagenes/Diagrama_Estados.png){ width=70%}
-  <figcaption>https://commons.wikimedia.org/wiki/File:Diagrama_de_estados5.PNG</figcaption>
+  ![Estados_Procesos](Imagenes/Estados.svg){ width=900px}
 </figure>
 
 ## 5. Estructura y Organización del Sistema de Archivos
