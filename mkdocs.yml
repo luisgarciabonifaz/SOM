@@ -1,4 +1,4 @@
-site_name: SOM
+site_name: "SOM"
 site_author: "Luis García Bonifaz"
 site_email: "l.garciabonifaz@edu.gva.es"
 site_url: https://luisgarciabonifaz.github.io/SOM/
@@ -58,7 +58,8 @@ plugins:
       locale: es  # Configura el idioma (opcional, "es" para español)
 
 nav:
-- Inicio: 'index.md'
+#- Inicio: 'index.md'
+- "": 'index.md'
 - Sistemas Operativos Monopuesto:
     - 'T1 - Fundamentos de los Sistemes Operativos': T_01_Fundamentos_SO/Fundamentos_SO.md
     - 'T2 - Instalacion de un Sistema Operativo': T_02_Instalacion_SO/Instalacion_SO.md

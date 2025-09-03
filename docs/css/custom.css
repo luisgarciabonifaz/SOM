@@ -1,3 +1,9 @@
+/* Oculta el nombre del sitio solo en la portada */
+[data-md-page="index"] .md-header__title .md-header__topic {
+  display: none !important;
+}
+
+
 /* Para que ocupe todo el ancho de pantalla */
 .md-grid {
     max-width: initial;
@@ -40,3 +46,4 @@
     min-width: 280px; /* Ancho mínimo para evitar que se colapsen demasiado */
     padding: 15px;
  }
+
