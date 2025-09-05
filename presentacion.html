@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación: Sistemas Operativos Monopuesto</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .presentation-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            box-sizing: border-box;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease-in-out, visibility 0.6s;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            z-index: 1;
+        }
+        .slide-content {
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+        }
+        .slide h1 {
+            font-size: 3.5em;
+            color: #003366;
+            margin-bottom: 20px;
+        }
+        .slide h2 {
+            font-size: 2.5em;
+            color: #00509e;
+            margin-bottom: 30px;
+        }
+        .slide h3 {
+            font-size: 1.5em;
+            color: #555;
+        }
+        .slide p, .slide li {
+            font-size: 1.4em;
+            line-height: 1.6;
+            text-align: left;
+            color: #444;
+        }
+        .slide ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .slide li {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2300509e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>') no-repeat left center;
+            padding-left: 40px;
+            margin-bottom: 15px;
+        }
+        .logo {
+            max-width: 150px;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 1em;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #00509e;
+            color: white;
+            font-size: 1.1em;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .slide-counter {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 1em;
+            color: #aaa;
+            z-index: 2;
+        }
+        .navigation-help {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 1em;
+            color: #aaa;
+            z-index: 2;
+        }
+        .icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="presentation-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <div class="slide-content">
+                <h3>CIPFP Mislata</h3>
+                <h1>Sistemas Operativos Monopuesto</h1>
+                <h2>Luis Garcia Bonifaz</h2>
+                <img src="https://www.gva.es/es/inicio/procedimientos/proc_logos_colectivos/proc_centros_educativos_gva?p_p_id=20&p_p_lifecycle=1&p_p_state=exclusive&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=3&_20_struts_action=%2Fdocument_library%2Fget_file&_20_groupId=14&_20_folderId=242493&_20_name=DLFE-122081.jpg" alt="Logo CIPFP Mislata" class="logo">
+            </div>
+        </div>
+
+        <!-- Slide 2: Horario -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2><span class="icon">🕒</span>Horario de Clase</h2>
+                <ul>
+                    <li>Lunes: 8:15 - 10:05</li>
+                    <li>Viernes: 12:15 - 14:05</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 3: Normas de Evaluación -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2><span class="icon">⚖️</span>Normas de Evaluación</h2>
+                <ul>
+                    <li>La entrega de todas las actividades es <strong>obligatoria</strong> para ser evaluado.</li>
+                    <li>Si se detecta <strong>copia</strong> en prácticas o exámenes, la calificación será de <strong>0</strong>.</li>
+                    <li>El profesor se reserva el derecho a <strong>validar</strong> los exámenes y actividades para comprobar la autoría.</li>
+                    <li>No se calculará la nota de un RA si algún examen tiene una nota <strong>inferior a 3</strong>.</li>
+                    <li>Un RA se considera superado con una evaluación de <strong>APTO</strong> (mínimo 50%).</li>
+                    <li>El módulo se supera cuando <strong>todos</strong> los RAs han sido superados.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 5: Convocatorias -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2><span class="icon">📝</span>Convocatorias</h2>
+                <ul>
+                    <li><strong>Ordinaria:</strong> Si no se supera un RA, se realizará una prueba final (test de conceptos + ejercicios prácticos).</li>
+                    <li><strong>Extraordinaria:</strong> Mismo formato que la prueba de la convocatoria ordinaria.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 6: Calificación Final -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2><span class="icon">📊</span>Cálculo de la Calificación Final</h2>
+                <p style="text-align: center;">(RA1 * 30%) + (RA2 * 15%) + (RA3 * 15%) + (RA4 * 30%) + (RA5 * 10%)</p>
+                <ul>
+                    <li>Si al final de un trimestre no se ha superado algún RA, la calificación numérica será <strong>4</strong>.</li>
+                    <li>Se valorará aplicar redondeo al alza en la calificación de cada trimestre.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide: Unidades Didácticas -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2><span class="icon">📚</span>Unidades Didácticas</h2>
+                <table style="font-size: 0.9em;">
+                    <thead>
+                        <tr>
+                            <th>Evaluación</th>
+                            <th>Fechas</th>
+                            <th>Unidad</th>
+                            <th>Título</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background-color: #e7f3fe;">
+                            <td rowspan="3"><strong>1ª Evaluación</strong></td>
+                            <td>08/09 - 28/09</td>
+                            <td>Unidad 1</td>
+                            <td>Cimientos Sistemas Operativos</td>
+                        </tr>
+                        <tr style="background-color: #e7f3fe;">
+                            <td>29/09 - 19/10</td>
+                            <td>Unidad 2</td>
+                            <td>Instalación Sistemas Operativos</td>
+                        </tr>
+                        <tr style="background-color: #e7f3fe;">
+                            <td>20/10 - 09/11</td>
+                            <td>Unidad 3</td>
+                            <td>Virtualización</td>
+                        </tr>
+                        <tr style="background-color: #fff3cd;">
+                            <td rowspan="3"><strong>2ª Evaluación</strong></td>
+                            <td>10/11 - 01/12</td>
+                            <td>Unidad 4</td>
+                            <td>Configuración Windows</td>
+                        </tr>
+                        <tr style="background-color: #fff3cd;">
+                            <td>02/12 - 16/01</td>
+                            <td>Unidad 5</td>
+                            <td>Gestión de archivos Windows</td>
+                        </tr>
+                        <tr style="background-color: #fff3cd;">
+                            <td>17/01 - 15/02</td>
+                            <td>Unidad 6</td>
+                            <td>Administración Windows</td>
+                        </tr>
+                        <tr style="background-color: #d4edda;">
+                            <td rowspan="3"><strong>3ª Evaluación</strong></td>
+                            <td>16/02 - 15/03</td>
+                            <td>Unidad 7</td>
+                            <td>Configuración Linux</td>
+                        </tr>
+                        <tr style="background-color: #d4edda;">
+                            <td>16/03 - 27/04</td>
+                            <td>Unidad 8</td>
+                            <td>Gestión de archivos Linux</td>
+                        </tr>
+                        <tr style="background-color: #d4edda;">
+                            <td>28/04 - 29/05</td>
+                            <td>Unidad 9</td>
+                            <td>Administración Linux</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Slide: Instrumentos de Evaluación -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Instrumentos de Evaluación</h2>
+                <table style="font-size: 0.8em;">
+                    <thead>
+                        <tr>
+                            <th>Instrumento</th>
+                            <th>RA1 (30%)</th>
+                            <th>RA2 (15%)</th>
+                            <th>RA3 (15%)</th>
+                            <th>RA4 (30%)</th>
+                            <th>RA5 (10%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Práctica Fundamentos S.O. 01</td>
+                            <td>5%</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Práctica Fundamentos S.O. 02</td>
+                            <td>5%</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Práctica Instalación S.O.</td>
+                            <td></td>
+                            <td>25%</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Práctica Virtualización</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>25%</td>
+                        </tr>
+                        <tr style="background-color: #e7f3fe;">
+                            <td><strong>Examen Ev_1</strong></td>
+                            <td><strong>20%</strong></td>
+                            <td><strong>75%</strong></td>
+                            <td></td>
+                            <td></td>
+                            <td><strong>75%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Práctica Configuración Windows</td>
+                            <td></td>
+                            <td></td>
+                            <td>10%</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Práctica Archivos Windows</td>
+                            <td>5%</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Práctica Administración Windows</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>10%</td>
+                            <td></td>
+                        </tr>
+                        <tr style="background-color: #fff3cd;">
+                            <td><strong>Examen Ev_2</strong></td>
+                            <td><strong>30%</strong></td>
+                            <td></td>
+                            <td><strong>40%</strong></td>
+                            <td><strong>40%</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Práctica Configuración Linux</td>
+                            <td></td>
+                            <td></td>
+                            <td>10%</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Práctica Archivos Linux</td>
+                            <td>5%</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Práctica Administración Linux</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>10%</td>
+                            <td></td>
+                        </tr>
+                        <tr style="background-color: #d4edda;">
+                            <td><strong>Examen Ev_3</strong></td>
+                            <td><strong>30%</strong></td>
+                            <td></td>
+                            <td><strong>40%</strong></td>
+                            <td><strong>40%</strong></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Slide 12: Fin -->
+        <div class="slide">
+            <div class="slide-content">
+                <h1>¿Preguntas?</h1>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="slide-counter"></div>
+    <div class="navigation-help">Usa las teclas ← → para navegar</div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const slideCounter = document.querySelector('.slide-counter');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            slideCounter.textContent = `${index + 1} / ${slides.length}`;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        showSlide(currentSlide);
+    </script>
+
+</body>
+</html>
