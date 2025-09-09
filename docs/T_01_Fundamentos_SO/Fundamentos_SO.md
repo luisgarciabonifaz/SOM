@@ -389,3 +389,6 @@ Necesitas configurar una unidad de almacenamiento externa para copias de segurid
 
 
 
+## Repaso
+
+[Autoevaluacion](Autoevaluacion/index.html)
