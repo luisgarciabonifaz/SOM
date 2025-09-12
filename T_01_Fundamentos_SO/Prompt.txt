@@ -1,0 +1,9 @@
+Quiero que me generes una aplicación web interactiva en HTML/CSS/JS para que los alumnos se autoevaluen de los contenidos del fichero .md de esta carpeta.
+
+La aplicación debe tener una barra de progreso de las cuestiones de la autoevaluación, retroalimentación de cada una de las preguntas, las preguntas deben tener un nivel medio.
+
+La aplicación debe tener un banco de 20 preguntas y elegir 10 de ellas al azar.
+
+Pon a la aplicación una cabecera de texto con un estilo profesional que incluya un título y un subtítulo, basándo en el contexto de la aplicación.
+
+Por favor, genera los archivos index.html, style.css y script.js. Que todo esté funcionando directamente al abrirlo en navegador.
