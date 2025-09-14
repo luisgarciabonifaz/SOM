@@ -63,12 +63,18 @@ La arquitectura Von Neumann se compone de cuatro unidades funcionales principale
     - **Bus de Direcciones**: Lleva las direcciones de memoria a las que la CPU quiere acceder (leer o escribir).
     - **Bus de Control**: Transporta las señales de control y de estado entre los diferentes componentes, indicando qué operación se va a realizar (por ejemplo, leer, escribir, etc.).
 
+<figure markdown="span">
+  ![Arquitura Von Neuman](Imagenes/vonneuman.png){: style="width:70%;margin:auto;display:block"}
+  <figcaption>https://somebooks.es/capitulo-1-caracterizacion-de-sistemas-operativos/2/</figcaption>
+</figure>
+
 ### 2.2. ¿Cómo Funciona? El Ciclo de Instrucción
 
 La Arquitectura Von Neumann permite que la CPU ejecute programas siguiendo un ciclo repetitivo llamado **ciclo de instrucción** o ciclo de máquina. Este ciclo tiene principalmente dos fases que se repiten constantemente:
 
 1.  **Fase de Búsqueda (Fetch)**: La Unidad de Control de la CPU busca (lee) la siguiente instrucción del programa desde la Memoria Principal, usando el Bus de Direcciones para localizarla y el Bus de Datos para traerla.
 2.  **Fase de Ejecución (Execute)**: Una vez que la instrucción está en la CPU, la Unidad de Control la interpreta. Si la instrucción implica realizar cálculos o comparaciones, la UAL entra en acción. Si necesita acceder a más datos de la memoria o interactuar con un periférico, la Unidad de Control coordina esas acciones. Finalmente, el resultado se guarda en la memoria o se envía a un periférico.
+
 
 [Ejecución Instrucción](https://gvaedu-my.sharepoint.com/:p:/r/personal/l_garciabonifaz_edu_gva_es/Documents/Clases/SOM/Temas/Tema_01/EjecucionInstruccion.pptx?d=w902c4cc1814449d4affc5de44b7f4f7e&csf=1&web=1&e=lyoGkx){target="_blank"}
 
