@@ -52,7 +52,12 @@ La arquitectura Von Neumann se compone de cuatro unidades funcionales principale
 - **Unidad Central de Procesamiento (CPU)**: Ya la hemos mencionado, ¡pero aquí la desglosamos más! Es el cerebro del sistema y se encarga de ejecutar las instrucciones. Dentro de la CPU, encontramos dos subcomponentes esenciales:
     - **Unidad Aritmético-Lógica (UAL o ALU - Arithmetic Logic Unit)**: Es la parte de la CPU que realiza las operaciones matemáticas (sumas, restas, multiplicaciones, divisiones) y las operaciones lógicas (comparaciones, AND, OR, NOT). Piensa en ella como la "calculadora" y el "comparador" del ordenador.
     - **Unidad de Control (UC o CU - Control Unit)**: Es el "director de orquesta" de la CPU. Su función es interpretar las instrucciones de los programas y generar las señales necesarias para controlar todas las demás partes del ordenador. Se encarga de coordinar el flujo de datos, decidir qué operación debe realizar la UAL, y qué datos deben ir a la memoria o a los periféricos. También incluye los **Registros**, que son pequeñas unidades de memoria de muy alta velocidad dentro de la CPU, utilizadas para almacenar temporalmente datos e instrucciones con los que la CPU está trabajando en ese momento.
-
+        - **CP**: Contador de Programa. Contiene la dirección de la siguienate instrucción a ejecutar.
+        - **RI**: Registro de Instrucción. Contiene la instrucción actual que se está ejecutando,junto con las direcciones de los operandos.
+        - **RDM**: Registro de Dirección de Memoria. Contiene la dirección de memoria a la que hay que acceder.
+        - **RIM**: Registro de Intercambio de Memoria. Almacena el contenido que se trae o lleva a la memoria.
+        - **RA**: Registro Acumlador. Contiene los resultados intermedios de la UAL.
+    
 - **Memoria Principal**: Esta es la memoria RAM que ya conoces. En la arquitectura Von Neumann, es aquí donde se almacenan tanto los programas (sus instrucciones) como los datos que estos programas necesitan para funcionar. Es una memoria de acceso rápido, pero volátil.
     - **Direcciones de Memoria**: Cada posición de la memoria tiene una dirección única, como la dirección de una casa. La CPU utiliza estas direcciones para encontrar y acceder a las instrucciones y datos que necesita.
 
