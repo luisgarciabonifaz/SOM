@@ -1,0 +1,49 @@
+A - (Con la A) Estándar de codificación de caracteres obsoleto, predecesor de Unicode. Respuesta: ASCII
+
+B - (Con la B) Caminos por los que se transmite la información entre los componentes del sistema. Respuesta: Buses
+
+C - (Con la C) "Cerebro" del ordenador, encargado de ejecutar las instrucciones de los programas. Respuesta: CPU
+
+D - (Con la D) Software que permite al sistema operativo comunicarse y controlar un hardware específico. Respuesta: Driver
+
+E - (Con la E) Uno de los estados de un proceso, en el que el procesador está ejecutando las instrucciones del proceso. Respuesta: Ejecución
+
+F - (Con la F) Sistema de archivos compatible con casi todos los sistemas operativos, pero con limitaciones de tamaño de archivo. Respuesta: FAT32
+
+G - (Con la G) Conjunto de usuarios que tienen los mismos permisos sobre un archivo/directorio. Respuesta: Grupo
+
+H - (Con la H) Parte física y tangible de un sistema informático. Respuesta: Hardware
+
+I - (Con la I) Comunicación entre procesos. Respuesta: IPC
+
+J - (Con la J) Técnica que utilizan los sistemas de archivos modernos para ser más fiables. Respuesta: Journaling
+
+L - (Con la L) Permiso que permite ver el contenido de un archivo. Respuesta: Lectura
+
+M - (Con la M) Almacenamiento temporal y volátil que guarda los datos y programas que se están usando activamente. Respuesta: Memoria RAM
+
+N - (Con la N) Sistema de archivos predeterminado y más avanzado para Windows. Respuesta: NTFS
+
+O - (Con la O) Atributo de archivo que hace que no se muestre por defecto en el explorador de archivos. Respuesta: Oculto
+
+P - (Con la P) Instancia de un programa en ejecución. Respuesta: Proceso
+
+Q - (Con la Q) Arquitectura de la mayoría de los ordenadores actuales, propuesta por John Von Neumann. Respuesta: Von Neumann
+
+R - (Con la R) Directorio principal, el punto de partida de toda la estructura de archivos. Respuesta: Raíz
+
+S - (Con la S) Parte lógica e intangible del sistema, compuesta por programas, datos e instrucciones. Respuesta: Software
+
+T - (Con la T) Estado de un proceso en el que ha completado su ejecución. Respuesta: Terminado
+
+U - (Con la U) Estándar de codificación de caracteres que busca codificar prácticamente todos los caracteres de todos los idiomas del mundo. Respuesta: Unicode
+
+V - (Con la V) Arquitectura de la mayoría de los ordenadores actuales, propuesta por John Von Neumann. Respuesta: Von Neumann
+
+W - (Con la W) Permiso que permite modificar el contenido de un archivo. Respuesta: Write
+
+X - (Con la X) Permiso que permite ejecutar un archivo. Respuesta: Execute
+
+Y - (Con la Y) Contiene la Y. Atributo de archivo que indica que es un archivo o directorio crítico para el funcionamiento del sistema operativo. Respuesta: System
+
+Z - (Con la Z) Contiene la Z. Unidad Aritmético-Lógica. Respuesta: UAL/ALU

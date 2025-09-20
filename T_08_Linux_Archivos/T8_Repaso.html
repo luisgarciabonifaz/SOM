@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad Práctica: SOM - Linux Gestión de Archivos</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .activity-container {
+            max-width: 900px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        /* Cabecera */
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px 30px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin: -30px -30px 30px -30px; /* Ajuste para que se extienda a los bordes del contenedor */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header img {
+            height: 60px; /* Ajusta el tamaño del logo */
+            margin-right: 20px;
+            vertical-align: middle;
+            border-radius: 5px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* Títulos de sección */
+        h2 {
+            color: #2980b9;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 30px;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 25px;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #4b667a;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        /* Bloques de preguntas */
+        .question-block {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .question-block p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            color: #555;
+        }
+
+        /* Botón Mostrar/Ocultar */
+        .toggle-answer-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.95em;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .toggle-answer-btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Contenido de la respuesta */
+        .answer-content {
+            background-color: #eaf6fd;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            display: none; /* Oculto por defecto */
+            font-style: italic;
+            color: #4a6a7c;
+        }
+
+        .answer-content p {
+            margin: 0;
+        }
+
+        .answer-content strong {
+            color: #2980b9;
+        }
+
+        /* Lista en preguntas */
+        .question-block ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+        .question-block ol {
+            list-style-type: decimal;
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+        .question-block li {
+            margin-bottom: 8px;
+        }
+
+        /* Tablas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="activity-container">
+        <header>
+            <img src="/ruta/a/tu/logo.png" alt="Logo SOM"> <!-- ¡REEMPLAZA ESTA RUTA POR LA DE TU LOGO! -->
+            <h1>SOM - Linux Gestión de Archivos</h1>
+        </header>
+
+        <h2>Actividad Práctica: Dominando la Gestión de Archivos en Linux</h2>
+        <p>Esta actividad se divide en varias secciones para abarcar los distintos aspectos de la gestión de archivos en un sistema Linux. Intente responder a las preguntas y describir cómo ejecutaría las tareas utilizando los comandos aprendidos.</p>
+
+        <section>
+            <h3>Sección 1: Fundamentos del Sistema de Archivos y sus Componentes</h3>
+
+            <div class="question-block">
+                <h4>1. Estructura Jerárquica:</h4>
+                <p>Explique la característica principal de la **estructura del sistema de archivos en Linux** en comparación con otros sistemas operativos. ¿Desde dónde "cuelga" todo?</p>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <p>La característica principal es su **estructura jerárquica** que empieza desde la **raíz (/)**. Todo lo demás "cuelga" de este directorio principal [1, 2]. A diferencia de otros sistemas operativos que usan letras para las unidades, Linux utiliza un modelo unificado de árbol [1].</p>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p>Mencione **tres directorios principales** en un sistema Linux y describa brevemente su propósito.</p>
+                <ul>
+                    <li>Por ejemplo, ¿dónde se guardarían los archivos personales de un usuario?</li>
+                    <li>¿Y los archivos de configuración del sistema?</li>
+                </ul>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <p>Algunos directorios principales y sus propósitos [2]:</p>
+                    <ul>
+                        <li><strong>/home:</strong> Aquí se guardan los directorios personales de cada usuario, como `/home/alumno` para el usuario "alumno" [2].</li>
+                        <li><strong>/etc:</strong> Contiene los archivos de configuración del sistema y de muchas aplicaciones [2].</li>
+                        <li><strong>/var:</strong> Guarda datos variables que cambian constantemente, como archivos de *logs* (registros de actividad) o datos de servidores web [2].</li>
+                        <li><strong>/:</strong> Es el directorio principal de todo el sistema [2].</li>
+                        <li><strong>/bin:</strong> Contiene comandos y programas esenciales disponibles para todos los usuarios [2].</li>
+                        <li>(Y muchos más, como /usr, /opt, /dev, /proc, /mnt, /media) [2].</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <h4>2. Tipos de Sistemas de Archivos:</h4>
+                <p>¿Qué es el **"journaling"** en un sistema de archivos como `ext3` o `ext4`? ¿Cuál es su principal beneficio?</p>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <p>El **"journaling"** es como un diario de transacciones que ayuda a recuperar el sistema de archivos más rápido en caso de un fallo de energía o un bloqueo [3]. Su principal beneficio es que **reduce la pérdida de datos** al permitir una recuperación más rápida y consistente del sistema de archivos [3].</p>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p>¿Cuál es el sistema de archivos **más común y recomendado actualmente** para Linux, y qué mejoras ofrece respecto a sus predecesores?</p>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <p>El sistema de archivos **más común y recomendado actualmente** para Linux es **ext4** [3]. Ofrece mejoras significativas en rendimiento, tamaño máximo de archivo y capacidad de volumen, y también incluye *journaling* [3].</p>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <h4>3. Inodos y Bloques:</h4>
+                <p>Defina qué es un **inodo**. ¿Qué tipo de información (metadatos) almacena un inodo sobre un archivo, y qué **no** contiene?</p>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <p>Un **inodo** es como una tarjeta de información única para cada archivo y directorio en Linux [4]. Almacena **metadatos** sobre el archivo como [4]:</p>
+                    <ul>
+                        <li>Propietario y grupo</li>
+                        <li>Permisos</li>
+                        <li>Tamaño del archivo</li>
+                        <li>Fecha de creación, modificación y último acceso</li>
+                        <li>¡Y lo más importante!: Los punteros a los bloques de datos donde se guarda el contenido real del archivo [4].</li>
+                    </ul>
+                    <p>Lo que **no contiene** un inodo es el **contenido real del archivo** [4].</p>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p>Explique la relación entre los **inodos y los bloques** en el almacenamiento de un archivo.</p>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <p>Un archivo se almacena en el disco duro en unidades llamadas **bloques** [4]. Cuando se crea un archivo, el sistema operativo le asigna uno o más bloques en el disco. El **inodo** de ese archivo sabe exactamente dónde están esos bloques de datos para poder leer el contenido [4]. Es decir, el inodo es el índice que apunta a los bloques de datos [4].</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3>Sección 2: Navegación y Manipulación Básica de Archivos y Directorios</h3>
+            <p>Imagine que está en la línea de comandos de Linux. Describa el comando o los comandos que usaría para las siguientes tareas:</p>
+
+            <div class="question-block">
+                <h4>1. Navegación:</h4>
+                <ol>
+                    <li>Saber en qué **directorio actual** se encuentra.</li>
+                    <li>**Listar el contenido** del directorio actual, mostrando detalles (permisos, propietario, tamaño, fecha) y tamaños en un formato legible para humanos (ej. KB, MB).</li>
+                    <li>**Volver a su directorio personal** (`/home/su_usuario`).</li>
+                    <li>**Subir un nivel** en la jerarquía de directorios.</li>
+                </ol>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <ol>
+                        <li>`pwd` (print working directory) [5].</li>
+                        <li>`ls -lh` (list long human-readable) [5].</li>
+                        <li>`cd ~` o simplemente `cd` [6].</li>
+                        <li>`cd ..` [6].</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <h4>2. Creación y Eliminación:</h4>
+                <ol>
+                    <li>**Crear un nuevo directorio** llamado `proyectos` dentro de su directorio actual.</li>
+                    <li>**Crear un archivo vacío** llamado `nota.txt`.</li>
+                    <li>**Eliminar el archivo** `nota.txt`.</li>
+                    <li>**Crear una estructura de directorios** anidada, por ejemplo `documentos/informes/2024`, asegurándose de que todos los directorios intermedios se creen si no existen.</li>
+                    <li>**Eliminar un directorio no vacío** llamado `temp_files` y todo su contenido de forma recursiva (¡con precaución!).</li>
+                </ol>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <ol>
+                        <li>`mkdir proyectos` [7].</li>
+                        <li>`touch nota.txt` [7].</li>
+                        <li>`rm nota.txt` [7].</li>
+                        <li>`mkdir -p documentos/informes/2024` [7].</li>
+                        <li>`rm -r temp_files` (o `rm -rf temp_files` para forzar, con extrema precaución) [7].</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <h4>3. Copia y Movimiento:</h4>
+                <ol>
+                    <li>**Copiar el archivo** `original.txt` a `copia.txt` en el mismo directorio.</li>
+                    <li>**Mover (o renombrar)** el archivo `copia.txt` a `documentos/informes/copia_informe.txt`.</li>
+                </ol>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <ol>
+                        <li>`cp original.txt copia.txt` [8].</li>
+                        <li>`mv copia.txt documentos/informes/copia_informe.txt` [9].</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3>Sección 3: Permisos y Atributos Especiales</h3>
+
+            <div class="question-block">
+                <h4>1. Modelo de Permisos:</h4>
+                <p>¿Cuáles son los **tres tipos de permisos** (letras) que se pueden asignar a un archivo o directorio?</p>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <p>Los tres tipos de permisos son: **r** (Read / Lectura), **w** (Write / Escritura), **x** (Execute / Ejecución) [10].</p>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p>Si ve los permisos `-rwxr-xr--` para un archivo, explique qué significa cada grupo de caracteres para el **propietario, el grupo y otros**.</p>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <p>Para `-rwxr-xr--` [11]:</p>
+                    <ul>
+                        <li>El primer carácter (`-`) indica que es un archivo regular [11].</li>
+                        <li>`rwx`: Permisos para el **propietario** (lectura, escritura, ejecución) [11].</li>
+                        <li>`r-x`: Permisos para el **grupo** (lectura, sin escritura, ejecución) [11].</li>
+                        <li>`r--`: Permisos para **otros** (solo lectura, sin escritura, sin ejecución) [11].</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <h4>2. Permisos Numéricos (Octal):</h4>
+                <p>Convierta los siguientes permisos de notación simbólica a **notación numérica (octal)**:</p>
+                <ul>
+                    <li>`rwx`</li>
+                    <li>`r-x`</li>
+                    <li>`rw-`</li>
+                </ul>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <p>Valores numéricos [12]: r=4, w=2, x=1, -=0.</p>
+                    <ul>
+                        <li>`rwx` = 4 + 2 + 1 = **7** [12].</li>
+                        <li>`r-x` = 4 + 0 + 1 = **5** [12].</li>
+                        <li>`rw-` = 4 + 2 + 0 = **6** [12].</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p>Si desea establecer los permisos `rw-r--r--` en un archivo, ¿cuál sería el número octal completo que usaría con `chmod`?</p>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <ul>
+                        <li>Propietario (`rw-`): 4 + 2 + 0 = 6 [12].</li>
+                        <li>Grupo (`r--`): 4 + 0 + 0 = 4 [12].</li>
+                        <li>Otros (`r--`): 4 + 0 + 0 = 4 [12].</li>
+                    </ul>
+                    <p>El número octal completo sería **644** [12].</p>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <h4>3. Comandos para Permisos y Propiedad:</h4>
+                <p>Qué comando usaría para **cambiar los permisos** de un archivo a `755` (rwxr-xr-x).</p>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <p>`chmod 755 archivo.txt` (o el nombre del archivo/directorio) [13].</p>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p>Qué comando usaría para **cambiar el propietario** de un archivo llamado `reporte.pdf` al usuario `administrador`. ¿Quién puede ejecutar este comando?</p>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <p>`chown administrador reporte.pdf` [13].</p>
+                    <p>Solo el usuario `root` o el propietario actual (si tiene los permisos para hacerlo, lo cual es raro fuera de `root`) pueden ejecutar este comando [13].</p>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <h4>4. Permisos Especiales:</h4>
+                <p>Explique la función del bit **SUID** cuando se aplica a un programa ejecutable. ¿Cómo se vería en la salida de `ls -l`?</p>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <p>Cuando el bit **SUID** (Set User ID) está activado en un programa ejecutable, el programa se ejecuta con los **permisos del propietario del archivo**, no del usuario que lo ejecuta [14].</p>
+                    <p>Se vería como una `s` en lugar de una `x` en el campo de permisos del propietario (ej. `-rwsr-xr-x`) [14].</p>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p>¿Cuál es el efecto del bit **SGID** cuando se aplica a un directorio, especialmente útil para directorios compartidos?</p>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <p>Cuando el bit **SGID** (Set Group ID) se aplica a un directorio, los nuevos archivos y subdirectorios creados dentro de ese directorio **heredarán el grupo del directorio padre**, no el grupo del usuario que los creó [15]. Esto es muy útil para directorios compartidos donde varios usuarios necesitan trabajar con los mismos archivos y mantener un grupo común [15].</p>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p>¿Qué propósito tiene el **Sticky bit** en directorios como `/tmp`, y cómo se representa en los permisos?</p>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <p>El **Sticky bit** se usa **solo en directorios** [15]. Su propósito es que los usuarios solo puedan **borrar o renombrar los archivos que ellos mismos poseen** dentro de ese directorio, incluso si tienen permisos de escritura sobre el directorio [15]. Esto evita que un usuario borre los archivos temporales de otro en un directorio compartido como `/tmp` [15].</p>
+                    <p>Se representa como una `t` en lugar de una `x` en el campo de permisos de "otros" (ej. `drwxrwxrwt`) [15].</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3>Sección 4: Enlaces y Visualización Avanzada de Contenido</h3>
+
+            <div class="question-block">
+                <h4>1. Enlaces Duros y Blandos:</h4>
+                <p>Describa la principal diferencia entre un **enlace blando (o simbólico)** y un **enlace duro**.</p>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <p>La principal diferencia es que un **enlace blando** es un nuevo archivo que apunta al archivo original, como un acceso directo de Windows [16]. Un **enlace duro**, en cambio, es un nombre adicional para el mismo inodo, lo que significa que múltiples enlaces duros apuntan al mismo archivo en el disco [17].</p>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p>¿Qué tipo de enlace se "rompe" si el archivo original es eliminado?</p>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <p>El **enlace blando (simbólico)** se "rompe" o deja de funcionar si el archivo original es borrado, ya que solo apunta a su ubicación [16]. Un enlace duro no se rompe; el archivo no se borra del disco hasta que todos los enlaces duros que apuntan a ese inodo hayan sido eliminados [17].</p>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p>¿Cuál de los dos tipos de enlaces **no puede apuntar a directorios** (excepto las entradas `.` y `..`) y solo funciona dentro de la misma partición?</p>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <p>El **enlace duro** no puede apuntar a directorios (excepto las entradas `.` y `..`) y solo funciona dentro de la misma partición o sistema de archivos [17]. Los enlaces blandos, por el contrario, pueden apuntar a directorios y a archivos en otras particiones o discos [16].</p>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <h4>2. Visualización de Contenido:</h4>
+                <ol>
+                    <li>Qué comando usaría para **ver el contenido completo** de un archivo pequeño llamado `config.ini`.</li>
+                    <li>Qué comando usaría para **ver el contenido de un archivo muy grande** llamado `log_aplicacion.txt`, permitiéndole navegar hacia arriba y abajo, y cómo saldría de él.</li>
+                    <li>Qué comando usaría para **mostrar solo las últimas 15 líneas** de un archivo.</li>
+                    <li>Qué comando usaría para **monitorear en tiempo real** un archivo de registro (log) llamado `syslog.log`, mostrando las nuevas líneas a medida que se añaden. ¿Cómo detendría este monitoreo?</li>
+                </ol>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <ol>
+                        <li>`cat config.ini` [9].</li>
+                        <li>`less log_aplicacion.txt`. Para salir, presione `q` [9].</li>
+                        <li>`tail -n 15 archivo.txt` [18].</li>
+                        <li>`tail -f syslog.log`. Para detener el monitoreo, presione `Ctrl+C` [18].</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3>Sección 5: Monitoreo Básico del Sistema y Archivos de Registro (Logs)</h3>
+
+            <div class="question-block">
+                <h4>1. Comandos de Monitoreo:</h4>
+                <ol>
+                    <li>Qué comando usaría para ver el **espacio libre en disco** en sus sistemas de archivos montados, en un formato legible para humanos.</li>
+                    <li>Qué comando usaría para ver el **uso total de espacio en disco** de un directorio específico (por ejemplo, `/var/log`), en un formato resumido y legible.</li>
+                    <li>Qué comando le permite ver una **vista dinámica y en tiempo real de los procesos** en ejecución, el uso de CPU y memoria.</li>
+                    <li>¿Cuál es la diferencia principal entre el comando `top` y el comando `ps`?</li>
+                </ol>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <ol>
+                        <li>`df -h` [19].</li>
+                        <li>`du -sh /var/log` [19].</li>
+                        <li>`top` [20].</li>
+                        <li>`top` muestra una **vista dinámica y en tiempo real** de los procesos, mientras que `ps` muestra una **instantánea estática** de los procesos en ejecución en el momento en que se ejecuta el comando [20].</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <h4>2. Archivos de Log:</h4>
+                <p>¿Dónde se encuentra la **mayoría de los archivos de log** en un sistema Linux?</p>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <p>La mayoría de los archivos de *log* se encuentran en el directorio **/var/log** [21].</p>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p>Mencione **dos archivos de log importantes** y qué tipo de información contienen.</p>
+                <ul>
+                    <li>Por ejemplo, ¿qué `log` registra los intentos de autenticación?</li>
+                    <li>¿Y cuál contiene mensajes generales del sistema o del kernel?</li>
+                </ul>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <p>Algunos archivos de *log* importantes [21]:</p>
+                    <ul>
+                        <li>**/var/log/auth.log** (o `/var/log/secure` en algunas distribuciones): Registra los **intentos de autenticación**, tanto exitosos como fallidos, y actividades relacionadas con la seguridad [21].</li>
+                        <li>**/var/log/syslog** (o `/var/log/messages`): Contiene los **mensajes generales del sistema**, incluyendo eventos de *hardware*, del *kernel*, de arranque y de otras aplicaciones. Es el *log* principal [21].</li>
+                        <li>(Otros ejemplos incluyen `/var/log/apt/history.log`, `/var/log/dmesg`, `/var/log/kern.log`, `/var/log/boot.log`) [21].</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <p>Qué comando específico usaría para **monitorear continuamente (en tiempo real)** los mensajes generales del sistema en `/var/log/syslog`.</p>
+                <button class="toggle-answer-btn">Mostrar Respuesta</button>
+                <div class="answer-content">
+                    <p>`tail -f /var/log/syslog` [18, 22].</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.toggle-answer-btn');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const answerContent = this.nextElementSibling; // El div de respuesta es el siguiente hermano
+
+                    if (answerContent.style.display === 'none' || answerContent.style.display === '') {
+                        answerContent.style.display = 'block';
+                        this.textContent = 'Ocultar Respuesta';
+                    } else {
+                        answerContent.style.display = 'none';
+                        this.textContent = 'Mostrar Respuesta';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
