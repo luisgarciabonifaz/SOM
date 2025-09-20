@@ -113,7 +113,38 @@ Los ordenadores, a diferencia de los humanos, solo entienden y procesan informac
   ![Representación de la Información](Imagenes/Representacion_Informacion.png){ width=100%}
 </figure>
 
-## 4. Procesos y sus Estados
+## 4. Conceptos Generales de los Sistemas Operativos
+
+### 4.1. ¿Qué es un Sistema Operativo (SO)?
+Un **Sistema Operativo (SO)** es el software principal que gestiona el hardware de un ordenador o dispositivo móvil y permite la ejecución de aplicaciones. Actúa como un intermediario entre el hardware y el usuario, gestionando todos los recursos del sistema, como el procesador, la memoria y los dispositivos de entrada/salida.
+
+### 4.2. Funciones principales de un SO:
+1. **Gestión de procesos**: Controla la creación, ejecución y finalización de procesos (programas en ejecución).
+2. **Gestión de memoria**: Asigna y libera memoria RAM según las necesidades de los programas.
+3. **Gestión de almacenamiento**: Organiza y gestiona el acceso a los archivos en dispositivos de almacenamiento como discos duros y SSDs.
+4. **Gestión de dispositivos**: Facilita la comunicación entre el hardware y los programas, permitiendo que dispositivos como impresoras o tarjetas gráficas funcionen correctamente.
+5. **Interfaz de usuario**: Permite que los usuarios interactúen con el sistema mediante una **Interfaz gráfica de usuario (GUI)** o una **Interfaz de línea de comandos (CLI)**.
+6. **Seguridad y control de acceso**: Protege el sistema contra accesos no autorizados y garantiza la integridad de los datos.
+
+### 4.3. Classificación de los S.O. ##
+
+Por número de usuarios:
+
+- **Monousuario**: Un único usuario en el ordenador en un momento dado.
+- **Multiusuario**: Varios usuarios en el ordenador.
+  
+Por número de procesos:
+
+- **Monotasca**: Solo procesa una tarea en un instante dado.
+- **Multitasca**: Varias tareas simultáneamente
+
+Por tipo de Licencia:
+
+- **Propietario**: Licencia de código cerrado. Ejemplo: Microsoft Windows.
+- **Libre**: Licencia de código abierto. Ejemplo: Ubuntu.
+
+
+## 5. Procesos y sus Estados
 
 Un **proceso** es la piedra angular de la ejecución de software en un sistema operativo. Es una instancia de un programa en ejecución. Cuando abres una aplicación (por ejemplo, tu navegador web), el sistema operativo crea uno o más procesos para que funcione.
 
@@ -129,7 +160,10 @@ Un **proceso** es la piedra angular de la ejecución de software en un sistema o
         - Esperando que un recurso esté disponible (por ejemplo, un archivo que está siendo usado por otro proceso).
     5. **Terminado (Terminated/Exit):** El proceso ha completado su ejecución (ha finalizado todas sus instrucciones) o ha sido abortado por el sistema (por un error o por una acción del usuario). El sistema operativo libera sus recursos.
 - **Gestión de Procesos:** El sistema operativo es el responsable de gestionar eficientemente todos los procesos que se ejecutan en el sistema. Esto incluye:
-    - **Planificación (Scheduling):** Decidir qué proceso se ejecutará a continuación en la CPU y por cuánto tiempo. Los algoritmos de planificación buscan optimizar el uso de la CPU y proporcionar una buena experiencia al usuario (por ejemplo, que las aplicaciones respondan rápidamente).
+    - **Planificación (Scheduling):** Decidir qué proceso se ejecutará a continuación en la CPU y por cuánto tiempo. Los algoritmos de planificación buscan optimizar el uso de la CPU y proporcionar una buena experiencia al usuario (por ejemplo, que las aplicaciones respondan rápidamente). Algunos algoritmos de planificación son:
+        - **FIFO (First In, First Out)**: Los procesos se ejecutan en el orden en el que llegan.
+        - **Round Robin**: Cada proceso recibe una cantidad de tiempo fija (cuanto de tiempo) para ejecutarse, y luego le cede el control a otro proceso.
+        - **Planificación basada en prioridad**: Los procesos con mayor prioridad se ejecutan primero.
     - **Creación y Eliminación:** Iniciar nuevos procesos (cuando abres una aplicación) y terminar los que ya no se necesitan o han fallado.
     - **Sincronización:** Asegurar que los procesos que comparten recursos (como la memoria o archivos) lo hagan de forma ordenada para evitar conflictos y corrupción de datos.
     - **Comunicación entre Procesos (IPC - Inter-Process Communication):** Permitir que los procesos se intercambien información entre sí de forma controlada.
@@ -138,9 +172,9 @@ Un **proceso** es la piedra angular de la ejecución de software en un sistema o
   ![Estados_Procesos](Imagenes/Estados.svg){ width=900px}
 </figure>
 
-## 5. Estructura y Organización del Sistema de Archivos
+## 6. Estructura y Organización del Sistema de Archivos
 
-### 5.1. Sistemas de Archivos
+### 6.1. Sistemas de Archivos
 
 El **sistema de archivos** es el método por el cual el sistema operativo organiza, almacena, nombra y recupera los archivos y directorios (carpetas) en un dispositivo de almacenamiento. Es como el índice de una biblioteca para tus datos.
 
@@ -159,7 +193,7 @@ El **sistema de archivos** es el método por el cual el sistema operativo organi
         - **XFS y Btrfs:** Alternativas avanzadas para Linux con características como snapshots y pools de almacenamiento.
         - **exFAT:** Un sistema de archivos de Microsoft diseñado para memorias flash, sin las limitaciones de FAT32 en tamaño de archivo, y con mayor compatibilidad que NTFS en otros SO.
 
-### 5.2. Jerarquía de Directorios y Archivos
+### 6.2. Jerarquía de Directorios y Archivos
 
 Los sistemas de archivos organizan la información en una estructura de árbol, similar a cómo organizas documentos en carpetas dentro de otras carpetas:
 
@@ -167,7 +201,7 @@ Los sistemas de archivos organizan la información en una estructura de árbol, 
   - **Directorios (Carpetas):** Contenedores que organizan archivos y otros subdirectorios. Permiten una organización lógica de la información.
   - **Archivos:** Las unidades básicas de almacenamiento de datos. Un archivo contiene información específica (un documento de texto, una imagen, un programa ejecutable).
 
-### 5.3. Rutas Absolutas y Relativas
+### 6.3. Rutas Absolutas y Relativas
 
 - **Ruta Absoluta:** Especifica la ubicación completa y exacta de un archivo o directorio desde la raíz del sistema de archivos. Es única y no depende de la ubicación actual del usuario.
     - Ejemplo en Windows: `C:\Users\Juan\Documents\informe.docx`
@@ -179,8 +213,7 @@ Los sistemas de archivos organizan la información en una estructura de árbol, 
         - `.` representa el directorio actual
         - `..` representa el directorio padre.
 
-
-## 6. Atributos de Archivos y Directorios
+## 7. Atributos de Archivos y Directorios
 
 Los **atributos** son propiedades especiales o banderas asociadas a archivos y directorios que controlan su comportamiento o indican ciertas características. No son parte del contenido del archivo, sino metadatos sobre el archivo.
 
@@ -199,7 +232,7 @@ Los **atributos** son propiedades especiales o banderas asociadas a archivos y d
 
 La gestión de atributos se realiza normalmente a través de las propiedades del archivo o directorio en la interfaz gráfica del sistema operativo, o mediante comandos específicos en la línea de comandos (ej. `attrib` en Windows, `chattr` en Linux para atributos extendidos).
 
-## 7. Permisos de Archivos y Directorios
+## 8. Permisos de Archivos y Directorios
 
 Los **permisos** son reglas fundamentales de seguridad que definen quién puede acceder a un archivo o directorio y qué acciones puede realizar sobre él (leer, escribir, ejecutar). Son vitales para la privacidad y la integridad de los datos en entornos multiusuario.
 
@@ -229,9 +262,9 @@ Los **permisos** son reglas fundamentales de seguridad que definen quién puede 
     - En **Linux (ext4, etc.):** Los permisos se suelen gestionar a través de la línea de comandos con comandos como `chmod` (para cambiar permisos), `chown` (para cambiar propietario) y `chgrp` (para cambiar grupo). Los permisos se representan a menudo de forma numérica (octal), donde R=4, W=2, X=1. Por ejemplo, `755` significa `rwx` para el propietario, `r-x` para el grupo y `r-x` para otros.
 
 
-## 8. Sistemas Transaccionales y Selección de Sistemas de Archivos
+## 9. Sistemas Transaccionales y Selección de Sistemas de Archivos
 
-### 8.1 ¿Qué es una transacción? 
+### 9.1 ¿Qué es una transacción? 
 
 ¡Piénsalo como comprar en una máquina expendedora! vending machine. Imagina que quieres comprar un refresco. Metes el dinero y pulsas el botón. Pueden pasar dos cosas:
 
@@ -248,7 +281,7 @@ Esto se conoce como las propiedades **ACID**:
 - **Duradera:** Una vez que la máquina te ha dado el refresco, la compra es definitiva. No puede "deshacerse" sola.
 
 
-### 8.2. El Journaling
+### 9.2. El Journaling
 
 ¿Y esto qué tiene que ver con los archivos de mi PC?.
 
@@ -277,7 +310,7 @@ Gracias a esto, tu sistema de archivos siempre está en un estado **consistente 
 * **Sistemas SIN Journaling (más antiguos y arriesgados):** **FAT32** (el que usan muchos pendrives antiguos). Es más simple, pero un apagón durante una escritura puede causar un desastre.
 
 
-### 8.3. Elección del sistema de archivos
+### 9.3. Elección del sistema de archivos
 
 No todos los sistemas de archivos son iguales. Al formatear un disco duro, un SSD o un pendrive, tienes que elegir uno. Aquí tienes los factores clave a considerar:
 
