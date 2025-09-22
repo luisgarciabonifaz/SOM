@@ -1,81 +1,124 @@
-const rosco = document.querySelector('.rosco');
-const pregunta = document.getElementById('pregunta');
-const respuesta = document.getElementById('respuesta');
-const submit = document.getElementById('submit');
-const aciertos = document.getElementById('aciertos');
-const fallos = document.getElementById('fallos');
+document.addEventListener('DOMContentLoaded', () => {
+    const rosco = document.querySelector('.rosco');
+    const preguntaEl = document.getElementById('pregunta');
+    const respuestaEl = document.getElementById('respuesta');
+    const submitBtn = document.getElementById('submit');
+    const aciertosEl = document.getElementById('aciertos');
+    const fallosEl = document.getElementById('fallos');
+    const timerEl = document.getElementById('timer-container');
 
-const preguntas = [
-    { letra: 'A', pregunta: 'Estándar de codificación de caracteres obsoleto, predecesor de Unicode.', respuesta: 'ASCII' },
-    { letra: 'B', pregunta: 'Caminos por los que se transmite la información entre los componentes del sistema.', respuesta: 'Buses' },
-    { letra: 'C', pregunta: '"Cerebro" del ordenador, encargado de ejecutar las instrucciones de los programas.', respuesta: 'CPU' },
-    { letra: 'D', pregunta: 'Software que permite al sistema operativo comunicarse y controlar un hardware específico.', respuesta: 'Driver' },
-    { letra: 'E', pregunta: 'Uno de los estados de un proceso, en el que el procesador está ejecutando las instrucciones del proceso.', respuesta: 'Ejecución' },
-    { letra: 'F', pregunta: 'Sistema de archivos compatible con casi todos los sistemas operativos, pero con limitaciones de tamaño de archivo.', respuesta: 'FAT32' },
-    { letra: 'G', pregunta: 'Conjunto de usuarios que tienen los mismos permisos sobre un archivo/directorio.', respuesta: 'Grupo' },
-    { letra: 'H', pregunta: 'Parte física y tangible de un sistema informático.', respuesta: 'Hardware' },
-    { letra: 'I', pregunta: 'Comunicación entre procesos.', respuesta: 'IPC' },
-    { letra: 'J', pregunta: 'Técnica que utilizan los sistemas de archivos modernos para ser más fiables.', respuesta: 'Journaling' },
-    { letra: 'L', pregunta: 'Permiso que permite ver el contenido de un archivo.', respuesta: 'Lectura' },
-    { letra: 'M', pregunta: 'Almacenamiento temporal y volátil que guarda los datos y programas que se están usando activamente.', respuesta: 'Memoria RAM' },
-    { letra: 'N', pregunta: 'Sistema de archivos predeterminado y más avanzado para Windows.', respuesta: 'NTFS' },
-    { letra: 'O', pregunta: 'Atributo de archivo que hace que no se muestre por defecto en el explorador de archivos.', respuesta: 'Oculto' },
-    { letra: 'P', pregunta: 'Instancia de un programa en ejecución.', respuesta: 'Proceso' },
-    { letra: 'Q', pregunta: 'Arquitectura de la mayoría de los ordenadores actuales, propuesta por John Von Neumann.', respuesta: 'Von Neumann' },
-    { letra: 'R', pregunta: 'Directorio principal, el punto de partida de toda la estructura de archivos.', respuesta: 'Raíz' },
-    { letra: 'S', pregunta: 'Parte lógica e intangible del sistema, compuesta por programas, datos e instrucciones.', respuesta: 'Software' },
-    { letra: 'T', pregunta: 'Estado de un proceso en el que ha completado su ejecución.', respuesta: 'Terminado' },
-    { letra: 'U', pregunta: 'Estándar de codificación de caracteres que busca codificar prácticamente todos los caracteres de todos los idiomas del mundo.', respuesta: 'Unicode' },
-    { letra: 'V', pregunta: 'Arquitectura de la mayoría de los ordenadores actuales, propuesta por John Von Neumann.', respuesta: 'Von Neumann' },
-    { letra: 'W', pregunta: 'Permiso que permite modificar el contenido de un archivo.', respuesta: 'Write' },
-    { letra: 'X', pregunta: 'Permiso que permite ejecutar un archivo.', respuesta: 'Execute' },
-    { letra: 'Y', pregunta: 'Contiene la Y. Atributo de archivo que indica que es un archivo o directorio crítico para el funcionamiento del sistema operativo.', respuesta: 'System' },
-    { letra: 'Z', pregunta: 'Contiene la Z. Unidad Aritmético-Lógica.', respuesta: 'UAL' },
-];
+    const preguntas = [
+        { letra: "a", palabra: "ASCII", pregunta: "CON LA A. Estándar de codificación de caracteres obsoleto, predecesor de Unicode." },
+        { letra: "b", palabra: "Buses", pregunta: "CON LA B. Caminos por los que se transmite la información entre los componentes del sistema." },
+        { letra: "c", palabra: "CPU", pregunta: 'CON LA C. "Cerebro" del ordenador, encargado de ejecutar las instrucciones de los programas.' },
+        { letra: "d", palabra: "Driver", pregunta: "CON LA D. Software que permite al sistema operativo comunicarse y controlar un hardware específico." },
+        { letra: "e", palabra: "Ejecución", pregunta: "CON LA E. Uno de los estados de un proceso, en el que el procesador está ejecutando las instrucciones del proceso." },
+        { letra: "f", palabra: "FAT32", pregunta: "CON LA F. Sistema de archivos compatible con casi todos los sistemas operativos, pero con limitaciones de tamaño de archivo." },
+        { letra: "g", palabra: "Grupo", pregunta: "CON LA G. Conjunto de usuarios que tienen los mismos permisos sobre un archivo/directorio." },
+        { letra: "h", palabra: "Hardware", pregunta: "CON LA H. Parte física y tangible de un sistema informático." },
+        { letra: "i", palabra: "IPC", pregunta: "CON LA I. Comunicación entre procesos." },
+        { letra: "j", palabra: "Journaling", pregunta: "CON LA J. Técnica que utilizan los sistemas de archivos modernos para ser más fiables." },
+        { letra: "l", palabra: "Lectura", pregunta: "CON LA L. Permiso que permite ver el contenido de un archivo." },
+        { letra: "m", palabra: "Memoria RAM", pregunta: "CON LA M. Almacenamiento temporal y volátil que guarda los datos y programas que se están usando activamente." },
+        { letra: "n", palabra: "NTFS", pregunta: "CON LA N. Sistema de archivos predeterminado y más avanzado para Windows." },
+        { letra: "o", palabra: "Oculto", pregunta: "CON LA O. Atributo de archivo que hace que no se muestre por defecto en el explorador de archivos." },
+        { letra: "p", palabra: "Proceso", pregunta: "CON LA P. Instancia de un programa en ejecución." },
+        { letra: "q", palabra: "Von Neumann", pregunta: "CONTIENE LA Q. Arquitectura de la mayoría de los ordenadores actuales, propuesta por John Von Neumann." },
+        { letra: "r", palabra: "Raíz", pregunta: "CON LA R. Directorio principal, el punto de partida de toda la estructura de archivos." },
+        { letra: "s", palabra: "Software", pregunta: "CON LA S. Parte lógica e intangible del sistema, compuesta por programas, datos e instrucciones." },
+        { letra: "t", palabra: "Terminado", pregunta: "CON LA T. Estado de un proceso en el que ha completado su ejecución." },
+        { letra: "u", palabra: "Unicode", pregunta: "CON LA U. Estándar de codificación de caracteres que busca codificar prácticamente todos los caracteres de todos los idiomas del mundo." },
+        { letra: "v", palabra: "Von Neumann", pregunta: "CON LA V. Arquitectura de la mayoría de los ordenadores actuales, propuesta por John Von Neumann." },
+        { letra: "w", palabra: "Write", pregunta: "CON LA W. Permiso que permite modificar el contenido de un archivo." },
+        { letra: "x", palabra: "Execute", pregunta: "CON LA X. Permiso que permite ejecutar un archivo." },
+        { letra: "y", palabra: "System", pregunta: "CONTIENE LA Y. Atributo de archivo que indica que es un archivo o directorio crítico para el funcionamiento del sistema operativo." },
+        { letra: "z", palabra: "UAL/ALU", pregunta: "CONTIENE LA Z. Unidad Aritmético-Lógica." }
+    ];
 
-let preguntaActual = 0;
-let aciertosCount = 0;
-let fallosCount = 0;
+    let preguntaActual = 0;
+    let aciertos = 0;
+    let fallos = 0;
+    let timeLeft = 150;
+    let timerInterval;
 
-function mostrarPregunta() {
-    if (preguntaActual < preguntas.length) {
-        pregunta.textContent = `Con la ${preguntas[preguntaActual].letra}: ${preguntas[preguntaActual].pregunta}`;
-    } else {
-        pregunta.textContent = '¡Juego terminado!';
-        respuesta.style.display = 'none';
-        submit.style.display = 'none';
+    function iniciarJuego() {
+        mostrarPregunta();
+        crearRosco();
+        startTimer();
     }
-}
 
-function crearRosco() {
-    preguntas.forEach(p => {
-        const letraDiv = document.createElement('div');
-        letraDiv.classList.add('letra');
-        letraDiv.textContent = p.letra;
-        letraDiv.id = `letra-${p.letra}`;
-        rosco.appendChild(letraDiv);
+    function startTimer() {
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            timerEl.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                endGame(false);
+            }
+        }, 1000);
+    }
+
+    function endGame(completed) {
+        clearInterval(timerInterval);
+        respuestaEl.disabled = true;
+        submitBtn.disabled = true;
+        if (completed) {
+            preguntaEl.textContent = '¡Felicidades! ¡Has completado el rosco!';
+        } else {
+            preguntaEl.textContent = '¡Tiempo agotado! Fin del juego.';
+        }
+    }
+
+    function crearRosco() {
+        rosco.innerHTML = '';
+        preguntas.forEach(p => {
+            const letraEl = document.createElement('div');
+            letraEl.classList.add('letra');
+            letraEl.textContent = p.letra.toUpperCase();
+            rosco.appendChild(letraEl);
+        });
+    }
+
+    function mostrarPregunta() {
+        preguntaEl.textContent = preguntas[preguntaActual].pregunta;
+    }
+
+    function comprobarRespuesta() {
+        const respuesta = respuestaEl.value.trim().toLowerCase();
+        if (respuesta === '') return;
+
+        if (respuesta === preguntas[preguntaActual].palabra.toLowerCase()) {
+            aciertos++;
+            aciertosEl.textContent = aciertos;
+            marcarLetra('acertada');
+        } else {
+            fallos++;
+            fallosEl.textContent = fallos;
+            marcarLetra('fallada');
+        }
+        siguientePregunta();
+    }
+
+    function marcarLetra(estado) {
+        const letras = rosco.querySelectorAll('.letra');
+        letras[preguntaActual].classList.add(estado);
+    }
+
+    function siguientePregunta() {
+        preguntaActual++;
+        if (preguntaActual < preguntas.length) {
+            mostrarPregunta();
+        } else {
+            endGame(true);
+        }
+        respuestaEl.value = '';
+    }
+
+    submitBtn.addEventListener('click', comprobarRespuesta);
+    respuestaEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            comprobarRespuesta();
+        }
     });
-}
 
-submit.addEventListener('click', () => {
-    const respuestaUsuario = respuesta.value.trim().toLowerCase();
-    const respuestaCorrecta = preguntas[preguntaActual].respuesta.toLowerCase();
-    const letraDiv = document.getElementById(`letra-${preguntas[preguntaActual].letra}`);
-
-    if (respuestaUsuario === respuestaCorrecta) {
-        aciertosCount++;
-        aciertos.textContent = aciertosCount;
-        letraDiv.style.backgroundColor = 'blue';
-    } else {
-        fallosCount++;
-        fallos.textContent = fallosCount;
-        letraDiv.style.backgroundColor = 'red';
-    }
-
-    preguntaActual++;
-    respuesta.value = '';
-    mostrarPregunta();
+    iniciarJuego();
 });
-
-crearRosco();
-mostrarPregunta();
