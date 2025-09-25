@@ -1,7 +1,7 @@
 <p style="text-align: center; font-size: 32px;">CIPFP Mislata</p>
 
 <p style="text-align: center; font-size: 18px;">Luis García Bonifaz - l.garciabonifaz@edu.gva.es</p>
-<p style="text-align: center; font-size: 24px;">SOM  Fundamentos de los Sistemas Operativos</p>
+<p style="text-align: center; font-size: 24px;">SOM  T01 - Fundamentos de los Sistemas Operativos</p>
 
 ---
 
