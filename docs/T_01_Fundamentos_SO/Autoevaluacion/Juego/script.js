@@ -21,16 +21,16 @@ const preguntas = [
     { letra: 'N', pregunta: 'Sistema de archivos predeterminado y más avanzado para Windows.', respuesta: 'NTFS' },
     { letra: 'O', pregunta: 'Atributo de archivo que hace que no se muestre por defecto en el explorador de archivos.', respuesta: 'Oculto' },
     { letra: 'P', pregunta: 'Instancia de un programa en ejecución.', respuesta: 'Proceso' },
-    { letra: 'Q', pregunta: 'Arquitectura de la mayoría de los ordenadores actuales, propuesta por John Von Neumann.', respuesta: 'Von Neumann' },
+    { letra: 'Q', pregunta: 'Contiene la Q. Organización de las diferentes partes de un S.O para que trabajen juntas.', respuesta: 'Arquitectura' },
     { letra: 'R', pregunta: 'Directorio principal, el punto de partida de toda la estructura de archivos.', respuesta: 'Raíz' },
     { letra: 'S', pregunta: 'Parte lógica e intangible del sistema, compuesta por programas, datos e instrucciones.', respuesta: 'Software' },
     { letra: 'T', pregunta: 'Estado de un proceso en el que ha completado su ejecución.', respuesta: 'Terminado' },
     { letra: 'U', pregunta: 'Estándar de codificación de caracteres que busca codificar prácticamente todos los caracteres de todos los idiomas del mundo.', respuesta: 'Unicode' },
-    { letra: 'V', pregunta: 'Arquitectura de la mayoría de los ordenadores actuales, propuesta por John Von Neumann.', respuesta: 'Von Neumann' },
+    { letra: 'V', pregunta: 'Arquitectura de la mayoría de los ordenadores actuales.', respuesta: 'Von Neumann' },
     { letra: 'W', pregunta: 'Permiso que permite modificar el contenido de un archivo.', respuesta: 'Write' },
     { letra: 'X', pregunta: 'Permiso que permite ejecutar un archivo.', respuesta: 'Execute' },
     { letra: 'Y', pregunta: 'Contiene la Y. Atributo de archivo que indica que es un archivo o directorio crítico para el funcionamiento del sistema operativo.', respuesta: 'System' },
-    { letra: 'Z', pregunta: 'Contiene la Z. Unidad Aritmético-Lógica.', respuesta: 'UAL' },
+    { letra: 'Z', pregunta: 'Contiene la Z. Permite que los usuarios interactúen con el sistema, puede ser GUI o CLI..', respuesta: 'Interfaz' },
 ];
 
 let preguntaActual = 0;

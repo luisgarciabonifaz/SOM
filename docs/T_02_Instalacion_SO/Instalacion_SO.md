@@ -6,7 +6,7 @@ El **sistema operativo (SO)** es como el director de orquesta de un ordenador. S
 
 ### 1.1. Gestión de Recursos (CPU, memoria, E/S)
 
-El sistema operativo (SO) es el encargado de administrar y coordinar todos los recursos de hardware de tu equipo para que los programas puedan funcionar de manera eficiente y sin conflictos. Piensa en él como un director de tráfico que asegura que todo fluya correctamente.
+El sistema operativo (SO) es el encargado de administrar y coordinar todos los **recursos de hardware** de tu equipo para que los programas puedan funcionar de manera eficiente y sin conflictos. Piensa en él como un director de tráfico que asegura que todo fluya correctamente.
 
 
 #### 1.1.1. **Gestión de la CPU (Unidad Central de Procesamiento)**
@@ -27,7 +27,18 @@ Su función es:
 - **Proteger la memoria:** Evita que un programa sobrescriba la memoria de otro, lo que causaría errores o fallos en el sistema.
 - **Optimizar el uso:** Libera la memoria que ya no está siendo utilizada por programas cerrados o inactivos, haciendo que esté disponible para otras aplicaciones.
 
-Una buena gestión de RAM es fundamental para evitar la lentitud y los bloqueos del sistema.
+**Memoria Virtual**
+
+Sabemos que un proceso necesita estar completamente en la memoria para ejecutarse. Sin embargo, con la **Memoria Virtual**, se permite que solo las partes del proceso que se están utilizando en ese momento estén en la memoria principal, mientras que el resto permanece en la memoria secundaria. Esto libera espacio en la memoria principal para que se puedan ejecutar más procesos a la vez. Además, este método nos permite ejecutar programas que son más grandes que la memoria física del sistema.
+
+Cuando un proceso necesita acceder a una parte de la memoria que no está en la memoria principal, ocurre un **fallo de página**. En ese momento, el sistema busca un espacio libre en la memoria principal y carga allí la información necesaria. Si no hay espacio libre, el sistema debe reemplazar una parte de la memoria ocupada por otra información menos importante, usando un algoritmo especial para decidir qué reemplazar.
+
+Mientras se realiza este proceso, el programa que generó el fallo de página se detiene momentáneamente.
+
+Este método permite usar la memoria de manera más eficiente, ya que podemos cargar más procesos en la misma cantidad de memoria y así aprovechar mejor el procesador. Sin embargo, si hay demasiados fallos de página, el acceso al disco se vuelve muy frecuente y el rendimiento del sistema puede disminuir drásticamente. Este problema se llama **hiperpaginación**.
+
+!!! info "Obervación"
+    Una buena gestión de RAM es fundamental para evitar la lentitud y los bloqueos del sistema.
 
 
 #### 1.1.3. **Gestión de E/S (Entrada/Salida)**
@@ -51,6 +62,20 @@ Un **proceso** es un programa en ejecución. El SO se encarga de:
 - **Suspender y reanudar procesos:** Puede detener temporalmente un proceso y luego continuarlo.
 - **Sincronización de procesos:** Asegura que los procesos que necesitan trabajar juntos lo hagan de forma ordenada.
 - **Comunicación entre procesos:** Permite que diferentes programas se "hablen" entre sí.
+
+**Planificación de procesos**
+
+Para que un sistema multiprogramado sea eficaz necesita una Planificación de procesos, ir asignando procesos al procesador a lo largo del tiempo. Objetivos:
+
+- Rendimiento: Trata de maximizar el número de acciones que se completan en un plazo de tiempo determinado.
+- Tiempo de respuesta: El sistema debe responder a las solicitudes de los usuarios en un tiempo adecuado.
+- Tiempo de retorno: El sistema debe ofrecer resultados de los procesos por lotes en un tiempo adecuado.
+- Equidad: Todos los procesos deben ser considerados según sus características.
+- Eficiencia: Se debe aspirar a que el procesador esté activo constantemente.
+
+El módulo del sistema operativo que se encarga de esta tarea se denomina **Planificador** (en inglés, Scheduler).
+
+Según el diseño del sistema operativo, el Planificador utilizará unos criterios u otros para llevar a cabo su tarea. Estos criterios reciben el nombre de Algoritmos de Planificación (o también, Políticas de Planificación).
 
 ### 1.3. Gestión de Archivos
 
