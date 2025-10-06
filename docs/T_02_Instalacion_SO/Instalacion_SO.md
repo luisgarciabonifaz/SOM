@@ -188,18 +188,49 @@ Una buena planificación es clave para una instalación exitosa y sin problemas.
 
 ### 5.1. Particionado del Disco
 
+Las particiones en un disco duro son divisiones lógicas o secciones separadas que se crean en el espacio de almacenamiento de un disco. Estas particiones permiten organizar y gestionar mejor la información almacenada en el disco.
+
+Una **tabla de particiones** es una estructura de datos en un disco duro que contiene información sobre la organización de las particiones en ese disco. La tabla de particiones actúa como un mapa que le dice al sistema operativo dónde comienza y termina cada partición en el disco.
+
 El **particionado** es el proceso de dividir un disco duro en una o más secciones lógicas llamadas **particiones**. Cada partición actúa como un disco separado.
 
-- **¿Por qué particionar?**
-    - **Organización:** Puedes separar el sistema operativo de tus datos personales, facilitando reinstalaciones sin perder información.
-    - **Sistemas multiarranque (Dual-boot):** Para instalar varios sistemas operativos en el mismo disco.
-    - **Rendimiento:** A veces, separar ciertas áreas (como la partición de intercambio en Linux) puede mejorar el rendimiento.
-- **Tipos de particiones comunes:**
-    - **Partición Primaria:** Es una partición ejecutable y necesaria para arrancar un sistema operativo.
-    - **Partición Lógica:** Se crean dentro de una partición extendida (en sistemas con MBR) y se usan para almacenar datos o sistemas operativos adicionales.
-    - **Partición de Intercambio (Swap):** En sistemas Linux, es un área del disco que el SO usa como memoria virtual cuando la RAM está llena.
+#### 5.1.1. ¿Por qué particionar?
 
-**Herramientas para particionar:**
+- **Organización:** Puedes separar el sistema operativo de tus datos personales, facilitando reinstalaciones sin perder información.
+- **Sistemas multiarranque (Dual-boot):** Para instalar varios sistemas operativos en el mismo disco.
+- **Rendimiento:** A veces, separar ciertas áreas (como la partición de intercambio en Linux) puede mejorar el rendimiento.
+
+#### 5.1.2. Tablas de particiones
+
+Hay diferentes estándares para las tablas de particiones, siendo los más comunes el MBR (Master Boot Record) y el GPT (GUID Partition Table)
+
+- **MBR** (Master Boot Record) es un tipo de tabla de particiones y un sector de arranque que se encuentra en el primer sector (el sector cero) de un disco duro. Contiene información crítica para el inicio del sistema operativo y la organización de las particiones en el disco.
+- **GPT** (GUID Partition Table) es un estándar de partición más moderno y robusto. Utiliza identificadores únicos globales (GUID) para identificar particiones y proporciona una mayor flexibilidad en términos de capacidad y organización de particiones
+
+  | **Característica** | **MBR**                  | **GPT**                         |
+  |---------------------|--------------------------|--------------------------------|
+  | Fiabilidad          | Menor                    | Mayor                          |
+  | Número de Particiones| Limitadas (4)            | Ilimitadas                     |
+  | Tamaño de Particiones| Hasta 2TB                | Sin límite de tamaño            |
+  | Replicas            | Una única réplica        | Varias réplicas                |
+  | Compatibilidad S.O. | 32 y 64 bits             | Solo 64 bits                   |
+
+**Tipos de particiones en MBR**:
+
+- **Partición Primaria:**
+    - Es la partición principal en un disco duro.
+    - Puedes tener hasta cuatro particiones primarias en un disco.
+    - Una de estas particiones primarias puede ser designada como "activa" y contener el cargador de arranque del sistema operativo.
+- **Partición Extendida**:
+    - Se utiliza para crear particiones lógicas adicionales dentro de ella.
+    - Puedes tener solo una partición extendida en un disco.
+    - No se utiliza directamente para almacenar datos, pero sirve como contenedor para particiones lógicas.
+- **Partición Lógica**:
+    - Se crea dentro de una partición extendida.
+    - No puedes arrancar un sistema operativo directamente desde una partición lógica; necesitas una partición primaria o una partición activa para eso.
+    - Puedes tener varias particiones lógicas dentro de una partición extendida.
+
+#### 5.1.3. Herramientas para particionar
 
 - El propio instalador del sistema operativo (todos suelen incluir un gestor de particiones).
 - Herramientas externas como GParted (Linux), la Administración de discos de Windows.
@@ -253,11 +284,44 @@ Durante la instalación, el SO intentará configurar la conexión a Internet.
     - Servidores DNS
 
 
-## 7. Configuración de un Gestor de Arranque
+## 7. Arranque de un ordenador
+
+El proceso de arranque de un ordenadoar es una secuencia de relevos de control:
+
+1.  **Encendido y Control del Firmware (BIOS/UEFI):**
+    * Al encender el PC, la CPU comienza a ejecutar el código almacenado en una memoria especial de la placa base: el **Firmware** (BIOS o UEFI).
+    * El Firmware realiza el **POST** (*Power-On Self-Test*), una autocomprobación para asegurar que los componentes de *hardware* esenciales funcionen correctamente.
+    * Inicializa los componentes principales (como los controladores de disco).
+    * Finalmente, busca un dispositivo de arranque (disco duro, USB, etc.) según el orden de arranque configurado.
+
+2.  **Transición al Gestor de Arranque (Bootloader):**
+    * Una vez que el Firmware localiza el dispositivo de arranque, lee los primeros sectores (en sistemas **BIOS/MBR**) o la partición del sistema EFI (en sistemas **UEFI**) para encontrar el **Gestor de Arranque** (Bootloader).
+    * El Firmware **transfiere el control** de la CPU al Bootloader.
+
+3.  **Carga del Sistema Operativo por el Bootloader:**
+    * El Bootloader toma el control.
+    * Si hay varios sistemas operativos instalados, puede mostrar un **menú** para que el usuario elija.
+    * El Bootloader sabe dónde se encuentra el **núcleo (kernel)** del sistema operativo en el disco.
+    * Procede a **cargar** ese núcleo del SO y los archivos iniciales a la memoria **RAM**.
+    * Una vez que el núcleo del SO está cargado en la memoria, el Bootloader **transfiere el control** a este núcleo.
+
+4.  **Inicio del Sistema Operativo:**
+    * El núcleo del SO toma el control total del sistema, inicializa todos los *drivers* y procesos restantes, y finalmente carga el entorno de usuario (por ejemplo, el escritorio de Windows o Linux).
+
+
+**Diferencia entre Firmware y Gestor de Arranque**
+
+| Componente | Nombres Comunes | Función Principal | Orientación | Dependencia |
+| :--- | :--- | :--- | :--- | :--- |
+| **Firmware** | **BIOS** (Sistema Básico de Entrada/Salida) o **UEFI** (Interfaz de Firmware Extensible Unificada) | Inicializa y verifica el **hardware** del ordenador (CPU, RAM, discos, etc.). Busca y transfiere el control al *Bootloader*. | **Hardware** (Es leal a la placa base). | Específico del hardware. |
+| **Gestor de Arranque** (**Bootloader**) | **GRUB**, **LILO**, **Windows Boot Manager** (Bootmgr) | Localiza, carga e inicia el **núcleo** (kernel) del sistema operativo (SO) en la memoria RAM. A menudo ofrece un menú para elegir el SO. | **Software** (Es leal al sistema operativo). | Específico del SO. |
+
+En esencia, el **Firmware** es el primer programa que se ejecuta y prepara la plataforma; el **Bootloader** es el segundo programa que se ejecuta y es el puente entre el hardware listo y el inicio del sistema operativo.
+
 
 El **gestor de arranque (boot manager/loader)** es un pequeño programa que se carga antes que el sistema operativo. Su función principal es permitirte elegir qué sistema operativo iniciar si tienes varios instalados en tu ordenador.
 
-### 7.1. Concepto de Gestor de Arranque (GRUB, Windows Boot Manager)
+### 7.1. Gestor de Arranque (GRUB, Windows Boot Manager)
 
 - **¿Qué hace?** Muestra un menú al iniciar el ordenador, dándote la opción de seleccionar qué SO quieres cargar. También se encarga de iniciar el SO elegido.
 - **Ejemplos:**
@@ -429,12 +493,12 @@ Imagina que un amigo te pide ayuda para instalar un nuevo sistema operativo en s
 
 - **Tarea 3.1:** Durante la instalación de Linux, el sistema pedirá configurar algunos **parámetros básicos**. ¿Cuáles son los **tres parámetros esenciales** que se configuran al inicio de una instalación? Explica brevemente la importancia de cada uno.
 
-- **Tarea 3.2:** Tu amigo te pregunta sobre el **gestor de arranque**. Explica qué es un gestor de arranque y cómo se configura para que pueda elegir entre Windows y Linux al iniciar el equipo, haciendo referencia a **GRUB** y al **orden de instalación recomendado** para sistemas multiarranque (Windows primero, luego Linux).
+- **Tarea 3.2:** Tu amigo te pregunta sobre el **gestor de arranque**. Explica qué es un gestor de arranque y cómo se configura para que pueda elegir entre Windows y Linux al iniciar el equipo, haciendo referencia a **GRUB** y al **orden de instalación recomendado** para sistemas multiarranque.
 
 ### Parte 3: Post-instalación y Mantenimiento
 
 **1. Actualizaciones y Mantenimiento:**
 
-- **Tarea 5.1:** Una vez que Linux esté instalado y funcionando, ¿por qué es **crucial mantener el sistema operativo actualizado**? Menciona las dos razones principales (seguridad y funcionalidades) y explica brevemente cada una.
+- **Tarea 5.1:** Una vez que Linux esté instalado y funcionando, ¿por qué es **crucial mantener el sistema operativo actualizado**? Menciona las dos razones principales y explica brevemente cada una.
 
 - **Tarea 5.2:** Describe los **procedimientos generales para actualizar** un sistema GNU/Linux, mencionando un ejemplo de comando si fuera posible.

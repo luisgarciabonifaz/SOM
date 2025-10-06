@@ -49,12 +49,12 @@ Imagina que un amigo te pide ayuda para instalar un nuevo sistema operativo en s
 
 - **Tarea 3.1:** Durante la instalación de Linux, el sistema pedirá configurar algunos **parámetros básicos**. ¿Cuáles son los **tres parámetros esenciales** que se configuran al inicio de una instalación? Explica brevemente la importancia de cada uno.
 
-- **Tarea 3.2:** Tu amigo te pregunta sobre el **gestor de arranque**. Explica qué es un gestor de arranque y cómo se configura para que pueda elegir entre Windows y Linux al iniciar el equipo, haciendo referencia a **GRUB** y al **orden de instalación recomendado** para sistemas multiarranque (Windows primero, luego Linux).
+- **Tarea 3.2:** Tu amigo te pregunta sobre el **gestor de arranque**. Explica qué es un gestor de arranque y cómo se configura para que pueda elegir entre Windows y Linux al iniciar el equipo, haciendo referencia a **GRUB** y al **orden de instalación recomendado** para sistemas multiarranque.
 
 ### Parte 3: Post-instalación y Mantenimiento
 
 **1. Actualizaciones y Mantenimiento:**
 
-- **Tarea 5.1:** Una vez que Linux esté instalado y funcionando, ¿por qué es **crucial mantener el sistema operativo actualizado**? Menciona las dos razones principales (seguridad y funcionalidades) y explica brevemente cada una.
+- **Tarea 5.1:** Una vez que Linux esté instalado y funcionando, ¿por qué es **crucial mantener el sistema operativo actualizado**? Menciona las dos razones principales y explica brevemente cada una.
 
 - **Tarea 5.2:** Describe los **procedimientos generales para actualizar** un sistema GNU/Linux, mencionando un ejemplo de comando si fuera posible.

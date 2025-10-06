@@ -47,3 +47,9 @@
     padding: 15px;
  }
 
+/* Centrar la tabla completa */
+.center-table {
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content; /* O un ancho fijo, si lo prefieres */
+}
