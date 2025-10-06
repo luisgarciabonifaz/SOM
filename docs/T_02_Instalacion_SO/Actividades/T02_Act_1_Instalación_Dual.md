@@ -45,7 +45,7 @@ Imagina que un amigo te pide ayuda para instalar un nuevo sistema operativo en s
 
 ### Parte 2: Simulación de la Instalación y Configuración
 
-**1. Configuración Inicial y Gestor de Arranque:**
+**3. Configuración Inicial y Gestor de Arranque:**
 
 - **Tarea 3.1:** Durante la instalación de Linux, el sistema pedirá configurar algunos **parámetros básicos**. ¿Cuáles son los **tres parámetros esenciales** que se configuran al inicio de una instalación? Explica brevemente la importancia de cada uno.
 
@@ -53,8 +53,8 @@ Imagina que un amigo te pide ayuda para instalar un nuevo sistema operativo en s
 
 ### Parte 3: Post-instalación y Mantenimiento
 
-**1. Actualizaciones y Mantenimiento:**
+**4. Actualizaciones y Mantenimiento:**
 
-- **Tarea 5.1:** Una vez que Linux esté instalado y funcionando, ¿por qué es **crucial mantener el sistema operativo actualizado**? Menciona las dos razones principales y explica brevemente cada una.
+- **Tarea 4.1:** Una vez que Linux esté instalado y funcionando, ¿por qué es **crucial mantener el sistema operativo actualizado**? Menciona las dos razones principales y explica brevemente cada una.
 
-- **Tarea 5.2:** Describe los **procedimientos generales para actualizar** un sistema GNU/Linux, mencionando un ejemplo de comando si fuera posible.
+- **Tarea 4.2:** Describe los **procedimientos generales para actualizar** un sistema GNU/Linux, mencionando un ejemplo de comando si fuera posible.
