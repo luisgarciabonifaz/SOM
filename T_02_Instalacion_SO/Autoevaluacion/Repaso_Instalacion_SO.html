@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOM - Repaso Instalación SO</title>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #f4f4f9;
+            --correct-color: #28a745;
+            --incorrect-color: #dc3545;
+            --text-color: #333;
+            --light-text-color: #fff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .quiz-container {
+            background: var(--light-text-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            width: 100%;
+            max-width: 600px;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        header img {
+            height: 40px;
+            width: 40px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        #quiz-body {
+            padding: 20px;
+        }
+
+        #question-container {
+            margin-bottom: 20px;
+        }
+
+        #question-text {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        #options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-btn {
+            background-color: #e9ecef;
+            border: 2px solid #ced4da;
+            border-radius: var(--border-radius);
+            padding: 12px;
+            width: 100%;
+            text-align: left;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            background-color: #dde2e6;
+            border-color: #b6bfc6;
+        }
+        
+        .option-btn.correct {
+            background-color: var(--correct-color);
+            border-color: var(--correct-color);
+            color: var(--light-text-color);
+        }
+
+        .option-btn.incorrect {
+            background-color: var(--incorrect-color);
+            border-color: var(--incorrect-color);
+            color: var(--light-text-color);
+        }
+
+        .option-btn:disabled {
+            cursor: not-allowed;
+        }
+
+        #feedback {
+            margin-top: 15px;
+            font-weight: bold;
+            min-height: 24px;
+        }
+
+        #controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        #progress-text {
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+        #next-btn {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: none; /* Hidden by default */
+        }
+
+        #next-btn:hover {
+            background-color: #004494;
+        }
+
+        #results-container {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        #results-container h2 {
+            margin-bottom: 20px;
+        }
+
+        #restart-btn {
+             background-color: var(--primary-color);
+            color: var(--light-text-color);
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 12px 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 20px;
+        }
+        
+        #restart-btn:hover {
+            background-color: #004494;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <header>
+            <img src="../Imagenes/Logo_SOM_50x50.png" alt="Logo SOM">
+            <h1>SOM - Instalación Sistemas Operativos</h1>
+        </header>
+        
+        <div id="quiz-body">
+            <div id="question-container" style="display: none;">
+                <p id="question-text"></p>
+                <div id="options-container"></div>
+                <p id="feedback"></p>
+                <div id="controls">
+                    <span id="progress-text"></span>
+                    <button id="next-btn">Siguiente</button>
+                </div>
+            </div>
+
+            <div id="results-container" style="display: none;">
+                <h2>Resultados del Repaso</h2>
+                <p id="score-text"></p>
+                <p id="final-message"></p>
+                <button id="restart-btn">Volver a empezar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const allQuestions = [
+            {
+                question: "¿Cuál es la función principal de un sistema operativo?",
+                options: ["Ejecutar aplicaciones de ofimática", "Gestionar los recursos del hardware", "Conectarse a Internet", "Proteger contra virus"],
+                correct: 1
+            },
+            {
+                question: "La técnica que permite a la CPU alternar rápidamente entre procesos dando la ilusión de simultaneidad se llama:",
+                options: ["Memoria virtual", "Multitarea", "Modo núcleo", "Interfaz gráfica"],
+                correct: 1
+            },
+            {
+                question: "¿Qué es la memoria virtual?",
+                options: ["Una memoria RAM física más rápida", "Un software para limpiar la memoria", "Usar el disco duro como una extensión de la RAM", "La memoria caché de la CPU"],
+                correct: 2
+            },
+            {
+                question: "Un 'fallo de página' ocurre cuando...",
+                options: ["Una página web no carga", "El sistema operativo se bloquea", "Un programa intenta acceder a una parte de memoria que no está en la RAM", "El disco duro está lleno"],
+                correct: 2
+            },
+            {
+                question: "En el contexto de un SO, ¿qué es un 'proceso'?",
+                options: ["Un archivo de texto", "Un programa en ejecución", "Una instrucción de la CPU", "Un dispositivo de hardware"],
+                correct: 1
+            },
+            {
+                question: "El módulo del SO que decide qué proceso usa la CPU en cada momento se llama:",
+                options: ["Gestor de arranque", "Shell", "Planificador (Scheduler)", "Controlador (Driver)"],
+                correct: 2
+            },
+            {
+                question: "Una Interfaz de Línea de Comandos (CLI) se caracteriza por:",
+                options: ["Usar ventanas, iconos y menús", "Ser la única interfaz en Windows", "Permitir al usuario escribir comandos de texto", "Ser más intuitiva para principiantes"],
+                correct: 2
+            },
+            {
+                question: "¿Cuál es la parte más importante y central de un sistema operativo?",
+                options: ["El Shell", "La interfaz de usuario", "Las utilidades", "El Núcleo (Kernel)"],
+                correct: 3
+            },
+            {
+                question: "El 'Modo Núcleo' (Kernel Mode) se diferencia del 'Modo Usuario' en que:",
+                options: ["Es menos seguro", "Tiene acceso completo y sin restricciones al hardware", "Es donde se ejecutan los videojuegos", "No puede gestionar la memoria"],
+                correct: 1
+            },
+            {
+                question: "¿Qué significa MBR?",
+                options: ["Memoria de Búsqueda Rápida", "Master Boot Record", "Mi Bonito Ratón", "Módulo de Arranque Rápido"],
+                correct: 1
+            },
+            {
+                question: "Una ventaja clave de GPT sobre MBR es que:",
+                options: ["Solo funciona en sistemas de 32 bits", "Es más antiguo y compatible", "Permite un número casi ilimitado de particiones", "No necesita un gestor de arranque"],
+                correct: 2
+            },
+            {
+                question: "¿Cuál es el paso más importante ANTES de instalar un nuevo sistema operativo?",
+                options: ["Formatear el disco duro", "Hacer una copia de seguridad de los datos", "Descargar los drivers", "Elegir el fondo de pantalla"],
+                correct: 1
+            },
+            {
+                question: "Un archivo .ISO es:",
+                options: ["Un tipo de virus", "Un documento de texto comprimido", "Una imagen de disco que contiene un sistema operativo listo para instalar", "Un controlador de la tarjeta gráfica"],
+                correct: 2
+            },
+            {
+                question: "¿Cuál es la función principal de un gestor de arranque (bootloader) como GRUB?",
+                options: ["Analizar el hardware en busca de errores", "Cargar el núcleo del SO y permitir elegir entre varios sistemas", "Actualizar los programas instalados", "Administrar los usuarios y contraseñas"],
+                correct: 1
+            },
+            {
+                question: "En un sistema multiarranque (Windows + Linux), ¿cuál es el orden de instalación recomendado?",
+                options: ["Da igual el orden", "Instalar Linux primero, luego Windows", "Instalar Windows primero, luego Linux", "Instalarlos al mismo tiempo"],
+                correct: 2
+            },
+            {
+                question: "El error 'No bootable device found' suele indicar un problema con:",
+                options: ["La memoria RAM", "La tarjeta de red", "La secuencia de arranque en la BIOS/UEFI", "La contraseña de usuario"],
+                correct: 2
+            },
+            {
+                question: "La licencia GPL (General Public License) es un ejemplo de:",
+                options: ["Software propietario", "Shareware", "Software libre (Open Source)", "Freeware"],
+                correct: 2
+            },
+            {
+                question: "Un software que puedes probar gratis por tiempo limitado antes de comprarlo se denomina:",
+                options: ["Freeware", "Shareware", "GPL", "EULA"],
+                correct: 1
+            },
+            {
+                question: "¿Por qué es crucial instalar las actualizaciones de seguridad?",
+                options: ["Para tener nuevas funcionalidades y emojis", "Para que el sistema vaya más lento", "Para corregir vulnerabilidades y protegerse de ataques", "Para cambiar el aspecto visual del SO"],
+                correct: 2
+            },
+            {
+                question: "¿Qué componente se encarga de inicializar y verificar el hardware al encender el PC?",
+                options: ["El Gestor de Arranque (Bootloader)", "El Sistema Operativo", "El Firmware (BIOS/UEFI)", "La Memoria RAM"],
+                correct: 2
+            }
+        ];
+
+        let selectedQuestions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        const questionContainer = document.getElementById('question-container');
+        const resultsContainer = document.getElementById('results-container');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const feedback = document.getElementById('feedback');
+        const nextBtn = document.getElementById('next-btn');
+        const restartBtn = document.getElementById('restart-btn');
+        const progressText = document.getElementById('progress-text');
+        const scoreText = document.getElementById('score-text');
+        const finalMessage = document.getElementById('final-message');
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function startQuiz() {
+            shuffleArray(allQuestions);
+            selectedQuestions = allQuestions.slice(0, 10);
+            currentQuestionIndex = 0;
+            score = 0;
+            
+            resultsContainer.style.display = 'none';
+            questionContainer.style.display = 'block';
+            nextBtn.style.display = 'none';
+
+            showQuestion();
+        }
+
+        function showQuestion() {
+            feedback.textContent = '';
+            const question = selectedQuestions[currentQuestionIndex];
+            questionText.textContent = question.question;
+            optionsContainer.innerHTML = '';
+
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.classList.add('option-btn');
+                button.addEventListener('click', () => selectAnswer(index));
+                optionsContainer.appendChild(button);
+            });
+            
+            progressText.textContent = `Pregunta ${currentQuestionIndex + 1} de ${selectedQuestions.length}`;
+            nextBtn.style.display = 'none';
+        }
+
+        function selectAnswer(selectedIndex) {
+            const question = selectedQuestions[currentQuestionIndex];
+            const isCorrect = selectedIndex === question.correct;
+            
+            Array.from(optionsContainer.children).forEach((btn, index) => {
+                btn.disabled = true;
+                if (index === question.correct) {
+                    btn.classList.add('correct');
+                } else if (index === selectedIndex) {
+                    btn.classList.add('incorrect');
+                }
+            });
+
+            if (isCorrect) {
+                feedback.textContent = '¡Correcto!';
+                feedback.style.color = 'var(--correct-color)';
+                score++;
+            } else {
+                feedback.textContent = 'Incorrecto.';
+                feedback.style.color = 'var(--incorrect-color)';
+            }
+
+            nextBtn.style.display = 'block';
+        }
+
+        function showNextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < selectedQuestions.length) {
+                showQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            questionContainer.style.display = 'none';
+            resultsContainer.style.display = 'block';
+            scoreText.textContent = `Tu puntuación es: ${score} de ${selectedQuestions.length}`;
+            
+            let message = '';
+            const percentage = (score / selectedQuestions.length) * 100;
+            if (percentage === 100) {
+                message = '¡Excelente! ¡Conoces el tema a la perfección!';
+            } else if (percentage >= 70) {
+                message = '¡Muy bien! Tienes un buen conocimiento del tema.';
+            } else if (percentage >= 50) {
+                message = '¡No está mal! Sigue repasando para afianzar conceptos.';
+            } else {
+                message = 'Necesitas repasar un poco más. ¡Ánimo!';
+            }
+            finalMessage.textContent = message;
+        }
+
+        nextBtn.addEventListener('click', showNextQuestion);
+        restartBtn.addEventListener('click', startQuiz);
+
+        // Initial start
+        startQuiz();
+    </script>
+</body>
+</html>
