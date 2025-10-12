@@ -207,13 +207,17 @@ Hay diferentes estándares para las tablas de particiones, siendo los más comun
 - **MBR** (Master Boot Record) es un tipo de tabla de particiones y un sector de arranque que se encuentra en el primer sector (el sector cero) de un disco duro. Contiene información crítica para el inicio del sistema operativo y la organización de las particiones en el disco.
 - **GPT** (GUID Partition Table) es un estándar de partición más moderno y robusto. Utiliza identificadores únicos globales (GUID) para identificar particiones y proporciona una mayor flexibilidad en términos de capacidad y organización de particiones
 
-  | **Característica** | **MBR**                  | **GPT**                         |
-  |---------------------|--------------------------|--------------------------------|
-  | Fiabilidad          | Menor                    | Mayor                          |
-  | Número de Particiones| Limitadas (4)            | Ilimitadas                     |
-  | Tamaño de Particiones| Hasta 2TB                | Sin límite de tamaño            |
-  | Replicas            | Una única réplica        | Varias réplicas                |
-  | Compatibilidad S.O. | 32 y 64 bits             | Solo 64 bits                   |
+/// html | div[style='text-align: center;']
+
+  | **Característica**     | **MBR**                  | **GPT**                        |
+  |------------------------|--------------------------|--------------------------------|
+  | **Fiabilidad**             | Menor                    | Mayor                          |
+  | **Número de Particiones** | Limitadas (4)            | Ilimitadas                     |
+  | **Tamaño de Particiones**  | Hasta 2TB                | Sin límite de tamaño           |
+  | **Replicas**               | Una única réplica        | Varias réplicas                |
+  | **Compatibilidad S.O.**    | 32 y 64 bits             | Solo 64 bits                   |
+
+///
 
 **Tipos de particiones en MBR**:
 
@@ -244,6 +248,40 @@ Necesitarás un medio para arrancar el proceso de instalación del SO.
     - Necesitas una memoria USB (mínimo 8 GB para la mayoría de SO modernos).
     - Software para "grabar" la ISO en el USB, haciéndolo arrancable (ejemplos: Rufus en Windows, Etcher para multiplataforma, `dd` en Linux).
 - **DVD:** Menos común ahora, pero sigue siendo una opción si tu equipo tiene unidad de DVD. Necesitas un DVD virgen y un programa para grabar la ISO en él.
+
+??? info "Ejercicio practico"
+    ## Ejercicio Práctico: Gestión de Particiones de Disco
+
+    Imagina que tienes dos ordenadores con diferentes necesidades y tecnologías. Debes recomendar la mejor configuración de particiones para cada uno, utilizando los conocimientos sobre MBR y GPT.
+
+    ### 1. Escenario del Servidor (Máximo Rendimiento y Capacidad)
+    Un cliente quiere montar un servidor de archivos que requiere:
+
+    - Máxima fiabilidad en la tabla de particiones.
+    - Un disco duro de 5 TB para almacenar datos.
+    - Poder crear más de diez particiones para organizar diferentes proyectos.
+
+    Completa esta tablas con la elección que decidas más apropiada.
+
+    |Aspecto|Elección (MBR o GPT)|	Justificación (Basada en las características)|
+    |-----------|-------------------------|-----------------------|
+    |Tabla de Particiones	| ||
+    |Límite de Particiones	| ||
+    |Fiabilidad		| ||
+
+
+    ### 2. Escenario del PC de Soporte (Compatibilidad con MBR)
+
+    Un técnico necesita preparar un antiguo PC de soporte que solo tiene el firmware BIOS para que pueda arrancar un sistema operativo de 32 bits. El disco duro es pequeño, de 500 GB, y necesita tres tipos de divisiones específicas para el arranque, los datos y una partición auxiliar.
+
+    Asigna el tipo de partición MBR más adecuado a cada función, sabiendo que solo puedes usar una Partición Extendida.
+
+    |Función Deseada	|Tipo de Partición MBR a Asignar|Razón de la Elección|
+    |-----------|-------------------------|-----------------------|
+    |División 1: Contener el cargador de arranque del SO.| ||		
+    |División 2: Almacenar datos del usuario de forma segura. No debe arrancar el SO.| ||		
+    |División 3: La única división que puede albergar las divisiones lógicas restantes.| ||		
+
 
 ### 5.3. Copia de Seguridad de Datos
 
@@ -502,3 +540,4 @@ Imagina que un amigo te pide ayuda para instalar un nuevo sistema operativo en s
 - **Tarea 5.1:** Una vez que Linux esté instalado y funcionando, ¿por qué es **crucial mantener el sistema operativo actualizado**? Menciona las dos razones principales y explica brevemente cada una.
 
 - **Tarea 5.2:** Describe los **procedimientos generales para actualizar** un sistema GNU/Linux, mencionando un ejemplo de comando si fuera posible.
+
