@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasapalabra - Instalación SO</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .rosco-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .rosco {
+            display: grid;
+            grid-template-columns: repeat(7, 50px);
+            grid-gap: 5px;
+        }
+
+        .letra {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            background-color: #4CAF50; /* Verde por defecto */
+        }
+        
+        .letra.acertada {
+            background-color: #28a745; /* Verde más oscuro para aciertos */
+        }
+
+        .letra.fallada {
+            background-color: #dc3545; /* Rojo para fallos */
+        }
+
+        .pregunta-container {
+            margin-bottom: 20px;
+            min-height: 40px;
+            font-size: 1.2em;
+        }
+
+        .respuesta-container {
+            margin-bottom: 20px;
+        }
+
+        #respuesta {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        #submit {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+        }
+
+        #timer-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #d0021b;
+            color: white;
+            font-size: 2em;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div id="timer-container">150</div>
+    <div class="container">
+        <h1>Pasapalabra - Instalación SO</h1>
+        <div class="rosco-container">
+            <div class="rosco"></div>
+        </div>
+        <div class="pregunta-container">
+            <p id="pregunta"></p>
+        </div>
+        <div class="respuesta-container">
+            <input type="text" id="respuesta" placeholder="Escribe tu respuesta" autocomplete="off">
+            <button id="submit">Responder</button>
+        </div>
+        <div class="resultado-container">
+            <p>Aciertos: <span id="aciertos">0</span></p>
+            <p>Fallos: <span id="fallos">0</span></p>
+        </div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const rosco = document.querySelector('.rosco');
+    const preguntaEl = document.getElementById('pregunta');
+    const respuestaEl = document.getElementById('respuesta');
+    const submitBtn = document.getElementById('submit');
+    const aciertosEl = document.getElementById('aciertos');
+    const fallosEl = document.getElementById('fallos');
+    const timerEl = document.getElementById('timer-container');
+
+    const preguntas = [
+        { letra: 'A', pregunta: 'Copia de seguridad de los datos importantes que se realiza antes de una instalación.', respuesta: 'Backup' },
+        { letra: 'B', pregunta: 'Gestor de arranque más común en sistemas operativos Linux.', respuesta: 'GRUB' },
+        { letra: 'C', pregunta: 'Acción de preparar una partición con un sistema de archivos específico.', respuesta: 'Formatear' },
+        { letra: 'D', pregunta: 'Configuración que permite tener dos o más sistemas operativos en un mismo ordenador.', respuesta: 'Arranque dual' },
+        { letra: 'E', pregunta: 'Sistema de archivos estándar y robusto utilizado por la mayoría de distribuciones Linux.', respuesta: 'ext4' },
+        { letra: 'F', pregunta: 'Interfaz de firmware moderna que sustituye a la BIOS tradicional.', respuesta: 'UEFI' },
+        { letra: 'G', pregunta: 'Contiene la G. Tabla de particiones más moderna que supera las limitaciones de MBR.', respuesta: 'GPT' },
+        { letra: 'H', pregunta: 'Componentes físicos y tangibles de un sistema informático.', respuesta: 'Hardware' },
+        { letra: 'I', pregunta: 'Proceso de configurar un nuevo sistema operativo en un equipo.', respuesta: 'Instalación' },
+        { letra: 'J', pregunta: 'Contiene la J. Característica de un sistema de ficheros que le permite recuperarse de errores registrando las operaciones.', respuesta: 'Journaling' },
+        { letra: 'L', pregunta: 'Distribución de un SO que se puede ejecutar desde un medio extraíble sin instalarlo.', respuesta: 'Live CD' },
+        { letra: 'M', pregunta: 'Registro de arranque principal, el primer sector de un disco duro en el esquema de particionado clásico.', respuesta: 'MBR' },
+        { letra: 'N', pregunta: 'Sistema de archivos propietario y estándar para las versiones modernas de Windows.', respuesta: 'NTFS' },
+        { letra: 'O', pregunta: 'Contiene la O. Software principal que gestiona todos los recursos del hardware y software.', respuesta: 'Sistema Operativo' },
+        { letra: 'P', pregunta: 'División lógica que se crea en una unidad de almacenamiento física.', respuesta: 'Partición' },
+        { letra: 'Q', pregunta: 'Contiene la Q. Estructura y diseño de un sistema operativo.', respuesta: 'Arquitectura' },
+        { letra: 'R', pregunta: 'Memoria volátil de acceso aleatorio donde se cargan los programas en ejecución.', respuesta: 'RAM' },
+        { letra: 'S', pregunta: 'Función de seguridad de UEFI que previene la ejecución de software no autorizado durante el arranque.', respuesta: 'Secure Boot' },
+        { letra: 'T', pregunta: 'Contiene la T. Software que permite al sistema operativo controlar un dispositivo de hardware.', respuesta: 'Controlador' },
+        { letra: 'U', pregunta: 'Medio de almacenamiento extraíble muy utilizado para instalar sistemas operativos.', respuesta: 'USB' },
+        { letra: 'V', pregunta: 'Proceso de crear una representación basada en software de un recurso tecnológico.', respuesta: 'Virtualización' },
+        { letra: 'W', pregunta: 'Famoso sistema operativo de Microsoft, presente en la mayoría de ordenadores de escritorio.', respuesta: 'Windows' },
+        { letra: 'X', pregunta: 'Contiene la X. Entorno gráfico de usuario popular en sistemas Linux.', respuesta: 'XFCE' },
+        { letra: 'Y', pregunta: 'Contiene la Y. Proceso de aplicar parches para corregir errores o mejorar la seguridad.', respuesta: 'Actualizar' },
+        { letra: 'Z', pregunta: 'Contiene la Z. Área de memoria en disco usada como extensión de la RAM.', respuesta: 'Swap' }
+    ];
+    
+    let preguntaActual = 0;
+    let aciertos = 0;
+    let fallos = 0;
+    let timeLeft = 150;
+    let timerInterval;
+
+    function iniciarJuego() {
+        mostrarPregunta();
+        crearRosco();
+        startTimer();
+    }
+
+    function startTimer() {
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            timerEl.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                endGame(false);
+            }
+        }, 1000);
+    }
+
+    function endGame(completed) {
+        clearInterval(timerInterval);
+        respuestaEl.disabled = true;
+        submitBtn.disabled = true;
+        if (completed) {
+            preguntaEl.textContent = '¡Felicidades! ¡Has completado el rosco!';
+        } else {
+            preguntaEl.textContent = '¡Tiempo agotado! Fin del juego.';
+        }
+    }
+
+    function crearRosco() {
+        rosco.innerHTML = '';
+        preguntas.forEach(p => {
+            const letraEl = document.createElement('div');
+            letraEl.classList.add('letra');
+            letraEl.textContent = p.letra.toUpperCase();
+            rosco.appendChild(letraEl);
+        });
+    }
+
+    function mostrarPregunta() {
+        preguntaEl.textContent = preguntas[preguntaActual].pregunta;
+    }
+
+    function comprobarRespuesta() {
+        const respuesta = respuestaEl.value.trim().toLowerCase();
+        if (respuesta === '') return;
+
+        if (respuesta === preguntas[preguntaActual].respuesta.toLowerCase()) {
+            aciertos++;
+            aciertosEl.textContent = aciertos;
+            marcarLetra('acertada');
+        } else {
+            fallos++;
+            fallosEl.textContent = fallos;
+            marcarLetra('fallada');
+        }
+        siguientePregunta();
+    }
+
+    function marcarLetra(estado) {
+        const letras = rosco.querySelectorAll('.letra');
+        letras[preguntaActual].classList.add(estado);
+    }
+
+    function siguientePregunta() {
+        preguntaActual++;
+        if (preguntaActual < preguntas.length) {
+            mostrarPregunta();
+        } else {
+            endGame(true);
+        }
+        respuestaEl.value = '';
+        respuestaEl.focus();
+    }
+
+    submitBtn.addEventListener('click', comprobarRespuesta);
+    respuestaEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            comprobarRespuesta();
+        }
+    });
+
+    iniciarJuego();
+    respuestaEl.focus();
+});
+</script>
+</body>
+</html>

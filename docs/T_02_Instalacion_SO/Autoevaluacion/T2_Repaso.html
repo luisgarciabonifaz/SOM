@@ -148,7 +148,7 @@
 
     <script>
         // Lógica JavaScript
-        const activities = [
+        const allActivities = [
             {
                 id: 'act1',
                 type: 'multiple-choice',
@@ -264,10 +264,170 @@
                 feedbackCorrect: '¡Perfecto! Las actualizaciones son vitales para la seguridad y la funcionalidad.',
                 feedbackIncorrect: 'No es correcto. Revisa los tipos de actualizaciones y sus beneficios.',
                 sources: '[11]'
+            },
+            {
+                id: 'act10',
+                type: 'multiple-choice',
+                question: '¿Qué es una partición de disco?',
+                options: [
+                    'Un virus que afecta el disco duro',
+                    'Una división lógica de una unidad de almacenamiento físico',
+                    'Un tipo de memoria RAM',
+                    'Un periférico de entrada'
+                ],
+                correctAnswerIndex: 1,
+                feedbackCorrect: '¡Correcto! Una partición es una división lógica que permite organizar el disco en varias unidades independientes.',
+                feedbackIncorrect: 'Incorrecto. Una partición es una forma de organizar el espacio en un disco.',
+                sources: '[Conceptos de almacenamiento]'
+            },
+            {
+                id: 'act11',
+                type: 'fill-in-the-blanks',
+                question: 'Un sistema de archivos como __1__ o __2__ es necesario para que el sistema operativo pueda organizar y leer los datos en una partición.',
+                blanks: [
+                    { placeholder: '1', correct: 'NTFS' },
+                    { placeholder: '2', correct: 'ext4' }
+                ],
+                feedbackCorrect: '¡Muy bien! NTFS (Windows) y ext4 (Linux) son ejemplos de sistemas de archivos comunes.',
+                feedbackIncorrect: 'Incorrecto. Piensa en los sistemas de archivos que usan Windows y Linux.',
+                sources: '[Sistemas de archivos]'
+            },
+            {
+                id: 'act12',
+                type: 'short-answer',
+                question: '¿Por qué es recomendable crear una partición separada para los datos personales (como /home en Linux) en una instalación de sistema operativo?',
+                keywords: ['reinstalar', 'formatear', 'datos', 'separados', 'seguridad'],
+                expectedAnswer: 'Es recomendable para poder reinstalar o formatear el sistema operativo sin perder los datos personales, ya que residen en una partición diferente.',
+                feedbackCorrect: '¡Exacto! Separar el SO de los datos facilita el mantenimiento y protege tu información.',
+                feedbackIncorrect: 'La razón principal se relaciona con la facilidad para reinstalar el sistema y la seguridad de los datos.',
+                sources: '[Estrategias de particionado]'
+            },
+            {
+                id: 'act13',
+                type: 'multiple-choice',
+                question: '¿Qué significa "formatear" una partición?',
+                options: [
+                    'Eliminar la partición permanentemente',
+                    'Preparar la partición con un sistema de archivos para que pueda almacenar ficheros',
+                    'Comprimir todos los archivos de la partición',
+                    'Ocultar la partición para que no sea visible'
+                ],
+                correctAnswerIndex: 1,
+                feedbackCorrect: '¡Correcto! El formateo crea la estructura del sistema de archivos necesaria para guardar datos.',
+                feedbackIncorrect: 'Incorrecto. Formatear no es eliminar, sino preparar la partición.',
+                sources: '[Formateo de discos]'
+            },
+            {
+                id: 'act14',
+                type: 'multiple-choice',
+                question: 'En un sistema de arranque dual, ¿qué componente de software es responsable de permitir al usuario elegir qué sistema operativo iniciar?',
+                options: [
+                    'El BIOS/UEFI',
+                    'El gestor de arranque (bootloader)',
+                    'El kernel del sistema operativo',
+                    'La partición de intercambio (swap)'
+                ],
+                correctAnswerIndex: 1,
+                feedbackCorrect: '¡Correcto! El gestor de arranque (como GRUB o el Boot Manager de Windows) presenta el menú de selección.',
+                feedbackIncorrect: 'Incorrecto. Hay un software específico que gestiona el arranque de múltiples sistemas.',
+                sources: '[Gestores de arranque]'
+            },
+            {
+                id: 'act15',
+                type: 'fill-in-the-blanks',
+                question: 'La __1__ es una interfaz de firmware moderna que ha reemplazado a la BIOS tradicional, ofreciendo ventajas como un arranque más rápido y soporte para discos más grandes. El modo __2__ es una característica de seguridad que ayuda a prevenir la ejecución de malware durante el arranque.',
+                blanks: [
+                    { placeholder: '1', correct: 'UEFI' },
+                    { placeholder: '2', correct: 'Secure Boot' }
+                ],
+                feedbackCorrect: '¡Perfecto! UEFI y Secure Boot son tecnologías clave en los sistemas modernos.',
+                feedbackIncorrect: 'Revisa las tecnologías de firmware de arranque más recientes y sus características de seguridad.',
+                sources: '[BIOS vs UEFI]'
+            },
+            {
+                id: 'act16',
+                type: 'short-answer',
+                question: '¿Qué es un "driver" o "controlador" y por qué es esencial para el funcionamiento del hardware?',
+                keywords: ['software', 'comunicar', 'hardware', 'sistema operativo', 'traduce'],
+                expectedAnswer: 'Un driver es un software que permite al sistema operativo comunicarse con un dispositivo de hardware. Traduce las órdenes del SO a un lenguaje que el hardware entiende.',
+                feedbackCorrect: '¡Muy bien! Sin el driver correcto, el SO no sabría cómo utilizar el hardware.',
+                feedbackIncorrect: 'Piensa en cómo el sistema operativo "habla" con componentes como la tarjeta gráfica o la impresora.',
+                sources: '[Controladores de dispositivo]'
+            },
+            {
+                id: 'act17',
+                type: 'multiple-choice',
+                question: '¿Cuál de las siguientes NO es una función principal de un sistema operativo?',
+                options: [
+                    'Gestión de la memoria',
+                    'Gestión de procesos',
+                    'Creación de documentos de texto',
+                    'Gestión de dispositivos de E/S'
+                ],
+                correctAnswerIndex: 2,
+                feedbackCorrect: '¡Correcto! La creación de documentos es una tarea de una aplicación (como un procesador de texto), no una función central del SO.',
+                feedbackIncorrect: 'Incorrecto. Tres de esas opciones son responsabilidades fundamentales de cualquier sistema operativo.',
+                sources: '[Funciones del SO]'
+            },
+            {
+                id: 'act18',
+                type: 'multiple-choice',
+                question: '¿Qué es la memoria virtual y cuál es su propósito principal?',
+                options: [
+                    'Una memoria USB de alta velocidad',
+                    'Usar espacio del disco duro como si fuera RAM para ejecutar programas más grandes que la memoria física disponible',
+                    'Una caché para acelerar el acceso a la CPU',
+                    'Un tipo de memoria que no se borra al apagar el ordenador'
+                ],
+                correctAnswerIndex: 1,
+                feedbackCorrect: '¡Exacto! La memoria virtual permite al sistema superar las limitaciones de la RAM física utilizando el disco duro.',
+                feedbackIncorrect: 'Incorrecto. La memoria virtual es una técnica de gestión de memoria que combina RAM y disco.',
+                sources: '[Memoria Virtual]'
+            },
+            {
+                id: 'act19',
+                type: 'fill-in-the-blanks',
+                question: 'Un sistema operativo de 64 bits puede direccionar __1__ cantidad de memoria RAM que uno de 32 bits. Para ejecutar un SO de 64 bits, el procesador también debe ser de __2__.',
+                blanks: [
+                    { placeholder: '1', correct: 'más' },
+                    { placeholder: '2', correct: '64 bits' }
+                ],
+                feedbackCorrect: '¡Correcto! La arquitectura de 64 bits es fundamental para usar grandes cantidades de RAM.',
+                feedbackIncorrect: 'Revisa las diferencias entre arquitecturas de 32 y 64 bits en cuanto a direccionamiento de memoria y requisitos de hardware.',
+                sources: '[32-bit vs 64-bit]'
+            },
+            {
+                id: 'act20',
+                type: 'short-answer',
+                question: 'Describe brevemente qué es un "Live USB" y para qué se utiliza comúnmente en el contexto de la instalación de sistemas operativos.',
+                keywords: ['USB', 'arrancar', 'probar', 'instalar', 'sin modificar'],
+                expectedAnswer: 'Un Live USB es una unidad USB que contiene un sistema operativo completo que se puede arrancar y ejecutar sin instalarlo en el disco duro. Se usa para probar un SO antes de instalarlo o como medio de instalación.',
+                feedbackCorrect: '¡Perfecto! Esa es la definición y uso principal de un Live USB.',
+                feedbackIncorrect: 'Piensa en cómo puedes usar un sistema operativo desde un USB sin tocar el disco duro de tu ordenador.',
+                sources: '[Live USB]'
             }
         ];
 
         const activitiesContainer = document.getElementById('activities-container');
+
+        // Función para barajar un array (algoritmo de Fisher-Yates)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // Barajar las actividades y seleccionar las primeras 10
+        shuffleArray(allActivities);
+        const activities = allActivities.slice(0, 10);
+
+        // Renumerar los IDs de las actividades para que sean consecutivos
+        activities.forEach((activity, index) => {
+            activity.originalId = activity.id;
+            activity.id = 'act' + (index + 1);
+        });
+
 
         // Function to create and display activities
         function createActivityElement(activity) {
