@@ -25,8 +25,10 @@ Y me lo puedes poner en formato markdown para mkdocs de forma que pueda copiar e
 
 Hola, me puedes crear un fichero .md para mkdocs con este contenido:   (con gemini pro)
 ----------------
-Ahora me puedes preparar un documento único con html,css y javascript con actividades para repasar los contenidos de este tema.
-Al documento de html, css y javascript le puedes añadir en la cabecera un logo y el texto " SOM - Linux Configuración básica".... Este para los repasos el del tema 2 esta muy bien. Falta el Logo.
+Me puedes preparar un documento único con html,css y javascript con actividades para repasar los contenidos del fichero Instalacion_SO.md.
+Al documento de html, css y javascript le puedes añadir en la cabecera un logo y el texto " SOM - Instalacion Sistemas Operativos". Debe tener 20 preguntas y solo mostrar 10 de ellas de forma aleatoria.
+
+
 --------------------
 Hola,  estoy preparando unos apuntes para mis alumnos de grado medio de informática sobre los sistemas informáticos. De momento tengo esta propuesta en formato mkdocs, me la podrias ampliar para incluir información sobre la arquitectura Von Neuman y sus componentes.
 -------------------
