@@ -269,7 +269,6 @@ Necesitarás un medio para arrancar el proceso de instalación del SO.
     |Límite de Particiones	| ||
     |Fiabilidad		| ||
 
-
     ### 2. Escenario del PC de Soporte (Compatibilidad con MBR)
 
     Un técnico necesita preparar un antiguo PC de soporte que solo tiene el firmware BIOS para que pueda arrancar un sistema operativo de 32 bits. El disco duro es pequeño, de 500 GB, y necesita tres tipos de divisiones específicas para el arranque, los datos y una partición auxiliar.
@@ -281,7 +280,6 @@ Necesitarás un medio para arrancar el proceso de instalación del SO.
     |División 1: Contener el cargador de arranque del SO.| ||		
     |División 2: Almacenar datos del usuario de forma segura. No debe arrancar el SO.| ||		
     |División 3: La única división que puede albergar las divisiones lógicas restantes.| ||		
-
 
 ### 5.3. Copia de Seguridad de Datos
 
