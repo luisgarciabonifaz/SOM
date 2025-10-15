@@ -1,3 +1,7 @@
+<div class="titulo">
+   T2 - Instalacion de Sistemas Operativos
+</div>
+
 # Instalación y Gestión Básica de un Sistema Operativo
 
 ## 1. Funciones del Sistema Operativo
@@ -286,8 +290,7 @@ Necesitarás un medio para arrancar el proceso de instalación del SO.
 **¡ESTO ES LO MÁS IMPORTANTE!** Antes de cualquier instalación o manipulación de discos, **siempre haz una copia de seguridad de todos tus datos importantes**. Un error en el proceso de instalación puede borrar tus archivos irremediablemente.
 
 - **¿Qué respaldar?** Documentos, fotos, videos, proyectos, configuraciones personalizadas de programas.
--0 **¿Dónde respaldar?** Discos duros externos, servicios de almacenamiento en la nube (Google Drive, OneDrive, Dropbox), otras unidades de red.
-
+- **¿Dónde respaldar?** Discos duros externos, servicios de almacenamiento en la nube (Google Drive, OneDrive, Dropbox), otras unidades de red.
 
 ## 6. Configuración de Parámetros Básicos de la Instalación
 
