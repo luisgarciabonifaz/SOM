@@ -3,364 +3,545 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repaso: Fundamentos y Gestión de Máquinas Virtuales</title>
+    <title>Repaso: Instalación y Gestión Básica de un Sistema Operativo</title>
     <style>
         /* Estilos CSS */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #e9ecef;
-            color: #343a40;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
         }
-
-        header {
-            background: linear-gradient(to right, #0056b3, #007bff);
-            color: #fff;
-            padding: 1rem 0;
+        .header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px 0;
             text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-
-        header .logo {
-            height: 60px; /* Tamaño del logo */
-            margin-right: 20px;
-            border-radius: 50%; /* Opcional: para logos circulares */
-            border: 2px solid #fff;
+        .header img {
+            height: 50px; /* Ajusta el tamaño del logo */
+            margin-right: 15px;
+            vertical-align: middle;
         }
-
-        header h1 {
+        .header h1 {
             margin: 0;
-            font-size: 2.5em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 2.2em;
+            vertical-align: middle;
         }
-
-        main {
-            padding: 30px;
+        .container {
             max-width: 900px;
             margin: 30px auto;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
-
-        .activity-section {
-            margin-bottom: 40px;
-            padding: 25px;
-            border: 1px solid #cce5ff;
+            padding: 20px;
+            background-color: #ffffff;
             border-radius: 8px;
-            background-color: #f8faff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
         }
-
-        .activity-section h2 {
-            color: #0056b3;
+        .activity {
+            background-color: #e8f0f2;
+            border: 1px solid #dcdcdc;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            transition: transform 0.2s ease-in-out;
+        }
+        .activity:hover {
+            transform: translateY(-5px);
+        }
+        .activity h3 {
+            color: #2980b9;
             margin-top: 0;
-            border-bottom: 2px solid #007bff;
+            font-size: 1.5em;
+            border-bottom: 2px solid #3498db;
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
-
-        .question-block {
-            margin-bottom: 20px;
-            padding: 15px;
-            border: 1px dashed #a7d9f7;
-            border-radius: 6px;
-            background-color: #fff;
-        }
-
-        input[type="text"], textarea, select {
-            width: calc(100% - 22px);
-            padding: 10px;
-            margin-top: 8px;
+        .question {
+            font-size: 1.1em;
             margin-bottom: 15px;
-            border: 1px solid #ced4da;
+            font-weight: 500;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+        .options label:hover {
+            background-color: #dceef9;
+        }
+        .options input[type="radio"] {
+            margin-right: 10px;
+        }
+        .text-input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 1em;
-            box-sizing: border-box; /* Ensures padding doesn't add to total width */
         }
-
-        textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        input[type="radio"] {
-            margin-right: 8px;
-        }
-
-        label {
-            display: inline-block;
-            margin-bottom: 5px;
-        }
-
-        button {
-            background-color: #28a745;
+        .button {
+            background-color: #3498db;
             color: white;
-            padding: 12px 20px;
+            padding: 12px 25px;
             border: none;
-            border-radius: 6px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 1.1em;
-            margin-top: 15px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            display: block; /* Make button full width for better click area */
-            width: fit-content;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.1s ease;
         }
-
-        button:hover {
-            background-color: #218838;
+        .button:hover {
+            background-color: #2980b9;
             transform: translateY(-2px);
         }
-
         .feedback {
-            margin-top: 15px;
-            padding: 10px;
+            margin-top: 20px;
+            padding: 15px;
             border-radius: 5px;
             font-weight: bold;
             display: none; /* Hidden by default */
-            font-size: 0.95em;
         }
-
         .feedback.correct {
             background-color: #d4edda;
             color: #155724;
             border: 1px solid #c3e6cb;
-            display: block;
         }
-
         .feedback.incorrect {
             background-color: #f8d7da;
             color: #721c24;
             border: 1px solid #f5c6cb;
-            display: block;
         }
-
-        .match-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            background-color: #e9f7fe;
-            padding: 10px;
-            border-radius: 4px;
+        .sources {
+            font-size: 0.85em;
+            color: #555;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px dashed #ccc;
         }
-
-        .match-item p {
-            margin: 0;
-            flex: 1;
-            font-weight: bold;
-        }
-
-        .match-item select {
-            flex: 2;
-            margin-left: 15px;
-            max-width: 60%;
+        .sources strong {
+            color: #000;
         }
     </style>
 </head>
 <body>
-    <header>
-        <img src="ruta/a/tu/logo.png" alt="Logo SOM" class="logo">
-        <h1>SOM - Virtualización</h1>
+    <header class="header">
+        <img src="https://via.placeholder.com/50x50?text=LOGO" alt="Logo"> <!-- Reemplaza esta URL con la de tu logo -->
+        <h1>SMR - Sistemas Operativos Monopuesto</h1>
     </header>
 
-    <main>
-        <section id="activity1" class="activity-section">
-            <h2>Actividad 1: Conceptos Básicos de Virtualización</h2>
-            <p><strong>Instrucciones:</strong> Completa los espacios en blanco con la palabra o frase correcta, basándote en la información de las fuentes.</p>
-            <div class="question-block">
-                <p>La <input type="text" id="q1_virtualizacion" placeholder="tu respuesta"> es la tecnología que nos permite crear versiones virtuales (simuladas por software) de recursos informáticos [1].</p>
-                <p>Piensa en la virtualización como una "<input type="text" id="q2_computadora_dentro_de_otra" placeholder="tu respuesta">" [2].</p>
-                <p>El hardware <input type="text" id="q3_fisico" placeholder="tu respuesta"> es el tangible que puedes tocar, mientras que el hardware <input type="text" id="q4_virtualizado" placeholder="tu respuesta"> es el simulado por software que utiliza recursos del hardware real [2]. Por ejemplo, si tu máquina real tiene 16 GB de RAM, puedes asignar 4 GB a una máquina virtual, los cuales son una parte de los 16 GB totales [3].</p>
-                <button onclick="checkActivity1()">Comprobar Actividad 1</button>
-                <div id="feedback1" class="feedback"></div>
-            </div>
-        </section>
+    <div class="container">
+        <h2>Actividades de Repaso</h2>
 
-        <section id="activity2" class="activity-section">
-            <h2>Actividad 2: Ventajas y Desventajas de las Máquinas Virtuales</h2>
-            <p><strong>Instrucciones:</strong> Selecciona la opción que mejor responde a cada pregunta.</p>
-            <div class="question-block">
-                <p>¿Cuál de las siguientes es una **ventaja** clave de las máquinas virtuales según las fuentes?</p>
-                <label><input type="radio" id="q5a" name="q5" value="a"> Ofrecen un rendimiento idéntico al hardware físico.</label><br>
-                <label><input type="radio" id="q5b" name="q5" value="b"> Permiten el aislamiento del sistema operativo anfitrión.</label><br>
-                <label><input type="radio" id="q5c" name="q5" value="c"> Eliminan por completo la necesidad de hardware real.</label><br>
-                <label><input type="radio" id="q5d" name="q5" value="d"> Solo funcionan con un único sistema operativo invitado.</label><br>
-                <div id="feedback5" class="feedback"></div>
-            </div>
-             <div class="question-block">
-                <p>Según las fuentes, ¿cuál es un **inconveniente** principal de las máquinas virtuales?</p>
-                <label><input type="radio" id="q6a" name="q6" value="a"> No permiten la instalación de sistemas operativos Linux.</label><br>
-                <label><input type="radio" id="q6b" name="q6" value="b"> Siempre requieren conexión a internet para funcionar.</label><br>
-                <label><input type="radio" id="q6c" name="q6" value="c"> Generalmente tienen un rendimiento inferior al de un sistema operativo instalado directamente en el hardware físico.</label><br>
-                <label><input type="radio" id="q6d" name="q6" value="d"> Son imposibles de clonar o guardar su estado.</label><br>
-                <div id="feedback6" class="feedback"></div>
-            </div>
-            <button onclick="checkActivity2()">Comprobar Actividad 2</button>
-            <div id="feedback2" class="feedback"></div>
-        </section>
-
-        <section id="activity3" class="activity-section">
-            <h2>Actividad 3: Tipos de Hipervisores y Herramientas de Integración</h2>
-            <p><strong>Instrucciones:</strong> Relaciona cada concepto con su descripción correcta.</p>
-            <div class="matching-container">
-                <div class="match-item">
-                    <p>1. Hipervisor Tipo 1 (Bare-metal) [4]</p>
-                    <select id="match1">
-                        <option value="">Selecciona</option>
-                        <option value="a">Se instala como una aplicación dentro de un sistema operativo anfitrión, como VirtualBox.</option>
-                        <option value="b">Se instala directamente sobre el hardware físico del servidor, sin SO anfitrión (ej. VMware ESXi).</option>
-                        <option value="c">Software que mejora el rendimiento gráfico y la integración del ratón en una MV.</option>
-                    </select>
-                </div>
-                <div class="match-item">
-                    <p>2. Hipervisor Tipo 2 (Hosted) [5]</p>
-                    <select id="match2">
-                        <option value="">Selecciona</option>
-                        <option value="a">Se instala como una aplicación dentro de un sistema operativo anfitrión, como VirtualBox.</option>
-                        <option value="b">Se instala directamente sobre el hardware físico del servidor, sin SO anfitrión (ej. VMware ESXi).</option>
-                        <option value="c">Software que mejora el rendimiento gráfico y la integración del ratón en una MV.</option>
-                    </select>
-                </div>
-                <div class="match-item">
-                    <p>3. VirtualBox Guest Additions [6, 7]</p>
-                    <select id="match3">
-                        <option value="">Selecciona</option>
-                        <option value="a">Se instala como una aplicación dentro de un sistema operativo anfitrión, como VirtualBox.</option>
-                        <option value="b">Se instala directamente sobre el hardware físico del servidor, sin SO anfitrión (ej. VMware ESXi).</option>
-                        <option value="c">Software que mejora el rendimiento gráfico y la integración del ratón en una MV.</option>
-                    </select>
-                </div>
-            </div>
-            <button onclick="checkActivity3()">Comprobar Actividad 3</button>
-            <div id="feedback3" class="feedback"></div>
-        </section>
-
-        <section id="activity4" class="activity-section">
-            <h2>Actividad 4: Gestión Avanzada de MV</h2>
-            <p><strong>Instrucciones:</strong> Describe brevemente la diferencia entre una Clonación Completa y una Clonación Enlazada en VirtualBox, y menciona cuándo es más apropiado usar cada una. [8-10]</p>
-            <div class="question-block">
-                <textarea id="q7_clonacion" rows="8" cols="70" placeholder="Escribe tu respuesta aquí..."></textarea>
-                <button onclick="checkActivity4()">Comprobar Actividad 4</button>
-                <div id="feedback4" class="feedback"></div>
-            </div>
-        </section>
-
-    </main>
+        <div id="activities-container">
+            <!-- Las actividades se cargarán aquí mediante JavaScript -->
+        </div>
+    </div>
 
     <script>
         // Lógica JavaScript
-        function checkActivity1() {
-            const q1 = document.getElementById('q1_virtualizacion').value.trim().toLowerCase();
-            const q2 = document.getElementById('q2_computadora_dentro_de_otra').value.trim().toLowerCase();
-            const q3 = document.getElementById('q3_fisico').value.trim().toLowerCase();
-            const q4 = document.getElementById('q4_virtualizado').value.trim().toLowerCase();
-            const feedbackDiv = document.getElementById('feedback1');
+        const allActivities = [
+            {
+                id: 'act1',
+                type: 'multiple-choice',
+                question: '¿Cuál es el rol principal del **Sistema Operativo** como "director de orquesta" de un ordenador?',
+                options: [
+                    'Ser un editor de texto avanzado para documentos [Fuera de las fuentes]',
+                    'Gestionar los recursos de hardware para que el usuario y los programas usen el ordenador de forma eficiente',
+                    'Únicamente encender y apagar el ordenador [Fuera de las fuentes]',
+                    'Diseñar interfaces gráficas de usuario [Fuera de las fuentes]'
+                ],
+                correctAnswerIndex: 1,
+                feedbackCorrect: '¡Correcto! El SO es el "director de orquesta" que gestiona todos los recursos para un uso eficiente del hardware.',
+                feedbackIncorrect: 'Incorrecto. El rol principal es la gestión de recursos de hardware.',
+                sources: '[1]'
+            },
+            {
+                id: 'act2',
+                type: 'fill-in-the-blanks',
+                question: 'Completa la siguiente frase: La CPU es el "__1__" del ordenador. El SO utiliza la técnica de la "__2__" para alternar rápidamente entre procesos activos, dando la ilusión de que se ejecutan simultáneamente.',
+                blanks: [
+                    { placeholder: '1', correct: 'cerebro' },
+                    { placeholder: '2', correct: 'multitarea' }
+                ],
+                feedbackCorrect: '¡Perfecto! El SO usa la multitarea para optimizar el uso del "cerebro" (CPU).',
+                feedbackIncorrect: 'Incorrecto. Revisa los términos clave para la gestión de la CPU y la técnica mencionada.',
+                sources: '[2, 3]'
+            },
+            {
+                id: 'act3',
+                type: 'multiple-choice',
+                question: 'En la gestión de la memoria RAM, ¿por qué es fundamental que el SO **proteja la memoria** entre programas?',
+                options: [
+                    'Para que un programa no consuma mucha CPU y el sistema no se ralentice [Fuera de las fuentes]',
+                    'Para evitar que un programa sobrescriba la memoria de otro, lo que causaría errores o fallos en el sistema',
+                    'Para cargar los programas más rápidamente al inicio del sistema [Fuera de las fuentes]',
+                    'Para guardar los archivos de forma permanente en la RAM [Fuera de las fuentes]'
+                ],
+                correctAnswerIndex: 1,
+                feedbackCorrect: '¡Exacto! La protección de memoria es clave para la estabilidad del sistema.',
+                feedbackIncorrect: 'No es la respuesta correcta. Piensa en la estabilidad del sistema y la interacción entre programas.',
+                sources: '[4]'
+            },
+            {
+                id: 'act4',
+                type: 'short-answer',
+                question: 'Considerando la planificación de una instalación de sistema operativo, ¿cuál es el paso **MÁS IMPORTANTE** a seguir antes de cualquier manipulación de discos o instalación, y por qué?',
+                keywords: ['copia de seguridad', 'backup', 'datos', 'archivos'], // Keywords to look for in the answer
+                expectedAnswer: 'El paso MÁS IMPORTANTE es **hacer una copia de seguridad de todos tus datos importantes**. Esto es crucial porque un error en el proceso de instalación puede borrar tus archivos irremediablemente.',
+                feedbackCorrect: '¡Excelente! La copia de seguridad es fundamental para proteger tus datos.',
+                feedbackIncorrect: 'Revisa la sección de planificación pre-instalación. Hay un paso crítico para evitar la pérdida de datos.',
+                sources: '[5]'
+            },
+            {
+                id: 'act5',
+                type: 'multiple-choice',
+                question: '¿Qué tipo de licencia de software, comúnmente asociada al software libre, garantiza las libertades de ejecutar, estudiar, modificar y redistribuir el programa y sus versiones modificadas?',
+                options: [
+                    'Licencia de Software Propietario (EULA)',
+                    'Freeware',
+                    'Licencia Pública General (GPL)',
+                    'Shareware'
+                ],
+                correctAnswerIndex: 2,
+                feedbackCorrect: '¡Muy bien! La GPL es un pilar del software libre, garantizando esas libertades.',
+                feedbackIncorrect: 'Incorrecto. Revisa los tipos de licencias, especialmente las del software libre.',
+                sources: '[6]'
+            },
+            {
+                id: 'act6',
+                type: 'fill-in-the-blanks',
+                question: 'Completa la siguiente frase: El "__1__" es la parte más importante del SO, su "corazón", encargado de funciones críticas como la gestión de memoria y el acceso al hardware. La "__2__" actúa como un intérprete entre el usuario y el kernel.',
+                blanks: [
+                    { placeholder: '1', correct: 'kernel' },
+                    { placeholder: '2', correct: 'shell' }
+                ],
+                feedbackCorrect: '¡Correcto! El Kernel es el corazón y la Shell es el intermediario.',
+                feedbackIncorrect: 'No es correcto. Revisa la arquitectura del sistema operativo y las funciones de sus componentes principales.',
+                sources: '[7]'
+            },
+            {
+                id: 'act7',
+                type: 'short-answer',
+                question: 'Has realizado una instalación dual-boot de Windows y Linux. Después de una actualización de Windows, el ordenador solo inicia Windows y no te da la opción de arrancar Linux. ¿Cuál es la causa más probable de este problema según los materiales, y qué tipo de herramienta o método podría utilizarse para intentar repararlo?',
+                keywords: ['Windows', 'sobrescribe', 'GRUB', 'Live USB', 'boot-repair'],
+                expectedAnswer: 'La causa más probable es que **Windows haya sobrescrito el gestor de arranque GRUB de Linux** [8]. Para intentar repararlo, se podría utilizar un **Live USB/DVD de Linux** con herramientas como `boot-repair` [9].',
+                feedbackCorrect: '¡Excelente! Es un problema común y conoces la solución adecuada.',
+                feedbackIncorrect: 'Revisa la sección de gestores de arranque y problemas comunes en sistemas multiarranque. Windows tiende a sobrescribir otros gestores de arranque.',
+                sources: '[8, 9]'
+            },
+            {
+                id: 'act8',
+                type: 'multiple-choice',
+                question: 'Un usuario desea instalar un nuevo sistema operativo que requiere un mínimo de 4 GB de RAM, pero su equipo solo tiene 2 GB. ¿Qué consecuencia directa es la más probable para el rendimiento del SO instalado?',
+                options: [
+                    'El SO no se instalará en absoluto [Fuera de las fuentes]',
+                    'El SO funcionará muy lento',
+                    'El SO funcionará con mayor rapidez debido al menor uso de RAM [Fuera de las fuentes]',
+                    'Solo se podrán instalar programas muy básicos [Fuera de las fuentes]'
+                ],
+                correctAnswerIndex: 1,
+                feedbackCorrect: '¡Correcto! Menos RAM de la requerida ralentizará significativamente el sistema.',
+                feedbackIncorrect: 'Incorrecto. Piensa en cómo la RAM afecta directamente al rendimiento del SO si no se cumplen los requisitos mínimos.',
+                sources: '[10]'
+            },
+            {
+                id: 'act9',
+                type: 'fill-in-the-blanks',
+                question: 'Las actualizaciones de "__1__" cierran vulnerabilidades que los ciberdelincuentes pueden explotar, protegiendo el sistema. Las actualizaciones "__2__" pueden aportar mejoras de rendimiento o nuevas características.',
+                blanks: [
+                    { placeholder: '1', correct: 'seguridad' },
+                    { placeholder: '2', correct: 'funcionales' }
+                ],
+                feedbackCorrect: '¡Perfecto! Las actualizaciones son vitales para la seguridad y la funcionalidad.',
+                feedbackIncorrect: 'No es correcto. Revisa los tipos de actualizaciones y sus beneficios.',
+                sources: '[11]'
+            },
+            {
+                id: 'act10',
+                type: 'multiple-choice',
+                question: '¿Qué es una partición de disco?',
+                options: [
+                    'Un virus que afecta el disco duro',
+                    'Una división lógica de una unidad de almacenamiento físico',
+                    'Un tipo de memoria RAM',
+                    'Un periférico de entrada'
+                ],
+                correctAnswerIndex: 1,
+                feedbackCorrect: '¡Correcto! Una partición es una división lógica que permite organizar el disco en varias unidades independientes.',
+                feedbackIncorrect: 'Incorrecto. Una partición es una forma de organizar el espacio en un disco.',
+                sources: '[Conceptos de almacenamiento]'
+            },
+            {
+                id: 'act11',
+                type: 'fill-in-the-blanks',
+                question: 'Un sistema de archivos como __1__ o __2__ es necesario para que el sistema operativo pueda organizar y leer los datos en una partición.',
+                blanks: [
+                    { placeholder: '1', correct: 'NTFS' },
+                    { placeholder: '2', correct: 'ext4' }
+                ],
+                feedbackCorrect: '¡Muy bien! NTFS (Windows) y ext4 (Linux) son ejemplos de sistemas de archivos comunes.',
+                feedbackIncorrect: 'Incorrecto. Piensa en los sistemas de archivos que usan Windows y Linux.',
+                sources: '[Sistemas de archivos]'
+            },
+            {
+                id: 'act12',
+                type: 'short-answer',
+                question: '¿Por qué es recomendable crear una partición separada para los datos personales (como /home en Linux) en una instalación de sistema operativo?',
+                keywords: ['reinstalar', 'formatear', 'datos', 'separados', 'seguridad'],
+                expectedAnswer: 'Es recomendable para poder reinstalar o formatear el sistema operativo sin perder los datos personales, ya que residen en una partición diferente.',
+                feedbackCorrect: '¡Exacto! Separar el SO de los datos facilita el mantenimiento y protege tu información.',
+                feedbackIncorrect: 'La razón principal se relaciona con la facilidad para reinstalar el sistema y la seguridad de los datos.',
+                sources: '[Estrategias de particionado]'
+            },
+            {
+                id: 'act13',
+                type: 'multiple-choice',
+                question: '¿Qué significa "formatear" una partición?',
+                options: [
+                    'Eliminar la partición permanentemente',
+                    'Preparar la partición con un sistema de archivos para que pueda almacenar ficheros',
+                    'Comprimir todos los archivos de la partición',
+                    'Ocultar la partición para que no sea visible'
+                ],
+                correctAnswerIndex: 1,
+                feedbackCorrect: '¡Correcto! El formateo crea la estructura del sistema de archivos necesaria para guardar datos.',
+                feedbackIncorrect: 'Incorrecto. Formatear no es eliminar, sino preparar la partición.',
+                sources: '[Formateo de discos]'
+            },
+            {
+                id: 'act14',
+                type: 'multiple-choice',
+                question: 'En un sistema de arranque dual, ¿qué componente de software es responsable de permitir al usuario elegir qué sistema operativo iniciar?',
+                options: [
+                    'El BIOS/UEFI',
+                    'El gestor de arranque (bootloader)',
+                    'El kernel del sistema operativo',
+                    'La partición de intercambio (swap)'
+                ],
+                correctAnswerIndex: 1,
+                feedbackCorrect: '¡Correcto! El gestor de arranque (como GRUB o el Boot Manager de Windows) presenta el menú de selección.',
+                feedbackIncorrect: 'Incorrecto. Hay un software específico que gestiona el arranque de múltiples sistemas.',
+                sources: '[Gestores de arranque]'
+            },
+            {
+                id: 'act15',
+                type: 'fill-in-the-blanks',
+                question: 'La __1__ es una interfaz de firmware moderna que ha reemplazado a la BIOS tradicional, ofreciendo ventajas como un arranque más rápido y soporte para discos más grandes. El modo __2__ es una característica de seguridad que ayuda a prevenir la ejecución de malware durante el arranque.',
+                blanks: [
+                    { placeholder: '1', correct: 'UEFI' },
+                    { placeholder: '2', correct: 'Secure Boot' }
+                ],
+                feedbackCorrect: '¡Perfecto! UEFI y Secure Boot son tecnologías clave en los sistemas modernos.',
+                feedbackIncorrect: 'Revisa las tecnologías de firmware de arranque más recientes y sus características de seguridad.',
+                sources: '[BIOS vs UEFI]'
+            },
+            {
+                id: 'act16',
+                type: 'short-answer',
+                question: '¿Qué es un "driver" o "controlador" y por qué es esencial para el funcionamiento del hardware?',
+                keywords: ['software', 'comunicar', 'hardware', 'sistema operativo', 'traduce'],
+                expectedAnswer: 'Un driver es un software que permite al sistema operativo comunicarse con un dispositivo de hardware. Traduce las órdenes del SO a un lenguaje que el hardware entiende.',
+                feedbackCorrect: '¡Muy bien! Sin el driver correcto, el SO no sabría cómo utilizar el hardware.',
+                feedbackIncorrect: 'Piensa en cómo el sistema operativo "habla" con componentes como la tarjeta gráfica o la impresora.',
+                sources: '[Controladores de dispositivo]'
+            },
+            {
+                id: 'act17',
+                type: 'multiple-choice',
+                question: '¿Cuál de las siguientes NO es una función principal de un sistema operativo?',
+                options: [
+                    'Gestión de la memoria',
+                    'Gestión de procesos',
+                    'Creación de documentos de texto',
+                    'Gestión de dispositivos de E/S'
+                ],
+                correctAnswerIndex: 2,
+                feedbackCorrect: '¡Correcto! La creación de documentos es una tarea de una aplicación (como un procesador de texto), no una función central del SO.',
+                feedbackIncorrect: 'Incorrecto. Tres de esas opciones son responsabilidades fundamentales de cualquier sistema operativo.',
+                sources: '[Funciones del SO]'
+            },
+            {
+                id: 'act18',
+                type: 'multiple-choice',
+                question: '¿Qué es la memoria virtual y cuál es su propósito principal?',
+                options: [
+                    'Una memoria USB de alta velocidad',
+                    'Usar espacio del disco duro como si fuera RAM para ejecutar programas más grandes que la memoria física disponible',
+                    'Una caché para acelerar el acceso a la CPU',
+                    'Un tipo de memoria que no se borra al apagar el ordenador'
+                ],
+                correctAnswerIndex: 1,
+                feedbackCorrect: '¡Exacto! La memoria virtual permite al sistema superar las limitaciones de la RAM física utilizando el disco duro.',
+                feedbackIncorrect: 'Incorrecto. La memoria virtual es una técnica de gestión de memoria que combina RAM y disco.',
+                sources: '[Memoria Virtual]'
+            },
+            {
+                id: 'act19',
+                type: 'fill-in-the-blanks',
+                question: 'Un sistema operativo de 64 bits puede direccionar __1__ cantidad de memoria RAM que uno de 32 bits. Para ejecutar un SO de 64 bits, el procesador también debe ser de __2__.',
+                blanks: [
+                    { placeholder: '1', correct: 'más' },
+                    { placeholder: '2', correct: '64 bits' }
+                ],
+                feedbackCorrect: '¡Correcto! La arquitectura de 64 bits es fundamental para usar grandes cantidades de RAM.',
+                feedbackIncorrect: 'Revisa las diferencias entre arquitecturas de 32 y 64 bits en cuanto a direccionamiento de memoria y requisitos de hardware.',
+                sources: '[32-bit vs 64-bit]'
+            },
+            {
+                id: 'act20',
+                type: 'short-answer',
+                question: 'Describe brevemente qué es un "Live USB" y para qué se utiliza comúnmente en el contexto de la instalación de sistemas operativos.',
+                keywords: ['USB', 'arrancar', 'probar', 'instalar', 'sin modificar'],
+                expectedAnswer: 'Un Live USB es una unidad USB que contiene un sistema operativo completo que se puede arrancar y ejecutar sin instalarlo en el disco duro. Se usa para probar un SO antes de instalarlo o como medio de instalación.',
+                feedbackCorrect: '¡Perfecto! Esa es la definición y uso principal de un Live USB.',
+                feedbackIncorrect: 'Piensa en cómo puedes usar un sistema operativo desde un USB sin tocar el disco duro de tu ordenador.',
+                sources: '[Live USB]'
+            }
+        ];
 
-            let correctCount = 0;
-            let totalQuestions = 4;
+        const activitiesContainer = document.getElementById('activities-container');
 
-            if (q1 === 'virtualización' || q1 === 'virtualizacion') {
-                correctCount++;
-            }
-            if (q2 === 'computadora dentro de una computadora') {
-                correctCount++;
-            }
-            if (q3 === 'físico' || q3 === 'fisico') { // Acepta con y sin tilde
-                correctCount++;
-            }
-            if (q4 === 'virtualizado') {
-                correctCount++;
-            }
-
-            if (correctCount === totalQuestions) {
-                feedbackDiv.className = 'feedback correct';
-                feedbackDiv.textContent = '¡Excelente! Todas las respuestas son correctas en esta sección.';
-            } else {
-                feedbackDiv.className = 'feedback incorrect';
-                feedbackDiv.textContent = `Has acertado ${correctCount} de ${totalQuestions} respuestas. Revisa los conceptos básicos de virtualización.`;
+        // Función para barajar un array (algoritmo de Fisher-Yates)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
             }
         }
 
-        function checkActivity2() {
-            // q5b es la respuesta correcta para la pregunta 5 (Aislamiento)
-            const q5_correct = document.getElementById('q5b').checked;
-            // q6c es la respuesta correcta para la pregunta 6 (Rendimiento inferior)
-            const q6_correct = document.getElementById('q6c').checked;
-            const feedbackDiv = document.getElementById('feedback2');
+        // Barajar las actividades y seleccionar las primeras 10
+        shuffleArray(allActivities);
+        const activities = allActivities.slice(0, 10);
 
-            let correctCount = 0;
-            let totalQuestions = 2;
+        // Renumerar los IDs de las actividades para que sean consecutivos
+        activities.forEach((activity, index) => {
+            activity.originalId = activity.id;
+            activity.id = 'act' + (index + 1);
+        });
 
-            if (q5_correct) {
-                correctCount++;
-            }
-            if (q6_correct) {
-                correctCount++;
+
+        // Function to create and display activities
+        function createActivityElement(activity) {
+            let htmlContent = `
+                <div class="activity" id="${activity.id}">
+                    <h3>Actividad ${activity.id.replace('act', '')}</h3>
+                    <div class="question">${activity.question}</div>
+            `;
+
+            if (activity.type === 'multiple-choice') {
+                htmlContent += `<div class="options">`;
+                activity.options.forEach((option, index) => {
+                    htmlContent += `
+                        <label>
+                            <input type="radio" name="${activity.id}-option" value="${index}">
+                            ${option}
+                        </label>
+                    `;
+                });
+                htmlContent += `</div>`;
+            } else if (activity.type === 'fill-in-the-blanks') {
+                htmlContent += `<div class="blanks-container">`;
+                let currentPrompt = activity.question;
+                activity.blanks.forEach((blank, index) => {
+                    currentPrompt = currentPrompt.replace(`__${blank.placeholder}__`, `<input type="text" class="text-input blank-input" id="${activity.id}-blank-${index}" placeholder="Respuesta ${blank.placeholder}">`);
+                });
+                htmlContent = htmlContent.replace(activity.question, currentPrompt); // Replace original question with prompt containing inputs
+                htmlContent += `</div>`;
+            } else if (activity.type === 'short-answer') {
+                htmlContent += `
+                    <textarea class="text-input" id="${activity.id}-answer" rows="5" placeholder="Escribe tu respuesta aquí..."></textarea>
+                `;
             }
 
-            if (correctCount === totalQuestions) {
-                feedbackDiv.className = 'feedback correct';
-                feedbackDiv.textContent = '¡Muy bien! Todas las respuestas son correctas en esta sección.';
-            } else {
-                feedbackDiv.className = 'feedback incorrect';
-                feedbackDiv.textContent = `Has acertado ${correctCount} de ${totalQuestions} respuestas. Repasa las ventajas y desventajas de las máquinas virtuales.`;
-            }
+            htmlContent += `
+                    <button class="button" onclick="checkAnswer('${activity.id}')">Comprobar Respuesta</button>
+                    <div class="feedback" id="${activity.id}-feedback"></div>
+                    <div class="sources"><strong>Fuentes:</strong> ${activity.sources}</div>
+                </div>
+            `;
+            return htmlContent;
         }
 
-        function checkActivity3() {
-            const match1 = document.getElementById('match1').value; // Hipervisor Tipo 1
-            const match2 = document.getElementById('match2').value; // Hipervisor Tipo 2
-            const match3 = document.getElementById('match3').value; // Guest Additions
-            const feedbackDiv = document.getElementById('feedback3');
+        // Render all activities
+        activities.forEach(activity => {
+            activitiesContainer.innerHTML += createActivityElement(activity);
+        });
 
-            let correctCount = 0;
-            let totalQuestions = 3;
+        // Function to check answers
+        window.checkAnswer = function(activityId) {
+            const activityElement = document.getElementById(activityId);
+            const feedbackElement = document.getElementById(`${activityId}-feedback`);
+            const activityData = activities.find(act => act.id === activityId);
 
-            if (match1 === 'b') { // Hipervisor Tipo 1 se instala directamente sobre el hardware físico
-                correctCount++;
-            }
-            if (match2 === 'a') { // Hipervisor Tipo 2 se instala como una aplicación
-                correctCount++;
-            }
-            if (match3 === 'c') { // Guest Additions mejora rendimiento e integración
-                correctCount++;
+            let isCorrect = false;
+            let actualAnswer = '';
+
+            if (activityData.type === 'multiple-choice') {
+                const selectedOption = activityElement.querySelector(`input[name="${activityId}-option"]:checked`);
+                if (selectedOption) {
+                    isCorrect = (parseInt(selectedOption.value) === activityData.correctAnswerIndex);
+                }
+            } else if (activityData.type === 'fill-in-the-blanks') {
+                isCorrect = true;
+                activityData.blanks.forEach((blank, index) => {
+                    const input = document.getElementById(`${activityId}-blank-${index}`);
+                    if (!input || input.value.trim().toLowerCase() !== blank.correct.toLowerCase()) {
+                        isCorrect = false;
+                    }
+                });
+            } else if (activityData.type === 'short-answer') {
+                const answerInput = document.getElementById(`${activityId}-answer`);
+                actualAnswer = answerInput ? answerInput.value.trim().toLowerCase() : '';
+
+                // Simple keyword matching for short answers
+                isCorrect = activityData.keywords.some(keyword => actualAnswer.includes(keyword.toLowerCase()));
+
+                if (!isCorrect) { // If keywords don't match fully, provide the expected answer
+                    feedbackElement.innerHTML = `<p>${activityData.feedbackIncorrect}</p><p>La respuesta esperada era: **${activityData.expectedAnswer}**</p>`;
+                    feedbackElement.classList.remove('correct');
+                    feedbackElement.classList.add('incorrect');
+                    feedbackElement.style.display = 'block';
+                    return; // Exit early if incorrect
+                }
             }
 
-            if (correctCount === totalQuestions) {
-                feedbackDiv.className = 'feedback correct';
-                feedbackDiv.textContent = '¡Perfecto! Todas las relaciones son correctas en esta sección.';
+            // Display feedback
+            feedbackElement.classList.remove('correct', 'incorrect');
+            if (isCorrect) {
+                feedbackElement.innerHTML = activityData.feedbackCorrect;
+                feedbackElement.classList.add('correct');
             } else {
-                feedbackDiv.className = 'feedback incorrect';
-                feedbackDiv.textContent = `Has acertado ${correctCount} de ${totalQuestions} relaciones. Revisa los tipos de hipervisores y las herramientas de integración.`;
+                feedbackElement.innerHTML = activityData.feedbackIncorrect;
+                if (activityData.type === 'short-answer') {
+                    feedbackElement.innerHTML += `<p>La respuesta esperada era: **${activityData.expectedAnswer}**</p>`;
+                }
+                feedbackElement.classList.add('incorrect');
             }
+            feedbackElement.style.display = 'block';
+        };
+
+        // Function to replace bold markdown in questions with HTML strong tags
+        function formatQuestions() {
+            activities.forEach(activity => {
+                const questionElement = document.querySelector(`#${activity.id} .question`);
+                if (questionElement) {
+                    questionElement.innerHTML = questionElement.innerHTML.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                }
+            });
         }
 
-        function checkActivity4() {
-            const q7_text = document.getElementById('q7_clonacion').value.trim().toLowerCase();
-            const feedbackDiv = document.getElementById('feedback4');
+        // Call formatQuestions after activities are loaded
+        document.addEventListener('DOMContentLoaded', formatQuestions);
 
-            // Palabras clave esperadas para una respuesta correcta
-            const hasFullCloneConcept = q7_text.includes('completa') && (q7_text.includes('independiente') || q7_text.includes('autónoma')) && q7_text.includes('más espacio');
-            const hasLinkedCloneConcept = q7_text.includes('enlazada') && (q7_text.includes('depende') || q7_text.includes('comparte disco')) && q7_text.includes('poco espacio');
-            const hasWhenToUseFull = q7_text.includes('proyecto largo plazo') || q7_text.includes('dar a otra persona');
-            const hasWhenToUseLinked = q7_text.includes('pruebas cortas') || q7_text.includes('varias copias');
-
-            if (hasFullCloneConcept && hasLinkedCloneConcept && hasWhenToUseFull && hasWhenToUseLinked) {
-                feedbackDiv.className = 'feedback correct';
-                feedbackDiv.textContent = '¡Muy bien! Has comprendido la diferencia entre la clonación completa y enlazada y cuándo usar cada una.';
-            } else {
-                feedbackDiv.className = 'feedback incorrect';
-                feedbackDiv.textContent = 'Tu respuesta es incompleta o requiere más precisión. Asegúrate de explicar la independencia/dependencia, el espacio en disco, y cuándo usar cada tipo de clonación.';
-            }
-        }
     </script>
 </body>
 </html>

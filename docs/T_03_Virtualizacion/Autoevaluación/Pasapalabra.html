@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasapalabra - Virtualización</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .rosco-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .rosco {
+            display: grid;
+            grid-template-columns: repeat(7, 50px);
+            grid-gap: 5px;
+        }
+
+        .letra {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            background-color: #4CAF50; /* Verde por defecto */
+        }
+        
+        .letra.acertada {
+            background-color: #28a745; /* Verde más oscuro para aciertos */
+        }
+
+        .letra.fallada {
+            background-color: #dc3545; /* Rojo para fallos */
+        }
+
+        .pregunta-container {
+            margin-bottom: 20px;
+            min-height: 40px;
+            font-size: 1.2em;
+        }
+
+        .respuesta-container {
+            margin-bottom: 20px;
+        }
+
+        #respuesta {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        #submit {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+        }
+
+        #timer-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #d0021b;
+            color: white;
+            font-size: 2em;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div id="timer-container">150</div>
+    <div class="container">
+        <h1>Pasapalabra - Virtualización</h1>
+        <div class="rosco-container">
+            <div class="rosco"></div>
+        </div>
+        <div class="pregunta-container">
+            <p id="pregunta"></p>
+        </div>
+        <div class="respuesta-container">
+            <input type="text" id="respuesta" placeholder="Escribe tu respuesta" autocomplete="off">
+            <button id="submit">Responder</button>
+        </div>
+        <div class="resultado-container">
+            <p>Aciertos: <span id="aciertos">0</span></p>
+            <p>Fallos: <span id="fallos">0</span></p>
+        </div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const rosco = document.querySelector('.rosco');
+    const preguntaEl = document.getElementById('pregunta');
+    const respuestaEl = document.getElementById('respuesta');
+    const submitBtn = document.getElementById('submit');
+    const aciertosEl = document.getElementById('aciertos');
+    const fallosEl = document.getElementById('fallos');
+    const timerEl = document.getElementById('timer-container');
+
+    const preguntas = [
+        { letra: "a", answer: "agilidad", status: 0, question: "CON LA A. Ventaja de la virtualización que consiste en poder mover máquinas virtuales de un servidor a otro." },
+    { letra: "b", answer: "backup", status: 0, question: "CON LA B. Copia de seguridad de una máquina virtual." },
+    { letra: "c", answer: "contenedores", status: 0, question: "CON LA C. Tecnología que permite empaquetar una aplicación y sus dependencias en un entorno aislado." },
+    { letra: "d", answer: "docker", status: 0, question: "CON LA D. Plataforma de software que permite la creación, prueba y despliegue de aplicaciones en contenedores." },
+    { letra: "e", answer: "emulación", status: 0, question: "CON LA E. Proceso de imitar el comportamiento de un sistema de hardware en otro diferente." },
+    { letra: "f", answer: "full", status: 0, question: "CON LA F. Tipo de virtualización donde la máquina virtual simula un hardware completo, permitiendo que sistemas operativos no modificados se ejecuten de forma aislada." },
+    { letra: "g", answer: "guest", status: 0, question: "CON LA G. Sistema operativo que se ejecuta dentro de una máquina virtual. En español, 'huésped'." },
+    { letra: "h", answer: "hipervisor", status: 0, question: "CON LA H. Software o firmware que crea y ejecuta máquinas virtuales." },
+    { letra: "i", answer: "aislamiento", status: 0, question: "CON LA I. Característica de la virtualización que garantiza que las máquinas virtuales no interfieran entre sí." },
+    { letra: "j", answer: "java", status: 0, question: "CON LA J. Lenguaje de programación para el que se creó una de las primeras máquinas virtuales." },
+    { letra: "k", answer: "kvm", status: 0, question: "CON LA K. Hipervisor de tipo 1 integrado en el kernel de Linux." },
+    { letra: "l", answer: "linux", status: 0, question: "CON LA L. Sistema operativo de código abierto que puede actuar como anfitrión o huésped en entornos virtualizados." },
+    { letra: "m", answer: "máquina virtual", status: 0, question: "CON LA M. Software que simula un sistema informático y puede ejecutar programas como si fuera un ordenador real." },
+    { letra: "n", answer: "nativo", status: 0, question: "CON LA N. Tipo de hipervisor que se ejecuta directamente sobre el hardware del sistema, también conocido como Tipo 1." },
+    { letra: "o", answer: "oracle", status: 0, question: "CON LA O. Empresa que desarrolla el software de virtualización VirtualBox." },
+    { letra: "p", answer: "paravirtualización", status: 0, question: "CON LA P. Técnica de virtualización en la que los sistemas operativos huéspedes se modifican para ejecutarse en un hipervisor." },
+    { letra: "q", answer: "quemu", status: 0, question: "CON LA Q. Emulador y virtualizador de máquinas genérico y de código abierto." },
+    { letra: "r", answer: "reducción", status: 0, question: "CON LA R. Una de las principales ventajas de la virtualización es la ... de costes." },
+    { letra: "s", answer: "snapshot", status: 0, question: "CON LA S. Captura del estado de una máquina virtual en un momento concreto, permitiendo volver a ese estado." },
+    { letra: "t", answer: "tipo 2", status: 0, question: "CON LA T. Hipervisor que se ejecuta como una aplicación sobre un sistema operativo anfitrión." },
+    { letra: "u", answer: "ubuntu", status: 0, question: "CON LA U. Distribución de Linux popular para usar como sistema operativo anfitrión o huésped en virtualización." },
+    { letra: "v", answer: "vmware", status: 0, question: "CON LA V. Empresa líder en el mercado de software de virtualización." },
+    { letra: "w", answer: "windows", status: 0, question: "CON LA W. Sistema operativo de Microsoft que incluye el hipervisor Hyper-V." },
+    { letra: "x", answer: "xen", status: 0, question: "CON LA X. Hipervisor de código abierto que soporta tanto paravirtualización como virtualización completa." },
+    { letra: "y", answer: "hyper-v", status: 0, question: "CONTIENE LA Y. Hipervisor de Microsoft para la virtualización." },
+    { letra: "z", answer: "virtualización", status: 0, question: "EMPIEZA POR V, CONTIENE LA Z. Creación a través de software de una versión virtual de algún recurso tecnológico." },
+    ];
+    
+    let preguntaActual = 0;
+    let aciertos = 0;
+    let fallos = 0;
+    let timeLeft = 150;
+    let timerInterval;
+
+    function iniciarJuego() {
+        mostrarPregunta();
+        crearRosco();
+        startTimer();
+    }
+
+    function startTimer() {
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            timerEl.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                endGame(false);
+            }
+        }, 1000);
+    }
+
+    function endGame(completed) {
+        clearInterval(timerInterval);
+        respuestaEl.disabled = true;
+        submitBtn.disabled = true;
+        if (completed) {
+            preguntaEl.textContent = '¡Felicidades! ¡Has completado el rosco!';
+        } else {
+            preguntaEl.textContent = '¡Tiempo agotado! Fin del juego.';
+        }
+    }
+
+    function crearRosco() {
+        rosco.innerHTML = '';
+        preguntas.forEach(p => {
+            const letraEl = document.createElement('div');
+            letraEl.classList.add('letra');
+            letraEl.textContent = p.letra.toUpperCase();
+            rosco.appendChild(letraEl);
+        });
+    }
+
+    function mostrarPregunta() {
+        preguntaEl.textContent = preguntas[preguntaActual].pregunta;
+    }
+
+    function comprobarRespuesta() {
+        const respuesta = respuestaEl.value.trim().toLowerCase();
+        if (respuesta === '') return;
+
+        if (respuesta === preguntas[preguntaActual].respuesta.toLowerCase()) {
+            aciertos++;
+            aciertosEl.textContent = aciertos;
+            marcarLetra('acertada');
+        } else {
+            fallos++;
+            fallosEl.textContent = fallos;
+            marcarLetra('fallada');
+        }
+        siguientePregunta();
+    }
+
+    function marcarLetra(estado) {
+        const letras = rosco.querySelectorAll('.letra');
+        letras[preguntaActual].classList.add(estado);
+    }
+
+    function siguientePregunta() {
+        preguntaActual++;
+        if (preguntaActual < preguntas.length) {
+            mostrarPregunta();
+        } else {
+            endGame(true);
+        }
+        respuestaEl.value = '';
+        respuestaEl.focus();
+    }
+
+    submitBtn.addEventListener('click', comprobarRespuesta);
+    respuestaEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            comprobarRespuesta();
+        }
+    });
+
+    iniciarJuego();
+    respuestaEl.focus();
+});
+</script>
+</body>
+</html>
