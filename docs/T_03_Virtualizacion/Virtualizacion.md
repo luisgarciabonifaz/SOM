@@ -325,3 +325,14 @@ Esta actividad te guiará en la creación de máquinas virtuales (MV) para Windo
         - **Instala las VirtualBox Guest Additions:** Al igual que con Windows, ve al menú "Dispositivos" de la ventana de la MV y selecciona **"Insertar imagen de CD de las "Guest Additions""**. Dentro de la MV de Linux, se montará el CD virtual. Navega hasta él y ejecuta el script de instalación (normalmente `VBoxLinuxAdditions.run` desde una terminal). Esto mejorará la **resolución de pantalla, el rendimiento gráfico, la integración del ratón y el portapapeles compartido**. Reinicia la MV.
         - **Verifica la Red:** La configuración **NAT** debería estar funcionando, permitiendo acceso a Internet desde tu MV de Linux.
     - En el documento anterior incluye las capturas de pantalla de la instalación de las Guest Adittions y la configuración de red.
+
+
+### Parte 4: Creación y Configuración de una Máquina Virtual con Arranque DUAL Windows y Linux
+
+1.  **Configuración Básica:**
+    - Crea una Máquina Virtual nueva con espacio en disco suficiente para instalar dos sistemas operativos, Windows y L
+    - Elabora un pequeño informe con la configuración de la Máquina Virtual.
+
+2.  **Instalación de los Sistemas OpertivosConfiguración Básica:**
+
+    - En el documento anterior incluye información sobre el proceso de instalación de los sistemas operativos y alguna captura de pantalla que demuestre que ambos sistemas operativos están instalados en la misma máquina.
