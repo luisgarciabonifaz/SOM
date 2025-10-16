@@ -2,7 +2,7 @@
    T2 - Instalacion de Sistemas Operativos
 </div>
 
-# Instalación y Gestión Básica de un Sistema Operativo
+# 
 
 ## 1. Funciones del Sistema Operativo
 

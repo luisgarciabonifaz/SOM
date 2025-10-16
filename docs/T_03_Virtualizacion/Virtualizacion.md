@@ -2,7 +2,7 @@
    T3 - Virtualizacion
 </div>
 
-# Virtualización
+#
 
 En este tema, vamos a explorar el fascinante mundo de las máquinas virtuales (MV). Aprenderemos qué son, por qué son tan útiles y cómo podemos crearlas y configurarlas para probar diferentes sistemas operativos sin necesidad de tener varios ordenadores.
 
