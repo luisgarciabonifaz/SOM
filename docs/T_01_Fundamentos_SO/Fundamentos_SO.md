@@ -1,5 +1,3 @@
- 
-
 # T1 - Fundamentos de los Sistemas Operativos
 
 Este tema introduce los conceptos fundamentales de los **sistemas operativos (SO)**, aplicables a cualquier entorno, ya sea Windows, Linux, macOS, o incluso en el ámbito de la virtualización. Comprender estos pilares es crucial para cualquier profesional de la informática, ya que son la base sobre la que se construyen y ejecutan todos los programas y aplicaciones.

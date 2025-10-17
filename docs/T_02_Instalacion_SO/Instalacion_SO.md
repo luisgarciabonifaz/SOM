@@ -1,8 +1,4 @@
-<div class="titulo">
-   T2 - Instalacion de Sistemas Operativos
-</div>
-
-# 
+# T2 - Instalacion de Sistemas Operativos
 
 ## 1. Funciones del Sistema Operativo
 
