@@ -1,0 +1,44 @@
+::Pregunta 1::¿Cuál es la secuencia correcta en el proceso de arranque de un ordenador con un sistema operativo moderno (UEFI)?{
+~%-25%Gestor de Arranque -> Firmware (UEFI) -> POST -> Carga del Kernel del SO.
+~%-25%POST -> Firmware (UEFI) -> Gestor de Arranque -> Carga del Kernel del SO.
+=Firmware (UEFI) -> POST -> Gestor de Arranque -> Carga del Kernel del SO.
+~%-25%Carga del Kernel del SO -> Gestor de Arranque -> Firmware (UEFI) -> POST.
+}
+
+::Pregunta 2::¿Cuál de las siguientes afirmaciones describe correctamente la diferencia entre el modo Usuario y el modo Núcleo (Kernel)?{
+~%-25%El modo Usuario tiene acceso completo al hardware, mientras que el modo Núcleo es limitado.
+~%-25%Las aplicaciones comunes se ejecutan en modo Núcleo para mayor rendimiento.
+~%-25%Un fallo en modo Usuario puede bloquear todo el sistema, mientras que un fallo en modo Núcleo solo cierra la aplicación.
+=El modo Núcleo tiene acceso sin restricciones al hardware, mientras que el modo Usuario tiene un acceso restringido para proteger la estabilidad del sistema.
+}
+
+::Pregunta 3::Si necesitas instalar 5 sistemas operativos diferentes en un disco duro de 8 TB, ¿qué esquema de particionado deberías utilizar y por qué?{
+~%-25%MBR, porque es compatible con todos los sistemas operativos.
+~%-25%MBR, porque permite crear hasta 128 particiones.
+=GPT, porque soporta discos de más de 2 TB y no tiene el límite de 4 particiones primarias.
+~%-25%GPT, porque es el único sistema que permite el arranque dual.
+}
+
+::Pregunta 4::¿Qué es la hiperpaginación (thrashing) en el contexto de la gestión de memoria virtual?{
+~%-25%Un estado en el que la CPU está inactiva la mayor parte del tiempo.
+~%-25%Un problema de seguridad que permite a los procesos acceder a la memoria de otros.
+=Un estado de bajo rendimiento causado por un exceso de fallos de página, donde el sistema pasa más tiempo moviendo páginas entre la RAM y el disco que ejecutando procesos.
+~%-25%Una técnica de optimización que permite ejecutar programas más grandes que la memoria física disponible.
+}
+
+::Pregunta 5::¿Qué es una licencia "Shareware"?{
+~%-25%Software que se puede usar, modificar y distribuir libremente, incluido su código fuente.
+~%-25%Software gratuito cuyo código fuente no está disponible.
+=Software que se distribuye gratuitamente para probarlo, pero con funcionalidades limitadas o por un tiempo determinado, requiriendo un pago para su uso completo.
+~%-25%Un contrato que restringe la copia y distribución del software.
+}
+
+::Pregunta 6::¿Por qué es crucial mantener actualizado un sistema operativo? Menciona y explica brevemente dos tipos de beneficios que aportan las actualizaciones.{}
+
+::Pregunta 7::¿Cuál es la diferencia principal entre una partición primaria y una partición lógica en un esquema de particionado MBR?{}
+
+::Pregunta 8::¿Qué es el `shell` de un sistema operativo y cuál es su función principal?{}
+
+::Pregunta 9::¿Cuál es la diferencia principal entre una licencia de software "Freeware" y una "Shareware"?{}
+
+::Pregunta 10::Explica qué es un gestor de arranque (bootloader) como GRUB y cuál es su papel en un sistema con múltiples sistemas operativos.{}
