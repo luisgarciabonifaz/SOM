@@ -20,10 +20,10 @@ Windows está diseñado para que su uso sea lo más intuitivo posible. Vamos a e
 
 El **Explorador de Archivos** (o Explorador de Windows) es vuestra herramienta principal para gestionar archivos y carpetas. Pensad en él como un archivador digital donde podéis:
 
--   Navegar por las diferentes unidades de almacenamiento (discos duros, USB, etc.).
--   Crear, mover, copiar, eliminar y renombrar archivos y carpetas.
--   Buscar archivos específicos.
--   Comprimir y descomprimir archivos.
+- Navegar por las diferentes unidades de almacenamiento (discos duros, USB, etc.).
+- Crear, mover, copiar, eliminar y renombrar archivos y carpetas.
+- Buscar archivos específicos.
+- Comprimir y descomprimir archivos.
 
 Podéis abrirlo pulsando la combinación de teclas `Windows + E`.
 
@@ -294,26 +294,21 @@ Aplicar los conocimientos adquiridos sobre las interfaces de usuario, preferenci
 
 **Instrucciones**
 
-Realiza cada una de las siguientes tareas en un equipo con Windows (preferiblemente en un entorno de pruebas o una máquina virtual si no quieres alterar tu sistema principal). Documenta los pasos que sigues y el resultado de cada acción.
-
+Realiza cada una de las siguientes tareas en un equipo con Windows (preferiblemente en un entorno de pruebas o una máquina virtual si no quieres alterar tu sistema principal). Documenta los pasos que sigues y el resultado de cada acción con capturas de pantalla que debes incluir en un documento en formato PDF.
 
 ### Parte 1: Exploración y Personalización de la Interfaz
 
 **1. Familiarización con el Escritorio, Menú Inicio y Barra de Tareas**
 
-- Identifica y describe la función del Escritorio, el Menú Inicio (activándolo con la tecla Windows o clic en su icono) y la Barra de Tareas.
-- Desde el Menú Inicio, busca y abre la aplicación **Configuración**.
 - Ancla una aplicación que uses frecuentemente a la Barra de Tareas y luego desánclala.
-- Abre el Explorador de Archivos utilizando la combinación de teclas `Windows + E`. Describe brevemente qué es y para qué sirve.
+- Abre el Explorador de Archivos y averigua la ruta absoluta de tu carpeta `Documentos`
 
 **2. Personalización del Entorno Personal**
 
-- Cambia el fondo de pantalla de tu escritorio por una imagen de tu elección. Describe cómo acceder a esta opción.
+- Cambia el fondo de pantalla de tu escritorio por una imagen de tu elección.
 - Aplica un **Tema** diferente al actual. Explica qué es un tema y qué elementos modifica.
-- Accede a la configuración de **Sonidos** y **Salvapantallas**. Explica brevemente la utilidad de cada uno.
 - Verifica la **Configuración Regional e Idioma** de tu sistema. Asegúrate de que el formato de fecha, hora y moneda, así como el idioma de visualización, sean correctos.
 
----
 
 ### Parte 2: Gestión de Cuentas de Usuario y Programas
 
@@ -321,7 +316,7 @@ Realiza cada una de las siguientes tareas en un equipo con Windows (preferibleme
 
 - Navega a la sección de **Cuentas de Usuario**.
 - Describe los dos tipos principales de cuentas de usuario: **Administrador** y **Estándar**, y sus diferencias clave en cuanto a permisos.
-- Crea una nueva cuenta de tipo "Estándar". Intenta instalar un programa con esta cuenta y observa si es posible sin intervención del administrador.
+- Crea una nueva cuenta de tipo "Estándar".
 - Cambia el tipo de la nueva cuenta a "Administrador".
 
 **2. Instalación y Desinstalación de Programas**
@@ -330,14 +325,16 @@ Realiza cada una de las siguientes tareas en un equipo con Windows (preferibleme
 - Desinstala un programa que ya no utilices. Utiliza la ruta desde **Configuración** y menciona la ruta alternativa desde el **Panel de Control**.
 - Abre el **Administrador de Tareas** (`Ctrl + Shift + Esc`) y ve a la pestaña **Inicio**. Identifica al menos dos programas que se inicien automáticamente con Windows y explica cómo deshabilitar uno de ellos.
 
----
 
 ### Parte 3: Gestión de Sistemas de Archivos
 
 **1. Sistemas de Archivos y Formateo**
 
 - Abre el **Explorador de Archivos**, haz clic derecho en una unidad y selecciona **Propiedades**. Identifica su sistema de archivos (NTFS o FAT32).
-- Simula el proceso de formateo de una unidad: sin hacer clic en "Iniciar", explica los pasos y cuándo elegirías NTFS o FAT32, mencionando las limitaciones de FAT32.
+- Añade 3 discos de 5 GB a tu máquina virtual,uno de elloss que sea un SSD.
+- Formatea uno de esos discos como NTFS.
+- Crea un volumen espejo de una capacidad util de 2 GB
+- Crea un volumen distribuido de 4 GB utilizando espacio de 2 discos.
 
 **2. Mantenimiento de Discos**
 
@@ -357,14 +354,12 @@ Realiza cada una de las siguientes tareas en un equipo con Windows (preferibleme
 - Describe qué es el **Modo Seguro** y su utilidad para diagnosticar problemas graves.
 - Explica los pasos para acceder al Modo Seguro, incluyendo el **Entorno de Recuperación de Windows (WinRE)**.
 - Menciona las dos principales herramientas de copia de seguridad:
-  - **Copia de seguridad y restauración (Windows 7)**
-  - **Historial de Archivos**
 
   Explica la diferencia entre una **copia de seguridad de archivos** y una **copia de seguridad de imagen del sistema**.
 
 **3. Actualización del Sistema**
 
-- Accede a **Windows Update**: `Configuración > Actualización y seguridad > Windows Update`.
+- Accede a **Windows Update**
 - Muestra cómo:
   - Buscar actualizaciones
   - Pausarlas
