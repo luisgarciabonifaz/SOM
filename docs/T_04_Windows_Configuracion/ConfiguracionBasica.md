@@ -120,6 +120,29 @@ Para optimizar/desfragmentar:
 
 Windows suele programar optimizaciones automáticas, pero es bueno saber cómo hacerlo manualmente.
 
+### 3.4. Gestión de discos
+
+Otro aspecto importante de la Administración del equipo es relativo a los discos. Desde la administración de discos, podemos añadir discos, crear particiones, aumentar o disminuir su tamaño, fusionar particiones, etc.
+
+![Gestion de discos](Gestion_Discos_W10.png){: style="width:70%;margin:auto;display:block"}
+
+Desde esta ventana si pulsamos click derecho sobre un disco podemos:
+
+- Abrir.
+- Explorar.
+- Marcar partición como activa.
+- Cambiar la letra y rutas de acceso de unidad.
+- Formatear.
+
+Concepto de volumen: Partición que coge espacio de uno o más discos. En un disco podemos tener varios volúmenes.
+
+Opciones de volumen:
+
+- Extender volumen.
+- Reducir volumen.
+- Agregar reflejo.
+- Eliminar volumen.
+
 ## 4. Métodos para la Recuperación del Sistema Operativo
 
 A veces, las cosas no salen como esperamos y el sistema puede fallar. Windows ofrece varias herramientas para ayudar a recuperar el equipo.
@@ -130,6 +153,8 @@ Un punto de restauración es una "instantánea" del estado del sistema en un mom
 
 - Windows crea puntos de restauración automáticamente antes de eventos importantes (como la instalación de un nuevo programa o una actualización).
 - También podéis crear puntos de restauración manualmente.
+
+![Punto de Restauración](Punto_Restautacion_W10.png){: style="width:70%;margin:auto;display:block"}
 
 ### 4.2. Restauración del Sistema
 
@@ -145,6 +170,8 @@ Realizar copias de seguridad es una de las prácticas más importantes para prot
 - **Copia de seguridad de imagen del sistema**: Crea una copia exacta de todo vuestro disco duro, incluyendo el sistema operativo, programas y datos. Es útil para recuperar el sistema a su estado exacto en caso de un fallo grave del disco o del sistema.
 
 Windows tiene una herramienta llamada "Copia de seguridad y restauración (Windows 7)" (aunque esté en Windows 10/11) en el Panel de Control, que permite crear estas copias de seguridad. También podéis usar el Historial de Archivos en Configuración para hacer copias de seguridad de vuestros documentos personales.
+
+![Imagen del Sistema](Imagen_Sistema_W10.png){: style="width:70%;margin:auto;display:block"}
 
 ### 4.4. Modo Seguro
 
@@ -200,6 +227,8 @@ Es importante desinstalar programas correctamente para evitar dejar archivos res
 Algunos programas se configuran para iniciarse automáticamente cuando arranca Windows, lo que puede ralentizar el inicio del sistema.
 
 - Administrador de Tareas: Pulsad `Ctrl + Shift + Esc` para abrir el Administrador de Tareas. Id a la pestaña Inicio. Aquí podéis ver qué programas se inician con Windows y deshabilitar los que no necesitéis, mejorando el tiempo de arranque.
+
+![Dehabilitar programas en el inicio](Inicio_Deshabilitar_W10.png){: style="width:70%;margin:auto;display:block"}
 
 ## 7. Asistentes de Configuración del Sistema
 
@@ -361,15 +390,15 @@ Realiza cada una de las siguientes tareas en un equipo con Windows (preferibleme
 
 - Accede a **Windows Update**
 - Muestra cómo:
-  - Buscar actualizaciones
-  - Pausarlas
-  - Ver el historial de actualizaciones
+    - Buscar actualizaciones
+    - Pausarlas
+    - Ver el historial de actualizaciones
 
   Explica por qué es recomendable permitir las actualizaciones automáticas.
 
 - Describe dos métodos para actualizar controladores:
-  - A través de **Windows Update**
-  - Manualmente desde el **Administrador de Dispositivos** o la web del fabricante.
+    - A través de **Windows Update**
+    - Manualmente desde el **Administrador de Dispositivos** o la web del fabricante.
 
 
 ### Parte 5: Automatización Básica y Redes (Desafío Adicional)
@@ -399,7 +428,7 @@ Get-Process
 **3. Configuración de Red**
 
 - Describe los pasos para acceder a la **configuración de red** y cómo cambiar manualmente:
-  - Dirección IP
-  - Servidores DNS
+    - Dirección IP
+    - Servidores DNS
 
-  Explica brevemente qué son.
+Explica brevemente qué son.
