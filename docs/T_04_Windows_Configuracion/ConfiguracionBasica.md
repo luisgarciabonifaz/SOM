@@ -179,10 +179,11 @@ El **Modo Seguro** es una forma de iniciar Windows con un conjunto mínimo de co
 
 Para acceder al Modo Seguro:
 
-1. Reiniciad el equipo.
-2. Durante el inicio, si Windows no arranca correctamente dos veces seguidas, la tercera vez debería aparecer el **Entorno de Recuperación de Windows (WinRE)**.
-3. Desde WinRE, id a **Solucionar problemas > Opciones avanzadas > Configuración de inicio > Reiniciar**.
-4. Cuando reinicie, veréis varias opciones para el Modo Seguro (con red, con símbolo del sistema).
+1. Pulsa el boton de apagar para que se despliegue el menú y luego pulsar Mayúsculas en el teclado mientras haces clic en Reiniciar.
+2. Haz clic en la opción Solucionar problemas.
+3. Haz clic en Opciones avanzadas.
+4. Haz clic en Configuración de inicio.
+5. Selecciona modo seguro
 
 ## 5. Configuración para la Actualización del Sistema Operativo
 

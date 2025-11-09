@@ -17,7 +17,9 @@ Aplicar los conocimientos adquiridos sobre las interfaces de usuario, preferenci
 
 **Instrucciones**
 
-Realiza cada una de las siguientes tareas en un equipo con Windows (preferiblemente en un entorno de pruebas o una máquina virtual si no quieres alterar tu sistema principal). Documenta los pasos que sigues y el resultado de cada acción con capturas de pantalla que debes incluir en un documento en formato PDF.
+Realiza cada una de las siguientes tareas en un equipo con Windows (preferiblemente en un entorno de pruebas o una máquina virtual si no quieres alterar tu sistema principal). 
+Elabora un video (no es necesario audio) con todos los pasos que sigues y el resultado de cada acción. 
+Una buena aplicación para generar el video es [aTube Catcher](https://www.atube.me/es/){:target="_blank"}
 
 ### Parte 1: Exploración y Personalización de la Interfaz
 
