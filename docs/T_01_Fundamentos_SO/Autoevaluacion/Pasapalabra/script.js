@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const respuesta = respuestaEl.value.trim().toLowerCase();
         if (respuesta === '') return;
 
-        if (respuesta === preguntas[preguntaActual].palabra.toLowerCase()) {
+        if (respuesta === preguntas[preguntaActual].respuesta.toLowerCase()) {
             aciertos++;
             aciertosEl.textContent = aciertos;
             marcarLetra('acertada');
