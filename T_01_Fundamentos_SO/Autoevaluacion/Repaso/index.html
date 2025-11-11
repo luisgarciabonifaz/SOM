@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autoevaluación: Fundamentos de SO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="main-header">
+        <h1>Autoevaluación: Fundamentos de Sistemas Operativos</h1>
+        <p class="subtitle">Pon a prueba tus conocimientos</p>
+    </header>
+    <div class="quiz-container">
+        <div id="progress-bar-container">
+            <div id="progress-bar"></div>
+        </div>
+        <div id="quiz">
+            <h2 id="question-counter"></h2>
+            <p id="question"></p>
+            <div id="answer-buttons" class="btn-grid">
+                <!-- Los botones de respuesta se generarán aquí -->
+            </div>
+            <div id="feedback" class="feedback-container"></div>
+            <button id="next-btn" class="next-btn btn hide">Siguiente</button>
+        </div>
+        <div id="results-container" class="hide">
+            <h2>Resultados</h2>
+            <p>Has acertado <span id="score"></span> de 10 preguntas.</p>
+            <button id="restart-btn" class="btn">Intentar de nuevo</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

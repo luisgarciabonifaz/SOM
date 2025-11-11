@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOM - Windows Gestión de Archivos - Actividades de Repaso</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        header {
+            background-color: #005f7f;
+            color: #ffffff;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        header img {
+            height: 50px;
+            margin-right: 20px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 25px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #005f7f;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #007f9f;
+            margin-top: 20px;
+        }
+        .activity {
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: #e9f5f5;
+            border-left: 5px solid #00a8cc;
+            border-radius: 5px;
+        }
+        .activity p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        .activity ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+        .activity ol {
+            list-style-type: decimal;
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+        .activity code {
+            background-color: #e0e0e0;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            color: #c7254e;
+        }
+        .question {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .options label:hover {
+            background-color: #f0f0f0;
+        }
+        .options input[type="radio"] {
+            margin-right: 10px;
+        }
+        .check-button {
+            background-color: #007f9f;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+        .check-button:hover {
+            background-color: #005f7f;
+        }
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: none; /* Hidden by default */
+        }
+        .feedback.correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .feedback.incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .solution {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f0f8ff;
+            border: 1px dashed #a0d6f0;
+            border-radius: 5px;
+            display: none; /* Hidden by default */
+        }
+        .command-input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Courier New', monospace;
+        }
+        .code-block {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 15px;
+            overflow-x: auto;
+        }
+        .code-block pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngwing.com%2Fes%2Ffree-png-nlmtf&psig=AOvVaw193_fR32K-G2sL0yB_L5W4&ust=1721820614481000&source=images&cd=vfe&opi=89978757&ved=0CBEQjRxqFwoTCICV65_tqYcDFQAAAAAdAAAAABAE" alt="Logo"> <h1>SOM - Windows Gestión de Archivos</h1>
+    </header>
+
+    <div class="container">
+        <h2>Actividades de Repaso: Gestión de Archivos y Directorios en Windows</h2>
+
+        <div class="activity">
+            <h3>Actividad 1: Conceptos Fundamentales del Sistema de Archivos</h3>
+            <p>Selecciona la opción correcta para cada pregunta.</p>
+
+            <div class="question">1. ¿Qué sistema de archivos es el principal utilizado por las versiones modernas de Windows y ofrece seguridad, recuperación ante fallos y soporte para discos grandes?</div>
+            <div class="options" id="q1-options">
+                <label><input type="radio" name="q1" value="a"> FAT16</label>
+                <label><input type="radio" name="q1" value="b"> EXT4</label>
+                <label><input type="radio" name="q1" value="c"> NTFS</label>
+                <label><input type="radio" name="q1" value="d"> HFS+</label>
+            </div>
+            <button class="check-button" onclick="checkQuiz('q1', 'c')">Comprobar</button>
+            <div class="feedback" id="q1-feedback"></div>
+            <div class="solution" id="q1-solution">La respuesta correcta es NTFS.</div>
+
+            <div class="question">2. ¿Cuál de las siguientes limitaciones es característica de FAT32 en comparación con NTFS?</div>
+            <div class="options" id="q2-options">
+                <label><input type="radio" name="q2" value="a"> Soporte para volúmenes de disco muy grandes (terabytes).</label>
+                <label><input type="radio" name="q2" value="b"> Ausencia de recuperación ante fallos mediante journaling.</label>
+                <label><input type="radio" name="q2" value="c"> Permite establecer permisos detallados a nivel de archivo.</label>
+                <label><input type="radio" name="q2" value="d"> Soporte para cifrado de archivos (EFS).</label>
+            </div>
+            <button class="check-button" onclick="checkQuiz('q2', 'b')">Comprobar</button>
+            <div class="feedback" id="q2-feedback"></div>
+            <div class="solution" id="q2-solution">FAT32 es más propenso a la corrupción de datos en caso de un fallo del sistema o apagón, ya que carece de las características de journaling de NTFS.</div>
+        </div>
+
+        <div class="activity">
+            <h3>Actividad 2: Atributos de Archivos y Directorios</h3>
+            <p>Indica si la afirmación es Verdadera o Falsa.</p>
+
+            <div class="question">1. El atributo "Oculto" hace que un archivo o carpeta no sea visible por defecto en el Explorador de Archivos, pero se puede mostrar activando una opción.</div>
+            <div class="options" id="q3-options">
+                <label><input type="radio" name="q3" value="a"> Verdadera</label>
+                <label><input type="radio" name="q3" value="b"> Falsa</label>
+            </div>
+            <button class="check-button" onclick="checkQuiz('q3', 'a')">Comprobar</button>
+            <div class="feedback" id="q3-feedback"></div>
+            <div class="solution" id="q3-solution">El atributo "Oculto" hace que el archivo o carpeta no sea visible por defecto en el Explorador de Archivos. Se pueden mostrar activando la opción "Elementos ocultos".</div>
+
+            <div class="question">2. Un archivo puede tener los atributos "Comprimido" y "Cifrado" activados simultáneamente con las opciones nativas de Windows.</div>
+            <div class="options" id="q4-options">
+                <label><input type="radio" name="q4" value="a"> Verdadera</label>
+                <label><input type="radio" name="q4" value="b"> Falsa</label>
+            </div>
+            <button class="check-button" onclick="checkQuiz('q4', 'b')">Comprobar</button>
+            <div class="feedback" id="q4-feedback"></div>
+            <div class="solution" id="q4-solution">Los atributos "Comprimido" y "Cifrado" son excluyentes (un archivo no puede estar comprimido y cifrado a la vez con las opciones nativas de Windows).</div>
+        </div>
+
+        <div class="activity">
+            <h3>Actividad 3: Permisos NTFS</h3>
+            <p>Responde a las siguientes preguntas sobre permisos NTFS.</p>
+
+            <div class="question">1. ¿Qué permiso NTFS permite al usuario o grupo realizar cualquier acción sobre el archivo o carpeta, incluyendo cambiar permisos y tomar posesión?</div>
+            <div class="options" id="q5-options">
+                <label><input type="radio" name="q5" value="a"> Modificar</label>
+                <label><input type="radio" name="q5" value="b"> Lectura y ejecución</label>
+                <label><input type="radio" name="q5" value="c"> Control total</label>
+                <label><input type="radio" name="q5" value="d"> Escritura</label>
+            </div>
+            <button class="check-button" onclick="checkQuiz('q5', 'c')">Comprobar</button>
+            <div class="feedback" id="q5-feedback"></div>
+            <div class="solution" id="q5-solution">"Control total" permite al usuario o grupo realizar cualquier acción sobre el archivo o carpeta: leer, escribir, ejecutar, modificar, eliminar, cambiar permisos y tomar posesión.</div>
+
+            <div class="question">2. En la herencia de permisos NTFS, ¿qué sucede por defecto cuando se establecen permisos en una carpeta padre?</div>
+            <div class="options" id="q6-options">
+                <label><input type="radio" name="q6" value="a"> Los permisos se deniegan automáticamente a todas las subcarpetas.</label>
+                <label><input type="radio" name="q6" value="b"> Los permisos se copian automáticamente a todos los archivos y subcarpetas dentro de ella.</label>
+                <label><input type="radio" name="q6" value="c"> Los permisos solo aplican a la carpeta padre, no a su contenido.</label>
+                <label><input type="radio" name="q6" value="d"> Se requiere una configuración manual para cada archivo y subcarpeta.</label>
+            </div>
+            <button class="check-button" onclick="checkQuiz('q6', 'b')">Comprobar</button>
+            <div class="feedback" id="q6-feedback"></div>
+            <div class="solution" id="q6-solution">Cuando se establecen permisos en una carpeta padre, por defecto, esos permisos se aplican automáticamente (se "heredan") a todos los archivos y subcarpetas creados dentro de ella.</div>
+        </div>
+
+        <div class="activity">
+            <h3>Actividad 4: Comandos Básicos de PowerShell</h3>
+            <p>Escribe el comando de PowerShell que realizaría la acción solicitada.</p>
+
+            <div class="question">1. Comando para listar solo los directorios dentro de la ubicación actual.</div>
+            <input type="text" id="q7-input" class="command-input" placeholder="Escribe tu comando aquí">
+            <button class="check-button" onclick="checkCommand('q7', 'Get-ChildItem -Directory')">Comprobar</button>
+            <div class="feedback" id="q7-feedback"></div>
+            <div class="solution" id="q7-solution">El comando es <code>Get-ChildItem -Directory</code>.</div>
+
+            <div class="question">2. Comando para crear un nuevo directorio llamado "Reportes" en la ruta "C:\Proyectos".</div>
+            <input type="text" id="q8-input" class="command-input" placeholder="Escribe tu comando aquí">
+            <button class="check-button" onclick="checkCommand('q8', 'New-Item -Path "C:\\Proyectos" -Name "Reportes" -ItemType Directory')">Comprobar</button>
+            <div class="feedback" id="q8-feedback"></div>
+            <div class="solution" id="q8-solution">El comando es <code>New-Item -Path "C:\Proyectos" -Name "Reportes" -ItemType Directory</code>.</div>
+
+            <div class="question">3. Comando para sobrescribir completamente el contenido del archivo "log.txt" con el texto "Nuevo registro de evento.".</div>
+            <input type="text" id="q9-input" class="command-input" placeholder="Escribe tu comando aquí">
+            <button class="check-button" onclick="checkCommand('q9', 'Set-Content -Path "log.txt" -Value "Nuevo registro de evento."')">Comprobar</button>
+            <div class="feedback" id="q9-feedback"></div>
+            <div class="solution" id="q9-solution">El comando es <code>Set-Content -Path "log.txt" -Value "Nuevo registro de evento."</code>.</div>
+
+            <div class="question">4. Comando para eliminar el archivo "temp.txt" sin pedir confirmación, incluso si está oculto o es de sistema.</div>
+            <input type="text" id="q10-input" class="command-input" placeholder="Escribe tu comando aquí">
+            <button class="check-button" onclick="checkCommand('q10', 'Remove-Item -Path "temp.txt" -Force')">Comprobar</button>
+            <div class="feedback" id="q10-feedback"></div>
+            <div class="solution" id="q10-solution">El comando es <code>Remove-Item -Path "temp.txt" -Force</code>.</div>
+        </div>
+
+        <div class="activity">
+            <h3>Actividad 5: Uso de Comodines en PowerShell</h3>
+            <p>Analiza el siguiente escenario y responde.</p>
+
+            <div class="question">Tienes una carpeta con los siguientes archivos: <code>documento_final.docx</code>, <code>informe_2023.pdf</code>, <code>reporte_ventas.xlsx</code>, <code>backup_antiguo.zip</code>, <code>informe_mensual.docx</code>.
+            <br>¿Qué comando de PowerShell usarías para listar **solo** los archivos que contienen la palabra "informe" en su nombre, independientemente de la extensión?</div>
+            <input type="text" id="q11-input" class="command-input" placeholder="Escribe tu comando aquí">
+            <button class="check-button" onclick="checkCommand('q11', 'Get-ChildItem *informe*')">Comprobar</button>
+            <div class="feedback" id="q11-feedback"></div>
+            <div class="solution" id="q11-solution">El comando es <code>Get-ChildItem *informe*</code>. El asterisco <code>*</code> representa cero o más caracteres, permitiendo que coincida con cualquier texto antes y después de "informe".</div>
+
+            <div class="question">2. ¿Qué comando usarías para copiar todos los archivos con extensión <code>.log</code> ubicados en cualquier subdirectorio directo de "C:\Logs" (por ejemplo, <code>C:\Logs\Server1\app.log</code>, <code>C:\Logs\Server2\error.log</code>) a la carpeta "C:\BackupLogs"?</div>
+            <input type="text" id="q12-input" class="command-input" placeholder="Escribe tu comando aquí">
+            <button class="check-button" onclick="checkCommand('q12', 'Copy-Item -Path "C:\\Logs\\*\\*.log" -Destination "C:\\BackupLogs\\"')">Comprobar</button>
+            <div class="feedback" id="q12-feedback"></div>
+            <div class="solution" id="q12-solution">El comando es <code>Copy-Item -Path "C:\Logs\*\*.log" -Destination "C:\BackupLogs\"</code>. El primer <code>*</code> coincide con cualquier subdirectorio directo y el segundo <code>*.log</code> con cualquier archivo <code>.log</code> dentro de esos subdirectorios.</div>
+        </div>
+    </div>
+
+    <script>
+        function checkQuiz(questionId, correctAnswer) {
+            const options = document.querySelectorAll(`#${questionId}-options input[name="${questionId}"]`);
+            let selectedValue = null;
+            options.forEach(option => {
+                if (option.checked) {
+                    selectedValue = option.value;
+                }
+            });
+
+            const feedbackDiv = document.getElementById(`${questionId}-feedback`);
+            const solutionDiv = document.getElementById(`${questionId}-solution`);
+
+            feedbackDiv.style.display = 'block';
+            solutionDiv.style.display = 'block';
+
+            if (selectedValue === correctAnswer) {
+                feedbackDiv.className = 'feedback correct';
+                feedbackDiv.textContent = '¡Correcto!';
+            } else {
+                feedbackDiv.className = 'feedback incorrect';
+                feedbackDiv.textContent = 'Incorrecto. Inténtalo de nuevo.';
+            }
+        }
+
+        function checkCommand(questionId, correctAnswer) {
+            const inputField = document.getElementById(`${questionId}-input`);
+            const userAnswer = inputField.value.trim();
+
+            // Normalize spacing and quotes for comparison
+            const normalize = (str) => str.replace(/\s+/g, ' ').replace(/"/g, '').toLowerCase();
+
+            const feedbackDiv = document.getElementById(`${questionId}-feedback`);
+            const solutionDiv = document.getElementById(`${questionId}-solution`);
+
+            feedbackDiv.style.display = 'block';
+            solutionDiv.style.display = 'block';
+
+            if (normalize(userAnswer) === normalize(correctAnswer)) {
+                feedbackDiv.className = 'feedback correct';
+                feedbackDiv.textContent = '¡Correcto!';
+            } else {
+                feedbackDiv.className = 'feedback incorrect';
+                feedbackDiv.textContent = 'Incorrecto. Revisa el comando.';
+            }
+        }
+    </script>
+</body>
+</html>
