@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pasapalabra - Virtualización</title>
+    <title>Pasapalabra - Instalación SO</title>
     <style>
         body {
             font-family: sans-serif;
@@ -42,7 +42,7 @@
             font-size: 24px;
             font-weight: bold;
             color: white;
-            background-color: #4CAF50; /* Verde por defecto */
+            background-color: #2109f4; /* Verde por defecto */
         }
         
         .letra.acertada {
@@ -97,7 +97,7 @@
 <body>
     <div id="timer-container">150</div>
     <div class="container">
-        <h1>Pasapalabra - Virtualización</h1>
+        <h1>Pasapalabra - Instalación SO</h1>
         <div class="rosco-container">
             <div class="rosco"></div>
         </div>
@@ -124,32 +124,32 @@
     const timerEl = document.getElementById('timer-container');
 
     const preguntas = [
-        { letra: "a", answer: "agilidad", status: 0, question: "CON LA A. Ventaja de la virtualización que consiste en poder mover máquinas virtuales de un servidor a otro." },
-    { letra: "b", answer: "backup", status: 0, question: "CON LA B. Copia de seguridad de una máquina virtual." },
-    { letra: "c", answer: "clonación", status: 0, question: "CON LA C. Metodo para realizar una copia exacta de una máquina virtual." },
-    { letra: "d", answer: "descarga", status: 0, question: "CON LA D. Proceso para obtener de interner una imagen ISO de un sistema operativo." },
-    { letra: "e", answer: "emulación", status: 0, question: "CON LA E. Proceso de imitar el comportamiento de un sistema de hardware en otro diferente." },
-    { letra: "f", answer: "foto", status: 0, question: "CON LA F. Una instantánea es una ..... del estado completo de una máquina virtual en un momento concreto.." },
-    { letra: "g", answer: "guest", status: 0, question: "CON LA G. Sistema operativo que se ejecuta dentro de una máquina virtual. En español, 'huésped'." },
-    { letra: "h", answer: "hipervisor", status: 0, question: "CON LA H. Software o firmware que crea y ejecuta máquinas virtuales." },
-    { letra: "i", answer: "ISO", status: 0, question: "CON LA I. Tipo de archivo de las imagenes de sistemas operativos" },
-    { letra: "j", answer: "java", status: 0, question: "CON LA J. Lenguaje de programación para el que se creó una de las primeras máquinas virtuales." },
-    { letra: "k", answer: "kvm", status: 0, question: "CON LA K. Hipervisor de tipo 1 integrado en el kernel de Linux." },
-    { letra: "l", answer: "linux", status: 0, question: "CON LA L. Sistema operativo de código abierto que puede actuar como anfitrión o huésped en entornos virtualizados." },
-    { letra: "m", answer: "máquina virtual", status: 0, question: "CON LA M. Software que simula un sistema informático y puede ejecutar programas como si fuera un ordenador real." },
-    { letra: "n", answer: "nativo", status: 0, question: "CON LA N. Tipo de hipervisor que se ejecuta directamente sobre el hardware del sistema, también conocido como Tipo 1." },
-    { letra: "o", answer: "oracle", status: 0, question: "CON LA O. Empresa que desarrolla el software de virtualización VirtualBox." },
-    { letra: "p", answer: "portabilidad", status: 0, question: "CON LA P. Ventaja de la maquinas virtuales que permite mover con facilidad las máquinas virtuales de un ordenador a otro." },
-    { letra: "q", answer: "máquina", status: 0, question: "CONTIENE LA Q. ..... Virtual." },
-    { letra: "r", answer: "reducción", status: 0, question: "CON LA R. Una de las principales ventajas de la virtualización es la ... de costes." },
-    { letra: "s", answer: "snapshot", status: 0, question: "CON LA S. Captura del estado de una máquina virtual en un momento concreto, permitiendo volver a ese estado." },
-    { letra: "t", answer: "NAT", status: 0, question: "CONTIENE LA T. Traduccion de direcciones de red." },
-    { letra: "u", answer: "ubuntu", status: 0, question: "CON LA U. Distribución de Linux popular para usar como sistema operativo anfitrión o huésped en virtualización." },
-    { letra: "v", answer: "vmware", status: 0, question: "CON LA V. Empresa líder en el mercado de software de virtualización." },
-    { letra: "w", answer: "windows", status: 0, question: "CON LA W. Sistema operativo de Microsoft que incluye el hipervisor Hyper-V." },
-    { letra: "x", answer: "VirtualBox", status: 0, question: "CONTIENE LA X. Software de Virtulización de Oracle." },
-    { letra: "y", answer: "hyper-v", status: 0, question: "CONTIENE LA Y. Hipervisor de Microsoft para la virtualización." },
-    { letra: "z", answer: "virtualización", status: 0, question: "EMPIEZA POR V, CONTIENE LA Z. Creación a través de software de una versión virtual de algún recurso tecnológico." },
+        { letra: 'A', pregunta: 'CON LA A. Ventaja de la virtualización que consiste en poder mover máquinas virtuales de un servidor a otro.', respuesta: 'agilidad' },
+        { letra: 'B', pregunta: 'CON LA B. Copia de seguridad de una máquina virtual.', respuesta: 'backup' },
+        { letra: 'C', pregunta: 'CON LA C. Metodo para realizar una copia exacta de una máquina virtual.', respuesta: 'clonación' },
+        { letra: 'D', pregunta: 'CON LA D. Proceso para obtener de interner una imagen ISO de un sistema operativo.', respuesta: 'descarga' },
+        { letra: 'E', pregunta: 'CON LA E. Proceso de imitar el comportamiento de un sistema de hardware en otro diferente.', respuesta: 'emulación' },
+        { letra: 'F', pregunta: 'CON LA F. Una instantánea es una ..... del estado completo de una máquina virtual en un momento concreto..', respuesta: 'foto' },
+        { letra: 'G', pregunta: 'CON LA G. Sistema operativo que se ejecuta dentro de una máquina virtual. En español, "huésped".', respuesta: 'guest' },
+        { letra: 'H', pregunta: 'CON LA H. Software o firmware que crea y ejecuta máquinas virtuales.', respuesta: 'hipervisor' },
+        { letra: 'I', pregunta: 'CON LA I. Tipo de archivo de las imagenes de sistemas operativos', respuesta: 'ISO' },
+        { letra: 'J', pregunta: 'CON LA J. Lenguaje de programación para el que se creó una de las primeras máquinas virtuales.', respuesta: 'java' },
+        { letra: 'K', pregunta: 'CON LA K. Hipervisor de tipo 1 integrado en el kernel de Linux.', respuesta: 'kvm' },
+        { letra: 'L', pregunta: 'CON LA L. Sistema operativo de código abierto que puede actuar como anfitrión o huésped en entornos virtualizados.', respuesta: 'linux' },
+        { letra: 'M', pregunta: 'CON LA M. Software que simula un sistema informático y puede ejecutar programas como si fuera un ordenador real.', respuesta: 'máquina virtual' },
+        { letra: 'N', pregunta: 'CON LA N. Tipo de hipervisor que se ejecuta directamente sobre el hardware del sistema, también conocido como Tipo 1.', respuesta: 'nativo' },
+        { letra: 'O', pregunta: 'CON LA O. Emppreguntaa que desarrolla el software de virtualización VirtualBox.', respuesta: 'oracle' },
+        { letra: 'P', pregunta: 'CON LA P. Ventaja de la maquinas virtuales que permite mover con facilidad las máquinas virtuales de un ordenador a otro.', respuesta: 'portabilidad' },
+        { letra: 'Q', pregunta: 'CONTIENE LA Q. ..... Virtual.', respuesta: 'máquina' },
+        { letra: 'R', pregunta: 'CON LA R. Una de las principales ventajas de la virtualización es la ... de costes.', respuesta: 'reducción' },
+        { letra: 'S', pregunta: 'CON LA S. Captura del estado de una máquina virtual en un momento concreto, permitiendo volver a ese estado.', respuesta: 'snapshot' },
+        { letra: 'T', pregunta: 'CONTIENE LA T. Traduccion de direcciones de red.', respuesta: 'NAT' },
+        { letra: 'U', pregunta: 'CON LA U. Distribución de Linux popular para usar como sistema operativo anfitrión o huésped en virtualización.', respuesta: 'ubuntu' },
+        { letra: 'V', pregunta: 'CON LA V. Emppreguntaa líder en el mercado de software de virtualización.', respuesta: 'vmware' },
+        { letra: 'W', pregunta: 'CON LA W. Sistema operativo de Microsoft que incluye el hipervisor Hyper-V.', respuesta: 'windows' },
+        { letra: 'X', pregunta: 'CONTIENE LA X. Software de Virtulización de Oracle.', respuesta: 'VirtualBox' },
+        { letra: 'Y', pregunta: 'CONTIENE LA Y. Hipervisor de Microsoft para la virtualización.', respuesta: 'hyper-v' },
+        { letra: 'Z', pregunta: 'EMPIEZA POR V, CONTIENE LA Z. Creación a través de software de una versión virtual de algún recurso tecnológico.', respuesta: 'virtualización' }
     ];
     
     let preguntaActual = 0;

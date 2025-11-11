@@ -3,13 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pasapalabra</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Pasapalabra - Instalación SO</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .rosco-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .rosco {
+            display: grid;
+            grid-template-columns: repeat(7, 50px);
+            grid-gap: 5px;
+        }
+
+        .letra {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            background-color: #2109f4; /* Verde por defecto */
+        }
+        
+        .letra.acertada {
+            background-color: #28a745; /* Verde más oscuro para aciertos */
+        }
+
+        .letra.fallada {
+            background-color: #dc3545; /* Rojo para fallos */
+        }
+
+        .pregunta-container {
+            margin-bottom: 20px;
+            min-height: 40px;
+            font-size: 1.2em;
+        }
+
+        .respuesta-container {
+            margin-bottom: 20px;
+        }
+
+        #respuesta {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        #submit {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+        }
+
+        #timer-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #d0021b;
+            color: white;
+            font-size: 2em;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
 </head>
 <body>
     <div id="timer-container">150</div>
     <div class="container">
-        <h1>Pasapalabra</h1>
+        <h1>Pasapalabra - Instalación SO</h1>
         <div class="rosco-container">
             <div class="rosco"></div>
         </div>
@@ -17,7 +105,7 @@
             <p id="pregunta"></p>
         </div>
         <div class="respuesta-container">
-            <input type="text" id="respuesta" placeholder="Escribe tu respuesta">
+            <input type="text" id="respuesta" placeholder="Escribe tu respuesta" autocomplete="off">
             <button id="submit">Responder</button>
         </div>
         <div class="resultado-container">
@@ -25,6 +113,133 @@
             <p>Fallos: <span id="fallos">0</span></p>
         </div>
     </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const rosco = document.querySelector('.rosco');
+    const preguntaEl = document.getElementById('pregunta');
+    const respuestaEl = document.getElementById('respuesta');
+    const submitBtn = document.getElementById('submit');
+    const aciertosEl = document.getElementById('aciertos');
+    const fallosEl = document.getElementById('fallos');
+    const timerEl = document.getElementById('timer-container');
+
+    const preguntas = [
+        { letra: 'A', pregunta: 'Estándar de codificación de caracteres obsoleto, predecesor de Unicode.', respuesta: 'ASCII' },
+        { letra: 'B', pregunta: 'Caminos por los que se transmite la información entre los componentes del sistema.', respuesta: 'Buses' },
+        { letra: 'C', pregunta: '"Cerebro" del ordenador, encargado de ejecutar las instrucciones de los programas.', respuesta: 'CPU' },
+        { letra: 'D', pregunta: 'Software que permite al sistema operativo comunicarse y controlar un hardware específico.', respuesta: 'Driver' },
+        { letra: 'E', pregunta: 'Uno de los estados de un proceso, en el que el procesador está ejecutando las instrucciones del proceso.', respuesta: 'Ejecución' },
+        { letra: 'F', pregunta: 'Sistema de archivos compatible con casi todos los sistemas operativos, pero con limitaciones de tamaño de archivo.', respuesta: 'FAT32' },
+        { letra: 'G', pregunta: 'Conjunto de usuarios que tienen los mismos permisos sobre un archivo/directorio.', respuesta: 'Grupo' },
+        { letra: 'H', pregunta: 'Parte física y tangible de un sistema informático.', respuesta: 'Hardware' },
+        { letra: 'I', pregunta: 'Comunicación entre procesos.', respuesta: 'IPC' },
+        { letra: 'J', pregunta: 'Técnica que utilizan los sistemas de archivos modernos para ser más fiables.', respuesta: 'Journaling' },
+        { letra: 'L', pregunta: 'Permiso que permite ver el contenido de un archivo.', respuesta: 'Lectura' },
+        { letra: 'M', pregunta: 'Almacenamiento temporal y volátil que guarda los datos y programas que se están usando activamente.', respuesta: 'Memoria RAM' },
+        { letra: 'N', pregunta: 'Sistema de archivos predeterminado y más avanzado para Windows.', respuesta: 'NTFS' },
+        { letra: 'O', pregunta: 'Atributo de archivo que hace que no se muestre por defecto en el explorador de archivos.', respuesta: 'Oculto' },
+        { letra: 'P', pregunta: 'Instancia de un programa en ejecución.', respuesta: 'Proceso' },
+        { letra: 'Q', pregunta: 'Contiene la Q. Organización de las diferentes partes de un S.O para que trabajen juntas.', respuesta: 'Arquitectura' },
+        { letra: 'R', pregunta: 'Directorio principal, el punto de partida de toda la estructura de archivos.', respuesta: 'Raíz' },
+        { letra: 'S', pregunta: 'Parte lógica e intangible del sistema, compuesta por programas, datos e instrucciones.', respuesta: 'Software' },
+        { letra: 'T', pregunta: 'Estado de un proceso en el que ha completado su ejecución.', respuesta: 'Terminado' },
+        { letra: 'U', pregunta: 'Estándar de codificación de caracteres que busca codificar prácticamente todos los caracteres de todos los idiomas del mundo.', respuesta: 'Unicode' },
+        { letra: 'V', pregunta: 'Arquitectura de la mayoría de los ordenadores actuales.', respuesta: 'Von Neumann' },
+        { letra: 'W', pregunta: 'Permiso que permite modificar el contenido de un archivo.', respuesta: 'Write' },
+        { letra: 'X', pregunta: 'Permiso que permite ejecutar un archivo.', respuesta: 'Execute' },
+        { letra: 'Y', pregunta: 'Contiene la Y. Atributo de archivo que indica que es un archivo o directorio crítico para el funcionamiento del sistema operativo.', respuesta: 'System' },
+        { letra: 'Z', pregunta: 'Contiene la Z. Permite que los usuarios interactúen con el sistema, puede ser GUI o CLI..', respuesta: 'Interfaz' },
+    ];
+
+    let preguntaActual = 0;
+    let aciertos = 0;
+    let fallos = 0;
+    let timeLeft = 150;
+    let timerInterval;
+
+    function iniciarJuego() {
+        mostrarPregunta();
+        crearRosco();
+        startTimer();
+    }
+
+    function startTimer() {
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            timerEl.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                endGame(false);
+            }
+        }, 1000);
+    }
+
+    function endGame(completed) {
+        clearInterval(timerInterval);
+        respuestaEl.disabled = true;
+        submitBtn.disabled = true;
+        if (completed) {
+            preguntaEl.textContent = '¡Felicidades! ¡Has completado el rosco!';
+        } else {
+            preguntaEl.textContent = '¡Tiempo agotado! Fin del juego.';
+        }
+    }
+
+    function crearRosco() {
+        rosco.innerHTML = '';
+        preguntas.forEach(p => {
+            const letraEl = document.createElement('div');
+            letraEl.classList.add('letra');
+            letraEl.textContent = p.letra.toUpperCase();
+            rosco.appendChild(letraEl);
+        });
+    }
+
+    function mostrarPregunta() {
+        preguntaEl.textContent = preguntas[preguntaActual].pregunta;
+    }
+
+    function comprobarRespuesta() {
+        const respuesta = respuestaEl.value.trim().toLowerCase();
+        if (respuesta === '') return;
+
+        if (respuesta === preguntas[preguntaActual].respuesta.toLowerCase()) {
+            aciertos++;
+            aciertosEl.textContent = aciertos;
+            marcarLetra('acertada');
+        } else {
+            fallos++;
+            fallosEl.textContent = fallos;
+            marcarLetra('fallada');
+        }
+        siguientePregunta();
+    }
+
+    function marcarLetra(estado) {
+        const letras = rosco.querySelectorAll('.letra');
+        letras[preguntaActual].classList.add(estado);
+    }
+
+    function siguientePregunta() {
+        preguntaActual++;
+        if (preguntaActual < preguntas.length) {
+            mostrarPregunta();
+        } else {
+            endGame(true);
+        }
+        respuestaEl.value = '';
+        respuestaEl.focus();
+    }
+
+    submitBtn.addEventListener('click', comprobarRespuesta);
+    respuestaEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            comprobarRespuesta();
+        }
+    });
+
+    iniciarJuego();
+    respuestaEl.focus();
+});
+</script>
 </body>
-<script src="script.js"></script>
 </html>
