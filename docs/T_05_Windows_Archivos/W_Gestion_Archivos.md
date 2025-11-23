@@ -86,6 +86,18 @@ Los permisos NTFS se pueden combinar para otorgar diferentes niveles de acceso. 
 
 Existen permisos avanzados que se combinan para formar estos permisos básicos. Por ejemplo, "Lectura" incluye permisos como "Leer datos/Listar contenido de la carpeta" y "Leer atributos".
 
+Comparativa entre los permisos de fichero y de carpeta
+
+| Permiso                                  | Archivos                                                  | Carpetas                                                     |
+| ---------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------ |
+| **Lectura (Read)**                       | El usuario puede abrir y leer el archivo.                 | Permite ver el nombre de los archivos dentro de la carpeta.  |
+| **Escritura (Write)**                    | Puede cambiar el contenido del archivo.                   | Permite crear nuevos archivos o carpetas dentro de la carpeta. |
+| **Lectura y ejecución (Read & Execute)** | Permite ejecutar archivos ejecutables (.exe, .bat, .ps1). | Permite entrar en la carpeta (“atravesarla”).                |
+| **Modificar (Modify)**                   | Leer, escribir y borrar el archivo.                       | Permite borrar archivos dentro de la carpeta.                |
+| **Control total (Full Control)**         | Puede cambiar permisos y tomar posesión.                  | Puede cambiar permisos, tomar posesión y borrar la carpeta.  |
+
+
+
 ### 3.3. Herencia de permisos
 
 La herencia de permisos es un mecanismo que simplifica la administración de la seguridad. Cuando se establecen permisos en una carpeta padre, por defecto, esos permisos se aplican automáticamente (se "heredan") a todos los archivos y subcarpetas creados dentro de ella.
@@ -139,9 +151,6 @@ Para abrir PowerShell, busca "PowerShell" en el menú de inicio y ejecútalo com
     Get-ChildItem c:/Users/Luis/Descargas  # Ruta absoluta
     Get-ChildItem Descargas  # Ruta relativa
 
-    # Muestra el contenido de una ruta específica
-    Get-ChildItem -Path C:\Usuarios\TuUsuario\Documentos
-
     # Muestra solo directorios
     Get-ChildItem -Directory
 
@@ -178,7 +187,7 @@ Para abrir PowerShell, busca "PowerShell" en el menú de inicio y ejecútalo com
     New-Item -Name "MiCarpeta" -ItemType Directory
 
     # Crear un nuevo directorio en una ruta específica
-    New-Item -Path "C:\Trabajo\Proyectos" -Name "ProyectoX" -ItemType Directory
+    New-Item "C:\Trabajo\Proyectos" -Name "ProyectoX" -ItemType Directory
     ```
 
 ### 4.4. Crear archivos
@@ -214,7 +223,7 @@ Para abrir PowerShell, busca "PowerShell" en el menú de inicio y ejecútalo com
         ```powershell
         # Creamos un archivo llamado "notas.txt" en el directorio actual y le escribimos una línea
         Set-Content -Path "notas.txt" -Value "Hoy es un gran día para aprender PowerShell."
-
+        ```
 
     2.  **Sobrescribir el contenido de un archivo existente:**
 
@@ -223,6 +232,7 @@ Para abrir PowerShell, busca "PowerShell" en el menú de inicio y ejecútalo com
         ```powershell
         # Sobrescribimos el contenido de "notas.txt"
         Set-Content -Path "notas.txt" -Value "Mañana seguiremos con los permisos NTFS."
+        ```
 
 ### 4.6. Copiar archivos y directorios
 
