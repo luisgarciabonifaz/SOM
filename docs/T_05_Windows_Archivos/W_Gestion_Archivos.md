@@ -620,7 +620,7 @@ Abre PowerShell
 - Mueve `foto1.jpg` (oculto) desde ruta absoluta al directorio Backup
 - Renombra el archivo movido
 
-#### **10. Listar contenido**
+#### **10. Eliminar elementos**
 
 - Situate en el directorio **Backup**
 - Elimina todos los `.docx` mediante ruta absoluta
