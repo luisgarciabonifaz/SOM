@@ -184,10 +184,10 @@ Para abrir PowerShell, busca "PowerShell" en el menú de inicio y ejecútalo com
 
     ```powershell
     # Crear un nuevo directorio llamado "MiCarpeta" en el directorio actual
-    New-Item -Name "MiCarpeta" -ItemType Directory
+    New-Item MiCarpeta -ItemType Directory
 
     # Crear un nuevo directorio en una ruta específica
-    New-Item "C:\Trabajo\Proyectos" -Name "ProyectoX" -ItemType Directory
+    New-Item C:\Trabajo\Proyectos -ItemType Directory
     ```
 
 ### 4.4. Crear archivos
@@ -196,11 +196,9 @@ Para abrir PowerShell, busca "PowerShell" en el menú de inicio y ejecútalo com
 
     ```powershell
     # Crear un archivo de texto vacío llamado "MiArchivo.txt" en el directorio actual
-    New-Item -Name "MiArchivo.txt" -ItemType File
-
-    # Crear un archivo de texto con contenido
-    "Hola, este es el contenido del archivo." | Set-Content -Path "C:\Ejemplos\Saludo.txt"
+    New-Item MiArchivo.txt -ItemType File
     ```
+
 ### 4.5. Escribir o Sobrescribir Contenido de Archivos
 
 * **`Set-Content`:** Este cmdlet se utiliza para **escribir o reemplazar el contenido de un archivo**. Si el archivo no existe, `Set-Content` lo creará. Si el archivo ya existe, su contenido actual será **sobrescrito** completamente por el nuevo contenido que especifiques. Es muy útil para crear o actualizar archivos de texto, configuración, scripts, etc.
@@ -208,10 +206,9 @@ Para abrir PowerShell, busca "PowerShell" en el menú de inicio y ejecútalo com
     **Sintaxis básica:**
 
     ```powershell
-    Set-Content -Path <RutaDelArchivo> -Value <ContenidoAConservar>
+    Set-Content <RutaDelArchivo> -Value <ContenidoAConservar>
     ```
 
-    * `-Path`: Especifica la ruta completa al archivo donde quieres escribir el contenido.
     * `-Value`: Proporciona el contenido que se escribirá en el archivo. Esto puede ser una cadena de texto, un array de cadenas (cada elemento será una línea nueva), o la salida de otro comando.
 
     **Ejemplo práctico de `Set-Content`:**
@@ -222,7 +219,7 @@ Para abrir PowerShell, busca "PowerShell" en el menú de inicio y ejecútalo com
 
         ```powershell
         # Creamos un archivo llamado "notas.txt" en el directorio actual y le escribimos una línea
-        Set-Content -Path "notas.txt" -Value "Hoy es un gran día para aprender PowerShell."
+        Set-Content notas.txt -Value "Hoy es un gran día para aprender PowerShell."
         ```
 
     2.  **Sobrescribir el contenido de un archivo existente:**
@@ -231,7 +228,7 @@ Para abrir PowerShell, busca "PowerShell" en el menú de inicio y ejecútalo com
 
         ```powershell
         # Sobrescribimos el contenido de "notas.txt"
-        Set-Content -Path "notas.txt" -Value "Mañana seguiremos con los permisos NTFS."
+        Set-Content notas.txt -Value "Mañana seguiremos con los permisos NTFS."
         ```
 
 ### 4.6. Copiar archivos y directorios
@@ -240,13 +237,13 @@ Para abrir PowerShell, busca "PowerShell" en el menú de inicio y ejecútalo com
 
     ```powershell
     # Copiar un archivo
-    Copy-Item -Path "C:\Origen\documento.txt" -Destination "C:\Destino\"
+    Copy-Item C:\Origen\documento.txt C:\Destino\
 
     # Copiar un directorio y todo su contenido (recursivo)
-    Copy-Item -Path "C:\Origen\MiCarpeta" -Destination "C:\Destino\" -Recurse
+    Copy-Item C:\Origen\MiCarpeta C:\Destino\ -Recurse
 
     # Copiar varios archivos usando comodines
-    Copy-Item -Path "C:\Origen\*.docx" -Destination "C:\Destino\"
+    Copy-Item C:\Origen\*.docx C:\Destino\
     ```
 
 ### 4.7. Mover archivos y directorios
@@ -255,10 +252,10 @@ Para abrir PowerShell, busca "PowerShell" en el menú de inicio y ejecútalo com
 
     ```powershell
     # Mover un archivo
-    Move-Item -Path "C:\Origen\imagen.jpg" -Destination "C:\NuevaUbicacion\imagen.jpg"
+    Move-Item C:\Origen\imagen.jpg C:\NuevaUbicacion\imagen.jpg
 
     # Mover un directorio
-    Move-Item -Path "C:\AntiguaRuta\MiCarpeta" -Destination "C:\NuevaRuta\"
+    Move-Item C:\AntiguaRuta\MiCarpeta C:\NuevaRuta\
     ```
 
 ### 4.8. Renombrar archivos y directorios
@@ -267,10 +264,10 @@ Para abrir PowerShell, busca "PowerShell" en el menú de inicio y ejecútalo com
 
     ```powershell
     # Renombrar un archivo
-    Rename-Item -Path "C:\documento.txt" -NewName "informe_final.txt"
+    Rename-Item C:\documento.txt informe_final.txt
 
     # Renombrar un directorio
-    Rename-Item -Path "C:\MiCarpeta" -NewName "DocumentosImportantes"
+    Rename-Item C:\MiCarpeta DocumentosImportantes
     ```
 
 ### 4.9. Eliminar archivos y directorios
@@ -279,13 +276,13 @@ Para abrir PowerShell, busca "PowerShell" en el menú de inicio y ejecútalo com
 
     ```powershell
     # Eliminar un archivo
-    Remove-Item -Path "C:\archivo_obsoleto.txt"
+    Remove-Item C:\archivo_obsoleto.txt
 
     # Eliminar un directorio vacío
-    Remove-Item -Path "C:\CarpetaVacia"
+    Remove-Item C:\CarpetaVacia
 
     # Eliminar un directorio y todo su contenido (recursivo y forzado)
-    Remove-Item -Path "C:\CarpetaConContenido" -Recurse -Force
+    Remove-Item  C:\CarpetaConContenido -Recurse -Force
     # El parámetro -Force es crucial para eliminar archivos ocultos/de sistema o si hay algún bloqueo.
     ```
 
@@ -295,28 +292,24 @@ Para abrir PowerShell, busca "PowerShell" en el menú de inicio y ejecútalo com
 
     ```powershell
     # Ver el contenido de un archivo de texto
-    Get-Content -Path "C:\MisDocumentos\Notas.txt"
+    Get-Content C:\MisDocumentos\Notas.txt
     ```
 
 ### 4.11. Configurar atributos (avanzado)
 
-Para modificar atributos como "Solo lectura" u "Oculto" desde PowerShell, se utiliza el cmdlet `Set-ItemProperty` o se accede a la propiedad `Attributes` del objeto de archivo o directorio.
+Para modificar atributos como "Solo lectura" u "Oculto" desde PowerShell, se utiliza el cmdlet `Set-ItemProperty` y se accede a la propiedad `Attributes` del objeto de archivo o directorio.
+
+- Atributos en powershell:  
+    - ReadOnly
+    - Hidden
+    - System
+    - Archive
+    - Normal
+    - Temporary
 
 ```powershell
-# Obtener un archivo y establecerlo como solo lectura
-$archivo = Get-Item -Path "C:\MiArchivo.txt"
-$archivo.IsReadOnly = $true
-$archivo | Set-Item
-
-# Ocultar un archivo
-$archivo = Get-Item -Path "C:\MiArchivo.txt"
-$archivo.Attributes = $archivo.Attributes -bor [System.IO.FileAttributes]::Hidden
-$archivo | Set-Item
-
-# Quitar el atributo de oculto
-$archivo = Get-Item -Path "C:\MiArchivo.txt" -Force # -Force para poder acceder a archivos ocultos
-$archivo.Attributes = $archivo.Attributes -band (-bnot [System.IO.FileAttributes]::Hidden)
-$archivo | Set-Item
+# Obtener un archivo y establecerlo como solo lectura y Oculto
+Set-ItemProperty C:rutaarchivo.txt -Name Attributes -Value "ReadOnly, Hidden"
 ```
 
 ## 5. Uso de comodines en PowerShell
@@ -339,7 +332,7 @@ El asterisco es el comodín más común y versátil.
 Get-ChildItem *.txt
 
 # Copiar todos los archivos .jpg de una carpeta a otra
-Copy-Item -Path "C:\Fotos\*.jpg" -Destination "C:\BackupFotos\"
+Copy-Item C:\Fotos\*.jpg C:\BackupFotos\
 ```
 - **Coincidir con cualquier extensión de archivo para un nombre de archivo dado:**
 ```powershell
@@ -347,37 +340,31 @@ Copy-Item -Path "C:\Fotos\*.jpg" -Destination "C:\BackupFotos\"
 Get-ChildItem documento.*
 ```
 - **Coincidir con archivos que contienen una cadena específica en su nombre:**
-
 ```powershell
 # Listar todos los archivos que contienen "informe" en su nombre
 Get-ChildItem *informe*
 
 # Eliminar todos los archivos temporales (que a menudo terminan en .tmp o empiezan por ~)
-Remove-Item -Path "*.tmp", "~*.doc"
+Remove-Item  *.tmp, ~*.doc
 ```
-
 - **Coincidir con subdirectorios:**
-
 ```powershell
 # Listar todos los directorios que empiezan por "Proyecto"
 Get-ChildItem Proyecto* -Directory
 
 # Eliminar todas las carpetas que contienen "Backup" en su nombre
-Remove-Item -Path "*Backup*" -Recurse -Force -Directory
+Remove-Item *Backup* -Recurse -Force -Directory
 ```
-
 - **Combinar con rutas:**
-
 ```powershell
 # Listar todos los archivos .log en cualquier subdirectorio de "C:\Logs"
-Get-ChildItem -Path "C:\Logs\*\*.log"
+Get-ChildItem  C:\Logs\*\*.log
 ```
 **Ejemplos de uso de ? (Signo de interrogación)**
 
 El signo de interrogación se utiliza cuando se sabe que hay un carácter en una posición específica, pero no se sabe cuál es.
 
 - **Coincidir con nombres de archivo de longitud y patrón específicos:**
-
 ```powershell
 # Listar archivos como "doc1.txt", "doc2.txt", pero no "doc10.txt"
 Get-ChildItem doc?.txt
@@ -401,7 +388,8 @@ Get-ChildItem doc[1-5].txt
 - **Excluir un conjunto de caracteres:**
 ```powershell
 # Listar archivos que no empiezan por 'a' o 'b'
-Get-ChildItem [!ab]*.txt
+Get-ChildItem "[^ab]*.txt"
+# Solo funcioan si la ruta esta entrecomillada
 ```
 
 **Consideraciones importantes al usar comodines:**
@@ -457,29 +445,13 @@ Get-ChildItem >> listado.txt
 Get-ChildItem C:\CarpetaInexistente 2> errores.txt
 ```
 
-**Mezclar salida normal y errores en un archivo**
-
-```
-Get-ChildItem C:\ 1> salida.txt 2>&1
-```
-
-### 6.4. Redirección combinada en un solo operador
-
-PowerShell incorpora operadores avanzados:
-
-**Ambas salidas (normal + errores) a la vez**
-
-```
-Get-ChildItem C:\ *> todo.txt
-```
-
-### 6.5. Redirigir la salida a null (descartar)
+### 6.4. Redirigir la salida a null (descartar)
 
 ```
 Get-ChildItem *> $null
 ```
 
-## 7. Práctica
+## 7. Práctica 1
 
 ### Objetivos de la actividad
 
@@ -772,3 +744,46 @@ Documento en formato PDF con:
 - Las respuestas a las preguntas
 - Las capturas de pantalla de los comandos y su ejecución 
 - Los scripts y un pantallazo de su ejecución
+
+
+## 8. Práctica 2
+
+La práctica consiste en crear dos scripts de PowerShel que simulen la instalación de un programa.
+
+### Objetivos de la actividad
+
+- Usar PowerShell para automatizar tareas básicas de gestión de archivos.
+- Utilizar comodines en PowerShell de forma segura.
+
+### **Parte 1 – Script de Creacion de los ficheros de instalación**
+
+Crea un Script llamado **Datos.ps1** que haga lo siguiente:
+
+- Crear una carpeta temporal **temp** en la ruta donde se ejecute el Script
+- En esa carpeta crear los siguientes ficheros
+    - Instalacion.txt
+    - Requisitos.txt
+    - Manual.txt
+    - Paso1.log
+    - Paso2.log
+    - Aplicacion.exe
+    - Libreria1.dll
+    - Libreria2.dll
+   
+### **Parte 2 – Script de instalación**
+
+Crea un Script llamado **Datos.ps1** que hag lo siguiente:
+
+- Crear una variable **$destino**
+- Crear en la carpeta **$destino** las siguientes carpetas:
+    -  Docs
+    -  Bin
+    -  Tmp
+- En la carpeta **Docs** copia todos los ficheros con extensión **.txx** de la la carpeta **temp** 
+- En la carpeta **Bin** copia todos los ficheros con extensión **.exe** y **dll** de la la carpeta **temp** 
+- En la carpeta **Tmp** copia todos los ficheros con extensión **.log** de la la carpeta **temp** 
+- Asginales el atributo de oculto a los ficheros con extensión **dll**
+- Elimina la carpeta temp que creo el Scrip anterior
+- Muestra mensajes informativos del proceso de instalación
+  
+Ayuda:  El comadno **Write-Host "Mensaje"** muestra el mensaje por pantalla

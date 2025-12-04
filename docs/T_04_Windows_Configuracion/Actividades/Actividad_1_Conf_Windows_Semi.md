@@ -128,3 +128,9 @@ Get-Process
     - Servidores DNS
 
 Explica brevemente qué son.
+
+
+### Entrega
+
+- Un documento en formato PDF con las respuestas a las preguntas.
+- Un Vídeo en el que se compruebe que has realizado todos los apartados de la actividad.

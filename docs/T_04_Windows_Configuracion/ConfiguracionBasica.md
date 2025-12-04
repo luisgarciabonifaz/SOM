@@ -154,7 +154,7 @@ Un punto de restauración es una "instantánea" del estado del sistema en un mom
 - Windows crea puntos de restauración automáticamente antes de eventos importantes (como la instalación de un nuevo programa o una actualización).
 - También podéis crear puntos de restauración manualmente.
 
-![Punto de Restauración](Punto_Restautacion_W10.png){: style="width:70%;margin:auto;display:block"}
+![Punto de Restauración](Punto_Restauracion_W10.png){: style="width:70%;margin:auto;display:block"}
 
 ### 4.2. Restauración del Sistema
 
@@ -187,25 +187,69 @@ Para acceder al Modo Seguro:
 
 ## 5. Configuración para la Actualización del Sistema Operativo
 
-Mantener el sistema actualizado es vital para la seguridad y el rendimiento.
+Mantener el sistema actualizado es vital para la seguridad y el rendimiento. 
 
-### 5.1. Windows Update: Configuración y Gestión de Actualizaciones
+### 5.1. Gestión de Actualizaciones en Windows
 
-Windows Update es el servicio encargado de descargar e instalar automáticamente las actualizaciones de seguridad, parches y nuevas características para Windows.
+Windows usa un sistema llamado **Windows Update**, este servicio encargado de descargar e instalar automáticamente las actualizaciones de seguridad, parches y nuevas características para Windows. Gestiona cuatro tipos principales de actualizaciones:
 
-- **Configuración**: Podéis configurar cuándo y cómo se descargan e instalan las actualizaciones. Es recomendable permitir las actualizaciones automáticas.
-- **Gestión**: Desde **Configuración > Actualización y seguridad > Windows Update**, podéis:
-    - Buscar actualizaciones.
-    - Pausar las actualizaciones.
-    - Ver el historial de actualizaciones.
-    - Cambiar las horas activas para evitar que el equipo se reinicie en momentos inoportunos.
+1. **Actualizaciones de Calidad (Quality Updates)**
+    - Se publican mensualmente (el famoso Patch Tuesday).
+    - Contienen parches de seguridad, correcciones de errores, mejoras de estabilidad.
+    - Son obligatorias y Windows intenta instalarlas lo antes posible.
+    - No cambian funciones del sistema ni la versión de Windows.
+    - Ejemplo: KB5005565, KB5010342
+2. **Actualizaciones de Características (Feature Updates)**
+    - Se publican 1–2 veces al año.
+    - Actualizan Windows a una versión nueva: *21H1 → 21H2 → 22H2, etc*.
+    - Cambian funciones, interfaz y componentes.
+    - Son opcionales durante un tiempo, hasta que llegan al fin de soporte.
+    - Ejemplo: “Actualizar a Windows 10 22H2”
+3. **Actualizaciones de Controladores (Drivers)**
+    - Son actualizaciones para hardware: gráfica, wifi, audio, impresoras.
+    - A veces Windows las instala automáticamente; otras veces aparecen en: *Windows Update → Ver actualizaciones opcionales*.
+4. **Actualizaciones de la Tienda (Microsoft Store)**
+    - Actualizan aplicaciones como Fotos, Mail, Calendario, etc.
+    - No afectan al sistema operativo principal.
 
-### 5.2. Actualizaciones de Drivers
+### 5.2. Windows Update: Configuración y Gestión de Actualizaciones
 
-Los drivers (o controladores) son programas que permiten que el sistema operativo se comunique con el hardware de vuestro ordenador (tarjeta gráfica, impresora, tarjeta de red, etc.).
+Todo se controla desde:  *Inicio → Configuración → Actualización y seguridad → Windows Update*
 
-- Windows Update a menudo instala drivers, pero a veces es necesario actualizar los drivers manualmente, especialmente para componentes específicos como tarjetas gráficas, para obtener el mejor rendimiento o solucionar problemas.
-- Podéis actualizar drivers desde el **Administrador de Dispositivos** (buscadlo en el Menú Inicio), o descargándolos directamente desde el sitio web del fabricante del hardware.
+Las opciones son las siguientes:
+
+1. **Pausar actualizaciones**
+    - Puedes pausar todas las actualizaciones hasta 35 días.
+    - Ruta: *Configuración → Actualización y seguridad → Windows Update → Pausar actualizaciones*
+    - Solo pausa actualizaciones de calidad, no las de características si ya están listas.
+2. **Cambiar horas activas (Evita reinicios automáticos)**
+    - Windows evita reiniciar en horas donde tú usas el PC.
+    - Ruta: *Windows Update → Cambiar horas activas*
+    - Opciones:
+        - Establecer horas manualmente.
+        - Activar la opción "Ajustar horas activas automáticamente según tu actividad".
+3. **Opciones avanzadas de Windows Update**
+    - A) Elegir cómo se instalan las actualizaciones. Aquí puedes decidir si quieres:
+        - Reinicios automáticos.
+        - Recibir actualizaciones para otros productos Microsoft.
+        - Descargar actualizaciones al usar redes medidas (metered).
+    - B) Entrega optimizada (Delivery Optimization)
+        - Reduce el uso de ancho de banda descargando actualizaciones desde otros PC de tu red local o de internet.
+        - Ruta: *Configuración → Actualización y seguridad → Optimización de entrega*
+        - Puedes:
+            - Desactivarlo.
+            - Restringir cuánto ancho de banda usa.
+    - C) Controlar las “actualizaciones opcionales” 
+        - Aquí aparecen:
+            - Drivers (gráfica, audio, wifi…)
+            - Parches no críticos
+        - Ruta: *Windows Update → Ver actualizaciones opcionales*
+4. **Aplazar actualizaciones (Diferir actualizaciones)**
+    - Windows 10 Pro, Enterprise y Education permiten aplazar:
+        - Actualizaciones de características hasta 365 días
+        - Actualizaciones de calidad hasta 30 días
+    - Ruta: *Windows Update → Opciones avanzadas → Elegir cuándo se instalan las actualizaciones*
+    - Esto no aparece en Windows 10 Home.
 
 ## 6. Operaciones de Instalación/Desinstalación de Utilidades
 
