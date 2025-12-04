@@ -385,12 +385,6 @@ Get-ChildItem [abc]*.txt
 # Listar archivos que tienen un número del 1 al 5 en la segunda posición
 Get-ChildItem doc[1-5].txt
 ```
-- **Excluir un conjunto de caracteres:**
-```powershell
-# Listar archivos que no empiezan por 'a' o 'b'
-Get-ChildItem "[^ab]*.txt"
-# Solo funcioan si la ruta esta entrecomillada
-```
 
 **Consideraciones importantes al usar comodines:**
 
