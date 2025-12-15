@@ -585,7 +585,7 @@ Abre PowerShell
 #### **10. Eliminar elementos**
 
 - Situate en el directorio **Backup**
-- Elimina todos los `.txt` mediante ruta absoluta
+- Elimina todos los `.docx` mediante ruta absoluta
 - Elimina la carpeta **Logs** (solo si está vacía)
 - Elimina la carpeta **Exportaciones** con todo su contenido
 
@@ -597,14 +597,14 @@ Abre PowerShell
 - Lista todos los archivos que comiencen por `info` y terminen en `.txt`  de la carpeta **Backup**
 - Lista archivos tipo `log1.txt`, `log2.txt`, `log3.txt`… en **Logs** con us solo comando
 - Listar archivos tipo `img01.jpg`, `img02.jpg`, etc … en **Logs** con un solo comando
-- Listar archivos que empiezan por **a**, **b** o **c** dentro de **Textos**
-- Seleccionar archivos cuyo segundo carácter sea un número entre 1 y 5
+- Listar archivos que empiezan por **a**, **b** o **c** dentro de **Logs**
+- Seleccionar archivos cuyo segundo carácter sea un número entre 1 y 5 de **Logs**
 
 #### **12. Rutas + Comodines + Operaciones**
 
-- Copia **todos los archivos .txt** de cualquier subcarpeta dentro de Recursos a Backup:
-- Mueve todos los archivos cuya extensión tenga **tres caracteres exactos**
-- Copia todos los archivos `.jpg` desde **cualquier subcarpeta** a **ProyectoA**
+- Copia **todos los archivos .txt** de cualquier subcarpeta dentro de **Recursos** a **Backup**:
+- Mueve todos los archivos de cualquier subcarpeta dentro de **Recursos** cuya extensión tenga **tres caracteres exactos** a **Backup**
+- Copia todos los archivos `.jpg` desde **cualquier subcarpeta** dentro de **Recursos** a **ProyectoA**
 
 ------
 
@@ -673,11 +673,10 @@ Crea un script llamado **clasificar.ps1** que haga lo siguiente:
     - Todas las demás extensiones → Procesados/Otros
   - Debe incluir:
     - Rutas **relativas**
-    - Log automático (añadir líneas al log existente)
 
 #### **16. Archivo**
 
-Crea un script llamado **archivo.ps1** que haga lo siguiente:
+Crea un script llamado **comprimir.ps1** que haga lo siguiente:
 
 - Comprimir la carpeta **Procesados** en un ZIP con fecha:
 
@@ -687,8 +686,6 @@ Procesados_2025-11-16.zip
 
 - Mover ese ZIP a una nueva carpeta `ArchivoHistorico`.
 
-
-
 #### **17. Script final integrado**
 
 Crea un script llamado **automatizacion_total.ps1** que ejecute en  orden:
@@ -696,7 +693,7 @@ Crea un script llamado **automatizacion_total.ps1** que ejecute en  orden:
 - setup.ps1
 - generar_pruebas.ps1
 - clasificar.ps1
-- limpieza.ps1
+- comprimir.ps1
 
 ### **Parte 6 – Cuestionario final**
 
