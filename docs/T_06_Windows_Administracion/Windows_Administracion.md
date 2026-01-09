@@ -114,38 +114,8 @@ El bloqueo de cuentas es una medida de seguridad que deshabilita temporalmente u
 - **Usar un gestor de contraseñas:** Para usuarios que manejan múltiples cuentas, un gestor de contraseñas es una herramienta excelente para generar y almacenar contraseñas únicas y fuertes para cada servicio.
 - **Autenticación Multifactor (MFA):** La capa de seguridad más efectiva hoy en día. Además de la contraseña, requiere un segundo método de verificación (como un código en el móvil o una huella dactilar). Aunque no es una política de contraseñas tradicional, es el siguiente paso lógico en la seguridad de cuentas.
   
-## 2. Organización de Archivos del Sistema
-### 2.1. Explorador de Archivos Avanzado
-
-El **Explorador de Archivos** (Windows + E) es nuestra ventana principal al sistema de archivos. Más allá de copiar y pegar, podemos:
-
-- **Ver propiedades de archivos y carpetas:** Clic derecho > Propiedades para ver tamaño, fecha de creación, permisos, etc.
-- **Opciones de carpeta:** Accede a ellas desde el menú "Ver" o "Opciones" en el Explorador. Permiten:
-    - Mostrar/ocultar extensiones de archivo.
-    - Mostrar/ocultar archivos y carpetas ocultos.
-    - Mostrar archivos protegidos del sistema operativo.
-- **Acceso rápido y bibliotecas:** Personaliza el acceso a tus carpetas más usadas y organiza tus archivos por categorías (Documentos, Imágenes, Música, etc.).
-- **Búsqueda avanzada:** Utiliza filtros (tipo de archivo, fecha de modificación, tamaño) para encontrar rápidamente lo que necesitas.
-
-### 2.2. Administrador de Discos: Particionado, Asignación de letras de unidad
-
-El **Administrador de discos** (`diskmgmt.msc`) es una herramienta fundamental para gestionar tus unidades de almacenamiento.
-
-- **Particionado:** Divide un disco físico en varias secciones lógicas llamadas **particiones**. Cada partición puede tener su propio sistema de archivos y actuar como una unidad independiente (por ejemplo, C: para el sistema, D: para datos).
-    - **Crear y eliminar particiones:** Permite organizar el espacio de tu disco.
-    - **Extender y reducir particiones:** Ajusta el tamaño de las particiones existentes sin perder datos (si hay espacio contiguo disponible).
-- **Asignación de letras de unidad:** A cada partición se le asigna una letra (C:, D:, E:, etc.) para que el sistema la identifique. Puedes cambiar estas letras según tu preferencia.
-- **Formatear unidades:** Prepara una partición para almacenar datos, eligiendo un sistema de archivos (NTFS, FAT32, exFAT).
-- **Unidades dinámicas o volúmenes dinámicos:** Son las divisiones que se crean en un disco que ha sido configurado como dinámico. Este tipo de configuración ofrece mucha más flexibilidad que los discos básicos tradicionales. La principal ventaja es que puedes realizar operaciones avanzadas que involucran uno o más discos físicos, como mejorar el rendimiento o proteger tus datos contra fallos de un disco. Los tipos de volumenes dinámicos más comunes son:
-    - **Volumen Simple:** Es el tipo más básico y equivale a una partición normal en un disco básico. Se crea en el espacio libre de un único disco dinámico.
-    - **Volumen Distribuido (Spanned):** Este volumen combina el espacio libre de varios discos físicos para crear una única unidad lógica más grande. Los datos se van guardando en el primer disco y, cuando se llena, continúan en el siguiente.
-    - **Volumen Seccionado (Striped o RAID 0):** Este volumen también une el espacio de dos o más discos físicos, pero distribuye los datos en "franjas" (stripes) de manera simultánea entre todos los discos. Esto aumenta significativamente la velocidad de lectura y escritura.
-    - **Volumen Reflejado (Mirrored o RAID 1):** Este volumen crea una copia exacta (un espejo) de los datos en dos discos físicos. Todo lo que escribes en un disco se duplica instantáneamente en el otro. Su objetivo es la tolerancia a fallos.
-    - **Volumen RAID-5**: Es una configuración avanzada que necesita un mínimo de tres discos físicos. Combina el seccionado (para el rendimiento) con un sistema de "paridad" para la tolerancia a fallos. La paridad es información de recuperación que se distribuye entre todos los discos.
-
-
-## 3. Procesos del Usuario 
-### 3.1. Administrador de Tareas
+## 2. Procesos del Usuario 
+### 2.1. Administrador de Tareas
 
 El **Administrador de tareas** (`Ctrl + Shift + Esc` o `Ctrl + Alt + Supr`) es tu centro de control para ver qué está haciendo tu equipo.
 
@@ -157,7 +127,7 @@ El **Administrador de tareas** (`Ctrl + Shift + Esc` o `Ctrl + Alt + Supr`) es t
   - **Establecer afinidad:** Decide qué núcleos de CPU puede usar un proceso.
 - **Pestaña Rendimiento:** Muestra gráficos en tiempo real del uso de CPU, memoria, disco y red. Muy útil para identificar cuellos de botella.
 
-### 3.2. Monitor de Recursos
+### 2.2. Monitor de Recursos
 
 El **Monitor de recursos** (accedible desde el Administrador de tareas, pestaña Rendimiento, o ejecutando `resmon.exe`) ofrece una visión mucho más detallada del uso de los recursos del sistema.
 
@@ -166,9 +136,9 @@ El **Monitor de recursos** (accedible desde el Administrador de tareas, pestaña
 - **Análisis profundo:** Permite identificar exactamente qué archivos está leyendo o escribiendo un proceso en el disco, o qué conexiones de red está utilizando. Ideal para diagnosticar problemas de rendimiento.
 
 
-## 4. Servicios del Sistema 
+## 3. Servicios del Sistema 
 
-### 4.1. Servicios de Windows
+### 3.1. Servicios de Windows
 
 Los **servicios de Windows** son programas que se ejecutan en segundo plano y realizan funciones esenciales del sistema operativo (red, impresión, actualizaciones, etc.). Se gestionan desde la consola **Servicios** (`services.msc`).
 
@@ -180,16 +150,16 @@ Los **servicios de Windows** son programas que se ejecutan en segundo plano y re
     - **Deshabilitado:** El servicio no se puede iniciar. Útil para deshabilitar servicios innecesarios y mejorar el rendimiento o la seguridad, pero ¡cuidado con deshabilitar servicios esenciales!
 - **Inicio/Detención/Reinicio:** Puedes controlar el estado de un servicio con un clic derecho.
 
-### 4.2. Dependencias de Servicios
+### 3.2. Dependencias de Servicios
 
 Muchos servicios dependen de otros para funcionar correctamente. Si intentas detener un servicio que tiene dependencias, Windows te advertirá sobre los servicios que también se verán afectados.
 
 - **Pestaña Dependencias:** En las propiedades de un servicio, puedes ver de qué servicios depende y qué servicios dependen de él. Esto es crucial para la resolución de problemas; si un servicio no se inicia, puede ser porque uno de sus servicios dependientes no lo hace.
 
 
-## 5. Optimización de la Memoria Disponible
+## 4. Optimización de la Memoria Disponible
 
-### 5.1. Gestión de la Memoria Virtual (Archivo de Paginación)
+### 4.1. Gestión de la Memoria Virtual (Archivo de Paginación)
 
 La **memoria virtual** es una técnica que permite a un sistema operativo utilizar espacio en el disco duro como si fuera RAM cuando la memoria física es insuficiente. El **archivo de paginación** (`pagefile.sys`) es el archivo en el disco duro que almacena esta memoria virtual.
 
@@ -197,7 +167,7 @@ La **memoria virtual** es una técnica que permite a un sistema operativo utiliz
 - **Configuración:** Se gestiona desde las **Opciones de rendimiento** de Windows (Panel de control > Sistema y seguridad > Sistema > Configuración avanzada del sistema > Pestaña Opciones avanzadas > Rendimiento > Configuración > Pestaña Opciones avanzadas > Memoria virtual > Cambiar).
 - **Tamaño recomendado:** Generalmente, Windows gestiona el tamaño automáticamente. Para usuarios avanzados, se puede establecer un tamaño personalizado, a menudo 1.5 a 2 veces la cantidad de RAM física, aunque esto depende del uso del equipo. En SSDs, es mejor dejar que Windows lo gestione o limitar el tamaño para reducir el desgaste.
 
-### 5.2. Programas de Optimización de Memoria
+### 4.2. Programas de Optimización de Memoria
 
 Existen herramientas de terceros que prometen "optimizar" la memoria RAM.
 
@@ -205,9 +175,9 @@ Existen herramientas de terceros que prometen "optimizar" la memoria RAM.
 - **Realidad:** En sistemas operativos modernos como Windows, la gestión de memoria es muy eficiente. A menudo, estos programas ofrecen beneficios marginales y, en algunos casos, pueden incluso ralentizar el sistema al forzar constantemente la liberación de RAM que Windows podría necesitar. **Generalmente, es mejor dejar que Windows gestione la memoria.** La mejor optimización de memoria es tener suficiente RAM física.
 
 
-## 6. Actividad del Sistema
+## 5. Actividad del Sistema
 
-### 6.1. Visor de Eventos
+### 5.1. Visor de Eventos
 
 El **Visor de eventos** (`eventvwr.msc`) es una herramienta esencial para diagnosticar problemas y auditar la actividad del sistema. Registra eventos importantes que ocurren en Windows.
 
@@ -220,7 +190,7 @@ El **Visor de eventos** (`eventvwr.msc`) es una herramienta esencial para diagno
 - **Filtrado de eventos:** Puedes filtrar por nivel (Error, Advertencia, Información), origen, ID de evento, etc., para encontrar rápidamente lo que buscas.
 - **Creación de vistas personalizadas:** Guarda filtros comunes para un acceso rápido.
 
-### 6.2. Monitor de Rendimiento
+### 5.2. Monitor de Rendimiento
 
 El **Monitor de rendimiento** (`perfmon.msc`) permite recopilar y ver datos de rendimiento en tiempo real y a lo largo del tiempo. Es mucho más potente que la pestaña "Rendimiento" del Administrador de tareas.
 
@@ -229,9 +199,9 @@ El **Monitor de rendimiento** (`perfmon.msc`) permite recopilar y ver datos de r
 - **Alertas:** Puedes configurar alertas para que se disparen cuando un contador de rendimiento supere un umbral determinado.
 
 
-## 7. Optimización de los Dispositivos de Almacenamiento
+## 6. Optimización de los Dispositivos de Almacenamiento
 
-### 7.1. Desfragmentación (HDD)
+### 6.1. Desfragmentación (HDD)
 
 La **desfragmentación** es un proceso que reorganiza los fragmentos de archivos dispersos en un disco duro (HDD) para que se almacenen de forma contigua.
 
@@ -239,7 +209,7 @@ La **desfragmentación** es un proceso que reorganiza los fragmentos de archivos
 - **Herramienta:** El **Optimizador de unidades** de Windows (busca "Desfragmentar y optimizar unidades").
 - **Frecuencia:** Windows suele programarla automáticamente. Si tienes un HDD, una desfragmentación mensual o trimestral puede mejorar el rendimiento.
 
-### 7.2. Optimización de Unidades (SSD)
+### 6.2. Optimización de Unidades (SSD)
 
 Las **unidades de estado sólido (SSD)** funcionan de manera diferente a los HDDs. No tienen partes móviles y el acceso a datos es electrónico.
 
@@ -249,7 +219,7 @@ Las **unidades de estado sólido (SSD)** funcionan de manera diferente a los HDD
     La desfragmentación no solo no mejora el rendimiento de un SSD, sino que puede reducir su vida útil al provocar escrituras innecesarias.
 
 
-### 7.3. Limpieza de Disco
+### 6.3. Limpieza de Disco
 
 La **Limpieza de disco** (`cleanmgr.exe`) es una herramienta integrada de Windows que ayuda a liberar espacio en el disco duro eliminando archivos innecesarios.
 
@@ -257,9 +227,9 @@ La **Limpieza de disco** (`cleanmgr.exe`) es una herramienta integrada de Window
 - **Limpiar archivos del sistema:** Permite eliminar actualizaciones de Windows antiguas o puntos de restauración del sistema, liberando aún más espacio. ¡Úsalo con criterio!
 
 
-## 8. Recursos Compartibles
+## 7. Recursos Compartibles
 
-### 8.1. Compartir Carpetas y Archivos en Red
+### 7.1. Compartir Carpetas y Archivos en Red
 
 Windows permite compartir carpetas y archivos con otros usuarios de la red local.
 
@@ -267,7 +237,7 @@ Windows permite compartir carpetas y archivos con otros usuarios de la red local
 - **Uso compartido avanzado:** Ofrece más control sobre los permisos de compartición y la cantidad de conexiones simultáneas.
 - **Ruta de red:** Una vez compartida, la carpeta es accesible a través de una ruta de red como `\\NombreEquipo\NombreCarpetaCompartida`.
 
-### 8.2. Permisos de Compartición vs. Permisos NTFS
+### 7.2. Permisos de Compartición vs. Permisos NTFS
 
 ¡Esta es una parte crucial y a menudo confusa! Hay dos tipos de permisos que controlan el acceso a recursos compartidos:
 
@@ -279,16 +249,16 @@ Windows permite compartir carpetas y archivos con otros usuarios de la red local
     
     **Siempre configura ambos.**
 
-### 8.3. Acceso a Recursos Compartidos
+### 7.3. Acceso a Recursos Compartidos
 
 - **Explorador de Archivos:** Navega a "Red" para ver los equipos disponibles.
 - **Ruta de red directa:** Escribe la ruta `\\NombreEquipo\NombreCarpetaCompartida` en la barra de direcciones del Explorador de Archivos.
 - **Mapear unidad de red:** Asigna una letra de unidad (por ejemplo, Z:) a una carpeta compartida en la red, haciéndola parecer una unidad local. Esto facilita el acceso regular.
 
 
-## 9. Información y Configuración del Sistema Operativo
+## 8. Información y Configuración del Sistema Operativo
 
-### 9.1. Comandos de Línea de Comandos
+### 8.1. Comandos de Línea de Comandos
 
 La línea de comandos (CMD o PowerShell) es una herramienta muy potente para obtener información del sistema.
 
@@ -301,7 +271,7 @@ La línea de comandos (CMD o PowerShell) es una herramienta muy potente para obt
   - `tasklist /m`: Muestra los módulos (DLLs) cargados por cada proceso.
 
 
-### 9.2. Registro de Windows 
+### 8.2. Registro de Windows 
 
 El **Registro de Windows** es una base de datos jerárquica que almacena configuraciones de bajo nivel para el sistema operativo, hardware, software y perfiles de usuario. Se accede a él mediante el editor del Registro (`regedit.exe`).
 
@@ -319,9 +289,9 @@ El **Registro de Windows** es una base de datos jerárquica que almacena configu
     - **Siempre haz una copia de seguridad antes de cualquier modificación.**
 
 
-## 10. Administración de tareas y Eventos
+## 9. Administración de tareas y Eventos
 
-### 10.1. Administrador de Tareas
+### 9.1. Administrador de Tareas
 
 Volvemos al Administrador de tareas para una visión integral:
 
@@ -332,7 +302,7 @@ Volvemos al Administrador de tareas para una visión integral:
     - Distinguir entre problemas de software (un programa que consume mucha CPU) y problemas de hardware (poca RAM).
 - **Pestaña Historial de aplicaciones:** Muestra el tiempo de CPU y el uso de red por aplicación, útil para ver qué aplicaciones han sido más activas.
 
-### 10.2. Visor de Eventos
+### 9.2. Visor de Eventos
 
 Comprobamos la importancia del Visor de eventos como herramienta de diagnóstico:
 
@@ -340,7 +310,7 @@ Comprobamos la importancia del Visor de eventos como herramienta de diagnóstico
 - **Advertencias (Amarillo):** Indican un problema potencial que no es crítico, pero que podría llevar a uno (espacio en disco bajo, un servicio que se detuvo y se reinició).
 - **Información (Azul):** Eventos normales de operación (inicio/parada de servicios, instalación de software, inicio de sesión exitoso).
 
-### 10.3. Información del Sistema
+### 9.3. Información del Sistema
 
 La herramienta **Información del sistema** (`msinfo32.exe`) proporciona un resumen exhaustivo de la configuración de hardware y software del equipo.
 
@@ -348,3 +318,356 @@ La herramienta **Información del sistema** (`msinfo32.exe`) proporciona un resu
 - **Componentes:** Información detallada sobre cada componente de hardware (tarjeta gráfica, sonido, red, almacenamiento). Útil para verificar si los controladores están instalados correctamente o para conocer las especificaciones exactas.
 - **Recursos de hardware:** Muestra los recursos de hardware utilizados por los dispositivos (IRQ, DMA, direcciones de memoria), útil para diagnosticar conflictos.
 - **Entorno de software:** Lista los programas que se inician con Windows, los controladores instalados, los servicios, etc.
+
+
+## 10. Actividad: Auditoría, administración y optimización de un equipo Windows
+
+### Contexto (escenario)
+
+Eres el/la técnico/a de una microempresa (8–12 empleados) que ha detectado:
+
+- Usuarios que comparten contraseñas.
+- Equipos lentos al arrancar y durante el uso.
+- Dudas sobre qué servicios/procesos consumen recursos.
+- Necesidad de compartir una carpeta en red con permisos correctos.
+- Errores intermitentes (cuelgues) sin causa aparente.
+
+Tu misión será **administrar usuarios**, **mejorar seguridad**, **diagnosticar rendimiento**, **revisar eventos**, **optimizar el sistema** y **configurar compartición en red**.
+
+### 1) Objetivos de aprendizaje
+
+Al terminar, el alumnado será capaz de:
+
+1. Crear y gestionar **usuarios y grupos locales** desde GUI y desde línea de comandos (CMD/PowerShell).
+2. Aplicar **políticas de contraseñas** y **bloqueo de cuenta** (seguridad básica).
+3. Identificar procesos problemáticos con **Administrador de tareas** y **Monitor de recursos**.
+4. Comprender y gestionar **servicios**, tipos de inicio y **dependencias**.
+5. Ajustar/explicar **memoria virtual (pagefile)** y valorar “optimizers” de RAM.
+6. Analizar el sistema con **Visor de eventos** y **Monitor de rendimiento**.
+7. Aplicar optimización básica de almacenamiento (**TRIM/Desfragmentación + Limpieza de disco**) con criterio.
+8. Configurar **carpetas compartidas** y justificar el acceso final (Compartición vs NTFS).
+9. Obtener información del sistema con **ipconfig/systeminfo/tasklist** y usar el **Registro** con precaución (consulta y backup).
+10. Documentar una auditoría técnica clara y reproducible.
+
+### 2) Materiales y preparación
+
+- 1 PC o VM por pareja (ideal).
+- Cuenta con privilegios de **administrador**.
+- Red local o red virtual (para pruebas de compartición).
+- Carpeta “EVIDENCIAS” en el Escritorio para capturas y logs.
+
+**Normas de seguridad del aula (muy importante)**
+
+- No modificar el Registro salvo para **consultar** o con **copia de seguridad previa**.
+- No deshabilitar servicios “a ciegas”: justificar y registrar cambios.
+- Si se cambia configuración (servicios, pagefile, políticas), anotar “antes/después”.
+
+### 3) Entregables (lo que entregan)
+
+1. **Informe técnico (PDF o DOCX)** con capturas y conclusiones.
+2. **Script PowerShell** (o comandos anotados) usados para gestionar usuarios/grupos.
+3. Evidencias:
+    - Capturas de `eventvwr.msc`, `perfmon.msc`, `services.msc`, `resmon.exe`
+    - Salidas de `ipconfig /all`, `systeminfo`, `tasklist /svc`
+4. Tabla final de permisos de la carpeta compartida (quién puede qué y por qué).
+
+### 4) Evaluación (rúbrica sugerida /100)
+
+- **Usuarios y grupos (20 pts):** creación, grupos, membresía, evidencia.
+- **Seguridad (20 pts):** políticas de contraseña + bloqueo + pruebas documentadas.
+- **Procesos y rendimiento (20 pts):** diagnóstico razonado con tareas/resmon/perfmon.
+- **Servicios (15 pts):** cambios justificados + dependencias entendidas.
+- **Eventos y logs (15 pts):** filtros, IDs/orígenes, explicación de hallazgos.
+- **Compartición y permisos (10 pts):** coherencia “más restrictivo prevalece” + pruebas.
+
+------
+
+### 5) Desarrollo por fases (guía paso a paso)
+
+#### FASE A — Identidad y control del equipo: usuarios y grupos (1,5–2 h)
+
+**A1. Inventario inicial**
+
+1. Ejecuta y captura:
+    - `winver`
+    - `systeminfo`
+2. Lista usuarios locales:
+    - GUI: `compmgmt.msc` → Usuarios y grupos locales
+    - PowerShell: `Get-LocalUser`
+
+**Evidencia:** captura o salida de comandos.
+
+**A2. Creación de estructura de empresa**
+
+Crea estas cuentas locales:
+
+- `admin_soporte` (administrador)
+- `empleado1` (estándar)
+- `empleado2` (estándar)
+- `invitado_temp` (estándar, luego deshabilitar)
+
+Crea estos grupos locales:
+
+- `GG_Soporte`
+- `GG_Oficina`
+
+Asigna:
+
+- `admin_soporte` → `Administradores` + `GG_Soporte`
+- `empleado1` y `empleado2` → `Usuarios` + `GG_Oficina`
+- `invitado_temp` → `GG_Oficina` y después **deshabilitar**
+
+**Obligatorio (PowerShell):** al menos una parte debe hacerse con cmdlets.
+ Ejemplos de acciones que deben aparecer en evidencias:
+
+- `New-LocalUser`, `New-LocalGroup`
+- `Add-LocalGroupMember`
+- `Disable-LocalUser`
+- `Get-LocalUser`, `Get-LocalGroup`
+
+**Evidencias mínimas:**
+
+- Captura de los usuarios creados.
+- Captura de membresía de grupos o salida del comando.
+
+**A3. Comprobación con CMD (extra de robustez)**
+
+Usa (y documenta) al menos:
+
+- `net user`
+- `net localgroup`
+
+**Mini-preguntas (informe)**
+
+- ¿Qué ventajas tiene gestionar permisos por grupos y no por usuario?
+- ¿Por qué la cuenta Administrador debe usarse “con precaución”?
+
+------
+
+#### FASE B — Seguridad: contraseñas y bloqueo (1–1,5 h)
+
+**B1. Configura directiva de contraseñas**
+
+En `gpedit.msc`, configura (propuesta):
+
+- Complejidad: **habilitada**
+- Longitud mínima: **10**
+- Vigencia máxima: **90 días**
+- Historial: **5**
+
+**Evidencia:** captura de la ruta completa y los valores.
+
+**B2. Configura bloqueo de cuenta**
+
+Configura (propuesta):
+
+- Umbral: **5 intentos**
+- Duración: **30 min**
+- Restablecer contador: **30 min**
+
+**Prueba obligatoria**
+
+1. Intenta iniciar sesión con `empleado1` y contraseña incorrecta hasta bloquearlo.
+2. Documenta qué ocurre y cómo lo detectas.
+
+**Mini-preguntas**
+
+- Explica con tus palabras qué ataque reduce el bloqueo de cuenta.
+- Propón una alternativa moderna: ¿qué aporta MFA?
+
+------
+
+#### FASE C — Diagnóstico de rendimiento: procesos y recursos (1–1,5 h)
+
+**C1. Administrador de tareas: análisis guiado**
+
+1. Abre el Administrador de tareas.
+2. Identifica:
+    - Top 3 procesos por CPU
+    - Top 3 por Memoria
+    - Top 3 por Disco (si aplica)
+
+**Acción práctica**
+
+- Cambia la **prioridad** de un proceso “de usuario” (por ejemplo, navegador) y describe el impacto esperado (sin usar “Tiempo real”).
+
+**Evidencia:** captura en pestañas Procesos/Rendimiento/Detalles.
+
+**C2. Monitor de recursos (`resmon.exe`)**
+
+Tareas:
+
+- En CPU: filtra un proceso y mira hilos/uso.
+- En Disco: identifica qué archivos está leyendo/escribiendo un proceso “pesado”.
+- En Red: identifica conexiones activas de un proceso (si hay).
+
+**Mini-pregunta**
+
+- ¿Qué aporta `resmon` frente al Administrador de tareas?
+
+#### FASE D — Servicios: estabilidad, inicio y dependencias (1–1,5 h)
+
+**D1. Inspección de servicios**
+
+En `services.msc`:
+
+1. Elige 3 servicios “bien conocidos” (por ejemplo: Windows Update, Cola de impresión, etc.).
+2. Para cada uno, anota:
+   - Estado
+   - Tipo de inicio
+   - Qué función cumple (explicación breve)
+
+**D2. Dependencias (obligatorio)**
+
+Elige 1 servicio con dependencias visibles:
+
+- Captura la pestaña **Dependencias**
+- Explica qué podría pasar si lo detienes.
+
+**D3. Cambio controlado (con criterio)**
+
+Realiza **un** cambio seguro:
+
+- Cambiar un servicio no crítico a “Manual” o “Inicio retrasado”
+- Reiniciar un servicio
+
+**Importante:** justificar y documentar “antes/después”.
+
+#### FASE E — Memoria virtual y “optimización” realista (45–60 min)
+
+**E1. Pagefile (memoria virtual)**
+
+1. Localiza la configuración de memoria virtual.
+2. Documenta:
+   - ¿Está gestionado por el sistema?
+   - ¿En qué unidad está?
+3. Decide (y justifica) una de estas opciones:
+   - Mantener automático (recomendado en la mayoría de casos)
+   - Establecer tamaño personalizado (si justificas el escenario)
+
+**Mini-preguntas**
+
+- ¿Para qué sirve `pagefile.sys`?
+- ¿Por qué en SSD se recomienda no obsesionarse con “ajustes agresivos” del pagefile?
+
+**E2. Debate técnico corto (en el informe)**
+
+- Explica por qué muchos “optimizadores de RAM” pueden ser inútiles o contraproducentes.
+
+#### FASE F — Auditoría: Visor de eventos y Monitor de rendimiento (1,5–2 h)
+
+**F1. Visor de eventos (`eventvwr.msc`)**
+
+Tareas obligatorias:
+
+1. En **Sistema**, filtra por:
+    - Nivel: Error y Advertencia
+    - Rango temporal: “últimas 24 h” (o desde el arranque)
+2. Identifica:
+    - 2 errores recurrentes o relevantes
+    - 2 advertencias relevantes
+3. En **Seguridad**, busca:
+    - intentos fallidos/exitosos de inicio de sesión (relacionado con la fase de bloqueo)
+
+**Evidencia:** capturas de filtros y eventos seleccionados.
+
+**F2. Monitor de rendimiento (`perfmon.msc`)**
+
+1. Añade contadores:
+    - CPU
+    - Memoria disponible
+    - Actividad de disco (básico)
+2. Crea un **Conjunto de recopiladores de datos**:
+    - duración 3–5 minutos mientras abres varias apps
+3. Extrae una conclusión:
+    - ¿Dónde estuvo el cuello de botella?
+
+**Evidencia:** captura del conjunto y de la gráfica/resultados.
+
+#### FASE G — Optimización de almacenamiento (sin particionado) (45–60 min)
+
+> *Ojo:* aquí **NO** se toca el Administrador de discos ni particiones.
+
+**G1. Optimizar unidades**
+
+1. Abre “Desfragmentar y optimizar unidades”.
+2. Identifica si la unidad es HDD o SSD.
+3. Ejecuta:
+    - HDD: desfragmentación (si procede)
+    - SSD: optimización/TRIM (si procede)
+4. Explica por qué **no** se debe desfragmentar un SSD.
+
+**G2. Limpieza de disco (`cleanmgr.exe`)**
+
+1. Ejecuta limpieza estándar.
+2. Si procede, “Limpiar archivos del sistema” y explica qué has eliminado (con criterio).
+
+
+#### FASE H — Recursos compartidos: permisos reales (1–1,5 h)
+
+**H1. Crear carpeta compartida**
+
+1. Crea `C:\Empresa\Compartida`
+2. Comparte la carpeta por red y anota la ruta UNC: `\\EQUIPO\Compartida`
+
+**H2. Permisos de compartición vs permisos NTFS (obligatorio y clave)**
+
+Configura un caso donde se vea la “regla de oro”:
+
+- Permisos de compartición: `GG_Oficina` = Control total
+- Permisos NTFS: `GG_Oficina` = Lectura
+
+**Prueba:**
+
+- Inicia sesión como `empleado1` e intenta crear/modificar archivos en la carpeta compartida desde la red.
+- Documenta el resultado y explica por qué pasa (prevalece el más restrictivo).
+
+**H3. Mapear unidad de red**
+
+Mapea como `Z:` la carpeta compartida desde el usuario estándar.
+
+**Evidencias:** capturas de permisos, prueba y unidad mapeada.
+
+#### FASE I — Información del sistema y Registro (consulta segura) (45–60 min)
+
+**I1. Comandos obligatorios**
+
+Ejecuta y adjunta salida:
+
+- `ipconfig /all`
+- `tasklist /svc`
+- `systeminfo`
+
+Pregunta:
+
+- ¿Qué comando te da más pistas si sospechas problemas de red?
+
+**I2. Registro (solo consulta + precaución)**
+
+1. Abre `regedit.exe`
+2. Explica la diferencia entre HKLM y HKCU.
+3. Realiza una **copia de seguridad** de una rama (exportar) **antes** de tocar nada.
+4. Consulta una clave (sin modificar) y documenta qué información aporta.
+
+**Prohibido:** cambios “porque sí”.
+
+
+### 6) Plantilla rápida para el informe (estructura sugerida)
+
+1. **Portada** (nombre, curso, fecha, equipo/VM).
+2. **Objetivo del trabajo** (5–6 líneas).
+3. **Usuarios y grupos** (capturas + tabla de cuentas y grupos).
+4. **Políticas de seguridad** (valores + prueba de bloqueo).
+5. **Rendimiento** (tareas/resmon/perfmon: hallazgos).
+6. **Servicios** (cambios y dependencias).
+7. **Eventos** (errores/advertencias y explicación).
+8. **Optimización** (TRIM/defrag según tipo + cleanmgr).
+9. **Compartición** (tabla permisos compartición vs NTFS + prueba).
+10. **Comandos y registro** (salidas + conclusiones).
+11. **Conclusiones y recomendaciones** (5 bullets accionables).
+
+
+### 7) Ampliaciones (si van rápido)
+
+- Automatiza todo lo posible con PowerShell: crear usuarios/grupos + añadir miembros + deshabilitar usuario temporal.
+- Crea una “lista blanca” de servicios que jamás tocarías y justifica por qué.
