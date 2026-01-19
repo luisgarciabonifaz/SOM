@@ -120,11 +120,11 @@ El bloqueo de cuentas es una medida de seguridad que deshabilita temporalmente u
 El **Administrador de tareas** (`Ctrl + Shift + Esc` o `Ctrl + Alt + Supr`) es tu centro de control para ver qué está haciendo tu equipo.
 
 - **Pestaña Procesos:** Muestra todas las aplicaciones y procesos en ejecución. Puedes:
-  - **Finalizar tarea:** Detiene una aplicación o proceso que no responde. ¡Úsalo con cuidado, ya que forzar el cierre de procesos del sistema puede inestabilizar Windows!
-  - **Ver detalles:** Abre la pestaña "Detalles" para obtener más información sobre el proceso.
+    - **Finalizar tarea:** Detiene una aplicación o proceso que no responde. ¡Úsalo con cuidado, ya que forzar el cierre de procesos del sistema puede inestabilizar Windows!
+    - **Ver detalles:** Abre la pestaña "Detalles" para obtener más información sobre el proceso.
 - **Pestaña Detalles:** Ofrece una vista más granular de los procesos:
-  - **Establecer prioridad:** Puedes cambiar la prioridad de un proceso (Baja, Normal, Alta, Tiempo real). Aumentar la prioridad puede dar más recursos a un programa, pero también puede ralentizar el resto del sistema. **La prioridad "Tiempo real" puede ser inestable y debe usarse con extrema precaución.**
-  - **Establecer afinidad:** Decide qué núcleos de CPU puede usar un proceso.
+    - **Establecer prioridad:** Puedes cambiar la prioridad de un proceso (Baja, Normal, Alta, Tiempo real). Aumentar la prioridad puede dar más recursos a un programa, pero también puede ralentizar el resto del sistema. **La prioridad "Tiempo real" puede ser inestable y debe usarse con extrema precaución.**
+    - **Establecer afinidad:** Decide qué núcleos de CPU puede usar un proceso.
 - **Pestaña Rendimiento:** Muestra gráficos en tiempo real del uso de CPU, memoria, disco y red. Muy útil para identificar cuellos de botella.
 
 ### 2.2. Monitor de Recursos
