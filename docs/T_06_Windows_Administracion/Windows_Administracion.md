@@ -289,28 +289,9 @@ El **Registro de Windows** es una base de datos jerárquica que almacena configu
     - **Siempre haz una copia de seguridad antes de cualquier modificación.**
 
 
-## 9. Administración de tareas y Eventos
+## 9. Informaciónd el sistema
 
-### 9.1. Administrador de Tareas
-
-Volvemos al Administrador de tareas para una visión integral:
-
-- **Pestaña Procesos:** Ya la hemos visto para finalizar tareas y entender el uso de CPU/memoria por aplicación. Aquí se puede enfatizar la identificación de procesos sospechosos o de alto consumo.
-- **Pestaña Rendimiento:** Gráficos en tiempo real de CPU, memoria, disco y red. Es vital para:
-    - Identificar cuellos de botella (¿qué recurso está al 100%?).
-    - Entender la capacidad del hardware actual.
-    - Distinguir entre problemas de software (un programa que consume mucha CPU) y problemas de hardware (poca RAM).
-- **Pestaña Historial de aplicaciones:** Muestra el tiempo de CPU y el uso de red por aplicación, útil para ver qué aplicaciones han sido más activas.
-
-### 9.2. Visor de Eventos
-
-Comprobamos la importancia del Visor de eventos como herramienta de diagnóstico:
-
-- **Errores (Rojo):** Indican un problema grave (fallo de hardware, de un servicio crítico, etc.).
-- **Advertencias (Amarillo):** Indican un problema potencial que no es crítico, pero que podría llevar a uno (espacio en disco bajo, un servicio que se detuvo y se reinició).
-- **Información (Azul):** Eventos normales de operación (inicio/parada de servicios, instalación de software, inicio de sesión exitoso).
-
-### 9.3. Información del Sistema
+### 9.1. Información del Sistema
 
 La herramienta **Información del sistema** (`msinfo32.exe`) proporciona un resumen exhaustivo de la configuración de hardware y software del equipo.
 
@@ -320,7 +301,7 @@ La herramienta **Información del sistema** (`msinfo32.exe`) proporciona un resu
 - **Entorno de software:** Lista los programas que se inician con Windows, los controladores instalados, los servicios, etc.
 
 
-## 10. Actividad: Auditoría, administración y optimización de un equipo Windows
+## 10. Actividad 1: Auditoría, administración y optimización de un equipo Windows
 
 ### Contexto (escenario)
 
@@ -642,7 +623,16 @@ Pregunta:
 
 - ¿Qué comando te da más pistas si sospechas problemas de red?
 
-**I2. Registro (solo consulta + precaución)**
+**I2. Comandos PowerShell**
+
+Busca y ejeucta los comandos de PowerShell alternativos a estos comandos del cmd
+
+- `ipconfig /all`
+- `tasklist /svc`
+- `systeminfo`
+
+
+**I3. Registro (solo consulta + precaución)**
 
 1. Abre `regedit.exe`
 2. Explica la diferencia entre HKLM y HKCU.
@@ -671,3 +661,225 @@ Pregunta:
 
 - Automatiza todo lo posible con PowerShell: crear usuarios/grupos + añadir miembros + deshabilitar usuario temporal.
 - Crea una “lista blanca” de servicios que jamás tocarías y justifica por qué.
+
+
+## 11. Actividad 2: Estructura de empresa y permisos NTFS por departamentos
+
+### Contexto
+
+Una empresa pequeña quiere organizar su información por departamentos y proyectos. Hay conflictos porque:
+
+- Algunos usuarios ven carpetas que no deberían.
+- Otros pueden borrar documentos sin querer.
+- Los responsables necesitan acceso total.
+- El equipo de soporte debe poder recuperar y auditar, pero sin trabajar como “dueño” de los archivos.
+
+Tu misión es **diseñar y aplicar una estructura de permisos** basada en **grupos**, no en usuarios individuales, y **demostrar con pruebas** que funciona.
+
+### 1) Objetivos
+
+Al finalizar, el alumnado será capaz de:
+
+- Diseñar un modelo de permisos por **roles** (grupos).
+- Aplicar permisos NTFS correctos usando **herencia** y **excepciones**.
+- Entender la diferencia entre **Listar carpeta**, **Leer**, **Modificar**, **Control total** y permisos avanzados (eliminar, crear, escribir).
+- Aplicar y justificar una **ruptura de herencia** en subcarpetas.
+- Verificar con **Permisos efectivos / Acceso efectivo** y con pruebas reales (logins).
+- Documentar el diseño (matriz de acceso) y las evidencias.
+
+
+### 2) Preparación (usuarios y grupos)
+
+> Si ya tienes cuentas del ejercicio anterior, reutilízalas. Si no, créalas.
+
+#### Usuarios
+
+- `ana_admin` (Administración)
+- `dani_com` (Comercial)
+- `carmen_it` (IT)
+- `sergio_dir` (Dirección)
+- `soporte` (cuenta técnica / administradora, para recuperación)
+
+#### Grupos (roles)
+
+- `GG_Direccion`
+- `GG_Administracion`
+- `GG_Comercial`
+- `GG_IT`
+- `GG_Todos` (incluye a los empleados, excluye soporte si decides)
+
+**Regla obligatoria:**
+ ✅ Los permisos se asignan a **grupos**, no a usuarios.
+ ❌ Solo se permite asignación directa a usuario en 1 caso: el usuario “dueño” (ver apartado de CREATOR OWNER).
+
+
+### 3) Estructura de carpetas (a crear)
+
+Crea esta estructura en `D:\EMPRESA` (o `C:\EMPRESA` si no hay D:)
+
+```
+EMPRESA
+│
+├── 00_PUBLICO
+│   ├── Plantillas
+│   └── Comunicados
+│
+├── 10_ADMIN
+│   ├── Facturas
+│   ├── Nominas
+│   └── Proveedores
+│
+├── 20_COMERCIAL
+│   ├── Clientes
+│   ├── Ofertas
+│   └── Contratos
+│
+├── 30_IT
+│   ├── Documentacion
+│   ├── Scripts
+│   └── Backups
+│
+└── 99_DIRECCION
+    ├── Estrategia
+    └── Confidencial
+```
+
+
+### 4) Reglas de negocio (lo que debe cumplirse) — MUY IMPORTANTE
+
+Estas reglas definen el reto. Tu configuración debe cumplirlas **exactamente**:
+
+**Regla A — Público (00_PUBLICO)**
+
+1. Todos los empleados (`GG_Todos`) pueden:
+    - **Leer** `00_PUBLICO` completo.
+2. Solo `GG_IT` puede:
+    - **Modificar** `00_PUBLICO\Plantillas`.
+3. En `00_PUBLICO\Comunicados`:
+    - `GG_Direccion` puede **Modificar**.
+    - `GG_Todos` solo **Leer**.
+
+✅ Aquí deben practicar herencia + excepción en subcarpeta.
+
+
+**Regla B — Administración (10_ADMIN)**
+
+1. Solo `GG_Administracion` y `GG_Direccion` pueden acceder a `10_ADMIN`.
+2. `GG_Administracion` tiene:
+    - **Modificar** en `10_ADMIN` y subcarpetas.
+3. `GG_Direccion` tiene:
+    - **Lectura** en `10_ADMIN`, salvo `Nominas` donde tiene **Control total**.
+4. Nadie más (ni Comercial ni IT) debe **ver** el contenido de `10_ADMIN`.
+
+✅ Aquí deben practicar: “no solo que no entren, sino que no lo vean”.
+
+
+**Regla C — Comercial (20_COMERCIAL)**
+
+1. `GG_Comercial` puede **Modificar** todo `20_COMERCIAL`.
+2. `GG_Direccion` puede **Lectura** en todo `20_COMERCIAL`.
+3. Subcarpeta `20_COMERCIAL\Contratos`:
+    - Solo `GG_Comercial` y `GG_Direccion` pueden acceder.
+    - IT **no** debe ver esta carpeta.
+4. Subcarpeta `20_COMERCIAL\Clientes`:
+    - `GG_Comercial` puede **Modificar**, pero **NO** puede borrar archivos (ni propios ni ajenos).
+    - Dirección puede **Lectura**.
+
+✅ Esta regla es “trampa”: obliga a permisos avanzados (quitar “Eliminar” y “Eliminar subcarpetas y archivos”).
+
+**Regla D — IT (30_IT)**
+
+1. `GG_IT` tiene **Modificar** en `30_IT\Documentacion`.
+2. `30_IT\Scripts`:
+    - Solo `GG_IT` puede acceder.
+    - Y dentro, cada usuario de IT debe poder modificar **solo sus scripts**:
+        - Crea subcarpetas: `Scripts\carmen_it`, `Scripts\carlos_it` (si no existe, inventa otro usuario IT).
+        - Cada usuario solo puede modificar su carpeta.
+        - `GG_IT` puede leer todo Scripts, pero no modificar carpetas ajenas.
+        - `soporte` (admin) puede Control total en todo `30_IT`.
+3. `30_IT\Backups`:
+    - Solo `soporte` puede Control total.
+    - `GG_IT` solo Lectura.
+
+✅ Aquí practican: permisos por subcarpetas + “cada uno lo suyo” + diferencia entre grupo y propietario.
+
+**Regla E — Dirección (99_DIRECCION)**
+
+1. Solo `GG_Direccion` puede acceder a `99_DIRECCION`.
+2. `99_DIRECCION\Confidencial`:
+    - Solo `sergio_dir` (usuario) debe tener acceso total.
+    - Ni siquiera otros de Dirección (si los hay) deben entrar.
+3. Todo lo anterior debe seguir permitiendo que `soporte` (admin) pueda recuperar información (por ser admin), pero el informe debe explicar la diferencia entre:
+    - acceso por permisos NTFS
+    - acceso por privilegios de administrador / tomar posesión
+
+✅ Aquí practican: excepción extrema + explicación de “admin puede tomar posesión”.
+
+
+### 5) Condiciones obligatorias de implementación (para obligarles a pensar)
+
+1. En la raíz `EMPRESA`:
+    - Mantén herencia razonable.
+    - No uses “Todos” (Everyone) a lo loco.
+2. Solo se permite un máximo de **12 entradas** (ACEs) por carpeta (para que no lo hagan a base de parches).
+3. Para aplicar una excepción en subcarpeta, deben:
+    - **Romper herencia** y elegir si “copiar” o “quitar”.
+    - Justificarlo en el informe.
+4. Deben usar **al menos una vez**:
+    - `Denegar` (Deny) **o** una alternativa equivalente (preferible sin Deny si lo resuelven bien).
+    - Si usan Deny, deben explicar riesgos (Deny gana).
+5. Deben comprobar “Acceso efectivo”:
+    - Pestaña Seguridad → Avanzado → Acceso efectivo / Permisos efectivos (según versión Windows).
+
+
+### 6) Pruebas prácticas obligatorias (no solo teoría)
+
+Para cada usuario (ana_admin, dani_com, carmen_it, sergio_dir):
+
+1. Inicia sesión o usa “Ejecutar como usuario” y prueba:
+    - Entrar en carpetas permitidas.
+    - Confirmar que carpetas prohibidas **no se ven** o dan acceso denegado (según diseño).
+2. En carpetas con Modificar:
+    - Crear archivo
+    - Modificar
+    - Renombrar
+3. En `Clientes` (Comercial) prueba específicamente:
+    - Crear archivo ✅
+    - Modificar archivo ✅
+    - Intentar borrar archivo ❌ (debe fallar)
+4. En `Scripts` (IT) prueba:
+    - Carmen puede modificar `Scripts\carmen_it`
+    - Carmen no puede modificar `Scripts\carlos_it`
+    - IT (grupo) puede leer ambos
+5. En `99_DIRECCION\Confidencial`:
+    - `sergio_dir` entra ✅
+    - otro usuario de Dirección (si creas uno) no entra ❌
+
+**Evidencias mínimas por prueba:**
+
+- 1 captura por caso conflictivo (denegación o restricción).
+- 1 captura por caso “funciona”.
+
+
+### 7) Entregables
+
+1. **Matriz de permisos** (tabla) con:
+    - Carpetas (filas)
+    - Grupos/usuarios (columnas)
+    - Permiso resultante (Leer/Modificar/Control total/No acceso)
+2. **Informe** con:
+    - Justificación del diseño (por qué así)
+    - Capturas clave (mínimo 12)
+    - Explicación de herencia y rupturas
+    - Explicación de por qué “no borrar” se resolvió como se resolvió
+3. **Checklist de pruebas** firmado:
+    - “Probado con usuario X: OK / NO OK” + evidencia
+
+### 8) Evaluación (100 puntos)
+
+- Diseño por grupos y limpieza (20)
+- Herencia + rupturas justificadas (20)
+- “No borrar en Clientes” conseguido correctamente (20)
+- Scripts: cada uno lo suyo + lectura global IT (20)
+- Evidencias y verificación (20)
+
