@@ -708,14 +708,10 @@ Al finalizar, el alumnado será capaz de:
 - `GG_IT`
 - `GG_Todos` (incluye a los empleados, excluye soporte si decides)
 
-**Regla obligatoria:**
- ✅ Los permisos se asignan a **grupos**, no a usuarios.
- ❌ Solo se permite asignación directa a usuario en 1 caso: el usuario “dueño” (ver apartado de CREATOR OWNER).
-
 
 ### 3) Estructura de carpetas (a crear)
 
-Crea esta estructura en `D:\EMPRESA` (o `C:\EMPRESA` si no hay D:)
+Crea un script de PowerShell que cree esta estructura en `C:\USERS\tu_usaurio\EMPRESA`. 
 
 ```
 EMPRESA
@@ -759,9 +755,6 @@ Estas reglas definen el reto. Tu configuración debe cumplirlas **exactamente**:
     - `GG_Direccion` puede **Modificar**.
     - `GG_Todos` solo **Leer**.
 
-✅ Aquí deben practicar herencia + excepción en subcarpeta.
-
-
 **Regla B — Administración (10_ADMIN)**
 
 1. Solo `GG_Administracion` y `GG_Direccion` pueden acceder a `10_ADMIN`.
@@ -771,8 +764,6 @@ Estas reglas definen el reto. Tu configuración debe cumplirlas **exactamente**:
     - **Lectura** en `10_ADMIN`, salvo `Nominas` donde tiene **Control total**.
 4. Nadie más (ni Comercial ni IT) debe **ver** el contenido de `10_ADMIN`.
 
-✅ Aquí deben practicar: “no solo que no entren, sino que no lo vean”.
-
 
 **Regla C — Comercial (20_COMERCIAL)**
 
@@ -781,11 +772,6 @@ Estas reglas definen el reto. Tu configuración debe cumplirlas **exactamente**:
 3. Subcarpeta `20_COMERCIAL\Contratos`:
     - Solo `GG_Comercial` y `GG_Direccion` pueden acceder.
     - IT **no** debe ver esta carpeta.
-4. Subcarpeta `20_COMERCIAL\Clientes`:
-    - `GG_Comercial` puede **Modificar**, pero **NO** puede borrar archivos (ni propios ni ajenos).
-    - Dirección puede **Lectura**.
-
-✅ Esta regla es “trampa”: obliga a permisos avanzados (quitar “Eliminar” y “Eliminar subcarpetas y archivos”).
 
 **Regla D — IT (30_IT)**
 
@@ -801,8 +787,6 @@ Estas reglas definen el reto. Tu configuración debe cumplirlas **exactamente**:
     - Solo `soporte` puede Control total.
     - `GG_IT` solo Lectura.
 
-✅ Aquí practican: permisos por subcarpetas + “cada uno lo suyo” + diferencia entre grupo y propietario.
-
 **Regla E — Dirección (99_DIRECCION)**
 
 1. Solo `GG_Direccion` puede acceder a `99_DIRECCION`.
@@ -813,12 +797,9 @@ Estas reglas definen el reto. Tu configuración debe cumplirlas **exactamente**:
     - acceso por permisos NTFS
     - acceso por privilegios de administrador / tomar posesión
 
-✅ Aquí practican: excepción extrema + explicación de “admin puede tomar posesión”.
-
-
 ### 5) Condiciones obligatorias de implementación (para obligarles a pensar)
 
-1. En la raíz `EMPRESA`:
+1. En `EMPRESA`:
     - Mantén herencia razonable.
     - No uses “Todos” (Everyone) a lo loco.
 2. Solo se permite un máximo de **12 entradas** (ACEs) por carpeta (para que no lo hagan a base de parches).
@@ -832,7 +813,7 @@ Estas reglas definen el reto. Tu configuración debe cumplirlas **exactamente**:
     - Pestaña Seguridad → Avanzado → Acceso efectivo / Permisos efectivos (según versión Windows).
 
 
-### 6) Pruebas prácticas obligatorias (no solo teoría)
+### 6) Pruebas prácticas obligatorias
 
 Para cada usuario (ana_admin, dani_com, carmen_it, sergio_dir):
 
@@ -863,23 +844,37 @@ Para cada usuario (ana_admin, dani_com, carmen_it, sergio_dir):
 
 ### 7) Entregables
 
-1. **Matriz de permisos** (tabla) con:
-    - Carpetas (filas)
-    - Grupos/usuarios (columnas)
-    - Permiso resultante (Leer/Modificar/Control total/No acceso)
+1. **Permisos** 
+    - Captura de pantalla de la configuración avanzada de cada carpeta en la que se vean todos los permisos con:
 2. **Informe** con:
     - Justificación del diseño (por qué así)
-    - Capturas clave (mínimo 12)
+    - Capturas clave
     - Explicación de herencia y rupturas
-    - Explicación de por qué “no borrar” se resolvió como se resolvió
-3. **Checklist de pruebas** firmado:
-    - “Probado con usuario X: OK / NO OK” + evidencia
+3. **Checklist de pruebas (Apartado 6)** Firmado por el profesor
 
-### 8) Evaluación (100 puntos)
 
-- Diseño por grupos y limpieza (20)
-- Herencia + rupturas justificadas (20)
-- “No borrar en Clientes” conseguido correctamente (20)
-- Scripts: cada uno lo suyo + lectura global IT (20)
-- Evidencias y verificación (20)
+**PLANTILLA CHECKLIST**
 
+## 1. Acceso general
+- [ ] **1.1** Iniciar sesión o usar “Ejecutar como usuario”
+- [ ] **1.2** Entrar en carpetas permitidas → debe permitir acceso
+- [ ] **1.3** Intentar entrar en carpetas prohibidas → no se ven o acceso denegado
+
+## 2. Carpetas con permiso Modificar
+- [ ] **2.1** Crear archivo → permitido
+- [ ] **2.2** Modificar archivo → permitido
+- [ ] **2.3** Renombrar archivo → permitido
+
+## 3. `Clientes` (Comercial)
+- [ ] **3.1** Crear archivo → ✅ permitido
+- [ ] **3.2** Modificar archivo → ✅ permitido
+- [ ] **3.3** Intentar borrar archivo → ❌ debe fallar
+
+## 4. `Scripts` (IT)
+- [ ] **4.1** Carmen puede modificar `Scripts\carmen_it`
+- [ ] **4.2** Carmen **no** puede modificar `Scripts\carlos_it`
+- [ ] **4.3** El grupo **IT** puede leer ambas carpetas
+
+## 5. `99_DIRECCION\Confidencial`
+- [ ] **5.1** `sergio_dir` puede entrar → ✅
+- [ ] **5.2** Otro usuario de Dirección **no** puede entrar → ❌
