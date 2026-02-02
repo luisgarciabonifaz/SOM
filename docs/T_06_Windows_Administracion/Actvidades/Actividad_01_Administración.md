@@ -365,9 +365,3 @@ Pregunta:
 9. **Compartición** (tabla permisos compartición vs NTFS + prueba).
 10. **Comandos y registro** (salidas + conclusiones).
 11. **Conclusiones y recomendaciones** (5 bullets accionables).
-
-
-### 7) Ampliaciones (si van rápido)
-
-- Automatiza todo lo posible con PowerShell: crear usuarios/grupos + añadir miembros + deshabilitar usuario temporal.
-- Crea una “lista blanca” de servicios que jamás tocarías y justifica por qué.
