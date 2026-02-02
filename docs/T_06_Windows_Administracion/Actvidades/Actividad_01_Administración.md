@@ -1,3 +1,13 @@
+<p style="text-align: center; font-size: 32px;">CIPFP Mislata</p>
+
+<p style="text-align: center; font-size: 18px;">Luis García Bonifaz - l.garciabonifaz@edu.gva.es</p>
+<p style="text-align: center; font-size: 24px;">SOM  T06 - Administración Windows</p>
+
+---
+
+<p style="text-align: left; font-size: 24px;">Actividad 1</p>
+
+---
 ## Actividad: Auditoría, administración y optimización de un equipo Windows
 
 ### Contexto (escenario)
