@@ -855,26 +855,26 @@ Para cada usuario (ana_admin, dani_com, carmen_it, sergio_dir):
 
 **PLANTILLA CHECKLIST**
 
-## 1. Acceso general
+#### 1. Acceso general
 - [ ] **1.1** Iniciar sesión o usar “Ejecutar como usuario”
 - [ ] **1.2** Entrar en carpetas permitidas → debe permitir acceso
 - [ ] **1.3** Intentar entrar en carpetas prohibidas → no se ven o acceso denegado
 
-## 2. Carpetas con permiso Modificar
+#### 2. Carpetas con permiso Modificar
 - [ ] **2.1** Crear archivo → permitido
 - [ ] **2.2** Modificar archivo → permitido
 - [ ] **2.3** Renombrar archivo → permitido
 
-## 3. `Clientes` (Comercial)
+#### 3. `Clientes` (Comercial)
 - [ ] **3.1** Crear archivo → ✅ permitido
 - [ ] **3.2** Modificar archivo → ✅ permitido
 - [ ] **3.3** Intentar borrar archivo → ❌ debe fallar
 
-## 4. `Scripts` (IT)
+#### 4. `Scripts` (IT)
 - [ ] **4.1** Carmen puede modificar `Scripts\carmen_it`
 - [ ] **4.2** Carmen **no** puede modificar `Scripts\carlos_it`
 - [ ] **4.3** El grupo **IT** puede leer ambas carpetas
 
-## 5. `99_DIRECCION\Confidencial`
+#### 5. `99_DIRECCION\Confidencial`
 - [ ] **5.1** `sergio_dir` puede entrar → ✅
 - [ ] **5.2** Otro usuario de Dirección **no** puede entrar → ❌
