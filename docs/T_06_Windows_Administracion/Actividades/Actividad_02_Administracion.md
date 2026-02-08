@@ -31,7 +31,7 @@ Al finalizar, el alumnado será capaz de:
 - Entender la diferencia entre **Listar carpeta**, **Leer**, **Modificar**, **Control total** y permisos avanzados (eliminar, crear, escribir).
 - Aplicar y justificar una **ruptura de herencia** en subcarpetas.
 - Verificar con **Permisos efectivos / Acceso efectivo** y con pruebas reales (logins).
-- Documentar el diseño (matriz de acceso) y las evidencias.
+- Documentar el diseño y las evidencias.
 
 
 ### 2) Preparación (usuarios y grupos)
@@ -46,13 +46,16 @@ Al finalizar, el alumnado será capaz de:
 - `sergio_dir` (Dirección)
 - `soporte` (cuenta técnica / administradora, para recuperación)
 
+!!! Warning "Cuidado"
+    Si creas las cuentas de usuario con PowerShell debes añadirlos de forma manural al grupo Usuarios, sino no apareceran en la pantalla de inicio para seleccionarlos
+
 #### Grupos (roles)
 
 - `GG_Direccion`
 - `GG_Administracion`
 - `GG_Comercial`
 - `GG_IT`
-- `GG_Todos` (incluye a los empleados, excluye soporte si decides)
+- `GG_Todos` (incluye a los empleados, excluye soporte si así lo decides)
 
 
 ### 3) Estructura de carpetas (a crear)
@@ -143,23 +146,7 @@ Estas reglas definen el reto. Tu configuración debe cumplirlas **exactamente**:
     - acceso por permisos NTFS
     - acceso por privilegios de administrador / tomar posesión
 
-### 5) Condiciones obligatorias de implementación (para obligarles a pensar)
-
-1. En `EMPRESA`:
-    - Mantén herencia razonable.
-    - No uses “Todos” (Everyone) a lo loco.
-2. Solo se permite un máximo de **12 entradas** (ACEs) por carpeta (para que no lo hagan a base de parches).
-3. Para aplicar una excepción en subcarpeta, deben:
-    - **Romper herencia** y elegir si “copiar” o “quitar”.
-    - Justificarlo en el informe.
-4. Deben usar **al menos una vez**:
-    - `Denegar` (Deny) **o** una alternativa equivalente (preferible sin Deny si lo resuelven bien).
-    - Si usan Deny, deben explicar riesgos (Deny gana).
-5. Deben comprobar “Acceso efectivo”:
-    - Pestaña Seguridad → Avanzado → Acceso efectivo / Permisos efectivos (según versión Windows).
-
-
-### 6) Pruebas prácticas obligatorias
+### 5) Pruebas prácticas (opcionales)
 
 Para cada usuario (ana_admin, dani_com, carmen_it, sergio_dir):
 
@@ -182,45 +169,18 @@ Para cada usuario (ana_admin, dani_com, carmen_it, sergio_dir):
     - `sergio_dir` entra ✅
     - otro usuario de Dirección (si creas uno) no entra ❌
 
-**Evidencias mínimas por prueba:**
-
-- 1 captura por caso conflictivo (denegación o restricción).
-- 1 captura por caso “funciona”.
-
-
-### 7) Entregables
+### 6) Entregables
 
 1. **Permisos** 
-    - Captura de pantalla de la configuración avanzada de cada carpeta en la que se vean todos los permisos con:
+    - Captura de pantalla de la configuración avanzada de cada carpeta y subcarpeta en la que se vean todos los permisos con:
 2. **Informe** con:
     - Justificación del diseño (por qué así)
     - Capturas clave
     - Explicación de herencia y rupturas
-3. **Checklist de pruebas (Apartado 6)** Firmado por el profesor
+3. **Script**
+    - Script de creación de carpetas.
 
+Todo en un zip con:
 
-**PLANTILLA CHECKLIST**
-
-#### 1. Acceso general
-- [ ] **1.1** Iniciar sesión o usar “Ejecutar como usuario”
-- [ ] **1.2** Entrar en carpetas permitidas → debe permitir acceso
-- [ ] **1.3** Intentar entrar en carpetas prohibidas → no se ven o acceso denegado
-
-#### 2. Carpetas con permiso Modificar
-- [ ] **2.1** Crear archivo → permitido
-- [ ] **2.2** Modificar archivo → permitido
-- [ ] **2.3** Renombrar archivo → permitido
-
-#### 3. `Clientes` (Comercial)
-- [ ] **3.1** Crear archivo → ✅ permitido
-- [ ] **3.2** Modificar archivo → ✅ permitido
-- [ ] **3.3** Intentar borrar archivo → ❌ debe fallar
-
-#### 4. `Scripts` (IT)
-- [ ] **4.1** Carmen puede modificar `Scripts\carmen_it`
-- [ ] **4.2** Carmen **no** puede modificar `Scripts\carlos_it`
-- [ ] **4.3** El grupo **IT** puede leer ambas carpetas
-
-#### 5. `99_DIRECCION\Confidencial`
-- [ ] **5.1** `sergio_dir` puede entrar → ✅
-- [ ] **5.2** Otro usuario de Dirección **no** puede entrar → ❌
+- Informe en formato PDF
+- Script de PowerShell 
