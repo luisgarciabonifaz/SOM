@@ -1,0 +1,1432 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Luis García Bonifaz">
+      
+      
+        <link rel="canonical" href="https://luisgarciabonifaz.github.io/SOM/T_09_Linux_Administracion/Linux_Administracion/">
+      
+      
+        <link rel="prev" href="../../T_08_Linux_Archivos/Linux_Gestion_Archivos/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>T9 - Linux Administración - SOM</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="navy" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#administracion-y-optimizacion-del-rendimiento-en-linux" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="SOM" class="md-header__button md-logo" aria-label="SOM" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SOM
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              T9 - Linux Administración
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="navy" data-md-color-accent="deep-orange"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="navy" data-md-color-accent="deep-purple"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SOM" class="md-nav__button md-logo" aria-label="SOM" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SOM
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sistemas Operativos Monopuesto
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sistemas Operativos Monopuesto
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_01_Fundamentos_SO/Fundamentos_SO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T1 - Fundamentos de los Sistemes Operativos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_02_Instalacion_SO/Instalacion_SO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T2 - Instalacion de un Sistema Operativo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_03_Virtualizacion/Virtualizacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T3 - Virtualización
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_04_Windows_Configuracion/ConfiguracionBasica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T4 - Windows Configuración Básica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_05_Windows_Archivos/W_Gestion_Archivos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T5 - Windows Gestion de Archivos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_06_Windows_Administracion/Windows_Administracion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T6 - Windows Administración
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_07_Linux_Configuracion/Linux_Configuracion_Basica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T7 - Linux Configuración Básica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_08_Linux_Archivos/Linux_Gestion_Archivos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T8 - Linux Gestión de Archivos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T9 - Linux Administración
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T9 - Linux Administración
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-usuarios-y-grupos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Usuarios y Grupos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-organizacion-de-archivos-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Organización de archivos del sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-procesos-del-usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Procesos del usuario
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-servicios-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Servicios del sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-optimizacion-de-la-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Optimización de la memoria
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-analisis-de-la-actividad-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Análisis de la actividad del sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-optimizacion-de-los-dispositivos-de-almacenamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Optimización de los dispositivos de almacenamiento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-recursos-compartibles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Recursos compartibles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-informacion-de-configuracion-del-sistema-operativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Información de configuración del sistema operativo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-usuarios-y-grupos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Usuarios y Grupos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-organizacion-de-archivos-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Organización de archivos del sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-procesos-del-usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Procesos del usuario
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-servicios-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Servicios del sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-optimizacion-de-la-memoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Optimización de la memoria
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-analisis-de-la-actividad-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Análisis de la actividad del sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-optimizacion-de-los-dispositivos-de-almacenamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Optimización de los dispositivos de almacenamiento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-recursos-compartibles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Recursos compartibles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-informacion-de-configuracion-del-sistema-operativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Información de configuración del sistema operativo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="administracion-y-optimizacion-del-rendimiento-en-linux">Administración y optimización del rendimiento en Linux</h1>
+<p>En este tema, exploraremos las técnicas avanzadas para administrar y optimizar sistemas operativos Linux, centrándonos en aspectos cruciales para el rendimiento y la seguridad. Aprenderemos a gestionar usuarios y grupos, controlar procesos y servicios, optimizar la memoria y el almacenamiento, y a interpretar la configuración del sistema.</p>
+<h2 id="1-usuarios-y-grupos">1. Usuarios y Grupos</h2>
+<p>La administración de usuarios y grupos es fundamental para la seguridad y el control de acceso en Linux.</p>
+<h3 id="11-administracion-avanzada-de-usuarios-y-grupos">1.1. Administración avanzada de usuarios y grupos</h3>
+<p>Podemos crear, modificar y eliminar usuarios y grupos, así como gestionar sus pertenencias.</p>
+<p><strong>useradd</strong>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>useradd<span class="w"> </span><span class="o">[</span>opciones<span class="o">]</span><span class="w"> </span>nombre<span class="w"> </span>usuario
+</code></pre></div>
+Opciones:</p>
+<ul>
+<li>-d: Especifica el directorio inicial del usuario</li>
+<li>-s: Especifica el shell del usuario</li>
+<li>-g: Especifica el grupo primario del usuario</li>
+<li>-G: Especifica los grupos secundarios del usuario. Combinarlo con a para añadir grupos</li>
+<li>-m: Crea el directorio de inicio del usuario</li>
+<li>-e: Especifica la fecha de expiración del usuario</li>
+<li>-uid: Especifica el identificador de usuario para el usuario</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Ejemplos</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>sudo<span class="w"> </span>useradd<span class="w"> </span>-d<span class="w"> </span>/home/juanito<span class="w"> </span>juan
+<span class="w">    </span>sudo<span class="w"> </span>useradd<span class="w"> </span>-m<span class="w"> </span>pedro
+</code></pre></div>
+</div>
+<p><strong>userdel</strong> </p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>userdel<span class="w"> </span><span class="o">[</span>opciones<span class="o">]</span><span class="w"> </span>nombre<span class="w"> </span>usuario
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplos</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>sudo<span class="w"> </span>userdel<span class="w"> </span>juan
+<span class="w">    </span>sudo<span class="w"> </span>userdel<span class="w"> </span>-r<span class="w"> </span>juan<span class="w">   </span><span class="c1"># Borra el directorio personal del usuario con todo su contenido</span>
+</code></pre></div>
+</div>
+<p><strong>usermod</strong></p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>usermod<span class="w"> </span><span class="o">[</span>opciones<span class="o">]</span><span class="w"> </span>nombre<span class="w"> </span>usuario
+</code></pre></div>
+<p>Opciones:</p>
+<ul>
+<li>-d: Sirve para asignar un nuevo directorio HOME al usuario.</li>
+<li>-m: Mueve el contenido del antiguo directorio al nuevo</li>
+<li>-g: Cambia el grupo del usuario. Se debe usar nombre o número del grupo. Debe existir el grupo previamente.</li>
+<li>-l: Permite modificar el login del usuario. OJO! no cambia el nombre del directorio HOME del usuario,debería cambiarse de forma manual.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Ejemplos</p>
+<p>Para cambiar el directorio de inicio del usuario juan para que sea /home/profesores/juan. La opción
+-m hace que mueva el contenido del antiguo directorio al nuevo emplazamiento.</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>sudo<span class="w"> </span>usermod<span class="w"> </span>-d<span class="w"> </span>/home/profes/juan<span class="w"> </span>-m<span class="w"> </span>juan
+</code></pre></div>
+<p>Para cambiar el grupo inicial del usuario juan para que sea profesores.</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>sudo<span class="w"> </span>usermod<span class="w"> </span>-g<span class="w"> </span>profesores<span class="w"> </span>juan
+</code></pre></div>
+<p>Para cambiar el nombre del usuario juan. El nuevo nombre es jorge.</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>sudo<span class="w"> </span>usermod<span class="w"> </span>-l<span class="w"> </span>jorge<span class="w"> </span>juan
+</code></pre></div>
+<p>Para cambiar la contraseña a un usuario utilizar el comando, que nos pedirá por pantalla la nueva
+contraseña</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>sudo<span class="w"> </span>passwd<span class="w"> </span>usuario
+</code></pre></div>
+</div>
+<p>Los comandos habituales para la gestión de grupos son los siguientes:</p>
+<p><strong>groupadd</strong></p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>groupadd<span class="w"> </span><span class="o">[</span>opciones<span class="o">]</span><span class="w"> </span>nombre<span class="w"> </span>_grupo
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplos</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>groupadd<span class="w"> </span>profesores
+</code></pre></div>
+</div>
+<p><strong>groupdel:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>groupdel<span class="w"> </span><span class="o">[</span>opciones<span class="o">]</span><span class="w"> </span>nombre<span class="w"> </span>_grupo
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Ejemplos</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>groupdel<span class="w"> </span>profesores
+</code></pre></div>
+</div>
+<p><strong>groupmod</strong></p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>groupmod<span class="w"> </span><span class="o">[</span>opciones<span class="o">]</span><span class="w"> </span>nombre<span class="w"> </span>_grupo
+</code></pre></div>
+<p>Opciones:</p>
+<ul>
+<li>-g : El valor numérico del identificador de grupo. Este valor debe ser único. Los valores entre 0 y 99 se reservan normalmente para cuentas del sistema. Este valor no puede ser negativo</li>
+<li>-n: El nombre del grupo será cambiado de grupo a grupo</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Ejemplos</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>groupmod<span class="w"> </span>-n<span class="w"> </span>alumnos<span class="w"> </span>profesores
+</code></pre></div>
+</div>
+<p>Para añadir y borrar usuarios a un grupo utilizaremos los comandos <strong>adduser</strong> y <strong>deluser</strong>, especificando el usuario y el grupo</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>adduser<span class="w"> </span>juan<span class="w"> </span>profesores<span class="w">  </span>//<span class="w"> </span>Añadir<span class="w"> </span>a<span class="w"> </span><span class="s1">&#39;juan&#39;</span><span class="w"> </span>al<span class="w"> </span>grupo<span class="w"> </span><span class="s1">&#39;profesores&#39;</span>
+<span class="w">    </span>deluser<span class="w"> </span>juan<span class="w"> </span>profesores<span class="w">  </span>//<span class="w"> </span>Quitar<span class="w"> </span>a<span class="w"> </span><span class="s1">&#39;juan&#39;</span><span class="w"> </span>del<span class="w"> </span>grupo<span class="w"> </span><span class="s1">&#39;profesores&#39;</span>
+</code></pre></div>
+<h3 id="permisos-sudo">Permisos sudo</h3>
+<p>El comando <code>sudo</code> (SuperUser DO) permite a usuarios autorizados ejecutar comandos con privilegios de superusuario (root) de forma segura y controlada. Es una alternativa más segura a iniciar sesión directamente como root.</p>
+<ul>
+<li><strong>Ejecutar un comando con sudo:</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">  </span>sudo<span class="w"> </span>comando_a_ejecutar
+</code></pre></div>
+<p>Se te pedirá tu propia contraseña de usuario para verificar tu identidad.</p>
+<ul>
+<li><strong>Añadir un usuario al grupo sudo o wheel</strong> (según la distribución): Para que un usuario pueda usar <code>sudo</code>, debe pertenecer al grupo <strong>sudo</strong> (Debian/Ubuntu) o <strong>wheel</strong> (CentOS/RHEL). Esto se hace durante la creación del usuario o posteriormente con <code>usermod</code>.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="w">  </span>sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>sudo<span class="w"> </span>nombre_de_usuario
+</code></pre></div>
+    Después de añadir al usuario, este deberá cerrar sesión y volver a iniciarla para que los cambios surtan efecto.</p>
+<h2 id="2-organizacion-de-archivos-del-sistema">2. Organización de archivos del sistema</h2>
+<h3 id="21-comandos-find-locate-grep">2.1. Comandos <code>find</code>, <code>locate</code>, <code>grep</code></h3>
+<p>Estos comandos son herramientas potentes para buscar archivos y contenido dentro de ellos.</p>
+<ul>
+<li>
+<p><strong>find:</strong> Busca archivos y directorios en un sistema de archivos basándose en criterios complejos (nombre, tipo, tamaño, fecha de modificación, etc.).</p>
+<ul>
+<li><code>find /home/usuario -name "*.txt"</code>: Busca todos los archivos <code>.txt</code> en el directorio <code>/home/usuario</code> y sus subdirectorios.</li>
+<li><code>find /var/log -type f -size +1G</code>: Busca archivos regulares (<code>-type f</code>) mayores de 1 GB (<code>-size +1G</code>) en <code>/var/log</code>.</li>
+<li><code>find . -mtime -7</code>: Busca archivos modificados en los últimos 7 días en el directorio actual.</li>
+</ul>
+</li>
+<li>
+<p><strong>locate:</strong> Busca archivos en una base de datos preindexada del sistema. Es mucho más rápido que <code>find</code> para búsquedas por nombre, pero la base de datos no está siempre actualizada en tiempo real.</p>
+<ul>
+<li><code>locate nombre_de_archivo</code>: Busca <code>nombre_de_archivo</code> en la base de datos.</li>
+<li>Para actualizar la base de datos (se hace automáticamente por lo general):</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>sudo<span class="w"> </span>updatedb
+</code></pre></div>
+<ul>
+<li><strong>grep (Global Regular Expression Print):</strong> Busca patrones de texto dentro de archivos.<ul>
+<li><code>grep "patron" archivo.txt</code>: Busca la cadena "patron" en <code>archivo.txt</code>.</li>
+<li><code>grep -i "patron" archivo.txt</code>: Busca "patron" ignorando mayúsculas/minúsculas.</li>
+<li><code>grep -r "patron" /etc/</code>: Busca "patron" recursivamente en todos los archivos del directorio <code>/etc/</code>.</li>
+<li><code>ls -l | grep ".txt"</code>: Combina <code>ls</code> con <code>grep</code> para listar solo archivos <code>.txt</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="22-editor-de-texto-nano-vivim-basico">2.2. Editor de texto (nano, vi/vim básico)</h3>
+<p>Los editores de texto de consola son esenciales para editar archivos de configuración o scripts directamente en el terminal.</p>
+<ul>
+<li><strong>nano:</strong> Es un editor sencillo y fácil de usar, ideal para principiantes.<ul>
+<li><code>nano nombre_de_archivo</code>: Abre <code>nombre_de_archivo</code> para editarlo.</li>
+<li><strong>Comandos básicos en nano:</strong><ul>
+<li><code>Ctrl + O</code>: Guardar el archivo.</li>
+<li><code>Ctrl + X</code>: Salir del editor.</li>
+<li><code>Ctrl + W</code>: Buscar texto.</li>
+<li><code>Ctrl + K</code>: Cortar línea.</li>
+<li><code>Ctrl + U</code>: Pegar línea.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>vi/vim:</strong> Vi (y su versión mejorada Vim) es un editor más potente y complejo, con dos modos principales:<ul>
+<li><strong>Modo Normal (o de comandos):</strong> Para navegar, copiar, pegar y eliminar texto.</li>
+<li><strong>Modo de Inserción:</strong> Para escribir texto.</li>
+<li><code>vi nombre_de_archivo</code>: Abre <code>nombre_de_archivo</code>.</li>
+<li><strong>Comandos básicos en vi/vim:</strong><ul>
+<li><code>i</code>: Entrar en modo de inserción (para escribir).</li>
+<li><code>Esc</code>: Volver al modo normal.</li>
+<li><code>:w</code>: Guardar el archivo.</li>
+<li><code>:q</code>: Salir del editor (solo si no hay cambios sin guardar).</li>
+<li><code>:wq</code> o <code>ZZ</code>: Guardar y salir.</li>
+<li><code>:q!</code>: Salir sin guardar los cambios.</li>
+<li><code>x</code>: Borrar el carácter bajo el cursor (en modo normal).</li>
+<li><code>dd</code>: Borrar la línea actual (en modo normal).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-procesos-del-usuario">3. Procesos del usuario</h2>
+<p>Los procesos son programas en ejecución. Saber cómo monitorizarlos y gestionarlos es crucial para el rendimiento del sistema.</p>
+<h3 id="31-comandos-ps-top-htop">3.1. Comandos <code>ps</code>, <code>top</code>, <code>htop</code></h3>
+<p>Estas herramientas permiten ver qué procesos se están ejecutando y cómo utilizan los recursos del sistema.</p>
+<h4 id="311-ps-process-status">3.1.1. ps (process status)</h4>
+<p>Muestra los procesos en ejecución en un momento dado.</p>
+<p><strong>Opciones principales</strong></p>
+<table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a</code></td>
+<td>Procesos de todos los usuarios</td>
+</tr>
+<tr>
+<td><code>u</code></td>
+<td>Muestra el propietario del proceso</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>Procesos sin terminal asociada</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition example">
+<p class="admonition-title">Ejemplos</p>
+<p>Muestra todos los procesos de todos los usuarios con información detallada.
+<div class="highlight"><pre><span></span><code><span class="w">   </span>ps<span class="w"> </span>aux<span class="w"> </span>
+</code></pre></div>
+Busca el proceso <code>firefox</code>.
+<div class="highlight"><pre><span></span><code><span class="w">   </span>ps<span class="w"> </span>-ef<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;firefox&quot;</span>
+</code></pre></div></p>
+</div>
+<h4 id="312-top">3.1.2. <strong>top</strong></h4>
+<p>Muestra en tiempo real los procesos que más recursos consumen.</p>
+<p><strong>Atajos útiles dentro de <code>top</code>:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tecla</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>q</code></td>
+<td>Salir de la aplicación</td>
+</tr>
+<tr>
+<td><code>k</code></td>
+<td>Matar un proceso (pedirá el PID)</td>
+</tr>
+<tr>
+<td><code>M</code></td>
+<td>Ordenar por uso de memoria</td>
+</tr>
+<tr>
+<td><code>P</code></td>
+<td>Ordenar por uso de CPU</td>
+</tr>
+</tbody>
+</table>
+<h4 id="313-htop">3.1.3. <strong>htop</strong></h4>
+<p>Versión interactiva y mejorada de <code>top</code>, con interfaz más amigable.</p>
+<ul>
+<li>Instalación: <code>sudo apt install htop     # o     sudo dnf install htop</code></li>
+<li>Uso: <code>htop</code></li>
+<li>Funciones:<ul>
+<li>Navegar con flechas del teclado.</li>
+<li>Usar teclas <strong>F1–F10</strong> para acciones como filtrar, buscar o terminar procesos.</li>
+</ul>
+</li>
+</ul>
+<h3 id="32-kill-killall">3.2. <code>kill</code>, <code>killall</code></h3>
+<p>Estos comandos se utilizan para enviar señales a los procesos, comúnmente para terminarlos.</p>
+<ul>
+<li><strong>kill:</strong> Envía una señal a un proceso específico usando su <strong>PID</strong> (Process ID).<ul>
+<li><code>kill PID_del_proceso</code>: Envía la señal TERM (por defecto), que intenta terminar el proceso de forma "amigable".</li>
+<li><code>kill -9 PID_del_proceso</code>: Envía la señal KILL, que termina el proceso de forma forzada y sin preguntar. Útil para procesos que no responden.</li>
+</ul>
+</li>
+<li><strong>killall:</strong> Envía una señal a todos los procesos que tienen un nombre específico.<ul>
+<li><code>killall nombre_del_proceso</code>: Termina todos los procesos con el nombre especificado.</li>
+<li><code>killall -9 firefox</code>: Fuerza el cierre de todas las instancias de Firefox.</li>
+</ul>
+</li>
+</ul>
+<h3 id="33-gestion-de-trabajos-en-segundo-plano-bg-fg-jobs">3.3. Gestión de trabajos en segundo plano (<code>bg</code>, <code>fg</code>, <code>jobs</code>)</h3>
+<p>A menudo, necesitamos ejecutar comandos en segundo plano para liberar el terminal o gestionar tareas largas.</p>
+<ul>
+<li><strong>Ctrl + Z:</strong> Envía el proceso actual a segundo plano y lo detiene (stop).</li>
+<li><strong>jobs:</strong> Lista los trabajos (procesos) que se están ejecutando o están detenidos en segundo plano.<ul>
+<li>El número entre corchetes <code>[ ]</code> es el número de trabajo.</li>
+</ul>
+</li>
+<li><strong>bg (background):</strong> Reanuda un trabajo detenido en segundo plano.<ul>
+<li><code>bg %1</code>: Reanuda el trabajo número 1 en segundo plano.</li>
+</ul>
+</li>
+<li><strong>fg (foreground):</strong> Trae un trabajo en segundo plano al primer plano, para interactuar con él.<ul>
+<li><code>fg %1</code>: Trae el trabajo número 1 al primer plano.</li>
+</ul>
+</li>
+<li><strong>Ejecutar un comando directamente en segundo plano:</strong><ul>
+<li><code>comando &amp;</code>: Ejecuta <code>comando</code> directamente en segundo plano.</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-servicios-del-sistema">4. Servicios del sistema</h2>
+<p>Los servicios del sistema son programas que se ejecutan en segundo plano (demonios) y proporcionan funcionalidades como servidores web, bases de datos o servicios de red.</p>
+<h3 id="41-systemd-systemctl-inicio-detencion-habilitacion-de-servicios">4.1. <code>systemd</code> (<code>systemctl</code>): inicio, detención, habilitación de servicios</h3>
+<p><strong>systemd</strong> es el sistema de inicio y gestor de servicios moderno en la mayoría de las distribuciones Linux. <strong>systemctl</strong> es su principal herramienta de control.</p>
+<ul>
+<li><strong>Iniciar un servicio:</strong> <code>sudo systemctl start nombre_del_servicio</code></li>
+<li><strong>Detener un servicio:</strong> <code>sudo systemctl stop nombre_del_servicio</code></li>
+<li><strong>Reiniciar un servicio:</strong> <code>sudo systemctl restart nombre_del_servicio</code> </li>
+<li><strong>Recargar la configuración de un servicio (sin reiniciarlo completamente):</strong> <code>sudo systemctl reload nombre_del_servicio</code></li>
+<li><strong>Comprobar el estado de un servicio:</strong> <code>systemctl status nombre_del_servicio   # Esto muestra si el servicio está activo, si ha habido errores, etc.</code></li>
+<li><strong>Habilitar un servicio para que se inicie automáticamente en el arranque:</strong> <code>sudo systemctl enable nombre_del_servicio</code></li>
+<li><strong>Deshabilitar un servicio para que no se inicie automáticamente en el arranque:</strong> <code>sudo systemctl disable nombre_del_servicio</code></li>
+<li><strong>Ver todos los servicios cargados:</strong> <code>systemctl list-units --type=service</code></li>
+</ul>
+<h3 id="42-sysvinit-service">4.2. <code>SysVinit</code> (<code>service</code>)</h3>
+<p>Antes de <code>systemd</code>, <code>SysVinit</code> era el sistema de inicio dominante. Aunque <code>systemd</code> lo ha reemplazado en la mayoría de las distribuciones modernas, es útil conocer su concepto, ya que aún puedes encontrar sistemas que lo utilicen o scripts heredados.</p>
+<ul>
+<li>Los servicios se controlaban con el comando <code>service</code> o directamente con scripts en <code>/etc/init.d/</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">  </span>sudo<span class="w"> </span>service<span class="w"> </span>nombre_del_servicio<span class="w"> </span>start
+<span class="w">  </span>sudo<span class="w"> </span>service<span class="w"> </span>nombre_del_servicio<span class="w"> </span>stop
+<span class="w">  </span>sudo<span class="w"> </span>service<span class="w"> </span>nombre_del_servicio<span class="w"> </span>restart
+<span class="w">  </span>sudo<span class="w"> </span>service<span class="w"> </span>nombre_del_servicio<span class="w"> </span>status
+</code></pre></div>
+<ul>
+<li>Aunque <code>systemctl</code> es el método preferido, muchas distribuciones con <code>systemd</code> todavía permiten usar la sintaxis <code>service</code> para compatibilidad.</li>
+</ul>
+<h2 id="5-optimizacion-de-la-memoria">5. Optimización de la memoria</h2>
+<p>La memoria RAM es un recurso crítico. Una buena gestión puede mejorar significativamente el rendimiento.</p>
+<h3 id="51-configuracion-de-la-particion-swap">5.1. Configuración de la partición <code>swap</code></h3>
+<p>La <strong>partición swap</strong> (o espacio de intercambio) es un área en el disco duro que Linux utiliza como memoria virtual cuando la RAM física se agota. No es un sustituto de la RAM, ya que el acceso al disco es mucho más lento, pero ayuda a evitar fallos del sistema por falta de memoria.</p>
+<ul>
+<li><strong>Ver el uso de swap:</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">  </span>swapon<span class="w"> </span>--show
+<span class="w">  </span>free<span class="w"> </span>-h<span class="w">    </span><span class="c1"># muestra el uso de memoria RAM y swap en formato legible.</span>
+</code></pre></div>
+<ul>
+<li>
+<p><strong>Crear un archivo swap (alternativa a una partición):</strong> Si no tienes una partición swap, puedes crear un archivo swap. Esto es más flexible.</p>
+<p>1.- <strong>Crear el archivo (ej. de 2GB):</strong>
+<div class="highlight"><pre><span></span><code><span class="w">     </span>sudo<span class="w"> </span>fallocate<span class="w"> </span>-l<span class="w"> </span>2G<span class="w"> </span>/swapfile
+</code></pre></div>
+2.- <strong>Establecer permisos (solo root puede leer/escribir):</strong>
+<div class="highlight"><pre><span></span><code><span class="w">     </span>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/swapfile
+</code></pre></div>
+3.- <strong>Configurar el archivo como espacio swap:</strong>
+<div class="highlight"><pre><span></span><code><span class="w">     </span>sudo<span class="w"> </span>mkswap<span class="w"> </span>/swapfile
+</code></pre></div>
+4.- <strong>Activar el archivo swap:</strong>
+<div class="highlight"><pre><span></span><code>     sudo swapon /swapfile
+</code></pre></div>
+5.- <strong>Hacer el swap persistente (para que se active en cada reinicio):</strong> Añade la siguiente línea al final del archivo <code>/etc/fstab</code>:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">     </span>/swapfile<span class="w"> </span>none<span class="w"> </span>swap<span class="w"> </span>sw<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+</code></pre></div>
+<p>Puedes editar <code>/etc/fstab</code> con <code>sudo nano /etc/fstab</code>.</p>
+<ul>
+<li><strong>swappiness:</strong> Este parámetro controla cuándo el kernel de Linux empieza a usar la swap. Un valor de <code>0</code> significa que el kernel intentará evitar la swap todo lo posible, mientras que <code>100</code> significa que usará la swap de forma más agresiva. Para servidores, un valor bajo (ej. 10) es común. Para escritorios, el valor por defecto (60) suele ser adecuado.<ul>
+<li><strong>Ver valor actual:</strong>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>cat<span class="w"> </span>/proc/sys/vm/swappiness
+</code></pre></div></li>
+<li><strong>Cambiar temporalmente (hasta el reinicio):</strong>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>sudo<span class="w"> </span>sysctl<span class="w"> </span>vm.swappiness<span class="o">=</span><span class="m">10</span>
+</code></pre></div></li>
+<li><strong>Hacer persistente:</strong> Añade o modifica la línea <code>vm.swappiness=</code> en <code>/etc/sysctl.conf</code>:
+<div class="highlight"><pre><span></span><code><span class="w">    </span>vm.swappiness<span class="o">=</span><span class="m">10</span>
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h3 id="52-liberar-cache">5.2. Liberar caché</h3>
+<p>Linux utiliza caché de disco para mejorar el rendimiento, guardando datos recientes en RAM. Si necesitas liberar RAM rápidamente, puedes vaciar la caché, aunque el sistema la reconstruirá.</p>
+<ul>
+<li><strong>Liberar caché de página, dentry e inode:</strong>
+<div class="highlight"><pre><span></span><code><span class="w">  </span>sudo<span class="w"> </span>sync<span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/proc/sys/vm/drop_caches
+</code></pre></div><ul>
+<li><code>sync</code>: Asegura que todos los datos en búfer se escriban en disco.</li>
+<li><code>echo 3 &gt; /proc/sys/vm/drop_caches</code>: Le indica al kernel que libere la caché.</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-analisis-de-la-actividad-del-sistema">6. Análisis de la actividad del sistema</h2>
+<p>Los archivos de log y las herramientas de registro son vitales para diagnosticar problemas, auditar actividades y monitorizar el sistema.</p>
+<h3 id="61-archivos-de-log-varlogsyslog-varlogauthlog-etc">6.1. Archivos de log (<code>/var/log/syslog</code>, <code>/var/log/auth.log</code>, etc.)</h3>
+<p>El directorio <code>/var/log/</code> contiene la mayoría de los archivos de registro del sistema.</p>
+<ul>
+<li><strong><code>/var/log/syslog</code> (Debian/Ubuntu) o <code>/var/log/messages</code> (CentOS/RHEL):</strong> Contiene mensajes generales del sistema, incluyendo arranques, eventos del kernel, errores, etc. Es el log más importante.</li>
+<li><strong><code>/var/log/auth.log</code>:</strong> Registra eventos de autenticación, como intentos de inicio de sesión (exitosos y fallidos), sudo, etc.</li>
+<li><strong><code>/var/log/kern.log</code>:</strong> Mensajes del kernel.</li>
+<li><strong><code>/var/log/dpkg.log</code> (Debian/Ubuntu):</strong> Registra la actividad del gestor de paquetes DPKG (instalaciones, eliminaciones).</li>
+<li><strong><code>/var/log/apt/history.log</code> (Debian/Ubuntu):</strong> Historial de operaciones de APT.</li>
+<li><strong>Archivos de log de aplicaciones:</strong> Muchas aplicaciones tienen sus propios archivos de log, por ejemplo, los servidores web Apache o Nginx suelen tener logs en <code>/var/log/apache2/</code> o <code>/var/log/nginx/</code>.</li>
+<li><strong>Cómo ver el contenido de los logs:</strong><ul>
+<li><code>cat /var/log/syslog</code>: Muestra todo el contenido (puede ser muy largo).</li>
+<li><code>less /var/log/syslog</code>: Permite ver el log paginado (usa flechas para moverte, <code>q</code> para salir).</li>
+<li><code>tail -f /var/log/syslog</code>: Muestra las últimas líneas del log y lo "sigue" en tiempo real, útil para monitorizar eventos a medida que ocurren.</li>
+<li><code>grep "error" /var/log/syslog</code>: Busca la palabra "error" en el log.</li>
+</ul>
+</li>
+</ul>
+<h3 id="comando-journalctl">Comando <code>journalctl</code></h3>
+<p><code>journalctl</code> es la herramienta de <code>systemd</code> para consultar los logs del <strong>Journal</strong>. El Journal es un sistema de registro unificado que centraliza los mensajes de diferentes fuentes, incluyendo el kernel, servicios, aplicaciones y syslog. Es el método preferido para ver logs en sistemas <code>systemd</code>.</p>
+<ul>
+<li><strong>Ver todos los logs recientes:</strong>
+<div class="highlight"><pre><span></span><code><span class="w">  </span>journalctl
+</code></pre></div>
+    Esto abrirá los logs en <code>less</code>.</li>
+<li><strong>Ver logs desde el último arranque:</strong>
+<div class="highlight"><pre><span></span><code><span class="w">  </span>journalctl<span class="w"> </span>-b
+</code></pre></div></li>
+<li><strong>Ver logs de un servicio específico:</strong>
+<div class="highlight"><pre><span></span><code><span class="w">  </span>journalctl<span class="w"> </span>-u<span class="w"> </span>nombre_del_servicio
+</code></pre></div>
+  Ejemplo: <code>journalctl -u apache2.service</code></li>
+<li><strong>Ver logs en tiempo real (como <code>tail -f</code>):</strong>
+<div class="highlight"><pre><span></span><code><span class="w">  </span>journalctl<span class="w"> </span>-f
+</code></pre></div></li>
+<li><strong>Ver logs por fecha y hora:</strong>
+<div class="highlight"><pre><span></span><code><span class="w">  </span>journalctl<span class="w"> </span>--since<span class="w"> </span><span class="s2">&quot;2023-01-01 10:00:00&quot;</span><span class="w"> </span>--until<span class="w"> </span><span class="s2">&quot;2023-01-01 11:00:00&quot;</span>
+</code></pre></div></li>
+<li><strong>Filtrar por prioridad (errores, advertencias, etc.):</strong><ul>
+<li><code>journalctl -p err</code>: Muestra solo mensajes de error.</li>
+<li><code>journalctl -p warning</code>: Muestra solo advertencias.</li>
+<li>Prioridades: <code>emerg</code> (0), <code>alert</code> (1), <code>crit</code> (2), <code>err</code> (3), <code>warning</code> (4), <code>notice</code> (5), <code>info</code> (6), <code>debug</code> (7).</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-optimizacion-de-los-dispositivos-de-almacenamiento">7. Optimización de los dispositivos de almacenamiento</h2>
+<p>La eficiencia de los dispositivos de almacenamiento afecta directamente el rendimiento general del sistema.</p>
+<h3 id="71-uso-de-du-df-para-analizar-espacio">7.1. Uso de <code>du</code>, <code>df</code> para analizar espacio</h3>
+<ul>
+<li><strong><code>df</code> (disk free):</strong> Muestra el espacio libre y usado en los sistemas de archivos montados.<ul>
+<li><code>df -h</code>: Muestra la información en formato legible para humanos (KB, MB, GB).</li>
+</ul>
+</li>
+<li><strong><code>du</code> (disk usage):</strong> Estima el uso de espacio de un archivo o directorio.<ul>
+<li><code>du -sh /home/usuario/Documentos</code>: Muestra el tamaño total del directorio <code>Documentos</code> en formato legible.</li>
+<li><code>du -h --max-depth=1 /var/log/</code>: Muestra el tamaño de los subdirectorios dentro de <code>/var/log/</code>, con una profundidad máxima de 1.</li>
+<li><code>du -a /home/usuario | sort -nr | head -n 10</code>: Muestra los 10 archivos o directorios más grandes en <code>/home/usuario</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="72-monitorizacion-de-io">7.2. Monitorización de I/O</h3>
+<p>La I/O (Input/Output) se refiere a las operaciones de lectura y escritura en los dispositivos de almacenamiento. Una alta actividad de I/O puede indicar un cuello de botella.</p>
+<ul>
+<li><strong><code>iostat</code>:</strong> Proporciona estadísticas de I/O para dispositivos y particiones. (Puede requerir instalación de <code>sysstat</code>: <code>sudo apt install sysstat</code> o <code>sudo dnf install sysstat</code>).<ul>
+<li><code>iostat -x 1 10</code>: Muestra un informe extendido cada segundo, 10 veces.</li>
+<li><strong>Métricas clave:</strong><ul>
+<li><code>%util</code>: Porcentaje de tiempo que el dispositivo está ocupado con operaciones de I/O. Un valor cercano al 100% indica un cuello de botella.</li>
+<li><code>r/s</code>, <code>w/s</code>: Número de lecturas/escrituras por segundo.</li>
+<li><code>kB_read/s</code>, <code>kB_wrtn/s</code>: Kilobytes leídos/escritos por segundo.</li>
+<li><code>avgqu-sz</code>: Tamaño promedio de la cola de solicitudes de I/O. Un valor alto indica espera.</li>
+<li><code>await</code>: Tiempo promedio (en ms) que las solicitudes de I/O esperan en la cola y son atendidas.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong><code>iotop</code>:</strong> Muestra el uso de I/O por proceso de forma interactiva (similar a <code>top</code> para CPU/memoria). (Puede requerir instalación: <code>sudo apt install iotop</code> o <code>sudo dnf install iotop</code>).<ul>
+<li><code>sudo iotop</code>: Inicia la aplicación.</li>
+<li>Permite identificar qué procesos están realizando más operaciones de I/O.</li>
+</ul>
+</li>
+</ul>
+<h2 id="8-recursos-compartibles">8. Recursos compartibles</h2>
+<p>Compartir recursos en red es una parte fundamental de la administración de sistemas.</p>
+<h3 id="81-compartir-directorios-con-samba-conceptual">8.1. Compartir directorios con Samba (conceptual)</h3>
+<p><strong>Samba</strong> es un software que permite la interoperabilidad entre sistemas Linux/Unix y clientes Windows, permitiendo compartir archivos e impresoras.</p>
+<ul>
+<li><strong>Conceptual:</strong> Samba crea "recursos compartidos" (shares) en Linux que son accesibles desde máquinas Windows usando el protocolo SMB/CIFS.</li>
+<li><strong>Ventajas:</strong> Facilita la colaboración en entornos mixtos.</li>
+<li><strong>Configuración principal:</strong> Se realiza en el archivo <code>/etc/samba/smb.conf</code>, donde se definen los directorios a compartir, permisos de acceso, usuarios, etc.</li>
+</ul>
+<h3 id="82-montaje-de-unidades-de-red-nfs-smb">8.2. Montaje de unidades de red (NFS, SMB)</h3>
+<p>Podemos montar directorios compartidos desde otros sistemas en nuestro propio sistema de archivos, haciéndolos parecer como directorios locales.</p>
+<ul>
+<li><strong>NFS (Network File System):</strong> Protocolo nativo de Unix/Linux para compartir archivos en red. Es eficiente para entornos Linux a Linux.<ul>
+<li><strong>Montar un recurso NFS:</strong></li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>nfs<span class="w"> </span>servidor:/ruta/remota<span class="w"> </span>/punto/de/montaje/local
+</code></pre></div>
+<ul>
+<li>
+<p>Para que el montaje sea persistente después de un reinicio, se añade una línea al archivo <code>/etc/fstab</code>.</p>
+</li>
+<li>
+<p><strong>SMB/CIFS (Server Message Block / Common Internet File System):</strong> Protocolo utilizado por Windows para compartir archivos. Podemos montar recursos compartidos de Windows (o Samba) en Linux.</p>
+</li>
+<li>
+<p><strong>Montar un recurso SMB:</strong> (Necesitas el paquete <code>cifs-utils</code>: <code>sudo apt install cifs-utils</code> o <code>sudo dnf install cifs-utils</code>).</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>cifs<span class="w"> </span>//servidor/recurso_compartido<span class="w"> </span>/punto/de/montaje/local<span class="w"> </span>-o<span class="w"> </span><span class="nv">username</span><span class="o">=</span>usuario_remoto,password<span class="o">=</span>contraseña_remota
+</code></pre></div>
+<ul>
+<li>Para el montaje persistente, también se añade una línea a <code>/etc/fstab</code>, a menudo con credenciales almacenadas de forma segura en un archivo de permisos restringidos.</li>
+</ul>
+<h2 id="9-informacion-de-configuracion-del-sistema-operativo">9. Información de configuración del sistema operativo</h2>
+<p>Entender los archivos de configuración y las herramientas de diagnóstico es clave para solucionar problemas y personalizar el sistema.</p>
+<h3 id="91-archivos-de-configuracion-comunes-etcfstab-etcnetworkinterfaces-etc">9.1. Archivos de configuración comunes (<code>/etc/fstab</code>, <code>/etc/network/interfaces</code>, etc.)</h3>
+<p>El directorio <code>/etc/</code> es el corazón de la configuración del sistema.</p>
+<ul>
+<li><strong><code>/etc/fstab</code> (file system table):</strong> Define los sistemas de archivos que se montarán automáticamente al inicio del sistema. Cada línea especifica una partición o recurso de red, su punto de montaje, tipo de sistema de archivos, opciones de montaje, y parámetros de volcado y verificación.<ul>
+<li>Ejemplo de línea: <code>UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx / ext4 defaults 0 1</code> (monta la partición raíz).</li>
+<li>Ejemplo de swap: <code>/swapfile none swap sw 0 0</code></li>
+<li>Ejemplo de montaje de red (NFS): <code>servidor:/ruta/compartida /mnt/nfs nfs defaults 0 0</code></li>
+</ul>
+</li>
+<li><strong><code>/etc/network/interfaces</code> (Debian/Ubuntu):</strong> Define la configuración de las interfaces de red. (En muchas distribuciones modernas, especialmente las que usan NetworkManager, esta configuración se gestiona de forma diferente).<ul>
+<li>Permite configurar direcciones IP estáticas o DHCP, gateways, DNS, etc.</li>
+</ul>
+</li>
+<li><strong><code>/etc/resolv.conf</code>:</strong> Contiene la configuración del resolvedor de DNS, indicando qué servidores DNS debe usar el sistema para traducir nombres de dominio a direcciones IP.<ul>
+<li>Ejemplo: <code>nameserver 8.8.8.8</code> (Servidor DNS de Google).</li>
+</ul>
+</li>
+<li><strong><code>/etc/hostname</code>:</strong> Almacena el nombre de host del sistema.</li>
+<li><strong><code>/etc/hosts</code>:</strong> Contiene mapeos estáticos entre direcciones IP y nombres de host, útiles para resoluciones locales o para anular resoluciones DNS temporales.</li>
+<li><strong><code>/etc/default/grub</code>:</strong> Archivo de configuración para el gestor de arranque GRUB, donde se pueden definir opciones de arranque del kernel.</li>
+<li><strong><code>/etc/sudoers</code>:</strong> Controla qué usuarios o grupos pueden usar <code>sudo</code> y qué comandos pueden ejecutar. Se edita usando el comando <code>visudo</code> para evitar errores de sintaxis.</li>
+</ul>
+<h3 id="92-comandos-de-diagnostico-de-red-ping-ip-a-route">9.2. Comandos de diagnóstico de red (<code>ping</code>, <code>ip a</code>, <code>route</code>)</h3>
+<p>Estos comandos son fundamentales para verificar la conectividad de red y solucionar problemas.</p>
+<ul>
+<li><strong><code>ping</code>:</strong> Envía paquetes ICMP a un host de destino para verificar la conectividad de red y medir el tiempo de respuesta.<ul>
+<li><code>ping google.com</code>: Envía pings continuos a <code>google.com</code>. Presiona <code>Ctrl + C</code> para detener.</li>
+<li><code>ping -c 4 192.168.1.1</code>: Envía 4 pings a la dirección IP <code>192.168.1.1</code>.</li>
+</ul>
+</li>
+<li><strong><code>ip a</code> (o <code>ip addr show</code>):</strong> Muestra las direcciones IP asignadas a las interfaces de red, el estado de las interfaces y otra información de red. Es la herramienta moderna preferida sobre <code>ifconfig</code>.<ul>
+<li><code>ip a</code>: Muestra todas las interfaces.</li>
+<li><code>ip a show eth0</code>: Muestra información de la interfaz <code>eth0</code>.</li>
+</ul>
+</li>
+<li><strong><code>ip r</code> (o <code>ip route show</code>):</strong> Muestra la tabla de enrutamiento del sistema, es decir, cómo el sistema sabe a dónde enviar el tráfico de red.<ul>
+<li><code>ip r</code>: Muestra las rutas de red.</li>
+<li>Identifica la puerta de enlace predeterminada (<code>default via ...</code>).</li>
+</ul>
+</li>
+<li><strong><code>ss</code> (socket statistics):</strong> Muestra información sobre sockets de red, incluyendo conexiones TCP/UDP, puertos abiertos y estadísticas de red. Es el sucesor de <code>netstat</code>.<ul>
+<li><code>ss -tunl</code>: Muestra todos los puertos TCP y UDP en escucha (<code>-t</code> TCP, <code>-u</code> UDP, <code>-n</code> numérico, <code>-l</code> listening).</li>
+</ul>
+</li>
+<li><strong><code>dig</code> (domain information groper):</strong> Herramienta para consultar servidores DNS y resolver nombres de dominio.<ul>
+<li><code>dig google.com</code>: Muestra información DNS para <code>google.com</code>.</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="9 de febrero de 2026 18:05:30 UTC">9 de febrero de 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <a href='https://creativecommons.org/licenses/by/4.0/' target='_blank'>CC BY-NC-SA 4.0 (Reconeixement - NoComercial - CompartirIgual) © Luis Garcia Bonifaz</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

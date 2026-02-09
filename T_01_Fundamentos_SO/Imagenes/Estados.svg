@@ -1,0 +1,140 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definiciones de estilos -->
+  <defs>
+    <!-- Gradiente para los estados -->
+    <linearGradient id="stateGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a90e2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#357abd;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Gradiente para el estado terminado -->
+    <linearGradient id="terminatedGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e74c3c;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c0392b;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Sombra -->
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+    
+    <!-- Marcador de flecha -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+    </marker>
+  </defs>
+  
+  <!-- Título -->
+  <text x="400" y="40" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="24" font-weight="bold" fill="#2c3e50">
+    Estados de un Proceso en un Sistema Operativo
+  </text>
+  
+  <!-- Estado: Nuevo -->
+  <g id="new-state">
+    <rect x="50" y="100" width="140" height="80" rx="10" 
+          fill="url(#stateGradient)" filter="url(#shadow)"/>
+    <text x="120" y="145" text-anchor="middle" font-family="Arial, sans-serif" 
+          font-size="18" font-weight="bold" fill="white">NUEVO</text>
+    <text x="120" y="165" text-anchor="middle" font-family="Arial, sans-serif" 
+          font-size="12" fill="white">(New)</text>
+  </g>
+  
+  <!-- Estado: Listo -->
+  <g id="ready-state">
+    <rect x="330" y="100" width="140" height="80" rx="10" 
+          fill="url(#stateGradient)" filter="url(#shadow)"/>
+    <text x="400" y="145" text-anchor="middle" font-family="Arial, sans-serif" 
+          font-size="18" font-weight="bold" fill="white">LISTO</text>
+    <text x="400" y="165" text-anchor="middle" font-family="Arial, sans-serif" 
+          font-size="12" fill="white">(Ready)</text>
+  </g>
+  
+  <!-- Estado: En Ejecución -->
+  <g id="running-state">
+    <rect x="610" y="100" width="140" height="80" rx="10" 
+          fill="#27ae60" filter="url(#shadow)"/>
+    <text x="680" y="145" text-anchor="middle" font-family="Arial, sans-serif" 
+          font-size="18" font-weight="bold" fill="white">EJECUCIÓN</text>
+    <text x="680" y="165" text-anchor="middle" font-family="Arial, sans-serif" 
+          font-size="12" fill="white">(Running)</text>
+  </g>
+  
+  <!-- Estado: Espera/Bloqueado -->
+  <g id="waiting-state">
+    <rect x="330" y="300" width="140" height="80" rx="10" 
+          fill="#f39c12" filter="url(#shadow)"/>
+    <text x="400" y="345" text-anchor="middle" font-family="Arial, sans-serif" 
+          font-size="18" font-weight="bold" fill="white">ESPERA</text>
+    <text x="400" y="365" text-anchor="middle" font-family="Arial, sans-serif" 
+          font-size="12" fill="white">(Waiting)</text>
+  </g>
+  
+  <!-- Estado: Terminado (alineado horizontalmente con Espera) -->
+  <g id="terminated-state">
+    <rect x="610" y="300" width="140" height="80" rx="10" 
+          fill="url(#terminatedGradient)" filter="url(#shadow)"/>
+    <text x="680" y="345" text-anchor="middle" font-family="Arial, sans-serif" 
+          font-size="18" font-weight="bold" fill="white">TERMINADO</text>
+    <text x="680" y="365" text-anchor="middle" font-family="Arial, sans-serif" 
+          font-size="12" fill="white">(Terminated)</text>
+  </g>
+  
+  <!-- Transiciones -->
+  <!-- Nuevo -> Listo -->
+  <path d="M 190 140 L 330 140" stroke="#333" stroke-width="2" 
+        fill="none" marker-end="url(#arrowhead)"/>
+  <text x="260" y="130" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="12" fill="#555">Admitir</text>
+  
+  <!-- Listo -> Ejecución -->
+  <path d="M 470 140 L 610 140" stroke="#333" stroke-width="2" 
+        fill="none" marker-end="url(#arrowhead)"/>
+  <text x="540" y="130" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="12" fill="#555">Planificador</text>
+  
+  <!-- Ejecución -> Listo (Time slice) -->
+  <path d="M 610 120 Q 540 60 470 120" stroke="#333" stroke-width="2" 
+        fill="none" marker-end="url(#arrowhead)"/>
+  <text x="540" y="80" text-anchor="middle" font-family="Arial, sans-serif" 
+        font-size="12" fill="#555">Interrupción</text>
+  
+  <!-- Ejecución -> Espera -->
+  <path d="M 680 180 Q 620 240 470 300" stroke="#333" stroke-width="2" 
+        fill="none" marker-end="url(#arrowhead)"/>
+  <text x="620" y="220" font-family="Arial, sans-serif" 
+        font-size="12" fill="#555">E/S o Evento</text>
+  
+  <!-- Espera -> Listo -->
+  <path d="M 330 340 Q 260 340 260 180 Q 260 140 330 140" stroke="#333" stroke-width="2" 
+        fill="none" marker-end="url(#arrowhead)"/>
+  <text x="200" y="240" font-family="Arial, sans-serif" 
+        font-size="12" fill="#555">Evento completado</text>
+  
+  <!-- Ejecución -> Terminado (línea recta) -->
+  <path d="M 680 180 L 680 300" stroke="#333" stroke-width="2" 
+        fill="none" marker-end="url(#arrowhead)"/>
+  <text x="720" y="240" font-family="Arial, sans-serif" 
+        font-size="12" fill="#555">Exit</text>
+  
+  <!-- Listo -> Terminado (Abortar) -->
+  <path d="M 470 140 Q 540 140 540 220 Q 540 300 610 300" stroke="#333" stroke-width="2" 
+        stroke-dasharray="5,5" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="560" y="220" font-family="Arial, sans-serif" 
+        font-size="12" fill="#555">Abortar</text>
+  
+  <!-- Leyenda -->
+  <g id="legend" transform="translate(50, 450)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="14" 
+          font-weight="bold" fill="#2c3e50">Leyenda:</text>
+    <line x1="0" y1="20" x2="30" y2="20" stroke="#333" stroke-width="2" 
+          marker-end="url(#arrowhead)"/>
+    <text x="40" y="25" font-family="Arial, sans-serif" font-size="12" 
+          fill="#555">Transición normal</text>
+    <line x1="0" y1="40" x2="30" y2="40" stroke="#333" stroke-width="2" 
+          stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+    <text x="40" y="45" font-family="Arial, sans-serif" font-size="12" 
+          fill="#555">Transición anormal</text>
+  </g>
+</svg>

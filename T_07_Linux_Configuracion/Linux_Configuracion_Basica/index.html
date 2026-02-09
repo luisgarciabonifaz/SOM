@@ -1,0 +1,1224 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Luis García Bonifaz">
+      
+      
+        <link rel="canonical" href="https://luisgarciabonifaz.github.io/SOM/T_07_Linux_Configuracion/Linux_Configuracion_Basica/">
+      
+      
+        <link rel="prev" href="../../T_06_Windows_Administracion/Windows_Administracion/">
+      
+      
+        <link rel="next" href="../../T_08_Linux_Archivos/Linux_Gestion_Archivos/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>T7 - Linux Configuración Básica - SOM</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="navy" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#configuracion-y-personalizacion-linux" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="SOM" class="md-header__button md-logo" aria-label="SOM" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SOM
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              T7 - Linux Configuración Básica
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="navy" data-md-color-accent="deep-orange"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="navy" data-md-color-accent="deep-purple"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SOM" class="md-nav__button md-logo" aria-label="SOM" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SOM
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sistemas Operativos Monopuesto
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sistemas Operativos Monopuesto
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_01_Fundamentos_SO/Fundamentos_SO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T1 - Fundamentos de los Sistemes Operativos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_02_Instalacion_SO/Instalacion_SO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T2 - Instalacion de un Sistema Operativo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_03_Virtualizacion/Virtualizacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T3 - Virtualización
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_04_Windows_Configuracion/ConfiguracionBasica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T4 - Windows Configuración Básica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_05_Windows_Archivos/W_Gestion_Archivos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T5 - Windows Gestion de Archivos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_06_Windows_Administracion/Windows_Administracion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T6 - Windows Administración
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T7 - Linux Configuración Básica
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T7 - Linux Configuración Básica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-interfaces-de-usuario-de-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Interfaces de Usuario de Linux
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-configuracion-del-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configuración del Entorno
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-gestion-de-sistemas-de-archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Gestión de Sistemas de Archivos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-recuperacion-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Recuperación del Sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-actualizacion-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Actualización del Sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-instalaciondesinstalacion-de-utilidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Instalación/Desinstalación de Utilidades
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-asistentes-de-configuracion-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Asistentes de Configuración del Sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-automatizacion-de-tareas-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Automatización de Tareas del Sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_08_Linux_Archivos/Linux_Gestion_Archivos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T8 - Linux Gestión de Archivos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_09_Linux_Administracion/Linux_Administracion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T9 - Linux Administración
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-interfaces-de-usuario-de-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Interfaces de Usuario de Linux
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-configuracion-del-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configuración del Entorno
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-gestion-de-sistemas-de-archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Gestión de Sistemas de Archivos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-recuperacion-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Recuperación del Sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-actualizacion-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Actualización del Sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-instalaciondesinstalacion-de-utilidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Instalación/Desinstalación de Utilidades
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-asistentes-de-configuracion-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Asistentes de Configuración del Sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-automatizacion-de-tareas-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Automatización de Tareas del Sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="configuracion-y-personalizacion-linux">Configuración y Personalización Linux</h1>
+<p>En este tema, aprenderás a configurar y personalizar tu sistema operativo Linux para adaptarlo a tus necesidades. Exploraremos desde la interfaz gráfica hasta la potente terminal de comandos, pasando por la gestión de usuarios, discos y mucho más.</p>
+<h2 id="1-interfaces-de-usuario-de-linux">1. Interfaces de Usuario de Linux</h2>
+<p>Linux ofrece principalmente dos formas de interactuar con el sistema: a través de un entorno de escritorio (GUI) o mediante la terminal de comandos (CLI).</p>
+<h3 id="11-entornos-de-escritorio-gui">1.1. Entornos de Escritorio (GUI)</h3>
+<p>Un entorno de escritorio te proporciona una interfaz gráfica completa, con ventanas, iconos y menús, similar a lo que encontrarías en otros sistemas operativos como Windows o macOS. Los más populares son:</p>
+<ul>
+<li><strong>GNOME</strong>: Moderno y minimalista, se centra en la simplicidad y la facilidad de uso. Es el entorno por defecto en distribuciones como Ubuntu y Fedora.</li>
+<li><strong>KDE Plasma</strong>: Altamente personalizable y visualmente atractivo. Ofrece una gran cantidad of opciones de configuración y efectos visuales.</li>
+<li><strong>XFCE</strong>: Ligero y rápido, ideal para ordenadores con menos recursos. Es funcional y consume poca memoria RAM.</li>
+<li><strong>MATE</strong>: Basado en GNOME 2, ofrece una experiencia de escritorio más tradicional y es conocido por su estabilidad.</li>
+</ul>
+<h3 id="12-terminal-de-comandos-cli">1.2. Terminal de Comandos (CLI)</h3>
+<p>La <strong>CLI (Command-Line Interface)</strong> es una forma potente y directa de interactuar con el sistema mediante comandos de texto. Aunque puede parecer intimidante al principio, es una herramienta esencial para cualquier administrador de sistemas.</p>
+<ul>
+<li>Para abrir una terminal, busca la aplicación "Terminal" en tu menú de aplicaciones.</li>
+<li>La terminal te mostrará un <em>prompt</em>, que suele tener la forma <code>usuario@hostname:~$</code>, esperando a que introduzcas comandos.</li>
+</ul>
+<h2 id="2-configuracion-del-entorno">2. Configuración del Entorno</h2>
+<p>Una de las grandes ventajas de Linux es su alta capacidad de personalización.</p>
+<h3 id="21-temas-fondos-e-iconos">2.1. Temas, Fondos e Iconos</h3>
+<p>Puedes cambiar casi cualquier aspecto visual de tu entorno de escritorio:</p>
+<ul>
+<li><strong>Fondos de pantalla</strong>: Haz clic derecho en el escritorio y busca la opción "Cambiar fondo de pantalla".</li>
+<li><strong>Temas e Iconos</strong>: En la configuración del sistema (a menudo llamada "Ajustes" o "Centro de Control"), encontrarás secciones para cambiar el tema de las ventanas, los controles (botones, barras de desplazamiento) y los paquetes de iconos.</li>
+</ul>
+<h3 id="22-configuracion-regional-e-idioma">2.2. Configuración Regional e Idioma</h3>
+<p>Puedes ajustar el idioma del sistema, el formato de la fecha y hora, y la moneda.</p>
+<ul>
+<li>Ve a <strong>Ajustes &gt; Región e Idioma</strong>.</li>
+<li>Desde aquí, podrás seleccionar el idioma principal del sistema y los formatos regionales. El sistema podría necesitar descargar paquetes adicionales.</li>
+</ul>
+<h3 id="23-gestion-de-usuarios-y-grupos">2.3. Gestión de Usuarios y Grupos</h3>
+<p>En Linux, la correcta gestión de usuarios y grupos es fundamental para la seguridad y la organización. Cada usuario tiene una cuenta para interactuar con el sistema, mientras que los grupos se utilizan para conceder permisos a varios usuarios a la vez sobre archivos y directorios.</p>
+<p>Los archivos clave que almacenan esta información son:</p>
+<ul>
+<li><code>/etc/passwd</code>: Información de los usuarios (nombre, ID de usuario (UID), ID de grupo (GID), directorio personal, shell por defecto).</li>
+<li><code>/etc/shadow</code>: Contiene las contraseñas cifradas de los usuarios. Solo es legible por el superusuario.</li>
+<li><code>/etc/group</code>: Información sobre los grupos.</li>
+</ul>
+<p><strong>Usuarios</strong></p>
+<p>Cada persona que utiliza el sistema debe tener una <strong>cuenta de usuario</strong>. Los usuarios se identifican por un <strong>nombre de usuario</strong> y un <strong>UID (User ID)</strong> numérico único.</p>
+<ul>
+<li><strong>Usuario root:</strong> Es el superusuario con todos los permisos en el sistema. Debe usarse con extrema precaución.</li>
+<li><strong>Usuarios normales:</strong> Tienen permisos limitados y suelen ser los usuarios diarios del sistema.</li>
+<li><strong>Usuarios de sistema:</strong> Cuentas especiales creadas por el sistema para ejecutar servicios (ej., <code>apache</code>, <code>mysql</code>).</li>
+</ul>
+<p><strong>Grupos</strong></p>
+<p>Los <strong>grupos</strong> son colecciones de usuarios. Permiten asignar permisos a un conjunto de usuarios de una vez, simplificando la administración. Cada usuario pertenece al menos a un <strong>grupo primario</strong> y puede pertenecer a varios <strong>grupos secundarios</strong>. Los grupos se identifican por un <strong>nombre de grupo</strong> y un <strong>GID (Group ID)</strong> numérico único.</p>
+<h2 id="3-gestion-de-sistemas-de-archivos">3. Gestión de Sistemas de Archivos</h2>
+<p>Los dispositivos de almacenamiento (discos duros, USBs) necesitan ser "montados" para poder acceder a sus archivos.</p>
+<h3 id="31-montaje-y-desmontaje-de-unidades">3.1. Montaje y Desmontaje de Unidades</h3>
+<ul>
+<li><strong>Asocia un dispositivo con un directorio (punto de montaje):</strong> <code>mount</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1"># Crear un punto de montaje (una carpeta vacía)</span>
+<span class="w">    </span>sudo<span class="w"> </span>mkdir<span class="w"> </span>/mnt/mi_usb
+
+<span class="w">    </span><span class="c1"># Montar la partición /dev/sdb1 en el directorio creado</span>
+<span class="w">    </span><span class="c1"># /dev/sdb1 suele ser la primera partición de un segundo disco o USB</span>
+<span class="w">    </span>sudo<span class="w"> </span>mount<span class="w"> </span>/dev/sdb1<span class="w"> </span>/mnt/mi_usb
+</code></pre></div>
+<ul>
+<li><strong>Desmonta una unidad:</strong> <code>umount</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1"># Desmontar la unidad por su punto de montaje</span>
+<span class="w">    </span>sudo<span class="w"> </span>umount<span class="w"> </span>/mnt/mi_usb
+</code></pre></div>
+<h3 id="32-formateo-de-particiones">3.2. Formateo de Particiones</h3>
+<p>Formatear una partición borra todos sus datos y crea un nuevo sistema de archivos. ¡Usa este comando con mucho cuidado!</p>
+<ul>
+<li><strong>(Make Filesystem):</strong> <code>mkfs</code>. Permite formatear una partición con un sistema de archivos específico.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1"># Formatear la partición /dev/sdb1 con el sistema de archivos ext4</span>
+<span class="w">    </span><span class="c1"># ¡¡¡CUIDADO!!! ESTO BORRA TODOS LOS DATOS DE /dev/sdb1</span>
+<span class="w">    </span>sudo<span class="w"> </span>mkfs.ext4<span class="w"> </span>/dev/sdb1
+</code></pre></div>
+<h3 id="33-comprobacion-y-reparacion-de-sistemas-de-archivos">3.3. Comprobación y Reparación de Sistemas de Archivos</h3>
+<ul>
+<li><strong>(File System Check):</strong> <code>fsck</code>. Se usa para comprobar y, si es posible, reparar errores en un sistema de archivos. La unidad debe estar desmontada.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1"># Primero, desmontar la unidad</span>
+<span class="w">    </span>sudo<span class="w"> </span>umount<span class="w"> </span>/dev/sdb1
+
+<span class="w">    </span><span class="c1"># Comprobar y reparar la partición</span>
+<span class="w">    </span>sudo<span class="w"> </span>fsck<span class="w"> </span>/dev/sdb1
+</code></pre></div>
+<h2 id="4-recuperacion-del-sistema">4. Recuperación del Sistema</h2>
+<p>A veces, las cosas salen mal. Afortunadamente, Linux ofrece varias herramientas para recuperar un sistema dañado.</p>
+<h3 id="41-modo-de-recuperacion-recovery-mode">4.1. Modo de Recuperación (Recovery Mode)</h3>
+<p>La mayoría de las distribuciones Linux incluyen una opción de "Modo de Recuperación" en el menú de arranque (GRUB). Este modo arranca el sistema en un estado mínimo y ofrece opciones como:</p>
+<ul>
+<li><strong>root</strong>: Acceder a una terminal de comandos como superusuario (root) para reparaciones manuales.</li>
+<li><strong>fsck</strong>: Comprobar los sistemas de archivos del disco duro.</li>
+<li><strong>network</strong>: Activar la red para poder descargar paquetes o buscar ayuda.</li>
+</ul>
+<h3 id="42-uso-de-live-usb-para-reparacion">4.2. Uso de Live USB para Reparación</h3>
+<p>Un <strong>Live USB</strong> es una memoria USB que contiene un sistema operativo completo que se puede ejecutar sin instalarlo en el disco duro.</p>
+<ol>
+<li>Arranca el ordenador desde el Live USB.</li>
+<li>Elige la opción "Probar [Nombre de la Distribución]" (por ejemplo, "Probar Ubuntu").</li>
+<li>Una vez en el escritorio del Live USB, puedes acceder a los archivos de tu disco duro interno, hacer copias de seguridad o usar herramientas como <strong>GParted</strong> para gestionar particiones y <strong>Disks</strong> para comprobar el estado del disco.</li>
+</ol>
+<h3 id="43-copia-de-seguridad-backup">4.3. Copia de Seguridad (Backup)</h3>
+<p>Realizar copias de seguridad es fundamental.</p>
+<ul>
+<li>
+<p><strong><code>tar</code></strong>: Empaqueta múltiples archivos y directorios en un solo archivo (<code>.tar</code>).
+    <div class="highlight"><pre><span></span><code><span class="c1"># Crear un archivo comprimido de la carpeta /home/alumno</span>
+tar<span class="w"> </span>-czvf<span class="w"> </span>backup_alumno.tar.gz<span class="w"> </span>/home/alumno
+</code></pre></div></p>
+<ul>
+<li><code>-c</code>: crear un archivo.</li>
+<li><code>-z</code>: comprimir con gzip.</li>
+<li><code>-v</code>: modo detallado (verbose), muestra los archivos que se procesan.</li>
+<li><code>-f</code>: indica el nombre del archivo de salida.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>rsync</code></strong>: Sincroniza archivos y directorios entre dos ubicaciones (localmente o por red). Es muy eficiente, ya que solo copia los archivos que han cambiado.
+    <div class="highlight"><pre><span></span><code><span class="c1"># Sincronizar la carpeta /home/alumno a un disco externo montado en /mnt/backup</span>
+rsync<span class="w"> </span>-avh<span class="w"> </span>/home/alumno/<span class="w"> </span>/mnt/backup/
+</code></pre></div></p>
+<ul>
+<li><code>-a</code>: modo archivo (conserva permisos, fechas, etc.).</li>
+<li><code>-v</code>: modo detallado.</li>
+<li><code>-h</code>: formato legible para humanos (human-readable).</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-actualizacion-del-sistema">5. Actualización del Sistema</h2>
+<p>Mantener tu sistema actualizado es crucial para la seguridad y la estabilidad. Linux utiliza <strong>gestores de paquetes</strong> para facilitar esta tarea.</p>
+<h3 id="51-gestores-de-paquetes">5.1. Gestores de Paquetes</h3>
+<p>Cada familia de distribuciones de Linux tiene su propio gestor de paquetes:</p>
+<ul>
+<li><strong><code>apt</code></strong> (Advanced Package Tool): Usado en Debian, Ubuntu y derivados.</li>
+<li><strong><code>yum</code> / <code>dnf</code></strong> (Dandified YUM): Usado en Fedora, CentOS y RHEL. <code>dnf</code> es la versión moderna de <code>yum</code>.</li>
+<li><strong><code>pacman</code></strong>: Usado en Arch Linux y derivados.</li>
+</ul>
+<h3 id="52-actualizacion-del-sistema-y-paquetes">5.2. Actualización del Sistema y Paquetes</h3>
+<p>El proceso generalmente consta de dos pasos:</p>
+<ol>
+<li><strong>Actualizar la lista de paquetes</strong>: Descarga la información más reciente sobre las versiones de los paquetes disponibles.</li>
+<li><strong>Actualizar los paquetes instalados</strong>: Descarga e instala las nuevas versiones de los paquetes que tienes en tu sistema.</li>
+</ol>
+<p><strong>Con <code>apt</code> (Ubuntu/Debian):</strong></p>
+<p><div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1"># 1. Actualizar la lista de paquetes</span>
+<span class="w">    </span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<span class="w">    </span><span class="c1"># 2. Actualizar los paquetes instalados</span>
+<span class="w">    </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade
+</code></pre></div>
+<strong>Con <code>dnf</code> (Fedora):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1"># Actualiza la lista y los paquetes en un solo comando</span>
+<span class="w">    </span>sudo<span class="w"> </span>dnf<span class="w"> </span>upgrade
+</code></pre></div>
+<h2 id="6-instalaciondesinstalacion-de-utilidades">6. Instalación/Desinstalación de Utilidades</h2>
+<p>Los gestores de paquetes también se usan para instalar y eliminar software.</p>
+<h3 id="61-instalacion-de-paquetes">6.1. Instalación de Paquetes</h3>
+<p><strong>Con <code>apt</code> (Ubuntu/Debian):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1"># Instalar el editor de imágenes GIMP</span>
+<span class="w">    </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>gimp
+</code></pre></div>
+<p><strong>Con <code>dnf</code> (Fedora):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1"># Instalar el editor de imágenes GIMP</span>
+<span class="w">    </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>gimp
+</code></pre></div>
+<h3 id="62-desinstalacion-de-paquetes">6.2. Desinstalación de Paquetes</h3>
+<p><strong>Con <code>apt</code> (Ubuntu/Debian):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1"># Desinstalar GIMP</span>
+<span class="w">    </span>sudo<span class="w"> </span>apt<span class="w"> </span>remove<span class="w"> </span>gimp
+
+<span class="w">    </span><span class="c1"># Desinstalar GIMP y sus archivos de configuración</span>
+<span class="w">    </span>sudo<span class="w"> </span>apt<span class="w"> </span>purge<span class="w"> </span>gimp
+</code></pre></div>
+<p><strong>Con <code>dnf</code> (Fedora):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1"># Desinstalar GIMP</span>
+<span class="w">    </span>sudo<span class="w"> </span>dnf<span class="w"> </span>remove<span class="w"> </span>gimp
+</code></pre></div>
+<h3 id="63-compilacion-de-software-desde-codigo-fuente-conceptual">6.3. Compilación de Software desde Código Fuente (Conceptual)</h3>
+<p>A veces, un programa no está disponible en los repositorios. En esos casos, se puede compilar desde su <strong>código fuente</strong>. Aunque es un proceso avanzado, los pasos conceptuales son:</p>
+<ol>
+<li><strong>Descargar el código fuente</strong> (generalmente un archivo <code>.tar.gz</code>).</li>
+<li><strong>Descomprimirlo</strong>.</li>
+<li><strong>Configurar</strong>: Se ejecuta un script (<code>./configure</code>) que comprueba si tienes todas las dependencias necesarias.</li>
+<li><strong>Compilar</strong>: Se ejecuta el comando <code>make</code>, que traduce el código fuente a código máquina.</li>
+<li><strong>Instalar</strong>: Se ejecuta <code>sudo make install</code>, que copia los archivos compilados a las carpetas del sistema.</li>
+</ol>
+<h2 id="7-asistentes-de-configuracion-del-sistema">7. Asistentes de Configuración del Sistema</h2>
+<p>Aunque muchas tareas se pueden hacer por la terminal, los entornos de escritorio ofrecen asistentes gráficos para facilitar la configuración.</p>
+<h3 id="71-configuracion-de-red">7.1. Configuración de Red</h3>
+<p>La mayoría de las distribuciones modernas usan <strong>NetworkManager</strong>, que proporciona un icono en el panel del sistema para gestionar conexiones Wi-Fi, cableadas y VPN de forma sencilla.</p>
+<p>En servidores o sistemas sin entorno gráfico, se usan herramientas como:</p>
+<ul>
+<li>
+<p><strong><code>netplan</code></strong>: Sistema moderno para configurar redes en Ubuntu usando archivos YAML.</p>
+</li>
+<li>
+<p><strong><code>ifconfig</code></strong> (obsoleto) / <strong><code>ip</code></strong>: Comandos para ver y configurar interfaces de red.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1"># Ver la configuración de red con el comando &#39;ip&#39;</span>
+<span class="w">    </span>ip<span class="w"> </span>addr<span class="w"> </span>show
+</code></pre></div>
+<h3 id="72-gestion-de-impresoras-y-dispositivos">7.2. Gestión de Impresoras y Dispositivos</h3>
+<p><strong>CUPS (Common Unix Printing System)</strong> es el sistema de impresión estándar en Linux. La configuración de impresoras se puede hacer fácilmente desde:</p>
+<ul>
+<li><strong>Ajustes &gt; Impresoras</strong>.</li>
+<li>El asistente detectará automáticamente impresoras en la red o conectadas por USB.</li>
+</ul>
+<p>Los dispositivos como webcams, micrófonos o monitores adicionales suelen ser <strong>Plug and Play</strong> y funcionan sin necesidad de instalar drivers manualmente.</p>
+<h2 id="8-automatizacion-de-tareas-del-sistema">8. Automatización de Tareas del Sistema</h2>
+<p>La automatización es una de las mayores fortalezas de Linux. En lugar de ejecutar manualmente tareas repetitivas (como copias de seguridad, actualizaciones o limpieza de archivos temporales), puedes ordenarle al sistema que las haga por ti en un horario específico. La herramienta clásica para esto es <strong>cron</strong>.</p>
+<h3 id="81-que-es-cron-y-para-que-sirve">8.1. ¿Qué es Cron y para qué sirve?</h3>
+<p>Imagina a <strong>cron</strong> como un relojero digital que vive dentro de tu sistema. Es un <strong>demonio</strong> (un programa que se ejecuta en segundo plano) que se despierta cada minuto para revisar una lista de tareas. Si encuentra que alguna tarea coincide con la fecha y hora actuales, la ejecuta.</p>
+<p>Las tareas que gestiona <code>cron</code> se conocen como <strong>cron jobs</strong>.</p>
+<h3 id="82-el-comando-crontab">8.2. El Comando <code>crontab</code></h3>
+<p>No editas directamente el "reloj" de <code>cron</code>. En su lugar, usas el comando <code>crontab</code> (que significa "cron table" o tabla de cron) para gestionar tu lista personal de tareas programadas.</p>
+<ul>
+<li><code>crontab -e</code>: <strong>Editar</strong> tu archivo crontab. Si es la primera vez que lo usas, te pedirá que elijas un editor de texto (como <code>nano</code>, que es el más sencillo).</li>
+<li><code>crontab -l</code>: <strong>Listar</strong> las tareas que tienes programadas actualmente.</li>
+<li><code>crontab -r</code>: <strong>Eliminar</strong> <em>todas</em> tus tareas programadas. ¡Usa este comando con mucho cuidado!</li>
+</ul>
+<h3 id="83-la-sintaxis-desglosando-el-tiempo">8.3. La Sintaxis: Desglosando el Tiempo</h3>
+<p>La parte más importante de un cron job es definir <em>cuándo</em> debe ejecutarse. Cada línea en el archivo <code>crontab</code> representa una tarea y sigue una estructura estricta:</p>
+<div class="highlight"><pre><span></span><code>┌─────────────<span class="w"> </span>minuto<span class="w"> </span><span class="o">(</span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span><span class="m">59</span><span class="o">)</span>
+│<span class="w"> </span>┌─────────────<span class="w"> </span>hora<span class="w"> </span><span class="o">(</span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span><span class="m">23</span><span class="o">)</span>
+│<span class="w"> </span>│<span class="w"> </span>┌─────────────<span class="w"> </span>día<span class="w"> </span>del<span class="w"> </span>mes<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>-<span class="w"> </span><span class="m">31</span><span class="o">)</span>
+│<span class="w"> </span>│<span class="w"> </span>│<span class="w"> </span>┌─────────────<span class="w"> </span>mes<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>-<span class="w"> </span><span class="m">12</span><span class="o">)</span>
+│<span class="w"> </span>│<span class="w"> </span>│<span class="w"> </span>│<span class="w"> </span>┌─────────────<span class="w"> </span>día<span class="w"> </span>de<span class="w"> </span>la<span class="w"> </span>semana<span class="w"> </span><span class="o">(</span><span class="m">0</span><span class="w"> </span>-<span class="w"> </span><span class="m">6</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="nv">Domingo</span><span class="o">=</span><span class="m">0</span><span class="w"> </span>o<span class="w"> </span><span class="m">7</span><span class="o">)</span>
+│<span class="w"> </span>│<span class="w"> </span>│<span class="w"> </span>│<span class="w"> </span>│
+*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/ruta/al/comando_a_ejecutar
+</code></pre></div>
+<p>Para cada campo de tiempo, puedes usar:</p>
+<ul>
+<li>Un <strong>asterisco <code>\*</code></strong>: Significa "siempre" o "cada". Por ejemplo, un <code>*</code> en el campo de los minutos significa "cada minuto".</li>
+<li>Un <strong>número específico</strong>: Por ejemplo, un <code>15</code> en el campo de los minutos significa "a los 15 minutos".</li>
+<li>Una <strong>coma <code>,</code></strong> para separar múltiples valores: <code>0,15,30,45</code> en el campo de los minutos significa "en el minuto 0, 15, 30 y 45".</li>
+<li>Un <strong>guion <code>-</code></strong> para definir un rango: <code>8-17</code> en el campo de la hora significa "desde las 8 de la mañana hasta las 5 de la tarde (17h), inclusive".</li>
+<li>Una <strong>barra <code>/</code></strong> para indicar "pasos" o intervalos. <code>*/15</code> en el campo de los minutos significa "cada 15 minutos". Es un atajo para <code>0,15,30,45</code>.</li>
+</ul>
+<h3 id="84-ejemplos-practicos">8.4. Ejemplos Prácticos</h3>
+<p>Vamos a ver cómo se traduce esto en tareas reales. Abriríamos el editor con <code>crontab -e</code> y añadiríamos estas líneas:</p>
+<p><strong>1. Ejecutar un script de limpieza cada noche a las 2:30 AM:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="m">30</span><span class="w"> </span><span class="m">2</span><span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/home/alumno/scripts/limpiar_temporales.sh
+</code></pre></div>
+<p><strong>2. Realizar una copia de seguridad con <code>rsync</code> todos los domingos a las 4:00 AM:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="m">0</span><span class="w"> </span><span class="m">4</span><span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span><span class="m">0</span><span class="w"> </span>rsync<span class="w"> </span>-a<span class="w"> </span>/home/alumno/documentos/<span class="w"> </span>/mnt/backup/
+</code></pre></div>
+<p><em>(Recuerda: el 0 en el último campo significa domingo).</em></p>
+<p><strong>3. Comprobar las actualizaciones del sistema dos veces al día, a las 10:00 y a las 18:00:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="m">0</span><span class="w"> </span><span class="m">10</span>,18<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</code></pre></div>
+<p><strong>4. Ejecutar un script cada 10 minutos, pero solo durante el horario laboral (de lunes a viernes de 9 a 17h):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>*/10<span class="w"> </span><span class="m">9</span>-17<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span><span class="m">1</span>-5<span class="w"> </span>/home/alumno/scripts/monitorizar.sh
+</code></pre></div>
+<h3 id="85-cadenas-especiales-para-simplificar">8.5. Cadenas Especiales para Simplificar</h3>
+<p>Para las tareas más comunes, <code>cron</code> ofrece atajos mucho más legibles:</p>
+<table>
+<thead>
+<tr>
+<th>Cadena</th>
+<th>Equivalente</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@reboot</code></td>
+<td>-</td>
+<td>Se ejecuta una sola vez, al arrancar el sistema.</td>
+</tr>
+<tr>
+<td><code>@yearly</code></td>
+<td><code>0 0 1 1 *</code></td>
+<td>Se ejecuta una vez al año.</td>
+</tr>
+<tr>
+<td><code>@monthly</code></td>
+<td><code>0 0 1 * *</code></td>
+<td>Se ejecuta una vez al mes.</td>
+</tr>
+<tr>
+<td><code>@weekly</code></td>
+<td><code>0 0 * * 0</code></td>
+<td>Se ejecuta una vez a la semana.</td>
+</tr>
+<tr>
+<td><code>@daily</code></td>
+<td><code>0 0 * * *</code></td>
+<td>Se ejecuta una vez al día (a medianoche).</td>
+</tr>
+<tr>
+<td><code>@hourly</code></td>
+<td><code>0 * * * *</code></td>
+<td>Se ejecuta una vez cada hora.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplo con atajo:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1"># Versión simple de la copia de seguridad semanal</span>
+<span class="w">    </span>@weekly<span class="w"> </span>rsync<span class="w"> </span>-a<span class="w"> </span>/home/alumno/documentos/<span class="w"> </span>/mnt/backup/
+</code></pre></div>
+<h3 id="86-gestionando-la-salida-de-los-comandos">8.6. Gestionando la Salida de los Comandos</h3>
+<p>Por defecto, si un comando programado produce algún tipo de salida en pantalla (texto, errores, etc.), <code>cron</code> intentará enviarla por correo electrónico al propietario del crontab. Esto no siempre es práctico.</p>
+<p>Para gestionar esto, puedes redirigir la salida:</p>
+<ul>
+<li><strong>Guardar la salida en un archivo de log:</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/ruta/al/script.sh<span class="w"> </span>&gt;&gt;<span class="w"> </span>/var/log/mi_script.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</code></pre></div>
+<ul>
+<li><code>&gt;&gt;</code>: Añade la salida estándar al final del archivo (en lugar de sobreescribirlo).</li>
+<li>
+<p><code>2&gt;&amp;1</code>: Redirige la salida de errores (stderr) al mismo sitio que la salida estándar (stdout). Esto es clave para capturar tanto los mensajes de éxito como los errores.</p>
+</li>
+<li>
+<p><strong>Descartar toda la salida (si no te interesa):</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">    </span>*/5<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/ruta/al/comando_silencioso.sh<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</code></pre></div>
+<ul>
+<li><code>/dev/null</code> es un "agujero negro" en Linux; todo lo que se envía allí, desaparece.</li>
+</ul>
+<h3 id="82-scripts-de-shell-bash-scripting-basico">8.2. Scripts de Shell (Bash Scripting Básico)</h3>
+<p>Un <strong>script de shell</strong> es un archivo de texto que contiene una secuencia de comandos. Es una forma sencilla de automatizar tareas repetitivas.</p>
+<p><strong>Ejemplo de script básico</strong>: Un script que actualiza el sistema.</p>
+<ol>
+<li>Crea un archivo llamado <code>actualizar.sh</code>:</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1">#!/bin/bash</span>
+<span class="w">    </span><span class="c1"># Este script actualiza el sistema (para Debian/Ubuntu)</span>
+
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== Iniciando actualización del sistema ===&quot;</span>
+
+<span class="w">    </span><span class="c1"># Actualizar la lista de paquetes</span>
+<span class="w">    </span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+
+<span class="w">    </span><span class="c1"># Actualizar los paquetes instalados</span>
+<span class="w">    </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y<span class="w">  </span><span class="c1"># La opción -y responde &#39;sí&#39; automáticamente</span>
+
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== Actualización completada ===&quot;</span>
+</code></pre></div>
+2. Dale permisos de ejecución:</p>
+<p><div class="highlight"><pre><span></span><code><span class="w">    </span>chmod<span class="w"> </span>+x<span class="w"> </span>actualizar.sh
+</code></pre></div>
+3. Ejecútalo:</p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span>./actualizar.sh
+</code></pre></div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="9 de febrero de 2026 18:05:30 UTC">9 de febrero de 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <a href='https://creativecommons.org/licenses/by/4.0/' target='_blank'>CC BY-NC-SA 4.0 (Reconeixement - NoComercial - CompartirIgual) © Luis Garcia Bonifaz</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

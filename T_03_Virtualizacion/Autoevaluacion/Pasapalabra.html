@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasapalabra - Instalación SO</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .rosco-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .rosco {
+            display: grid;
+            grid-template-columns: repeat(7, 50px);
+            grid-gap: 5px;
+        }
+
+        .letra {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            background-color: #2109f4; /* Verde por defecto */
+        }
+        
+        .letra.acertada {
+            background-color: #28a745; /* Verde más oscuro para aciertos */
+        }
+
+        .letra.fallada {
+            background-color: #dc3545; /* Rojo para fallos */
+        }
+
+        .pregunta-container {
+            margin-bottom: 20px;
+            min-height: 40px;
+            font-size: 1.2em;
+        }
+
+        .respuesta-container {
+            margin-bottom: 20px;
+        }
+
+        #respuesta {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        #submit {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+        }
+
+        #timer-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #d0021b;
+            color: white;
+            font-size: 2em;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div id="timer-container">150</div>
+    <div class="container">
+        <h1>Pasapalabra - Instalación SO</h1>
+        <div class="rosco-container">
+            <div class="rosco"></div>
+        </div>
+        <div class="pregunta-container">
+            <p id="pregunta"></p>
+        </div>
+        <div class="respuesta-container">
+            <input type="text" id="respuesta" placeholder="Escribe tu respuesta" autocomplete="off">
+            <button id="submit">Responder</button>
+        </div>
+        <div class="resultado-container">
+            <p>Aciertos: <span id="aciertos">0</span></p>
+            <p>Fallos: <span id="fallos">0</span></p>
+        </div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const rosco = document.querySelector('.rosco');
+    const preguntaEl = document.getElementById('pregunta');
+    const respuestaEl = document.getElementById('respuesta');
+    const submitBtn = document.getElementById('submit');
+    const aciertosEl = document.getElementById('aciertos');
+    const fallosEl = document.getElementById('fallos');
+    const timerEl = document.getElementById('timer-container');
+
+    const preguntas = [
+        { letra: 'A', pregunta: 'CON LA A. Ventaja de la virtualización que consiste en poder mover máquinas virtuales de un servidor a otro.', respuesta: 'agilidad' },
+        { letra: 'B', pregunta: 'CON LA B. Copia de seguridad de una máquina virtual.', respuesta: 'backup' },
+        { letra: 'C', pregunta: 'CON LA C. Metodo para realizar una copia exacta de una máquina virtual.', respuesta: 'clonación' },
+        { letra: 'D', pregunta: 'CON LA D. Proceso para obtener de interner una imagen ISO de un sistema operativo.', respuesta: 'descarga' },
+        { letra: 'E', pregunta: 'CON LA E. Proceso de imitar el comportamiento de un sistema de hardware en otro diferente.', respuesta: 'emulación' },
+        { letra: 'F', pregunta: 'CON LA F. Una instantánea es una ..... del estado completo de una máquina virtual en un momento concreto..', respuesta: 'foto' },
+        { letra: 'G', pregunta: 'CON LA G. Sistema operativo que se ejecuta dentro de una máquina virtual. En español, "huésped".', respuesta: 'guest' },
+        { letra: 'H', pregunta: 'CON LA H. Software o firmware que crea y ejecuta máquinas virtuales.', respuesta: 'hipervisor' },
+        { letra: 'I', pregunta: 'CON LA I. Tipo de archivo de las imagenes de sistemas operativos', respuesta: 'ISO' },
+        { letra: 'J', pregunta: 'CON LA J. Lenguaje de programación para el que se creó una de las primeras máquinas virtuales.', respuesta: 'java' },
+        { letra: 'K', pregunta: 'CON LA K. Hipervisor de tipo 1 integrado en el kernel de Linux.', respuesta: 'kvm' },
+        { letra: 'L', pregunta: 'CON LA L. Sistema operativo de código abierto que puede actuar como anfitrión o huésped en entornos virtualizados.', respuesta: 'linux' },
+        { letra: 'M', pregunta: 'CON LA M. Software que simula un sistema informático y puede ejecutar programas como si fuera un ordenador real.', respuesta: 'máquina virtual' },
+        { letra: 'N', pregunta: 'CON LA N. Tipo de hipervisor que se ejecuta directamente sobre el hardware del sistema, también conocido como Tipo 1.', respuesta: 'nativo' },
+        { letra: 'O', pregunta: 'CON LA O. Emppreguntaa que desarrolla el software de virtualización VirtualBox.', respuesta: 'oracle' },
+        { letra: 'P', pregunta: 'CON LA P. Ventaja de la maquinas virtuales que permite mover con facilidad las máquinas virtuales de un ordenador a otro.', respuesta: 'portabilidad' },
+        { letra: 'Q', pregunta: 'CONTIENE LA Q. ..... Virtual.', respuesta: 'máquina' },
+        { letra: 'R', pregunta: 'CON LA R. Una de las principales ventajas de la virtualización es la ... de costes.', respuesta: 'reducción' },
+        { letra: 'S', pregunta: 'CON LA S. Captura del estado de una máquina virtual en un momento concreto, permitiendo volver a ese estado.', respuesta: 'snapshot' },
+        { letra: 'T', pregunta: 'CONTIENE LA T. Traduccion de direcciones de red.', respuesta: 'NAT' },
+        { letra: 'U', pregunta: 'CON LA U. Distribución de Linux popular para usar como sistema operativo anfitrión o huésped en virtualización.', respuesta: 'ubuntu' },
+        { letra: 'V', pregunta: 'CON LA V. Emppreguntaa líder en el mercado de software de virtualización.', respuesta: 'vmware' },
+        { letra: 'W', pregunta: 'CON LA W. Sistema operativo de Microsoft que incluye el hipervisor Hyper-V.', respuesta: 'windows' },
+        { letra: 'X', pregunta: 'CONTIENE LA X. Software de Virtulización de Oracle.', respuesta: 'VirtualBox' },
+        { letra: 'Y', pregunta: 'CONTIENE LA Y. Hipervisor de Microsoft para la virtualización.', respuesta: 'hyper-v' },
+        { letra: 'Z', pregunta: 'EMPIEZA POR V, CONTIENE LA Z. Creación a través de software de una versión virtual de algún recurso tecnológico.', respuesta: 'virtualización' }
+    ];
+    
+    let preguntaActual = 0;
+    let aciertos = 0;
+    let fallos = 0;
+    let timeLeft = 150;
+    let timerInterval;
+
+    function iniciarJuego() {
+        mostrarPregunta();
+        crearRosco();
+        startTimer();
+    }
+
+    function startTimer() {
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            timerEl.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                endGame(false);
+            }
+        }, 1000);
+    }
+
+    function endGame(completed) {
+        clearInterval(timerInterval);
+        respuestaEl.disabled = true;
+        submitBtn.disabled = true;
+        if (completed) {
+            preguntaEl.textContent = '¡Felicidades! ¡Has completado el rosco!';
+        } else {
+            preguntaEl.textContent = '¡Tiempo agotado! Fin del juego.';
+        }
+    }
+
+    function crearRosco() {
+        rosco.innerHTML = '';
+        preguntas.forEach(p => {
+            const letraEl = document.createElement('div');
+            letraEl.classList.add('letra');
+            letraEl.textContent = p.letra.toUpperCase();
+            rosco.appendChild(letraEl);
+        });
+    }
+
+    function mostrarPregunta() {
+        preguntaEl.textContent = preguntas[preguntaActual].pregunta;
+    }
+
+    function comprobarRespuesta() {
+        const respuesta = respuestaEl.value.trim().toLowerCase();
+        if (respuesta === '') return;
+
+        if (respuesta === preguntas[preguntaActual].respuesta.toLowerCase()) {
+            aciertos++;
+            aciertosEl.textContent = aciertos;
+            marcarLetra('acertada');
+        } else {
+            fallos++;
+            fallosEl.textContent = fallos;
+            marcarLetra('fallada');
+        }
+        siguientePregunta();
+    }
+
+    function marcarLetra(estado) {
+        const letras = rosco.querySelectorAll('.letra');
+        letras[preguntaActual].classList.add(estado);
+    }
+
+    function siguientePregunta() {
+        preguntaActual++;
+        if (preguntaActual < preguntas.length) {
+            mostrarPregunta();
+        } else {
+            endGame(true);
+        }
+        respuestaEl.value = '';
+        respuestaEl.focus();
+    }
+
+    submitBtn.addEventListener('click', comprobarRespuesta);
+    respuestaEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            comprobarRespuesta();
+        }
+    });
+
+    iniciarJuego();
+    respuestaEl.focus();
+});
+</script>
+</body>
+</html>

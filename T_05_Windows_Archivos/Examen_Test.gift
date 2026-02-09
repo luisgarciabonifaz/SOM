@@ -1,0 +1,100 @@
+// Sección I: Preguntas de Selección Múltiple
+::1. Unidad básica de almacenamiento:: ¿Cuál de los siguientes elementos es la unidad básica de almacenamiento de información en un sistema de archivos, conteniendo datos y teniendo un nombre y una extensión? {
+    ~a) Unidad
+    ~b) Carpeta
+    =c) Archivo
+    ~d) Directorio
+}
+
+::2. Sistema de archivos principal en Windows moderno:: ¿Cuál de los siguientes sistemas de archivos es el principal utilizado por las versiones modernas de Windows y ofrece características como seguridad detallada, recuperación ante fallos y soporte para discos grandes? {
+    ~a) FAT16
+    =b) NTFS
+    ~c) FAT32
+    ~d) exFAT
+}
+
+::3. Limitación de FAT32:: Una limitación importante de FAT32, en comparación con NTFS, es que un archivo individual no puede superar los: {
+    ~a) 2 TB de tamaño
+    =b) 4 GB de tamaño
+    ~c) 32 GB de tamaño
+    ~d) 256 MB de tamaño
+}
+
+::4. Atributo para ocultar archivos:: ¿Qué atributo de archivo hace que un archivo o carpeta no sea visible por defecto en el Explorador de Archivos y se usa para ocultar archivos del sistema o datos que no se desea que el usuario vea habitualmente? {
+    ~a) Solo lectura
+    ~b) Sistema
+    ~c) Comprimido
+    =d) Oculto
+}
+
+::5. Permiso NTFS de control total:: ¿Qué tipo de permiso NTFS permite al usuario o grupo realizar cualquier acción sobre el archivo o carpeta, incluyendo leer, escribir, ejecutar, modificar, eliminar, cambiar permisos y tomar posesión? {
+    ~a) Modificar
+    ~b) Lectura y ejecución
+    ~c) Escritura
+    =d) Control total
+}
+
+::6. Cmdlet para listar contenido:: ¿Cuál de los siguientes cmdlets de PowerShell se utiliza para listar el contenido (archivos y directorios) dentro de una ubicación específica? {
+    ~a) Set-Location
+    ~b) New-Item
+    ~c) Remove-Item
+    =d) Get-ChildItem
+}
+
+::7. Cmdlet para mover elementos:: Si deseas mover un archivo o directorio de una ubicación a otra usando PowerShell, ¿qué cmdlet utilizarías? {
+    ~a) Copy-Item
+    ~b) New-Item
+    =c) Move-Item
+    ~d) Get-Content
+}
+
+// Sección II: Verdadero o Falso
+::1. Ubicación de Windows OS:: La unidad C: es típicamente donde se instala el sistema operativo Windows. {
+    T
+}
+
+::2. FAT32 y permisos de seguridad:: FAT32 ofrece la capacidad de establecer permisos de seguridad detallados a nivel de archivo o carpeta, similar a NTFS. {
+    F
+}
+
+::3. Atributo Solo lectura:: El atributo "Solo lectura" previene que un archivo sea modificado o borrado bajo cualquier circunstancia, incluso programáticamente. {
+    F
+}
+
+::4. Herencia de permisos NTFS:: Por defecto, los permisos NTFS establecidos en una carpeta padre se heredan automáticamente a los archivos y subcarpetas dentro de ella. {
+    T
+}
+
+::5. Prioridad de permisos Denegar:: En la gestión de permisos NTFS, los permisos "Denegar" tienen prioridad sobre los permisos "Permitir". {
+    T
+}
+
+::6. Comodín ? en PowerShell:: El comodín ? (signo de interrogación) en PowerShell representa cero o más caracteres. {
+    F
+}
+
+// Sección III: Preguntas de Respuesta Corta / Conceptuales
+::1. Ventajas de NTFS:: Menciona dos ventajas clave que ofrece el sistema de archivos NTFS sobre FAT32. {
+    =Seguridad y permisos: Permite establecer permisos detallados a nivel de archivo y carpeta. Recuperación ante fallos: Incorpora un sistema de registro de transacciones (journaling) que ayuda a recuperar el sistema de archivos a un estado consistente después de un fallo. Compresión de archivos: Permite comprimir archivos y carpetas para ahorrar espacio en disco. Cifrado de archivos (EFS): Ofrece la capacidad de cifrar archivos individuales para proteger su confidencialidad. Soporte para discos grandes: Admite volúmenes de disco y tamaños de archivo mucho más grandes. Cuotas de disco: Permite a los administradores limitar la cantidad de espacio en disco que pueden utilizar usuarios o grupos específicos. Enlaces duros y enlaces simbólicos: Proporciona formas avanzadas de referenciar archivos y directorios.
+}
+
+::2. Herencia de permisos NTFS y su ventaja:: Explica brevemente qué es la herencia de permisos NTFS y cuál es su principal ventaja. {
+    =La herencia de permisos es un mecanismo que simplifica la administración de la seguridad al aplicar automáticamente los permisos establecidos en una carpeta padre a todos los archivos y subcarpetas creados dentro de ella. Su principal ventaja es que simplifica la administración, ya que no es necesario establecer permisos individualmente para cada archivo o subcarpeta.
+}
+
+::3. Concepto de Propietario en NTFS:: ¿Qué es el Propietario de un archivo o carpeta en el contexto de los permisos NTFS? {
+    =El propietario de un archivo o carpeta es el usuario o grupo que tiene el control total sobre ese recurso, incluyendo la capacidad de cambiar permisos y asignar la propiedad a otros.
+}
+
+::4. Eliminar archivos .tmp con PowerShell:: Si necesitas eliminar múltiples archivos que tienen la extensión .tmp en una carpeta usando PowerShell, ¿qué comodín utilizarías y cómo lo combinarías con el cmdlet Remove-Item? ¿Qué precaución importante deberías tener al usar este comando? {
+    =Utilizarías el comodín * (asterisco). Un ejemplo sería: Remove-Item *.tmp. La precaución importante es que siempre se debe tener mucho cuidado al usar comodines con Remove-Item, especialmente con *, ya que podrías eliminar una gran cantidad de archivos o directorios de forma irreversible si no especificas bien el patrón. Es recomendable usar Get-ChildItem primero con el mismo patrón para verificar qué elementos se seleccionarán antes de ejecutar Remove-Item.
+}
+
+// Sección IV: Emparejamiento
+::Emparejamiento de Cmdlets de PowerShell:: Empareja cada cmdlet de PowerShell con su función correspondiente: {
+    =c -> Muestra el contenido de un archivo de texto.
+    =a -> Cambia el directorio de trabajo actual.
+    =b -> Crea un nuevo elemento (archivo o directorio).
+    =e -> Copia uno o más elementos de una ubicación a otra.
+    =d -> Cambia el nombre de un elemento.
+}

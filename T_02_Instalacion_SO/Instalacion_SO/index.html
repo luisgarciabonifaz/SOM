@@ -1,0 +1,1608 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Luis García Bonifaz">
+      
+      
+        <link rel="canonical" href="https://luisgarciabonifaz.github.io/SOM/T_02_Instalacion_SO/Instalacion_SO/">
+      
+      
+        <link rel="prev" href="../../T_01_Fundamentos_SO/Fundamentos_SO/">
+      
+      
+        <link rel="next" href="../../T_03_Virtualizacion/Virtualizacion/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>T2 - Instalacion de un Sistema Operativo - SOM</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="navy" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#t2-instalacion-de-sistemas-operativos" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="SOM" class="md-header__button md-logo" aria-label="SOM" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SOM
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              T2 - Instalacion de un Sistema Operativo
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="navy" data-md-color-accent="deep-orange"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="navy" data-md-color-accent="deep-purple"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SOM" class="md-nav__button md-logo" aria-label="SOM" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SOM
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sistemas Operativos Monopuesto
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sistemas Operativos Monopuesto
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_01_Fundamentos_SO/Fundamentos_SO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T1 - Fundamentos de los Sistemes Operativos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T2 - Instalacion de un Sistema Operativo
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T2 - Instalacion de un Sistema Operativo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-funciones-del-sistema-operativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Funciones del Sistema Operativo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-arquitectura-del-sistema-operativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Arquitectura del Sistema Operativo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-verificacion-de-la-idoneidad-del-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Verificación de la Idoneidad del Hardware
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-seleccion-del-sistema-operativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Selección del Sistema Operativo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-elaboracion-de-un-plan-de-instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Elaboración de un Plan de Instalación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-practico-gestion-de-particiones-de-disco" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio Práctico: Gestión de Particiones de Disco
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-configuracion-de-parametros-basicos-de-la-instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Configuración de Parámetros Básicos de la Instalación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-arranque-de-un-ordenador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Arranque de un ordenador
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-incidencias-de-la-instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Incidencias de la Instalación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-normas-de-utilizacion-del-software-licencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Normas de Utilización del Software (Licencias)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-actualizacion-del-sistema-operativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Actualización del Sistema Operativo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actividad
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_03_Virtualizacion/Virtualizacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T3 - Virtualización
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_04_Windows_Configuracion/ConfiguracionBasica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T4 - Windows Configuración Básica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_05_Windows_Archivos/W_Gestion_Archivos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T5 - Windows Gestion de Archivos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_06_Windows_Administracion/Windows_Administracion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T6 - Windows Administración
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_07_Linux_Configuracion/Linux_Configuracion_Basica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T7 - Linux Configuración Básica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_08_Linux_Archivos/Linux_Gestion_Archivos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T8 - Linux Gestión de Archivos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_09_Linux_Administracion/Linux_Administracion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T9 - Linux Administración
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-funciones-del-sistema-operativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Funciones del Sistema Operativo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-arquitectura-del-sistema-operativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Arquitectura del Sistema Operativo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-verificacion-de-la-idoneidad-del-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Verificación de la Idoneidad del Hardware
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-seleccion-del-sistema-operativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Selección del Sistema Operativo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-elaboracion-de-un-plan-de-instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Elaboración de un Plan de Instalación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-practico-gestion-de-particiones-de-disco" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio Práctico: Gestión de Particiones de Disco
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-configuracion-de-parametros-basicos-de-la-instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Configuración de Parámetros Básicos de la Instalación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-arranque-de-un-ordenador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Arranque de un ordenador
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-incidencias-de-la-instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Incidencias de la Instalación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-normas-de-utilizacion-del-software-licencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Normas de Utilización del Software (Licencias)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-actualizacion-del-sistema-operativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Actualización del Sistema Operativo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actividad
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="t2-instalacion-de-sistemas-operativos">T2 - Instalacion de Sistemas Operativos</h1>
+<h2 id="1-funciones-del-sistema-operativo">1. Funciones del Sistema Operativo</h2>
+<p>El <strong>sistema operativo (SO)</strong> es como el director de orquesta de un ordenador. Sin él, el hardware (los componentes físicos) sería inútil. Su principal función es gestionar los recursos para que tú, el usuario, y los programas podáis usar el ordenador de forma eficiente.</p>
+<h3 id="11-gestion-de-recursos-cpu-memoria-es">1.1. Gestión de Recursos (CPU, memoria, E/S)</h3>
+<p>El sistema operativo (SO) es el encargado de administrar y coordinar todos los <strong>recursos de hardware</strong> de tu equipo para que los programas puedan funcionar de manera eficiente y sin conflictos. Piensa en él como un director de tráfico que asegura que todo fluya correctamente.</p>
+<h4 id="111-gestion-de-la-cpu-unidad-central-de-procesamiento">1.1.1. <strong>Gestión de la CPU (Unidad Central de Procesamiento)</strong></h4>
+<p>La CPU es el "cerebro" del ordenador, la parte que ejecuta las instrucciones de los programas. Dado que la CPU solo puede procesar una tarea (o muy pocas, si es multi-núcleo) en un instante determinado, el SO debe decidir de forma justa y eficiente qué programa o proceso usa la CPU en cada momento.</p>
+<p>Imagina que la CPU es un chef muy rápido en una cocina, y cada programa (como el navegador web, un juego o un editor de texto) es un plato diferente que necesita ser cocinado. El SO actúa como el jefe de cocina que organiza al chef: le asigna un poco de tiempo a un plato, luego a otro, y así sucesivamente, tan rápido que parece que el chef está cocinando todos los platos a la vez.</p>
+<p>El objetivo del SO es que todos los programas tengan su turno, evitando que uno monopolice al chef y que el sistema se quede "colgado" o lento. Para esto, el SO utiliza técnicas como la <strong>multitarea</strong>, donde alterna rápidamente entre procesos activos, dando la ilusión de que se ejecutan simultáneamente.</p>
+<h4 id="112-gestion-de-la-memoria-ram">1.1.2. <strong>Gestión de la Memoria (RAM)</strong></h4>
+<p>La Memoria de Acceso Aleatorio (RAM) es como la "mesa de trabajo" del chef, donde se guardan temporalmente los ingredientes y las recetas que se están usando activamente. La RAM es mucho más rápida que el disco duro para acceder a los datos. El SO es crucial aquí porque controla qué parte de la memoria RAM usa cada programa.</p>
+<p>Su función es:</p>
+<ul>
+<li><strong>Asignar espacio:</strong> Cuando abres un programa, el SO le asigna un bloque de RAM para que cargue sus datos e instrucciones.</li>
+<li><strong>Proteger la memoria:</strong> Evita que un programa sobrescriba la memoria de otro, lo que causaría errores o fallos en el sistema.</li>
+<li><strong>Optimizar el uso:</strong> Libera la memoria que ya no está siendo utilizada por programas cerrados o inactivos, haciendo que esté disponible para otras aplicaciones.</li>
+</ul>
+<p><strong>Memoria Virtual</strong></p>
+<p>Sabemos que un proceso necesita estar completamente en la memoria para ejecutarse. Sin embargo, con la <strong>Memoria Virtual</strong>, se permite que solo las partes del proceso que se están utilizando en ese momento estén en la memoria principal, mientras que el resto permanece en la memoria secundaria. Esto libera espacio en la memoria principal para que se puedan ejecutar más procesos a la vez. Además, este método nos permite ejecutar programas que son más grandes que la memoria física del sistema.</p>
+<p>Cuando un proceso necesita acceder a una parte de la memoria que no está en la memoria principal, ocurre un <strong>fallo de página</strong>. En ese momento, el sistema busca un espacio libre en la memoria principal y carga allí la información necesaria. Si no hay espacio libre, el sistema debe reemplazar una parte de la memoria ocupada por otra información menos importante, usando un algoritmo especial para decidir qué reemplazar.</p>
+<p>Mientras se realiza este proceso, el programa que generó el fallo de página se detiene momentáneamente.</p>
+<p>Este método permite usar la memoria de manera más eficiente, ya que podemos cargar más procesos en la misma cantidad de memoria y así aprovechar mejor el procesador. Sin embargo, si hay demasiados fallos de página, el acceso al disco se vuelve muy frecuente y el rendimiento del sistema puede disminuir drásticamente. Este problema se llama <strong>hiperpaginación</strong>.</p>
+<div class="admonition info">
+<p class="admonition-title">Obervación</p>
+<p>Una buena gestión de RAM es fundamental para evitar la lentitud y los bloqueos del sistema.</p>
+</div>
+<h4 id="113-gestion-de-es-entradasalida">1.1.3. <strong>Gestión de E/S (Entrada/Salida)</strong></h4>
+<p>E/S se refiere a la entrada de datos al ordenador (por ejemplo, al escribir en el teclado, hacer clic con el ratón, leer desde un disco) y la salida de datos del ordenador (por ejemplo, mostrar algo en pantalla, imprimir un documento, guardar un archivo en el disco). El SO se encarga de la comunicación fluida y organizada entre el ordenador y todos los dispositivos externos.</p>
+<p>Esto incluye:</p>
+<ul>
+<li><strong>Teclado y ratón:</strong> Recibe tus pulsaciones y movimientos.</li>
+<li><strong>Impresora:</strong> Envía los documentos para que se impriman.</li>
+<li><strong>Discos duros y SSD:</strong> Gestiona la lectura y escritura de archivos.</li>
+<li><strong>Webcams, micrófonos, altavoces:</strong> Controla la captura y reproducción de audio y video.</li>
+</ul>
+<p>El SO asegura que estos dispositivos funcionen correctamente, maneja los <strong>controladores (drivers)</strong> necesarios para que el hardware sea reconocido y utilizado, y gestiona las peticiones de los programas para acceder a ellos, evitando que varios programas intenten usar el mismo dispositivo a la vez de forma conflictiva.</p>
+<h3 id="12-gestion-de-procesos">1.2. Gestión de Procesos</h3>
+<p>Un <strong>proceso</strong> es un programa en ejecución. El SO se encarga de:</p>
+<ul>
+<li><strong>Crear y eliminar procesos:</strong> Cuando abres un programa, el SO crea un proceso; cuando lo cierras, lo elimina.</li>
+<li><strong>Suspender y reanudar procesos:</strong> Puede detener temporalmente un proceso y luego continuarlo.</li>
+<li><strong>Sincronización de procesos:</strong> Asegura que los procesos que necesitan trabajar juntos lo hagan de forma ordenada.</li>
+<li><strong>Comunicación entre procesos:</strong> Permite que diferentes programas se "hablen" entre sí.</li>
+</ul>
+<p><strong>Planificación de procesos</strong></p>
+<p>Para que un sistema multiprogramado sea eficaz necesita una Planificación de procesos, ir asignando procesos al procesador a lo largo del tiempo. Objetivos:</p>
+<ul>
+<li>Rendimiento: Trata de maximizar el número de acciones que se completan en un plazo de tiempo determinado.</li>
+<li>Tiempo de respuesta: El sistema debe responder a las solicitudes de los usuarios en un tiempo adecuado.</li>
+<li>Tiempo de retorno: El sistema debe ofrecer resultados de los procesos por lotes en un tiempo adecuado.</li>
+<li>Equidad: Todos los procesos deben ser considerados según sus características.</li>
+<li>Eficiencia: Se debe aspirar a que el procesador esté activo constantemente.</li>
+</ul>
+<p>El módulo del sistema operativo que se encarga de esta tarea se denomina <strong>Planificador</strong> (en inglés, Scheduler).</p>
+<p>Según el diseño del sistema operativo, el Planificador utilizará unos criterios u otros para llevar a cabo su tarea. Estos criterios reciben el nombre de Algoritmos de Planificación (o también, Políticas de Planificación).</p>
+<h3 id="13-gestion-de-archivos">1.3. Gestión de Archivos</h3>
+<p>El SO organiza la información en el disco duro mediante un <strong>sistema de archivos</strong>. Esto incluye:</p>
+<ul>
+<li><strong>Creación, eliminación y modificación de archivos y carpetas.</strong></li>
+<li><strong>Acceso a los archivos:</strong> Permite a los programas leer y escribir en ellos.</li>
+<li><strong>Protección de archivos:</strong> Asegura que solo los usuarios autorizados puedan acceder a cierta información.</li>
+</ul>
+<h3 id="14-interfaz-de-usuario">1.4. Interfaz de Usuario</h3>
+<p>Es la forma en que el usuario interactúa con el SO. Puede ser:</p>
+<ul>
+<li><strong>Interfaz de Línea de Comandos (CLI):</strong> El usuario escribe comandos de texto (ejemplo: <code>cd /home/usuario</code>). Es rápida y potente para usuarios avanzados.</li>
+<li><strong>Interfaz Gráfica de Usuario (GUI):</strong> El usuario interactúa mediante ventanas, iconos, menús y un puntero (ejemplo: Windows, macOS, entornos de escritorio de Linux como GNOME o KDE). Es más intuitiva y fácil de usar para la mayoría.</li>
+</ul>
+<h2 id="2-arquitectura-del-sistema-operativo">2. Arquitectura del Sistema Operativo</h2>
+<p>La arquitectura de un sistema operativo es cómo están organizadas sus diferentes partes para trabajar juntas.</p>
+<h3 id="21-nucleo-kernel-shell-y-utilidades">2.1. Núcleo (Kernel), Shell y Utilidades</h3>
+<ul>
+<li><strong>Núcleo (Kernel):</strong> Es la parte más importante del SO, su "corazón". Se encarga de las funciones más básicas y críticas, como la gestión de la memoria, los procesos y el acceso al hardware. El kernel es lo primero que se carga cuando enciendes el ordenador.</li>
+<li><strong>Shell:</strong> Actúa como un intérprete entre el usuario y el kernel. Recibe las órdenes del usuario (ya sea por comandos o clics en la GUI) y las traduce para que el kernel las entienda. En sistemas como Linux, la "shell" a menudo se refiere a la interfaz de línea de comandos (ej. Bash). En Windows, la GUI y el explorador de archivos cumplen un rol similar.</li>
+<li><strong>Utilidades:</strong> Son programas adicionales que vienen con el SO y ayudan a realizar tareas específicas, como copiar archivos, formatear discos, o comprimir datos. (ej. Bloc de notas, Calculadora, Explorador de archivos).</li>
+</ul>
+<h3 id="22-modo-usuario-y-modo-nucleo">2.2. Modo Usuario y Modo Núcleo</h3>
+<p>Para garantizar la estabilidad y seguridad del sistema, los sistemas operativos modernos operan en dos modos principales:</p>
+<ul>
+<li><strong>Modo Usuario:</strong> Es el modo en el que se ejecutan la mayoría de las aplicaciones y programas. En este modo, los programas tienen un acceso limitado a los recursos del hardware. Si un programa en modo usuario falla, no suele afectar a todo el sistema.</li>
+<li><strong>Modo Núcleo (o Modo Privilegiado):</strong> Es el modo en el que se ejecuta el kernel del sistema operativo. En este modo, el kernel tiene acceso completo y sin restricciones a todo el hardware y a todos los recursos del sistema. Un fallo en el modo núcleo puede provocar que todo el sistema se bloquee o deje de funcionar (la famosa "pantalla azul de la muerte" en Windows o un "kernel panic" en Linux).</li>
+</ul>
+<h2 id="3-verificacion-de-la-idoneidad-del-hardware">3. Verificación de la Idoneidad del Hardware</h2>
+<p>Antes de instalar cualquier sistema operativo, es crucial asegurarse de que tu hardware es compatible y cumple con los requisitos mínimos. Instalar un SO en un hardware inadecuado puede resultar en un rendimiento deficiente o incluso imposibilitar la instalación.</p>
+<h3 id="31-requisitos-minimos-del-sistema-ram-cpu-espacio-en-disco">3.1. Requisitos Mínimos del Sistema (RAM, CPU, espacio en disco)</h3>
+<p>Cada sistema operativo tiene unas especificaciones mínimas para funcionar correctamente. Siempre debes consultar la documentación oficial del SO que quieres instalar.</p>
+<ul>
+<li><strong>RAM (Memoria de Acceso Aleatorio):</strong> La cantidad de RAM necesaria. Si tienes menos de lo recomendado, el SO funcionará muy lento. Por ejemplo, Windows 11 requiere un mínimo de 4 GB de RAM.</li>
+<li><strong>CPU (Unidad Central de Procesamiento):</strong> La velocidad y el número de núcleos del procesador. Algunos SO requieren procesadores de 64 bits.</li>
+<li><strong>Espacio en disco:</strong> La cantidad de espacio libre en el disco duro o SSD que necesita el SO para instalarse y funcionar. También considera el espacio para tus programas y archivos.</li>
+</ul>
+<h3 id="32-compatibilidad-de-componentes">3.2. Compatibilidad de Componentes</h3>
+<p>Además de los requisitos mínimos, es importante verificar la compatibilidad de otros componentes:</p>
+<ul>
+<li><strong>Tarjeta gráfica:</strong> Algunos SO requieren tarjetas gráficas con ciertas capacidades o drivers específicos.</li>
+<li><strong>Tarjeta de red (Ethernet o Wi-Fi):</strong> Necesaria para la conectividad a Internet.</li>
+<li><strong>Placa base:</strong> Asegúrate de que el BIOS/UEFI de la placa base es compatible con el SO.</li>
+<li><strong>Periféricos:</strong> Impresoras, escáneres, etc., pueden necesitar controladores específicos.</li>
+</ul>
+<p><strong>¿Cómo verificar?</strong></p>
+<ul>
+<li>Consulta las páginas web oficiales del fabricante del SO.</li>
+<li>Utiliza herramientas de diagnóstico de hardware (algunos SO ofrecen utilidades de diagnóstico, o puedes usar programas de terceros).</li>
+<li>En Windows, puedes usar <code>dxdiag</code> o la información del sistema. En Linux, comandos como <code>lshw</code> o <code>lspci</code> son útiles.</li>
+</ul>
+<h2 id="4-seleccion-del-sistema-operativo">4. Selección del Sistema Operativo</h2>
+<p>Elegir el sistema operativo adecuado es una decisión importante que depende de varios factores.</p>
+<h3 id="41-criterios-de-seleccion-licencia-requisitos-compatibilidad-de-software-preferencias-del-usuario">4.1. Criterios de Selección (licencia, requisitos, compatibilidad de software, preferencias del usuario)</h3>
+<ul>
+<li><strong>Licencia:</strong> ¿Es un software libre o propietario? Esto afecta al coste y a la libertad de uso.</li>
+<li><strong>Requisitos de Hardware:</strong> Como vimos, ¿tu equipo cumple los requisitos?</li>
+<li><strong>Compatibilidad de Software:</strong> ¿Necesitas programas específicos que solo funcionan en un SO determinado (ej. software de diseño gráfico, juegos)?</li>
+<li><strong>Preferencias del Usuario y Facilidad de Uso:</strong> ¿Estás más cómodo con una interfaz gráfica o con la línea de comandos? ¿Ya tienes experiencia con algún SO en particular?</li>
+<li><strong>Soporte y Comunidad:</strong> ¿Hay una buena comunidad o soporte disponible si tienes problemas?</li>
+<li><strong>Seguridad:</strong> Algunos SO son percibidos como más seguros que otros, aunque la seguridad depende mucho de las prácticas del usuario.</li>
+</ul>
+<h3 id="42-sistemas-operativos-libres-y-propietarios">4.2. Sistemas Operativos Libres y Propietarios</h3>
+<h4 id="421-sistemas-operativos-propietarios">4.2.1. Sistemas Operativos Propietarios</h4>
+<ul>
+<li><strong>Definición:</strong> Software cuyo código fuente no está disponible públicamente y su uso está restringido por una licencia. Generalmente, hay que pagar por ellos.</li>
+<li><strong>Ventajas:</strong><ul>
+<li>Soporte técnico profesional del fabricante.</li>
+<li>Gran compatibilidad con hardware y software comercial.</li>
+<li>Interfaz de usuario pulida y muy intuitiva.</li>
+</ul>
+</li>
+<li><strong>Desventajas:</strong><ul>
+<li>Coste inicial.</li>
+<li>Menos flexibilidad y personalización.</li>
+<li>Dependencia del fabricante para actualizaciones y correcciones.</li>
+</ul>
+</li>
+<li><strong>Ejemplos:</strong> <strong>Microsoft Windows</strong>, <strong>macOS (Apple)</strong>.</li>
+</ul>
+<h4 id="422-sistemas-operativos-libres-open-source">4.2.2. Sistemas Operativos Libres (Open Source)</h4>
+<ul>
+<li><strong>Definición:</strong> Software cuyo código fuente es accesible para cualquiera, que puede usarlo, estudiarlo, modificarlo y distribuirlo libremente. No suelen tener un coste de licencia (aunque puede haber servicios de soporte de pago).</li>
+<li><strong>Ventajas:</strong><ul>
+<li>Gratuitos (en cuanto a licencia).</li>
+<li>Gran flexibilidad y personalización.</li>
+<li>Mayor seguridad (la comunidad puede encontrar y corregir errores más rápido).</li>
+<li>Independencia de un único fabricante.</li>
+<li>Comunidad activa y colaborativa.</li>
+</ul>
+</li>
+<li><strong>Desventajas:</strong><ul>
+<li>Curva de aprendizaje para usuarios no familiarizados.</li>
+<li>Menor compatibilidad con ciertos programas comerciales o hardware muy específico.</li>
+<li>El soporte suele ser comunitario (foros, wikis), aunque hay empresas que ofrecen soporte profesional para distribuciones específicas.</li>
+</ul>
+</li>
+<li><strong>Ejemplos:</strong> <strong>GNU/Linux</strong> (en sus diversas <strong>distribuciones</strong> como Ubuntu, Fedora, Debian, Mint), <strong>FreeBSD</strong>.</li>
+</ul>
+<h2 id="5-elaboracion-de-un-plan-de-instalacion">5. Elaboración de un Plan de Instalación</h2>
+<p>Una buena planificación es clave para una instalación exitosa y sin problemas.</p>
+<h3 id="51-particionado-del-disco">5.1. Particionado del Disco</h3>
+<p>Las particiones en un disco duro son divisiones lógicas o secciones separadas que se crean en el espacio de almacenamiento de un disco. Estas particiones permiten organizar y gestionar mejor la información almacenada en el disco.</p>
+<p>Una <strong>tabla de particiones</strong> es una estructura de datos en un disco duro que contiene información sobre la organización de las particiones en ese disco. La tabla de particiones actúa como un mapa que le dice al sistema operativo dónde comienza y termina cada partición en el disco.</p>
+<p>El <strong>particionado</strong> es el proceso de dividir un disco duro en una o más secciones lógicas llamadas <strong>particiones</strong>. Cada partición actúa como un disco separado.</p>
+<h4 id="511-por-que-particionar">5.1.1. ¿Por qué particionar?</h4>
+<ul>
+<li><strong>Organización:</strong> Puedes separar el sistema operativo de tus datos personales, facilitando reinstalaciones sin perder información.</li>
+<li><strong>Sistemas multiarranque (Dual-boot):</strong> Para instalar varios sistemas operativos en el mismo disco.</li>
+<li><strong>Rendimiento:</strong> A veces, separar ciertas áreas (como la partición de intercambio en Linux) puede mejorar el rendimiento.</li>
+</ul>
+<h4 id="512-tablas-de-particiones">5.1.2. Tablas de particiones</h4>
+<p>Hay diferentes estándares para las tablas de particiones, siendo los más comunes el MBR (Master Boot Record) y el GPT (GUID Partition Table)</p>
+<ul>
+<li><strong>MBR</strong> (Master Boot Record) es un tipo de tabla de particiones y un sector de arranque que se encuentra en el primer sector (el sector cero) de un disco duro. Contiene información crítica para el inicio del sistema operativo y la organización de las particiones en el disco.</li>
+<li><strong>GPT</strong> (GUID Partition Table) es un estándar de partición más moderno y robusto. Utiliza identificadores únicos globales (GUID) para identificar particiones y proporciona una mayor flexibilidad en términos de capacidad y organización de particiones</li>
+</ul>
+<div style="text-align: center;">
+<table>
+<thead>
+<tr>
+<th><strong>Característica</strong></th>
+<th><strong>MBR</strong></th>
+<th><strong>GPT</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fiabilidad</strong></td>
+<td>Menor</td>
+<td>Mayor</td>
+</tr>
+<tr>
+<td><strong>Número de Particiones</strong></td>
+<td>Limitadas (4)</td>
+<td>Ilimitadas</td>
+</tr>
+<tr>
+<td><strong>Tamaño de Particiones</strong></td>
+<td>Hasta 2TB</td>
+<td>Sin límite de tamaño</td>
+</tr>
+<tr>
+<td><strong>Replicas</strong></td>
+<td>Una única réplica</td>
+<td>Varias réplicas</td>
+</tr>
+<tr>
+<td><strong>Compatibilidad S.O.</strong></td>
+<td>32 y 64 bits</td>
+<td>Solo 64 bits</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Tipos de particiones en MBR</strong>:</p>
+<ul>
+<li><strong>Partición Primaria:</strong><ul>
+<li>Es la partición principal en un disco duro.</li>
+<li>Puedes tener hasta cuatro particiones primarias en un disco.</li>
+<li>Una de estas particiones primarias puede ser designada como "activa" y contener el cargador de arranque del sistema operativo.</li>
+</ul>
+</li>
+<li><strong>Partición Extendida</strong>:<ul>
+<li>Se utiliza para crear particiones lógicas adicionales dentro de ella.</li>
+<li>Puedes tener solo una partición extendida en un disco.</li>
+<li>No se utiliza directamente para almacenar datos, pero sirve como contenedor para particiones lógicas.</li>
+</ul>
+</li>
+<li><strong>Partición Lógica</strong>:<ul>
+<li>Se crea dentro de una partición extendida.</li>
+<li>No puedes arrancar un sistema operativo directamente desde una partición lógica; necesitas una partición primaria o una partición activa para eso.</li>
+<li>Puedes tener varias particiones lógicas dentro de una partición extendida.</li>
+</ul>
+</li>
+</ul>
+<h4 id="513-herramientas-para-particionar">5.1.3. Herramientas para particionar</h4>
+<ul>
+<li>El propio instalador del sistema operativo (todos suelen incluir un gestor de particiones).</li>
+<li>Herramientas externas como GParted (Linux), la Administración de discos de Windows.</li>
+</ul>
+<h3 id="52-creacion-de-medios-de-instalacion-usb-booteable-dvd">5.2. Creación de Medios de Instalación (USB booteable, DVD)</h3>
+<p>Necesitarás un medio para arrancar el proceso de instalación del SO.</p>
+<ul>
+<li><strong>Imagen ISO:</strong> La mayoría de los sistemas operativos se distribuyen como archivos ISO, que son imágenes de disco.</li>
+<li><strong>USB booteable:</strong> Es la opción más común hoy en día.<ul>
+<li>Necesitas una memoria USB (mínimo 8 GB para la mayoría de SO modernos).</li>
+<li>Software para "grabar" la ISO en el USB, haciéndolo arrancable (ejemplos: Rufus en Windows, Etcher para multiplataforma, <code>dd</code> en Linux).</li>
+</ul>
+</li>
+<li><strong>DVD:</strong> Menos común ahora, pero sigue siendo una opción si tu equipo tiene unidad de DVD. Necesitas un DVD virgen y un programa para grabar la ISO en él.</li>
+</ul>
+<details class="info">
+<summary>Ejercicio practico</summary>
+<h2 id="ejercicio-practico-gestion-de-particiones-de-disco">Ejercicio Práctico: Gestión de Particiones de Disco</h2>
+<p>Imagina que tienes dos ordenadores con diferentes necesidades y tecnologías. Debes recomendar la mejor configuración de particiones para cada uno, utilizando los conocimientos sobre MBR y GPT.</p>
+<h3 id="1-escenario-del-servidor-maximo-rendimiento-y-capacidad">1. Escenario del Servidor (Máximo Rendimiento y Capacidad)</h3>
+<p>Un cliente quiere montar un servidor de archivos que requiere:</p>
+<ul>
+<li>Máxima fiabilidad en la tabla de particiones.</li>
+<li>Un disco duro de 5 TB para almacenar datos.</li>
+<li>Poder crear más de diez particiones para organizar diferentes proyectos.</li>
+</ul>
+<p>Completa esta tablas con la elección que decidas más apropiada.</p>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Elección (MBR o GPT)</th>
+<th>Justificación (Basada en las características)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tabla de Particiones</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Límite de Particiones</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Fiabilidad</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-escenario-del-pc-de-soporte-compatibilidad-con-mbr">2. Escenario del PC de Soporte (Compatibilidad con MBR)</h3>
+<p>Un técnico necesita preparar un antiguo PC de soporte que solo tiene el firmware BIOS para que pueda arrancar un sistema operativo de 32 bits. El disco duro es pequeño, de 500 GB, y necesita tres tipos de divisiones específicas para el arranque, los datos y una partición auxiliar.</p>
+<p>Asigna el tipo de partición MBR más adecuado a cada función, sabiendo que solo puedes usar una Partición Extendida.</p>
+<table>
+<thead>
+<tr>
+<th>Función Deseada</th>
+<th>Tipo de Partición MBR a Asignar</th>
+<th>Razón de la Elección</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>División 1: Contener el cargador de arranque del SO.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>División 2: Almacenar datos del usuario de forma segura. No debe arrancar el SO.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>División 3: La única división que puede albergar las divisiones lógicas restantes.</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</details>
+<h3 id="53-copia-de-seguridad-de-datos">5.3. Copia de Seguridad de Datos</h3>
+<p><strong>¡ESTO ES LO MÁS IMPORTANTE!</strong> Antes de cualquier instalación o manipulación de discos, <strong>siempre haz una copia de seguridad de todos tus datos importantes</strong>. Un error en el proceso de instalación puede borrar tus archivos irremediablemente.</p>
+<ul>
+<li><strong>¿Qué respaldar?</strong> Documentos, fotos, videos, proyectos, configuraciones personalizadas de programas.</li>
+<li><strong>¿Dónde respaldar?</strong> Discos duros externos, servicios de almacenamiento en la nube (Google Drive, OneDrive, Dropbox), otras unidades de red.</li>
+</ul>
+<h2 id="6-configuracion-de-parametros-basicos-de-la-instalacion">6. Configuración de Parámetros Básicos de la Instalación</h2>
+<p>Durante el proceso de instalación, el SO te pedirá una serie de configuraciones esenciales.</p>
+<h3 id="61-idioma-zona-horaria-teclado">6.1. Idioma, Zona Horaria, Teclado</h3>
+<ul>
+<li><strong>Idioma:</strong> El idioma principal del sistema operativo.</li>
+<li><strong>Zona horaria:</strong> Para que el reloj del sistema muestre la hora correcta.</li>
+<li><strong>Disposición del teclado:</strong> Muy importante para que las teclas correspondan con los caracteres que se muestran en pantalla (ej. teclado español tiene la 'ñ', el inglés no).</li>
+</ul>
+<h3 id="62-creacion-de-usuarios-y-contrasenas">6.2. Creación de Usuarios y Contraseñas</h3>
+<ul>
+<li><strong>Usuario Administrador/Root:</strong> En muchos SO, se te pedirá crear una cuenta con privilegios administrativos (superusuario). Esta cuenta tiene control total sobre el sistema. Es crucial elegir una contraseña <strong>fuerte</strong>.</li>
+<li><strong>Usuario Estándar:</strong> Para el uso diario, es recomendable usar una cuenta de usuario estándar con menos privilegios. Esto reduce el riesgo si se ejecuta software malicioso.</li>
+<li><strong>Contraseñas:</strong><ul>
+<li>Usa combinaciones de letras mayúsculas y minúsculas, números y símbolos.</li>
+<li>Evita información personal fácil de adivinar.</li>
+<li>No uses la misma contraseña para todo.</li>
+</ul>
+</li>
+</ul>
+<h3 id="63-configuracion-de-red-basica">6.3. Configuración de Red Básica</h3>
+<p>Durante la instalación, el SO intentará configurar la conexión a Internet.</p>
+<ul>
+<li><strong>DHCP (Dynamic Host Configuration Protocol):</strong> En la mayoría de los casos, la configuración se realiza automáticamente si hay un servidor DHCP en tu red (tu router).</li>
+<li><strong>Configuración Manual:</strong> Si tu red lo requiere, deberás introducir manualmente:<ul>
+<li>Dirección IP</li>
+<li>Máscara de subred</li>
+<li>Puerta de enlace predeterminada (Gateway)</li>
+<li>Servidores DNS</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-arranque-de-un-ordenador">7. Arranque de un ordenador</h2>
+<p>El proceso de arranque de un ordenadoar es una secuencia de relevos de control:</p>
+<ol>
+<li>
+<p><strong>Encendido y Control del Firmware (BIOS/UEFI):</strong></p>
+<ul>
+<li>Al encender el PC, la CPU comienza a ejecutar el código almacenado en una memoria especial de la placa base: el <strong>Firmware</strong> (BIOS o UEFI).</li>
+<li>El Firmware realiza el <strong>POST</strong> (<em>Power-On Self-Test</em>), una autocomprobación para asegurar que los componentes de <em>hardware</em> esenciales funcionen correctamente.</li>
+<li>Inicializa los componentes principales (como los controladores de disco).</li>
+<li>Finalmente, busca un dispositivo de arranque (disco duro, USB, etc.) según el orden de arranque configurado.</li>
+</ul>
+</li>
+<li>
+<p><strong>Transición al Gestor de Arranque (Bootloader):</strong></p>
+<ul>
+<li>Una vez que el Firmware localiza el dispositivo de arranque, lee los primeros sectores (en sistemas <strong>BIOS/MBR</strong>) o la partición del sistema EFI (en sistemas <strong>UEFI</strong>) para encontrar el <strong>Gestor de Arranque</strong> (Bootloader).</li>
+<li>El Firmware <strong>transfiere el control</strong> de la CPU al Bootloader.</li>
+</ul>
+</li>
+<li>
+<p><strong>Carga del Sistema Operativo por el Bootloader:</strong></p>
+<ul>
+<li>El Bootloader toma el control.</li>
+<li>Si hay varios sistemas operativos instalados, puede mostrar un <strong>menú</strong> para que el usuario elija.</li>
+<li>El Bootloader sabe dónde se encuentra el <strong>núcleo (kernel)</strong> del sistema operativo en el disco.</li>
+<li>Procede a <strong>cargar</strong> ese núcleo del SO y los archivos iniciales a la memoria <strong>RAM</strong>.</li>
+<li>Una vez que el núcleo del SO está cargado en la memoria, el Bootloader <strong>transfiere el control</strong> a este núcleo.</li>
+</ul>
+</li>
+<li>
+<p><strong>Inicio del Sistema Operativo:</strong></p>
+<ul>
+<li>El núcleo del SO toma el control total del sistema, inicializa todos los <em>drivers</em> y procesos restantes, y finalmente carga el entorno de usuario (por ejemplo, el escritorio de Windows o Linux).</li>
+</ul>
+</li>
+</ol>
+<p><strong>Diferencia entre Firmware y Gestor de Arranque</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Componente</th>
+<th style="text-align: left;">Nombres Comunes</th>
+<th style="text-align: left;">Función Principal</th>
+<th style="text-align: left;">Orientación</th>
+<th style="text-align: left;">Dependencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Firmware</strong></td>
+<td style="text-align: left;"><strong>BIOS</strong> (Sistema Básico de Entrada/Salida) o <strong>UEFI</strong> (Interfaz de Firmware Extensible Unificada)</td>
+<td style="text-align: left;">Inicializa y verifica el <strong>hardware</strong> del ordenador (CPU, RAM, discos, etc.). Busca y transfiere el control al <em>Bootloader</em>.</td>
+<td style="text-align: left;"><strong>Hardware</strong> (Es leal a la placa base).</td>
+<td style="text-align: left;">Específico del hardware.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Gestor de Arranque</strong> (<strong>Bootloader</strong>)</td>
+<td style="text-align: left;"><strong>GRUB</strong>, <strong>LILO</strong>, <strong>Windows Boot Manager</strong> (Bootmgr)</td>
+<td style="text-align: left;">Localiza, carga e inicia el <strong>núcleo</strong> (kernel) del sistema operativo (SO) en la memoria RAM. A menudo ofrece un menú para elegir el SO.</td>
+<td style="text-align: left;"><strong>Software</strong> (Es leal al sistema operativo).</td>
+<td style="text-align: left;">Específico del SO.</td>
+</tr>
+</tbody>
+</table>
+<p>En esencia, el <strong>Firmware</strong> es el primer programa que se ejecuta y prepara la plataforma; el <strong>Bootloader</strong> es el segundo programa que se ejecuta y es el puente entre el hardware listo y el inicio del sistema operativo.</p>
+<p>El <strong>gestor de arranque (boot manager/loader)</strong> es un pequeño programa que se carga antes que el sistema operativo. Su función principal es permitirte elegir qué sistema operativo iniciar si tienes varios instalados en tu ordenador.</p>
+<h3 id="71-gestor-de-arranque-grub-windows-boot-manager">7.1. Gestor de Arranque (GRUB, Windows Boot Manager)</h3>
+<ul>
+<li><strong>¿Qué hace?</strong> Muestra un menú al iniciar el ordenador, dándote la opción de seleccionar qué SO quieres cargar. También se encarga de iniciar el SO elegido.</li>
+<li><strong>Ejemplos:</strong><ul>
+<li><strong>GRUB (Grand Unified Bootloader):</strong> Es el gestor de arranque estándar en la mayoría de las distribuciones de GNU/Linux. Es muy potente y configurable.</li>
+<li><strong>Windows Boot Manager:</strong> Es el gestor de arranque por defecto en los sistemas operativos de Microsoft Windows (desde Windows Vista en adelante).</li>
+</ul>
+</li>
+</ul>
+<h3 id="72-instalacion-y-configuracion-para-sistemas-multiarranque">7.2. Instalación y Configuración para Sistemas Multiarranque</h3>
+<p>Cuando instalas un segundo sistema operativo (ej. Linux junto a Windows), el nuevo SO intentará instalar su gestor de arranque.</p>
+<ul>
+<li><strong>Orden de Instalación:</strong> Generalmente, es más sencillo instalar primero Windows y luego Linux. El instalador de Linux suele detectar Windows y configurar GRUB para que puedas elegir entre ambos.</li>
+<li><strong>Ubicación del Gestor de Arranque:</strong><ul>
+<li><strong>MBR (Master Boot Record):</strong> En sistemas BIOS/MBR, el gestor de arranque se instala en el MBR, el primer sector del disco duro.</li>
+<li><strong>EFI/UEFI:</strong> En sistemas más modernos, el gestor de arranque se instala en la <strong>EFI System Partition (ESP)</strong>.</li>
+</ul>
+</li>
+<li><strong>Problemas Comunes:</strong> Si instalas Windows después de Linux, Windows puede sobrescribir el GRUB, haciendo que no puedas arrancar Linux. En ese caso, necesitarás reparar GRUB usando un Live USB de Linux.</li>
+</ul>
+<h2 id="8-incidencias-de-la-instalacion">8. Incidencias de la Instalación</h2>
+<p>Incluso con una buena planificación, pueden surgir problemas durante la instalación. Saber cómo identificarlos y resolverlos es una habilidad valiosa.</p>
+<h3 id="81-errores-comunes-y-su-resolucion">8.1. Errores Comunes y su Resolución</h3>
+<ul>
+<li><strong>"No bootable device found" o similar:</strong><ul>
+<li><strong>Causa:</strong> El ordenador no encuentra un sistema operativo o un medio de instalación.</li>
+<li><strong>Solución:</strong><ul>
+<li>Verifica que el USB/DVD de instalación esté bien conectado y sea booteable.</li>
+<li>Comprueba la <strong>secuencia de arranque (boot order)</strong> en la BIOS/UEFI para asegurarte de que el ordenador intenta arrancar desde el medio correcto.</li>
+<li>Asegúrate de que el disco duro está correctamente conectado y reconocido.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Pantalla negra/problemas gráficos:</strong><ul>
+<li><strong>Causa:</strong> Incompatibilidad de controladores gráficos o problemas con la resolución.</li>
+<li><strong>Solución:</strong><ul>
+<li>Prueba a arrancar el instalador en <strong>modo seguro</strong> o con opciones de "nomodeset" (en Linux).</li>
+<li>Asegúrate de que tu tarjeta gráfica sea compatible.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Errores de particionamiento:</strong><ul>
+<li><strong>Causa:</strong> Intentar instalar en una partición que no es adecuada, o errores al crear/redimensionar particiones.</li>
+<li><strong>Solución:</strong> Revisa el plan de particionamiento. Asegúrate de tener espacio suficiente y de no borrar particiones importantes.</li>
+</ul>
+</li>
+<li><strong>El sistema operativo no arranca después de la instalación:</strong><ul>
+<li><strong>Causa:</strong> Problemas con el gestor de arranque (MBR corrupto, GRUB mal configurado) o errores críticos durante la instalación.</li>
+<li><strong>Solución:</strong><ul>
+<li>Usa las herramientas de reparación del propio instalador (ej. "Reparar inicio" en Windows).</li>
+<li>Para Linux, usa un Live USB y herramientas como <code>boot-repair</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="82-herramientas-de-diagnostico">8.2. Herramientas de Diagnóstico</h3>
+<ul>
+<li><strong>BIOS/UEFI:</strong> Puedes acceder a la configuración de la BIOS/UEFI al iniciar el ordenador (normalmente pulsando <code>Del</code>, <code>F2</code>, <code>F10</code> o <code>F12</code>). Desde allí puedes verificar la detección de hardware, la secuencia de arranque y realizar algunas pruebas básicas.</li>
+<li><strong>Live USB/DVD:</strong> Un Live USB/DVD de un sistema operativo (normalmente Linux) te permite arrancar el ordenador sin instalar nada. Es una herramienta muy útil para:<ul>
+<li>Acceder a los archivos del disco duro si el SO principal no arranca.</li>
+<li>Reparar el gestor de arranque.</li>
+<li>Probar si el hardware funciona correctamente antes de instalar.</li>
+<li>Particionar o formatear discos.</li>
+</ul>
+</li>
+<li><strong>Herramientas de diagnóstico de disco:</strong> <code>chkdsk</code> en Windows, <code>fsck</code> en Linux, o herramientas de terceros como <code>CrystalDiskInfo</code> para verificar la salud del disco duro.</li>
+<li><strong>MemTest86:</strong> Una herramienta para probar la memoria RAM y detectar posibles fallos.</li>
+</ul>
+<h2 id="9-normas-de-utilizacion-del-software-licencias">9. Normas de Utilización del Software (Licencias)</h2>
+<p>Entender las licencias de software es fundamental para usarlo de forma legal y ética.</p>
+<h3 id="91-tipos-de-licencias-gpl-eula-freeware-shareware">9.1. Tipos de Licencias (GPL, EULA, freeware, shareware)</h3>
+<ul>
+<li>
+<p><strong>Licencia de Software Propietario (EULA - End-User License Agreement):</strong></p>
+<ul>
+<li><strong>Definición:</strong> Un contrato entre el desarrollador del software y el usuario final. Define los términos bajo los cuales el software puede ser usado.</li>
+<li><strong>Características:</strong> Generalmente restringe la copia, modificación y distribución. El usuario compra el derecho a usar el software, no el software en sí.</li>
+<li><strong>Ejemplo:</strong> La mayoría de software comercial como Microsoft Office, Adobe Photoshop.</li>
+</ul>
+</li>
+<li>
+<p><strong>Licencia Pública General (GPL - General Public License):</strong></p>
+<ul>
+<li><strong>Definición:</strong> Una de las licencias de software libre más populares. Garantiza cuatro libertades esenciales para los usuarios:<ol>
+<li>La libertad de ejecutar el programa para cualquier propósito.</li>
+<li>La libertad de estudiar cómo funciona el programa y modificarlo.</li>
+<li>La libertad de redistribuir copias.</li>
+<li>La libertad de distribuir copias de sus versiones modificadas.</li>
+</ol>
+</li>
+<li><strong>Características:</strong> Cualquier trabajo derivado de software con licencia GPL también debe ser GPL. Es una licencia "copyleft".</li>
+<li><strong>Ejemplo:</strong> El kernel de Linux, GIMP, LibreOffice.</li>
+</ul>
+</li>
+<li>
+<p><strong>Freeware:</strong></p>
+<ul>
+<li><strong>Definición:</strong> Software que se puede descargar y usar de forma gratuita.</li>
+<li><strong>Características:</strong> El código fuente no suele estar disponible. No permite la modificación o redistribución. Puede incluir publicidad o tener funcionalidades limitadas.</li>
+<li><strong>Ejemplo:</strong> Skype, Adobe Reader, Google Chrome.</li>
+</ul>
+</li>
+<li>
+<p><strong>Shareware:</strong></p>
+<ul>
+<li><strong>Definición:</strong> Software distribuido de forma gratuita para que los usuarios puedan probarlo antes de comprarlo.</li>
+<li><strong>Características:</strong> Suele tener un período de prueba limitado, funcionalidades reducidas o publicidad. Después del período de prueba, se requiere una compra para seguir usándolo o desbloquear todas las funciones.</li>
+<li><strong>Ejemplo:</strong> WinRAR, algunos juegos con demo.</li>
+</ul>
+</li>
+</ul>
+<h3 id="92-importancia-del-cumplimiento-de-las-licencias">9.2. Importancia del Cumplimiento de las Licencias</h3>
+<ul>
+<li><strong>Legalidad:</strong> Usar software sin la licencia adecuada es ilegal y puede acarrear sanciones (multas, demandas).</li>
+<li><strong>Ética:</strong> Respetar los derechos de los desarrolladores y creadores de software.</li>
+<li><strong>Seguridad:</strong> El software pirata a menudo viene con malware o no recibe actualizaciones de seguridad, lo que te expone a riesgos.</li>
+<li><strong>Soporte:</strong> Las licencias válidas te dan derecho a soporte técnico y actualizaciones, lo que es vital para la seguridad y el buen funcionamiento del sistema.</li>
+</ul>
+<h2 id="10-actualizacion-del-sistema-operativo">10. Actualización del Sistema Operativo</h2>
+<p>Mantener tu sistema operativo actualizado es una de las tareas más importantes para cualquier usuario.</p>
+<h3 id="101-importancia-de-las-actualizaciones-de-seguridad-y-funcionales">10.1. Importancia de las Actualizaciones de Seguridad y Funcionales</h3>
+<ul>
+<li><strong>Actualizaciones de Seguridad:</strong><ul>
+<li><strong>Cierre de vulnerabilidades:</strong> Los hackers y ciberdelincuentes buscan constantemente fallos de seguridad en el software. Las actualizaciones corrigen estos fallos, protegiendo tu sistema de ataques como virus, ransomware, o accesos no autorizados.1</li>
+<li><strong>Protección de datos:</strong> Ayudan a salvaguardar tu información personal y sensible.</li>
+</ul>
+</li>
+<li><strong>Actualizaciones Funcionales (o de características):</strong><ul>
+<li><strong>Mejoras de rendimiento:</strong> Optimizaciones que hacen que el SO funcione más rápido y de manera más eficiente.</li>
+<li><strong>Nuevas características:</strong> Añaden nuevas funcionalidades o mejoran las existentes.</li>
+<li><strong>Compatibilidad:</strong> Mejoran la compatibilidad con nuevo hardware o software.</li>
+<li><strong>Corrección de errores:</strong> Solucionan fallos o "bugs" que causan inestabilidad o mal funcionamiento.</li>
+</ul>
+</li>
+</ul>
+<h3 id="102-procedimientos-de-actualizacion">10.2. Procedimientos de Actualización</h3>
+<p>Los procedimientos varían ligeramente entre sistemas operativos, pero los principios son los mismos:</p>
+<ul>
+<li><strong>Windows:</strong><ul>
+<li>Ve a <strong>Configuración &gt; Windows Update</strong>.</li>
+<li>Puedes buscar actualizaciones manualmente o configurar las actualizaciones automáticas.</li>
+<li>Es común que requieran reiniciar el equipo.</li>
+</ul>
+</li>
+<li><strong>macOS:</strong><ul>
+<li>Ve a <strong>Ajustes del Sistema &gt; General &gt; Actualización de software</strong>.</li>
+<li>Se descargan e instalan automáticamente, o puedes gestionarlas manualmente.</li>
+</ul>
+</li>
+<li><strong>GNU/Linux (ej. Ubuntu):</strong><ul>
+<li>Utiliza el <strong>Gestor de Actualizaciones</strong> gráfico.</li>
+<li>Desde la terminal, puedes usar comandos como <code>sudo apt update</code> y <code>sudo apt upgrade</code> (para sistemas basados en Debian/Ubuntu).</li>
+<li>Para actualizaciones de versión (ej. de Ubuntu 22.04 a 24.04), se usa <code>sudo do-release-upgrade</code>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Consejos adicionales:</strong></p>
+<ul>
+<li><strong>Conexión a Internet estable:</strong> Las actualizaciones pueden ser grandes.</li>
+<li><strong>Batería suficiente:</strong> Si estás en un portátil, asegúrate de tener suficiente batería o estar conectado a la corriente.</li>
+<li><strong>Reiniciar:</strong> Muchos cambios importantes requieren un reinicio para aplicarse completamente.</li>
+<li><strong>Copia de seguridad:</strong> Aunque menos crítico que en una instalación, es buena práctica hacer copias de seguridad antes de actualizaciones mayores de versión, por si acaso.</li>
+</ul>
+<h2 id="actividad">Actividad</h2>
+<h3 id="objetivo">Objetivo:</h3>
+<p>Aplicar los conocimientos sobre la instalación y gestión básica de sistemas operativos para <strong>planificar, simular y reflexionar</strong> sobre un proceso de instalación de un sistema multiarranque (dual-boot), incluyendo la selección del SO, la preparación del hardware, el particionado del disco y la configuración inicial.</p>
+<h3 id="escenario">Escenario:</h3>
+<p>Imagina que un amigo te pide ayuda para instalar un nuevo sistema operativo en su ordenador. Actualmente tiene <strong>Windows 10</strong> instalado en un disco duro y quiere <strong>conservarlo</strong>, pero también le gustaría probar un nuevo sistema operativo para aprender sobre él. Te da la siguiente información sobre su equipo:</p>
+<ul>
+<li><strong>Sistema Operativo Actual:</strong> Windows 10 (instalado y funcionando)</li>
+<li><strong>Procesador:</strong> Intel Core i5 de 7ª generación (64 bits)</li>
+<li><strong>RAM:</strong> 8 GB</li>
+<li><strong>Disco Duro:</strong> 500 GB (100 GB usados por Windows 10 y sus programas, <strong>400 GB libres</strong>)</li>
+<li><strong>Tarjeta Gráfica:</strong> Integrada Intel HD Graphics</li>
+<li><strong>Conexión a Internet:</strong> Wi-Fi y Ethernet disponibles</li>
+<li><strong>Periféricos:</strong> Teclado, ratón, impresora</li>
+</ul>
+<hr />
+<h3 id="parte-1-planificacion-pre-instalacion">Parte 1: Planificación (Pre-instalación)</h3>
+<p><strong>1. Verificación de Hardware y Selección del SO:</strong></p>
+<ul>
+<li>
+<p>Tu amigo quiere instalar una <strong>distribución de GNU/Linux</strong> para tener un <strong>sistema multiarranque (dual-boot)</strong> junto a Windows 10.</p>
+<ul>
+<li>
+<p><strong>Tarea 1.1:</strong> Basándote en los <strong>requisitos de hardware</strong> del equipo de tu amigo y en la información sobre <strong>sistemas operativos libres</strong>, propón tres distribuciones de GNU/Linux diferentes que sean adecuadas para su equipo y sus intereses (dual-boot). Justifica brevemente tu elección para cada una, considerando aspectos como la <strong>compatibilidad de hardware</strong> y las <strong>preferencias del usuario</strong> (ej. facilidad de uso, interfaz gráfica, soporte comunitario).</p>
+</li>
+<li>
+<p><strong>Tarea 1.2:</strong> Si tu amigo te preguntara qué tipo de licencia tienen las distribuciones Linux que le propones en comparación con Windows, ¿cómo se lo explicarías usando los conceptos de <strong>Licencia Pública General (GPL)</strong> y <strong>Licencia de Software Propietario (EULA)</strong>? Menciona al menos dos <strong>ventajas y desventajas</strong> de cada tipo de licencia.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>2. Preparación del Disco y Medios de Instalación:</strong></p>
+<ul>
+<li>
+<p><strong>Tarea 2.1:</strong> Explica detalladamente cómo harías el <strong>particionado del disco</strong> de 500GB para permitir la coexistencia de Windows 10 y la nueva distribución Linux. Indica qué <strong>tipos de particiones</strong> crearías para Linux (ej. partición principal, de intercambio si aplica) y qué tamaño aproximado les asignarías, explicando la <strong>finalidad de cada una</strong>. Recuerda que Windows ya ocupa 100GB.</p>
+</li>
+<li>
+<p><strong>Tarea 2.2:</strong> Antes de cualquier manipulación de discos o instalación, ¿cuál es el <strong>paso MÁS IMPORTANTE</strong> a realizar? Explica por qué es tan crucial y dónde recomendarías guardar esos datos.</p>
+</li>
+<li>
+<p><strong>Tarea 2.3:</strong> Describe el proceso general para crear el <strong>medio de instalación</strong> (USB booteable) para la distribución Linux que elijas. Menciona los elementos necesarios (imagen ISO, software).</p>
+</li>
+</ul>
+<h3 id="parte-2-simulacion-de-la-instalacion-y-configuracion">Parte 2: Simulación de la Instalación y Configuración</h3>
+<p><strong>1. Configuración Inicial y Gestor de Arranque:</strong></p>
+<ul>
+<li>
+<p><strong>Tarea 3.1:</strong> Durante la instalación de Linux, el sistema pedirá configurar algunos <strong>parámetros básicos</strong>. ¿Cuáles son los <strong>tres parámetros esenciales</strong> que se configuran al inicio de una instalación? Explica brevemente la importancia de cada uno.</p>
+</li>
+<li>
+<p><strong>Tarea 3.2:</strong> Tu amigo te pregunta sobre el <strong>gestor de arranque</strong>. Explica qué es un gestor de arranque y cómo se configura para que pueda elegir entre Windows y Linux al iniciar el equipo, haciendo referencia a <strong>GRUB</strong> y al <strong>orden de instalación recomendado</strong> para sistemas multiarranque.</p>
+</li>
+</ul>
+<h3 id="parte-3-post-instalacion-y-mantenimiento">Parte 3: Post-instalación y Mantenimiento</h3>
+<p><strong>1. Actualizaciones y Mantenimiento:</strong></p>
+<ul>
+<li>
+<p><strong>Tarea 5.1:</strong> Una vez que Linux esté instalado y funcionando, ¿por qué es <strong>crucial mantener el sistema operativo actualizado</strong>? Menciona las dos razones principales y explica brevemente cada una.</p>
+</li>
+<li>
+<p><strong>Tarea 5.2:</strong> Describe los <strong>procedimientos generales para actualizar</strong> un sistema GNU/Linux, mencionando un ejemplo de comando si fuera posible.</p>
+</li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="9 de febrero de 2026 18:05:30 UTC">9 de febrero de 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <a href='https://creativecommons.org/licenses/by/4.0/' target='_blank'>CC BY-NC-SA 4.0 (Reconeixement - NoComercial - CompartirIgual) © Luis Garcia Bonifaz</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

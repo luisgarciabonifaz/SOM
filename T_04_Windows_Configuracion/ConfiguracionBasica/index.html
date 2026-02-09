@@ -1,0 +1,1253 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Luis García Bonifaz">
+      
+      
+        <link rel="canonical" href="https://luisgarciabonifaz.github.io/SOM/T_04_Windows_Configuracion/ConfiguracionBasica/">
+      
+      
+        <link rel="prev" href="../../T_03_Virtualizacion/Virtualizacion/">
+      
+      
+        <link rel="next" href="../../T_05_Windows_Archivos/W_Gestion_Archivos/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>T4 - Windows Configuración Básica - SOM</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="navy" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#configuracion-y-personalizacion-de-windows" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="SOM" class="md-header__button md-logo" aria-label="SOM" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SOM
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              T4 - Windows Configuración Básica
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="navy" data-md-color-accent="deep-orange"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="navy" data-md-color-accent="deep-purple"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SOM" class="md-nav__button md-logo" aria-label="SOM" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SOM
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sistemas Operativos Monopuesto
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sistemas Operativos Monopuesto
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_01_Fundamentos_SO/Fundamentos_SO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T1 - Fundamentos de los Sistemes Operativos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_02_Instalacion_SO/Instalacion_SO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T2 - Instalacion de un Sistema Operativo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_03_Virtualizacion/Virtualizacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T3 - Virtualización
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T4 - Windows Configuración Básica
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T4 - Windows Configuración Básica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-interfaces-de-usuario-de-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Interfaces de Usuario de Windows
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-preferencias-de-configuracion-del-entorno-personal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Preferencias de Configuración del Entorno Personal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-gestion-de-sistemas-de-archivos-especificos-en-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Gestión de Sistemas de Archivos Específicos en Windows
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-metodos-para-la-recuperacion-del-sistema-operativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Métodos para la Recuperación del Sistema Operativo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-configuracion-para-la-actualizacion-del-sistema-operativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Configuración para la Actualización del Sistema Operativo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-operaciones-de-instalaciondesinstalacion-de-utilidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Operaciones de Instalación/Desinstalación de Utilidades
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-asistentes-de-configuracion-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Asistentes de Configuración del Sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-automatizacion-de-tareas-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Automatización de Tareas del Sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividad-practica-configuracion-mantenimiento-y-recuperacion-de-sistemas-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actividad Práctica: Configuración, Mantenimiento y Recuperación de Sistemas Windows
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-actividad-1-auditoria-administracion-y-optimizacion-de-un-equipo-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Actividad 1: Auditoría, administración y optimización de un equipo Windows
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_05_Windows_Archivos/W_Gestion_Archivos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T5 - Windows Gestion de Archivos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_06_Windows_Administracion/Windows_Administracion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T6 - Windows Administración
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_07_Linux_Configuracion/Linux_Configuracion_Basica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T7 - Linux Configuración Básica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_08_Linux_Archivos/Linux_Gestion_Archivos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T8 - Linux Gestión de Archivos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T_09_Linux_Administracion/Linux_Administracion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T9 - Linux Administración
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-interfaces-de-usuario-de-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Interfaces de Usuario de Windows
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-preferencias-de-configuracion-del-entorno-personal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Preferencias de Configuración del Entorno Personal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-gestion-de-sistemas-de-archivos-especificos-en-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Gestión de Sistemas de Archivos Específicos en Windows
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-metodos-para-la-recuperacion-del-sistema-operativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Métodos para la Recuperación del Sistema Operativo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-configuracion-para-la-actualizacion-del-sistema-operativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Configuración para la Actualización del Sistema Operativo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-operaciones-de-instalaciondesinstalacion-de-utilidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Operaciones de Instalación/Desinstalación de Utilidades
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-asistentes-de-configuracion-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Asistentes de Configuración del Sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-automatizacion-de-tareas-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Automatización de Tareas del Sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividad-practica-configuracion-mantenimiento-y-recuperacion-de-sistemas-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actividad Práctica: Configuración, Mantenimiento y Recuperación de Sistemas Windows
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-actividad-1-auditoria-administracion-y-optimizacion-de-un-equipo-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Actividad 1: Auditoría, administración y optimización de un equipo Windows
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="configuracion-y-personalizacion-de-windows">Configuración y Personalización de Windows</h1>
+<p>En este tema, vamos a sumergirnos en el fascinante mundo de la configuración y personalización del sistema operativo Windows. Como futuros técnicos informáticos, es fundamental que dominéis estas herramientas para poder optimizar y adaptar cualquier equipo a las necesidades de sus usuarios.</p>
+<h2 id="1-interfaces-de-usuario-de-windows">1. Interfaces de Usuario de Windows</h2>
+<p>Windows está diseñado para que su uso sea lo más intuitivo posible. Vamos a explorar las principales interfaces con las que interactuaréis a diario.</p>
+<h3 id="11-escritorio-menu-inicio-y-barra-de-tareas">1.1. Escritorio, Menú Inicio y Barra de Tareas</h3>
+<ul>
+<li><strong>El Escritorio</strong>: Es la primera pantalla que vemos al iniciar Windows. Es como vuestro tablero de trabajo, donde tenéis acceso directo a programas, archivos y carpetas mediante iconos.</li>
+<li><strong>El Menú Inicio</strong>: Es el centro neurálgico de Windows. Se activa pulsando la tecla <code>Windows</code> o haciendo clic en el icono de Windows en la esquina inferior izquierda. Desde aquí podéis:<ul>
+<li>Acceder a todas vuestras aplicaciones instaladas.</li>
+<li>Buscar programas y archivos.</li>
+<li>Apagar, reiniciar o suspender el equipo.</li>
+<li>Acceder a la configuración del sistema.</li>
+</ul>
+</li>
+<li><strong>La Barra de Tareas</strong>: Se encuentra en la parte inferior de la pantalla. Muestra los programas que están abiertos, permite anclar aplicaciones para un acceso rápido y contiene la bandeja del sistema con notificaciones y accesos a funciones como el reloj, el volumen y la conexión a internet.</li>
+</ul>
+<h3 id="12-explorador-de-archivos">1.2. Explorador de Archivos</h3>
+<p>El <strong>Explorador de Archivos</strong> (o Explorador de Windows) es vuestra herramienta principal para gestionar archivos y carpetas. Pensad en él como un archivador digital donde podéis:</p>
+<ul>
+<li>Navegar por las diferentes unidades de almacenamiento (discos duros, USB, etc.).</li>
+<li>Crear, mover, copiar, eliminar y renombrar archivos y carpetas.</li>
+<li>Buscar archivos específicos.</li>
+<li>Comprimir y descomprimir archivos.</li>
+</ul>
+<p>Podéis abrirlo pulsando la combinación de teclas <code>Windows + E</code>.</p>
+<h3 id="13-panel-de-control-y-configuracion">1.3. Panel de Control y Configuración</h3>
+<p>El <strong>Panel de Control</strong> y la aplicación <strong>Configuración</strong> son los lugares donde podréis ajustar casi todos los aspectos de Windows.</p>
+<p>El <strong>Panel de Control</strong> es una interfaz más tradicional que agrupa herramientas para la administración del sistema, como la gestión de usuarios, desinstalación de programas, configuración de red, etc.</p>
+<p>La aplicación <strong>Configuración</strong> es una interfaz más moderna introducida con Windows 10. Ofrece una forma más sencilla y visual de ajustar la mayoría de las preferencias del sistema, como la personalización, la privacidad, la actualización y seguridad, etc. A menudo, las opciones en Configuración remiten al Panel de Control para ajustes más avanzados.</p>
+<h2 id="2-preferencias-de-configuracion-del-entorno-personal">2. Preferencias de Configuración del Entorno Personal</h2>
+<p>Una de las primeras cosas que querréis hacer con un nuevo sistema es personalizarlo a vuestro gusto.</p>
+<h3 id="21-fondos-de-pantalla-temas-sonidos-salvapantallas">2.1. Fondos de Pantalla, Temas, Sonidos, Salvapantallas</h3>
+<ul>
+<li><strong>Fondos de Pantalla</strong>: Cambiad la imagen que aparece en vuestro escritorio. Podéis usar imágenes propias o elegir entre las que vienen preinstaladas.</li>
+<li><strong>Temas</strong>: Un tema es un conjunto predefinido de fondos de pantalla, colores, sonidos y punteros del ratón. Cambiar de tema transforma la apariencia general de vuestro escritorio.</li>
+<li><strong>Sonidos</strong>: Personalizad los sonidos que Windows reproduce para diferentes eventos (inicio de sesión, error, notificación, etc.).</li>
+<li><strong>Salvapantallas</strong>: Una imagen o animación que aparece cuando el ordenador está inactivo durante un tiempo determinado, protegiendo la pantalla (aunque en las pantallas modernas su utilidad es menor).</li>
+</ul>
+<p>Podéis encontrar estas opciones en <strong>Configuración &gt; Personalización</strong>.</p>
+<h3 id="22-configuracion-regional-e-idioma">2.2. Configuración Regional e Idioma</h3>
+<p>Esto es crucial para que vuestro sistema se adapte a vuestra ubicación y forma de trabajo.</p>
+<ul>
+<li><strong>Formato de fecha, hora y moneda</strong>: Aseguraos de que Windows muestre estos elementos según las convenciones de vuestro país.</li>
+<li><strong>Idioma de visualización</strong>: Cambia el idioma en el que se muestran los menús y diálogos y texto del sistema operativo.</li>
+<li><strong>Teclado</strong>: Configurad la distribución del teclado para que coincida con vuestro idioma y disposición física.</li>
+</ul>
+<p>Estas opciones se encuentran en <strong>Configuración &gt; Hora e idioma</strong>.</p>
+<h3 id="23-cuentas-de-usuario-y-opciones-de-inicio-de-sesion">2.3. Cuentas de Usuario y Opciones de Inicio de Sesión</h3>
+<p>La gestión de cuentas de usuario es fundamental para la seguridad y la organización en un sistema monopuesto, especialmente si varias personas lo utilizan.</p>
+<ul>
+<li><strong>Tipos de cuentas</strong>:<ul>
+<li><strong>Administrador</strong>: Tiene control total sobre el sistema, puede instalar software, cambiar configuraciones importantes y acceder a todos los archivos.</li>
+<li><strong>Estándar</strong>: Puede usar la mayoría del software y cambiar sus propias configuraciones, pero necesita permiso de un administrador para realizar cambios que afecten a otros usuarios o al sistema.</li>
+</ul>
+</li>
+<li><strong>Crear y gestionar cuentas</strong>:  Podéis añadir nuevos usuarios, cambiar sus tipos de cuenta, establecer contraseñas o eliminarlas.</li>
+<li><strong>Opciones de inicio de sesión</strong>:  Configurad cómo iniciar sesión, como la necesidad de una contraseña, un PIN, reconocimiento facial (Windows Hello) o una clave de seguridad USB.</li>
+</ul>
+<p>Podéis gestionar esto en <strong>Configuración &gt; Cuentas</strong>.</p>
+<h2 id="3-gestion-de-sistemas-de-archivos-especificos-en-windows">3. Gestión de Sistemas de Archivos Específicos en Windows</h2>
+<p>Los sistemas de archivos son la forma en que los datos se organizan y almacenan en un disco. En Windows, los más comunes son NTFS y FAT32.</p>
+<h3 id="31-formateo-de-unidades-ntfs-fat32">3.1. Formateo de Unidades (NTFS, FAT32)</h3>
+<p>Formatear una unidad es el proceso de preparar un disco (o una partición) para almacenar datos, creando un sistema de archivos en él. Esto borra todos los datos existentes en la unidad.</p>
+<ul>
+<li><strong>NTFS (New Technology File System)</strong>: Es el sistema de archivos predeterminado para las instalaciones de Windows modernas. Soporta archivos y particiones de gran tamaño, permisos de seguridad a nivel de archivo, cifrado y otras características avanzadas. Es ideal para discos duros internos.</li>
+<li><strong>FAT32 (File Allocation Table 32)</strong>: Es un sistema de archivos más antiguo con limitaciones de tamaño para archivos individuales (máximo 4 GB) y particiones (máximo 2 TB). Es más compatible con una amplia gama de dispositivos (consolas, reproductores multimedia, algunos sistemas operativos antiguos). Es común en memorias USB pequeñas y tarjetas SD.</li>
+</ul>
+<p>Para formatear una unidad:</p>
+<ol>
+<li>Abrid el Explorador de Archivos.</li>
+<li>Haced clic derecho en la unidad que queréis formatear.</li>
+<li>Seleccionad Formatear....</li>
+<li>Elegid el sistema de archivos (NTFS o FAT32) y otras opciones.</li>
+<li>Haced clic en Iniciar.</li>
+</ol>
+<h3 id="32-comprobacion-de-errores-de-disco-chkdsk">3.2. Comprobación de Errores de Disco (chkdsk)</h3>
+<p>Los discos duros pueden desarrollar errores en su sistema de archivos o en los sectores físicos. La herramienta <code>chkdsk</code> (check disk) es fundamental para detectar y corregir estos problemas.</p>
+<p>Para usar <code>chkdsk</code>:</p>
+<ol>
+<li>Abrid el Explorador de Archivos.</li>
+<li>Haced clic derecho en la unidad que queréis comprobar.</li>
+<li>Seleccionad Propiedades.</li>
+<li>Id a la pestaña Herramientas.</li>
+<li>En la sección "Comprobación de errores", haced clic en Comprobar.</li>
+</ol>
+<p>También podéis ejecutarlo desde el Símbolo del sistema (CMD) como administrador. Por ejemplo, <code>chkdsk C: /f /r</code> para la unidad C: (la opción <code>/f</code>' corrige errores y <code>/r</code> busca sectores defectuosos y recupera información legible).</p>
+<h3 id="33-desfragmentacion-y-optimizacion-de-unidades">3.3. Desfragmentación y Optimización de Unidades</h3>
+<p>Con el tiempo, los archivos en un disco duro pueden fragmentarse (partes de un archivo se guardan en diferentes lugares del disco), lo que puede ralentizar el acceso a ellos.</p>
+<ul>
+<li>La <strong>desfragmentación</strong> (solo para discos duros mecánicos HDD) reorganiza estos fragmentos de datos para que los archivos se almacenen de forma contigua, mejorando el rendimiento.</li>
+<li>Para las unidades de estado sólido (SSD), en lugar de desfragmentar, se realiza una optimización que ayuda a prolongar su vida útil y mantener su rendimiento mediante el comando TRIM.</li>
+</ul>
+<p>Para optimizar/desfragmentar:</p>
+<ol>
+<li>Abrid el Explorador de Archivos.</li>
+<li>Haced clic derecho en la unidad.</li>
+<li>Seleccionad Propiedades.</li>
+<li>Id a la pestaña Herramientas.</li>
+<li>En la sección "Optimizar y desfragmentar unidad", haced clic en Optimizar.</li>
+</ol>
+<p>Windows suele programar optimizaciones automáticas, pero es bueno saber cómo hacerlo manualmente.</p>
+<h3 id="34-gestion-de-discos">3.4. Gestión de discos</h3>
+<p>Otro aspecto importante de la Administración del equipo es relativo a los discos. Desde la administración de discos, podemos añadir discos, crear particiones, aumentar o disminuir su tamaño, fusionar particiones, etc.</p>
+<p><img alt="Gestion de discos" src="../Gestion_Discos_W10.png" style="width:70%;margin:auto;display:block" /></p>
+<p>Desde esta ventana si pulsamos click derecho sobre un disco podemos:</p>
+<ul>
+<li>Abrir.</li>
+<li>Explorar.</li>
+<li>Marcar partición como activa.</li>
+<li>Cambiar la letra y rutas de acceso de unidad.</li>
+<li>Formatear.</li>
+</ul>
+<p>Concepto de volumen: Partición que coge espacio de uno o más discos. En un disco podemos tener varios volúmenes.</p>
+<p>Opciones de volumen:</p>
+<ul>
+<li>Extender volumen.</li>
+<li>Reducir volumen.</li>
+<li>Agregar reflejo.</li>
+<li>Eliminar volumen.</li>
+</ul>
+<h2 id="4-metodos-para-la-recuperacion-del-sistema-operativo">4. Métodos para la Recuperación del Sistema Operativo</h2>
+<p>A veces, las cosas no salen como esperamos y el sistema puede fallar. Windows ofrece varias herramientas para ayudar a recuperar el equipo.</p>
+<h3 id="41-puntos-de-restauracion-del-sistema">4.1. Puntos de Restauración del Sistema</h3>
+<p>Un punto de restauración es una "instantánea" del estado del sistema en un momento dado, incluyendo archivos de sistema, programas instalados, controladores y la configuración del registro.</p>
+<ul>
+<li>Windows crea puntos de restauración automáticamente antes de eventos importantes (como la instalación de un nuevo programa o una actualización).</li>
+<li>También podéis crear puntos de restauración manualmente.</li>
+</ul>
+<p><img alt="Punto de Restauración" src="../Punto_Restauracion_W10.png" style="width:70%;margin:auto;display:block" /></p>
+<h3 id="42-restauracion-del-sistema">4.2. Restauración del Sistema</h3>
+<p>La Restauración del Sistema os permite revertir el equipo a un punto de restauración anterior, deshaciendo cambios que puedan haber causado problemas, como la instalación de un controlador defectuoso o un programa incompatible. No afecta a vuestros documentos personales.</p>
+<p>Para acceder a ella: Buscad "Crear un punto de restauración" en el Menú Inicio y en la pestaña "Protección del sistema", haced clic en Restaurar sistema....</p>
+<h3 id="43-copia-de-seguridad-y-restauracion">4.3. Copia de Seguridad y Restauración</h3>
+<p>Realizar copias de seguridad es una de las prácticas más importantes para proteger vuestros datos.</p>
+<ul>
+<li><strong>Copia de seguridad de archivos</strong>: Protege vuestros documentos, fotos, videos, etc., guardándolos en otra ubicación (disco externo, nube).</li>
+<li><strong>Copia de seguridad de imagen del sistema</strong>: Crea una copia exacta de todo vuestro disco duro, incluyendo el sistema operativo, programas y datos. Es útil para recuperar el sistema a su estado exacto en caso de un fallo grave del disco o del sistema.</li>
+</ul>
+<p>Windows tiene una herramienta llamada "Copia de seguridad y restauración (Windows 7)" (aunque esté en Windows 10/11) en el Panel de Control, que permite crear estas copias de seguridad. También podéis usar el Historial de Archivos en Configuración para hacer copias de seguridad de vuestros documentos personales.</p>
+<p><img alt="Imagen del Sistema" src="../Imagen_Sistema_W10.png" style="width:70%;margin:auto;display:block" /></p>
+<h3 id="44-modo-seguro">4.4. Modo Seguro</h3>
+<p>El <strong>Modo Seguro</strong> es una forma de iniciar Windows con un conjunto mínimo de controladores y servicios. Si el sistema no arranca normalmente o si tenéis problemas persistentes (virus, controladores defectuosos), el Modo Seguro os permite diagnosticar y solucionar problemas porque solo carga lo esencial.</p>
+<p>Para acceder al Modo Seguro:</p>
+<ol>
+<li>Pulsa el boton de apagar para que se despliegue el menú y luego pulsar Mayúsculas en el teclado mientras haces clic en Reiniciar.</li>
+<li>Haz clic en la opción Solucionar problemas.</li>
+<li>Haz clic en Opciones avanzadas.</li>
+<li>Haz clic en Configuración de inicio.</li>
+<li>Selecciona modo seguro</li>
+</ol>
+<h2 id="5-configuracion-para-la-actualizacion-del-sistema-operativo">5. Configuración para la Actualización del Sistema Operativo</h2>
+<p>Mantener el sistema actualizado es vital para la seguridad y el rendimiento. </p>
+<h3 id="51-gestion-de-actualizaciones-en-windows">5.1. Gestión de Actualizaciones en Windows</h3>
+<p>Windows usa un sistema llamado <strong>Windows Update</strong>, este servicio encargado de descargar e instalar automáticamente las actualizaciones de seguridad, parches y nuevas características para Windows. Gestiona cuatro tipos principales de actualizaciones:</p>
+<ol>
+<li><strong>Actualizaciones de Calidad (Quality Updates)</strong><ul>
+<li>Se publican mensualmente (el famoso Patch Tuesday).</li>
+<li>Contienen parches de seguridad, correcciones de errores, mejoras de estabilidad.</li>
+<li>Son obligatorias y Windows intenta instalarlas lo antes posible.</li>
+<li>No cambian funciones del sistema ni la versión de Windows.</li>
+<li>Ejemplo: KB5005565, KB5010342</li>
+</ul>
+</li>
+<li><strong>Actualizaciones de Características (Feature Updates)</strong><ul>
+<li>Se publican 1–2 veces al año.</li>
+<li>Actualizan Windows a una versión nueva: <em>21H1 → 21H2 → 22H2, etc</em>.</li>
+<li>Cambian funciones, interfaz y componentes.</li>
+<li>Son opcionales durante un tiempo, hasta que llegan al fin de soporte.</li>
+<li>Ejemplo: “Actualizar a Windows 10 22H2”</li>
+</ul>
+</li>
+<li><strong>Actualizaciones de Controladores (Drivers)</strong><ul>
+<li>Son actualizaciones para hardware: gráfica, wifi, audio, impresoras.</li>
+<li>A veces Windows las instala automáticamente; otras veces aparecen en: <em>Windows Update → Ver actualizaciones opcionales</em>.</li>
+</ul>
+</li>
+<li><strong>Actualizaciones de la Tienda (Microsoft Store)</strong><ul>
+<li>Actualizan aplicaciones como Fotos, Mail, Calendario, etc.</li>
+<li>No afectan al sistema operativo principal.</li>
+</ul>
+</li>
+</ol>
+<h3 id="52-windows-update-configuracion-y-gestion-de-actualizaciones">5.2. Windows Update: Configuración y Gestión de Actualizaciones</h3>
+<p>Todo se controla desde:  <em>Inicio → Configuración → Actualización y seguridad → Windows Update</em></p>
+<p>Las opciones son las siguientes:</p>
+<ol>
+<li><strong>Pausar actualizaciones</strong><ul>
+<li>Puedes pausar todas las actualizaciones hasta 35 días.</li>
+<li>Ruta: <em>Configuración → Actualización y seguridad → Windows Update → Pausar actualizaciones</em></li>
+<li>Solo pausa actualizaciones de calidad, no las de características si ya están listas.</li>
+</ul>
+</li>
+<li><strong>Cambiar horas activas (Evita reinicios automáticos)</strong><ul>
+<li>Windows evita reiniciar en horas donde tú usas el PC.</li>
+<li>Ruta: <em>Windows Update → Cambiar horas activas</em></li>
+<li>Opciones:<ul>
+<li>Establecer horas manualmente.</li>
+<li>Activar la opción "Ajustar horas activas automáticamente según tu actividad".</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Opciones avanzadas de Windows Update</strong><ul>
+<li>A) Elegir cómo se instalan las actualizaciones. Aquí puedes decidir si quieres:<ul>
+<li>Reinicios automáticos.</li>
+<li>Recibir actualizaciones para otros productos Microsoft.</li>
+<li>Descargar actualizaciones al usar redes medidas (metered).</li>
+</ul>
+</li>
+<li>B) Entrega optimizada (Delivery Optimization)<ul>
+<li>Reduce el uso de ancho de banda descargando actualizaciones desde otros PC de tu red local o de internet.</li>
+<li>Ruta: <em>Configuración → Actualización y seguridad → Optimización de entrega</em></li>
+<li>Puedes:<ul>
+<li>Desactivarlo.</li>
+<li>Restringir cuánto ancho de banda usa.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>C) Controlar las “actualizaciones opcionales” <ul>
+<li>Aquí aparecen:<ul>
+<li>Drivers (gráfica, audio, wifi…)</li>
+<li>Parches no críticos</li>
+</ul>
+</li>
+<li>Ruta: <em>Windows Update → Ver actualizaciones opcionales</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Aplazar actualizaciones (Diferir actualizaciones)</strong><ul>
+<li>Windows 10 Pro, Enterprise y Education permiten aplazar:<ul>
+<li>Actualizaciones de características hasta 365 días</li>
+<li>Actualizaciones de calidad hasta 30 días</li>
+</ul>
+</li>
+<li>Ruta: <em>Windows Update → Opciones avanzadas → Elegir cuándo se instalan las actualizaciones</em></li>
+<li>Esto no aparece en Windows 10 Home.</li>
+</ul>
+</li>
+</ol>
+<h2 id="6-operaciones-de-instalaciondesinstalacion-de-utilidades">6. Operaciones de Instalación/Desinstalación de Utilidades</h2>
+<p>Instalar y desinstalar programas es una tarea común en cualquier sistema operativo.</p>
+<h3 id="61-instalacion-de-programas-setupexe-tienda-de-aplicaciones">6.1. Instalación de Programas (setup.exe, Tienda de Aplicaciones)</h3>
+<ul>
+<li><strong>Instaladores tradicionales (<code>setup.exe</code>)</strong>: La mayoría de los programas de escritorio se instalan ejecutando un archivo <code>setup.exe</code> o <code>install.exe</code>. Estos suelen guiaros a través de un asistente de instalación. Siempre descargad software de fuentes fiables.</li>
+<li><strong>Tienda de Aplicaciones (Microsoft Store)</strong>: Windows 10 y 11 tienen una tienda de aplicaciones integrada que ofrece una forma segura y sencilla de instalar aplicaciones modernas (UWP - Universal Windows Platform). Las aplicaciones de la tienda se instalan y desinstalan de forma más limpia y controlada.</li>
+</ul>
+<h3 id="62-desinstalacion-de-programas">6.2. Desinstalación de Programas</h3>
+<p>Es importante desinstalar programas correctamente para evitar dejar archivos residuales y liberar espacio en disco.</p>
+<ul>
+<li><strong>Desde Configuración</strong>: Id a <strong>Configuración &gt; Aplicaciones &gt; Aplicaciones y características</strong>. Aquí podéis seleccionar un programa y hacer clic en "Desinstalar".</li>
+<li><strong>Desde el Panel de Control</strong>: Id a <strong>Panel de Control &gt; Programas &gt; Programas y características</strong>. Seleccionad el programa y haced clic en "Desinstalar o cambiar un programa".</li>
+</ul>
+<h3 id="63-gestion-de-programas-de-inicio">6.3. Gestión de Programas de Inicio</h3>
+<p>Algunos programas se configuran para iniciarse automáticamente cuando arranca Windows, lo que puede ralentizar el inicio del sistema.</p>
+<ul>
+<li>Administrador de Tareas: Pulsad <code>Ctrl + Shift + Esc</code> para abrir el Administrador de Tareas. Id a la pestaña Inicio. Aquí podéis ver qué programas se inician con Windows y deshabilitar los que no necesitéis, mejorando el tiempo de arranque.</li>
+</ul>
+<p><img alt="Dehabilitar programas en el inicio" src="../Inicio_Deshabilitar_W10.png" style="width:70%;margin:auto;display:block" /></p>
+<h2 id="7-asistentes-de-configuracion-del-sistema">7. Asistentes de Configuración del Sistema</h2>
+<h3 id="71-configuracion-de-red-adaptadores-ip-dns">7.1. Configuración de Red (Adaptadores, IP, DNS)</h3>
+<p>Configurar una conexión de red es esencial para acceder a Internet y a otros recursos de red.</p>
+<ul>
+<li><strong>Adaptadores de red</strong>: Son los componentes de hardware que permiten al ordenador conectarse a una red (Ethernet, Wi-Fi).</li>
+<li><strong>Dirección IP (Internet Protocol)</strong>: Es la "matrícula" de vuestro dispositivo en la red. Puede ser asignada automáticamente (DHCP) o configurada manualmente.</li>
+<li><strong>Servidores DNS (Domain Name System)</strong>: Traducen los nombres de dominio (como google.com) en direcciones IP.</li>
+</ul>
+<p>Podéis configurar estas opciones en Configuración &gt; Red e Internet. Para opciones más avanzadas, buscad "Centro de redes y recursos compartidos" en el Panel de Control.</p>
+<h3 id="72-anadir-dispositivos-e-impresoras">7.2. Añadir Dispositivos e Impresoras</h3>
+<p>Windows facilita la conexión de nuevos dispositivos.</p>
+<ul>
+<li><strong>Añadir un dispositivo Bluetooth</strong>: Desde <strong>Configuración &gt; Dispositivos &gt; Bluetooth y otros dispositivos</strong>, podéis emparejar auriculares, teclados, ratones Bluetooth, etc.</li>
+<li><strong>Añadir una impresora</strong>: Desde <strong>Configuración &gt; Dispositivos &gt; Impresoras y escáneres</strong>, podéis añadir impresoras conectadas por USB, red o inalámbricas. Windows a menudo instalará los drivers automáticamente.</li>
+</ul>
+<h2 id="8-automatizacion-de-tareas-del-sistema">8. Automatización de Tareas del Sistema</h2>
+<p>La automatización puede ahorrar mucho tiempo y esfuerzo.</p>
+<h3 id="81-programador-de-tareas-creacion-y-gestion-de-tareas-programadas">8.1. Programador de Tareas: Creación y Gestión de Tareas Programadas</h3>
+<p>El <strong>Programador de Tareas</strong> es una herramienta poderosa que permite a Windows ejecutar programas o scripts automáticamente en un momento específico o cuando ocurre un evento determinado.</p>
+<p>Podéis usarlo para:</p>
+<ul>
+<li>Ejecutar copias de seguridad a una hora programada.</li>
+<li>Iniciar una aplicación al encender el ordenador.</li>
+<li>Limpiar archivos temporales regularmente.</li>
+<li>Para acceder: Buscad "Programador de tareas" en el Menú Inicio.</li>
+</ul>
+<h3 id="82-scripts-basicos-batch-y-powershell">8.2. Scripts Básicos (Batch y PowerShell)</h3>
+<p>Los scripts Batch son archivos de texto simples con extensión <code>.bat</code> que contienen una serie de comandos que Windows ejecuta en secuencia. Son útiles para automatizar tareas repetitivas o sencillas que implican el uso de la línea de comandos.</p>
+<p>Ejemplos de comandos básicos en un script batch:</p>
+<ul>
+<li>echo: Muestra texto en la pantalla.</li>
+<li>cd: Cambia de directorio.</li>
+<li>dir: Lista el contenido de un directorio.</li>
+<li>copy: Copia archivos.</li>
+<li>del: Borra archivos.</li>
+<li>mkdir: Crea una carpeta.</li>
+</ul>
+<p>Por ejemplo, un script sencillo para limpiar la papelera de reciclaje y los archivos temporales podría contener:</p>
+<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">echo</span> off
+<span class="k">echo</span> Limpiando archivos temporales...
+<span class="k">del</span> /q /s <span class="nv">%TEMP%</span>\*.*
+<span class="k">echo</span> Limpiando papelera de reciclaje...
+<span class="k">rd</span> /s /q C:\$Recycle.Bin
+<span class="k">echo</span> Limpieza completada.
+<span class="k">pause</span>
+</code></pre></div>
+<p>Además de los scripts Batch, Windows también cuenta con PowerShell, un potente entorno de línea de comandos y lenguaje de scripting basado en .NET. PowerShell es mucho más avanzado que Batch, permitiendo una automatización más compleja y la gestión de casi cualquier aspecto del sistema operativo y sus aplicaciones.</p>
+<p><strong>Introducción a PowerShell:</strong></p>
+<p>PowerShell utiliza "cmdlets" (comandos ligeros) con una sintaxis de verbo-sustantivo (por ejemplo, Get-Process, Set-Service). Es orientado a objetos, lo que significa que los comandos devuelven objetos que pueden ser fácilmente manipulados y pasados a otros comandos, lo que lo hace extremadamente flexible.</p>
+<p><strong>Ejemplo de script PowerShell para la misma tarea:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c"># Limpiar archivos temporales</span>
+<span class="nb">Write-Host</span> <span class="s2">&quot;Limpiando archivos temporales...&quot;</span>
+<span class="nb">Get-ChildItem</span> <span class="n">-Path</span> <span class="nv">$env:TEMP</span> <span class="n">-Recurse</span> <span class="n">-Force</span> <span class="p">|</span> <span class="nb">Remove-Item</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span> <span class="n">-Force</span>
+
+<span class="c"># Vaciar la papelera de reciclaje para todas las unidades</span>
+<span class="nb">Write-Host</span> <span class="s2">&quot;Vaciando la papelera de reciclaje...&quot;</span>
+<span class="nb">Clear-RecycleBin</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span> <span class="n">-Force</span>
+
+<span class="nb">Write-Host</span> <span class="s2">&quot;Limpieza completada.&quot;</span>
+<span class="nb">Read-Host</span> <span class="s2">&quot;Presiona Enter para salir...&quot;</span>
+</code></pre></div>
+<p>Este script de PowerShell realiza una tarea similar al script Batch, pero utiliza cmdlets específicos de PowerShell que son más robustos y ofrecen mayor control.</p>
+<h2 id="actividad-practica-configuracion-mantenimiento-y-recuperacion-de-sistemas-windows">Actividad Práctica: Configuración, Mantenimiento y Recuperación de Sistemas Windows</h2>
+<h2 id="10-actividad-1-auditoria-administracion-y-optimizacion-de-un-equipo-windows">10. Actividad 1: Auditoría, administración y optimización de un equipo Windows</h2>
+<p><strong>Presencial</strong></p>
+<ul>
+<li><a href="../Actividades/Actividad_1_Conf_Windows/">En formato Web</a></li>
+<li><a href="../Actividades/Actividad_1_Conf_Windows.pdf">En formato PDF</a></li>
+</ul>
+<p><strong>SemiPresencial</strong></p>
+<ul>
+<li><a href="../Actividades/Actividad_1_Conf_Windows_Semi/">En formato Web</a></li>
+<li><a href="../Actividades/Actividad_1_Conf_Windows_Semi.pdf">En formato PDF</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="9 de febrero de 2026 18:05:30 UTC">9 de febrero de 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <a href='https://creativecommons.org/licenses/by/4.0/' target='_blank'>CC BY-NC-SA 4.0 (Reconeixement - NoComercial - CompartirIgual) © Luis Garcia Bonifaz</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividades de Repaso - SOM - Linux Configuración Básica</title>
+    <style>
+        /* Estilos CSS para el diseño y la presentación */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #2c3e50; /* Color oscuro para la cabecera */
+            color: #ecf0f1; /* Texto claro */
+            padding: 20px 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .logo {
+            font-size: 3em;
+            margin-right: 15px;
+            /* Usando un simple emoji como placeholder de logo */
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #2980b9; /* Azul medio */
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        .activity {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fafafa;
+        }
+        .activity p {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .options input[type="radio"],
+        .options input[type="text"] {
+            margin-right: 8px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .options input[type="text"] {
+             width: calc(100% - 10px); /* Ancho completo para inputs de texto */
+             box-sizing: border-box; /* Incluir padding y borde en el ancho */
+             margin-top: 5px;
+        }
+        .options div {
+            margin-bottom: 10px;
+        }
+        .check-button {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            background-color: #3498db; /* Azul */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        .check-button:hover {
+            background-color: #2980b9; /* Azul más oscuro al pasar el ratón */
+        }
+        .feedback {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .feedback.correct {
+            background-color: #e6ffe6; /* Verde muy claro */
+            color: #27ae60; /* Verde */
+            border: 1px solid #27ae60;
+        }
+        .feedback.incorrect {
+            background-color: #ffe6e6; /* Rojo muy claro */
+            color: #c0392b; /* Rojo */
+            border: 1px solid #c0392b;
+        }
+        .explanation {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #555;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-left: 3px solid #3498db; /* Borde azul para explicaciones */
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #777;
+            font-size: 0.9em;
+            background-color: #eee;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <span class="logo">🐧</span> <!-- Logo con un emoji de pingüino -->
+        <h1>SOM - Linux Configuración básica</h1>
+    </header>
+
+    <div class="container">
+        <h2>Actividades de Repaso</h2>
+
+        <!-- Actividad 1: Interfaces de Usuario (Selección Múltiple) -->
+        <div class="activity">
+            <h3>Actividad 1: Interfaces de Usuario</h3>
+            <p>1. ¿Cuál de las siguientes afirmaciones sobre las interfaces de usuario de Linux es **verdadera**? [1]</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="a"> A) GNOME es conocido por ser ligero y rápido.</label>
+                <label><input type="radio" name="q1" value="b"> B) La CLI se utiliza principalmente para interacción gráfica con ventanas e iconos.</label>
+                <label><input type="radio" name="q1" value="c"> C) XFCE es ideal para ordenadores con menos recursos.</label>
+                <label><input type="radio" name="q1" value="d"> D) El *prompt* de la terminal solo muestra el nombre del host.</label>
+            </div>
+            <button class="check-button" onclick="checkActivity(1)">Comprobar Actividad 1</button>
+            <div id="feedback1" class="feedback"></div>
+            <div id="explanation1" class="explanation"></div>
+        </div>
+
+        <!-- Actividad 2: Gestión de Paquetes (Completar Espacios) -->
+        <div class="activity">
+            <h3>Actividad 2: Gestión de Paquetes</h3>
+            <p>2. Completa los espacios en blanco sobre la gestión de paquetes en Linux. [2, 3]</p>
+            <div class="options">
+                <div>Para Debian/Ubuntu se usa <input type="text" id="q2a" placeholder="gestor de paquetes"> para actualizar.</div>
+                <div>Para Fedora/CentOS se usa <input type="text" id="q2b" placeholder="gestor de paquetes"> para actualizar.</div>
+                <div>El proceso de actualización generalmente consta de dos pasos: primero, actualizar la <input type="text" id="q2c" placeholder="tipo de lista"> de paquetes y luego, actualizar los <input type="text" id="q2d" placeholder="elemento"> instalados.</div>
+            </div>
+            <button class="check-button" onclick="checkActivity(2)">Comprobar Actividad 2</button>
+            <div id="feedback2" class="feedback"></div>
+            <div id="explanation2" class="explanation"></div>
+        </div>
+
+        <!-- Actividad 3: Copias de Seguridad (Relacionar) -->
+        <div class="activity">
+            <h3>Actividad 3: Copias de Seguridad (Comandos y Parámetros)</h3>
+            <p>3. Escribe la letra del comando o parámetro que corresponde a cada descripción. [4]</p>
+            <div class="options">
+                <p>A) `tar` &nbsp;&nbsp; B) `rsync` &nbsp;&nbsp; C) `-a` (en rsync) &nbsp;&nbsp; D) `-c` (en tar) &nbsp;&nbsp; E) `-z` (en tar) &nbsp;&nbsp; F) `-f` (en tar)</p>
+                <div>Empaqueta múltiples archivos y directorios en un solo archivo: <input type="text" id="q3a" size="2"></div>
+                <div>Sincroniza archivos y directorios entre dos ubicaciones, copiando solo lo que ha cambiado: <input type="text" id="q3b" size="2"></div>
+                <div>Modo archivo (conserva permisos, fechas, etc.) en `rsync`: <input type="text" id="q3c" size="2"></div>
+                <div>Parámetro para "crear un archivo" en `tar`: <input type="text" id="q3d" size="2"></div>
+                <div>Parámetro para "comprimir con gzip" en `tar`: <input type="text" id="q3e" size="2"></div>
+                <div>Parámetro para indicar el "nombre del archivo de salida" en `tar`: <input type="text" id="q3f" size="2"></div>
+            </div>
+            <button class="check-button" onclick="checkActivity(3)">Comprobar Actividad 3</button>
+            <div id="feedback3" class="feedback"></div>
+            <div id="explanation3" class="explanation"></div>
+        </div>
+
+        <!-- Actividad 4: Automatización con Cron (Práctica de Sintaxis) -->
+        <div class="activity">
+            <h3>Actividad 4: Automatización con Cron</h3>
+            <p>4. Responde a las siguientes preguntas sobre `crontab`. [5, 6]</p>
+            <div class="options">
+                <div>Escribe la línea de `crontab` para ejecutar un script llamado `mi_script.sh` cada 15 minutos, todos los días de la semana (asume ruta completa del script): <input type="text" id="q4a" placeholder="Ej: * * * * * /ruta/a/script.sh"></div>
+                <div>¿Qué cadena especial de `cron` usarías para ejecutar un comando una vez al mes? <input type="text" id="q4b" placeholder="Ej: @daily"></div>
+            </div>
+            <button class="check-button" onclick="checkActivity(4)">Comprobar Actividad 4</button>
+            <div id="feedback4" class="feedback"></div>
+            <div id="explanation4" class="explanation"></div>
+        </div>
+
+        <!-- Actividad 5: Gestión de Usuarios y Grupos (Recordatorio de Conceptos) -->
+        <div class="activity">
+            <h3>Actividad 5: Gestión de Usuarios y Grupos</h3>
+            <p>5. Responde a las siguientes preguntas sobre la gestión de usuarios y grupos. [7, 8]</p>
+            <div class="options">
+                <div>¿Cuál es el archivo clave que contiene la información de las contraseñas cifradas de los usuarios y solo es legible por el superusuario? <input type="text" id="q5a" placeholder="Ruta del archivo"></div>
+                <div>¿Qué archivo contiene la información de los usuarios (nombre, UID, GID, directorio personal, shell por defecto)? <input type="text" id="q5b" placeholder="Ruta del archivo"></div>
+                <div>Además de por un nombre, ¿cómo se identifica a los usuarios en Linux? <input type="text" id="q5c" placeholder="Identificador"></div>
+                <div>Además de por un nombre, ¿cómo se identifica a los grupos en Linux? <input type="text" id="q5d" placeholder="Identificador"></div>
+            </div>
+            <button class="check-button" onclick="checkActivity(5)">Comprobar Actividad 5</button>
+            <div id="feedback5" class="feedback"></div>
+            <div id="explanation5" class="explanation"></div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2023 SOM - Actividades de Repaso de Linux Configuración Básica</p>
+    </footer>
+
+    <script>
+        // Lógica JavaScript para la interactividad de las actividades
+        function checkActivity(activityNum) {
+            let feedbackElement = document.getElementById('feedback' + activityNum);
+            let explanationElement = document.getElementById('explanation' + activityNum);
+            let isCorrect = true;
+            let explanationText = "";
+
+            // Reinicia los mensajes de feedback
+            feedbackElement.className = 'feedback';
+            feedbackElement.textContent = '';
+            explanationElement.textContent = '';
+            explanationElement.style.display = 'none'; // Oculta la explicación por defecto
+
+            switch (activityNum) {
+                case 1:
+                    const q1Answer = document.querySelector('input[name="q1"]:checked');
+                    if (q1Answer && q1Answer.value === 'c') {
+                        feedbackElement.classList.add('correct');
+                        feedbackElement.textContent = '¡Correcto!';
+                        explanationText = 'XFCE es conocido por ser ligero y rápido, ideal para sistemas con menos recursos [1]. GNOME es moderno y minimalista, mientras que la CLI es para comandos de texto [9]. El prompt de la terminal muestra usuario@hostname:~$ [9].';
+                    } else {
+                        isCorrect = false;
+                        feedbackElement.classList.add('incorrect');
+                        feedbackElement.textContent = 'Incorrecto. Intenta de nuevo.';
+                        explanationText = 'La respuesta correcta es C) XFCE es ideal para ordenadores con menos recursos [1].';
+                    }
+                    break;
+                case 2:
+                    const q2a = document.getElementById('q2a').value.trim().toLowerCase();
+                    const q2b = document.getElementById('q2b').value.trim().toLowerCase();
+                    const q2c = document.getElementById('q2c').value.trim().toLowerCase();
+                    const q2d = document.getElementById('q2d').value.trim().toLowerCase();
+
+                    if (q2a === 'apt' && q2b === 'dnf' && q2c === 'lista' && q2d === 'paquetes') {
+                        feedbackElement.classList.add('correct');
+                        feedbackElement.textContent = '¡Correcto!';
+                        explanationText = 'Para Debian/Ubuntu se usa `apt` [2]. Para Fedora/CentOS se usa `dnf` [2]. El proceso de actualización consta de actualizar la **lista** de paquetes y luego los **paquetes** instalados [3].';
+                    } else {
+                        isCorrect = false;
+                        feedbackElement.classList.add('incorrect');
+                        feedbackElement.textContent = 'Incorrecto. Revisa tus respuestas.';
+                        explanationText = 'Respuestas correctas: apt, dnf, lista, paquetes. [2, 3]';
+                    }
+                    break;
+                case 3:
+                    const q3answers = {
+                        'q3a': 'a', // tar
+                        'q3b': 'b', // rsync
+                        'q3c': 'c', // -a
+                        'q3d': 'd', // -c
+                        'q3e': 'e', // -z
+                        'q3f': 'f'  // -f
+                    };
+                    let allQ3Correct = true;
+                    for (const id in q3answers) {
+                        const inputVal = document.getElementById(id).value.trim().toLowerCase();
+                        if (inputVal !== q3answers[id]) {
+                            allQ3Correct = false;
+                            break;
+                        }
+                    }
+
+                    if (allQ3Correct) {
+                        feedbackElement.classList.add('correct');
+                        feedbackElement.textContent = '¡Correcto! Todas las relaciones son correctas.';
+                        explanationText = '`tar` empaqueta [4]. `rsync` sincroniza eficientemente [4]. `-a` es modo archivo en `rsync` [4]. `-c`, `-z`, `-f` son para crear, comprimir y nombre de archivo en `tar` respectivamente [4].';
+                    } else {
+                        isCorrect = false;
+                        feedbackElement.classList.add('incorrect');
+                        feedbackElement.textContent = 'Incorrecto. Algunas de tus relaciones no son correctas.';
+                        explanationText = 'Respuestas correctas: Q3a: A, Q3b: B, Q3c: C, Q3d: D, Q3e: E, Q3f: F. [4]';
+                    }
+                    break;
+                case 4:
+                    const q4a = document.getElementById('q4a').value.trim();
+                    const q4b = document.getElementById('q4b').value.trim().toLowerCase();
+
+                    // Flexible check for Q4a (allowing variations in path, but expecting core syntax)
+                    let q4aCorrect = (q4a === '*/15 * * * * /ruta/a/mi_script.sh' || 
+                                      q4a.includes('*/15 * * * *') && q4a.includes('mi_script.sh'));
+                    let q4bCorrect = (q4b === '@monthly');
+
+                    if (q4aCorrect && q4bCorrect) {
+                        feedbackElement.classList.add('correct');
+                        feedbackElement.textContent = '¡Correcto! Ambas respuestas son acertadas.';
+                        explanationText = 'Para cada 15 minutos: `*/15 * * * * /ruta/a/mi_script.sh` [5]. La cadena especial para una vez al mes es `@monthly` [6].';
+                    } else {
+                        isCorrect = false;
+                        feedbackElement.classList.add('incorrect');
+                        feedbackElement.textContent = 'Incorrecto. Revisa tus respuestas.';
+                        explanationText = 'Respuesta 4a: `*/15 * * * * /ruta/a/mi_script.sh` [5]. Respuesta 4b: `@monthly` [6].';
+                    }
+                    break;
+                case 5:
+                    const q5a = document.getElementById('q5a').value.trim().toLowerCase();
+                    const q5b = document.getElementById('q5b').value.trim().toLowerCase();
+                    const q5c = document.getElementById('q5c').value.trim().toLowerCase();
+                    const q5d = document.getElementById('q5d').value.trim().toLowerCase();
+
+                    let allQ5Correct = true;
+                    if (q5a !== '/etc/shadow') allQ5Correct = false;
+                    if (q5b !== '/etc/passwd') allQ5Correct = false;
+                    if (!q5c.includes('uid') && !q5c.includes('user id') && !q5c.includes('id de usuario')) allQ5Correct = false; // Allow variations
+                    if (!q5d.includes('gid') && !q5d.includes('group id') && !q5d.includes('id de grupo')) allQ5Correct = false; // Allow variations
+
+                    if (allQ5Correct) {
+                        feedbackElement.classList.add('correct');
+                        feedbackElement.textContent = '¡Correcto! Has identificado los archivos y conceptos clave.';
+                        explanationText = '`/etc/shadow` contiene las contraseñas cifradas [7]. `/etc/passwd` contiene la información de los usuarios [7]. Los usuarios se identifican por UID (User ID) y los grupos por GID (Group ID) [7, 8].';
+                    } else {
+                        isCorrect = false;
+                        feedbackElement.classList.add('incorrect');
+                        feedbackElement.textContent = 'Incorrecto. Revisa tus respuestas.';
+                        explanationText = 'Respuestas correctas: Q5a: `/etc/shadow` [7], Q5b: `/etc/passwd` [7], Q5c: UID (User ID) [7], Q5d: GID (Group ID) [8].';
+                    }
+                    break;
+            }
+
+            // Muestra la explicación si es incorrecto o siempre para reforzar el aprendizaje
+            if (!isCorrect) {
+                explanationElement.textContent = explanationText;
+                explanationElement.style.display = 'block';
+            } else {
+                 explanationElement.textContent = explanationText; 
+                 explanationElement.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
