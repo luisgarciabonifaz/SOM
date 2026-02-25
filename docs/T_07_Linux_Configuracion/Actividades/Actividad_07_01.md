@@ -28,7 +28,7 @@ Eres el técnico/a que recibe equipos Linux recién instalados en un aula/empres
 
 **Evidencias**
 
-- Textop con la explicación
+- Texto con la explicación
 
 ------
 
