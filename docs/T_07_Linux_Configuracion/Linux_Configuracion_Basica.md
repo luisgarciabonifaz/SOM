@@ -42,13 +42,6 @@ Puedes ajustar el idioma del sistema, el formato de la fecha y hora, y la moneda
 
 ### 2.3. Gestión de Usuarios y Grupos
 
-En Linux, la correcta gestión de usuarios y grupos es fundamental para la seguridad y la organización. Cada usuario tiene una cuenta para interactuar con el sistema, mientras que los grupos se utilizan para conceder permisos a varios usuarios a la vez sobre archivos y directorios.
-
-Los archivos clave que almacenan esta información son:
-
-- `/etc/passwd`: Información de los usuarios (nombre, ID de usuario (UID), ID de grupo (GID), directorio personal, shell por defecto).
-- `/etc/shadow`: Contiene las contraseñas cifradas de los usuarios. Solo es legible por el superusuario.
-- `/etc/group`: Información sobre los grupos.
   
 **Usuarios**
 
@@ -62,11 +55,125 @@ Cada persona que utiliza el sistema debe tener una **cuenta de usuario**. Los us
 
 Los **grupos** son colecciones de usuarios. Permiten asignar permisos a un conjunto de usuarios de una vez, simplificando la administración. Cada usuario pertenece al menos a un **grupo primario** y puede pertenecer a varios **grupos secundarios**. Los grupos se identifican por un **nombre de grupo** y un **GID (Group ID)** numérico único.
 
+**Gestion de Usuarios y Grupos en Linux**
+
+En Linux, la correcta gestión de usuarios y grupos es fundamental para la seguridad y la organización. Cada usuario tiene una cuenta para interactuar con el sistema, mientras que los grupos se utilizan para conceder permisos a varios usuarios a la vez sobre archivos y directorios.
+
+Los archivos clave que almacenan esta información son:
+
+- `/etc/passwd`: Información de los usuarios (nombre, ID de usuario (UID), ID de grupo (GID), directorio personal, shell por defecto).
+- `/etc/shadow`: Contiene las contraseñas cifradas de los usuarios. Solo es legible por el superusuario.
+- `/etc/group`: Información sobre los grupos.
+
+#### Estructura y significado de `/etc/passwd`, `/etc/shadow` y `/etc/group`
+
+Estos tres ficheros trabajan juntos para definir **quién eres** (usuario), **a qué grupos perteneces** (autorización) y **cómo se valida tu contraseña** (autenticación).
+
+**`/etc/passwd` (cuentas de usuario)**
+
+Es un fichero **legible por todos** porque muchos programas necesitan mapear UID↔nombre. **No guarda contraseñas** (desde hace años se delegan a `/etc/shadow`).
+
+Formato (7 campos separados por `:`):
+
+1. **login**: nombre del usuario (ej. `alumno`)
+2. **passwd**: normalmente `x` (indica que la contraseña está en `/etc/shadow`)
+3. **UID**: identificador numérico del usuario (ej. `1001`)
+4. **GID**: grupo primario (ej. `1001`)
+5. **GECOS**: información descriptiva (nombre real, teléfono, etc.)
+6. **home**: directorio personal (ej. `/home/alumno`)
+7. **shell**: intérprete por defecto (ej. `/bin/bash`)
+
+Ejemplo:
+
+```text
+alumno:x:1001:1001:Alumno FP:/home/alumno:/bin/bash
+```
+
+Comandos útiles:
+- Ver tu UID/GID: `id`
+- Ver el “usuario real” de un UID: `getent passwd 1001`
+- Ver el shell configurado: `getent passwd alumno | cut -d: -f7`
+
+**`/etc/group` (grupos)**
+
+Define los grupos del sistema. También es **legible por todos**.
+
+Formato (4 campos separados por `:`):
+1. **group_name** (ej. `sudo`)
+2. **group_password** (en desuso; suele ser `x` o vacío)
+3. **GID** (ej. `27`)
+4. **members**: lista de usuarios *secundarios* en ese grupo (separados por `,`)
+
+Ejemplo:
+
+```text
+sudo:x:27:alumno,profe
+```
+
+Comandos útiles:
+- Ver grupos de un usuario: `groups alumno` o `id alumno`
+- Consultar un grupo: `getent group sudo`
+
+**`/etc/shadow` (contraseñas y caducidad)**
+
+Contiene los *hashes* de contraseñas y políticas de expiración. **Solo debe leerlo root**.
+
+Formato típico (9 campos separados por `:`):
+1. **login**
+2. **hash**: algoritmo + hash (o `!`/`*` si está bloqueada)
+3. **lastchg**: último cambio de contraseña (días desde 1970-01-01)
+4. **min**: mínimo de días entre cambios
+5. **max**: máximo de días antes de expirar
+6. **warn**: días de aviso antes de expirar
+7. **inactive**: días tras expirar para deshabilitar
+8. **expire**: fecha de expiración de la cuenta (días desde 1970-01-01)
+9. **reserved**: sin uso
+
+Ejemplo (recortado):
+
+```text
+alumno:$y$j9T$...:19720:0:99999:7:::
+```
+
 ## 3. Gestión de Sistemas de Archivos
 
 Los dispositivos de almacenamiento (discos duros, USBs) necesitan ser "montados" para poder acceder a sus archivos.
 
-### 3.1. Montaje y Desmontaje de Unidades
+### 3.1. Nomenclatura de discos y particiones en Linux
+
+En Linux, los discos y particiones aparecen como **archivos de dispositivo** dentro de `/dev`. Conocer la nomenclatura te ayuda a identificar *qué* estás montando o formateando (y evita accidentes).
+
+#### Discos SATA/SCSI/USB: `sdX`
+- **Disco**: `/dev/sda`, `/dev/sdb`, `/dev/sdc`… (`a` suele ser el primer disco detectado)
+- **Particiones**: se numeran: `/dev/sda1`, `/dev/sda2`, …
+
+Ejemplos típicos:
+
+- `/dev/sda` → disco interno principal
+- `/dev/sdb1` → primera partición de un USB/disco secundario
+
+#### Discos NVMe: `nvmeXnY`
+En NVMe, el nombre incluye *controladora* y *namespace*:
+- **Disco**: `/dev/nvme0n1` (controladora 0, namespace 1)
+- **Particiones**: se añade `p`: `/dev/nvme0n1p1`, `/dev/nvme0n1p2`, …
+
+#### eMMC/SD: `mmcblkX`
+- **Disco**: `/dev/mmcblk0`
+- **Particiones**: también usan `p`: `/dev/mmcblk0p1`
+
+Herramientas para identificar discos:
+```bash
+lsblk -f          # árbol de discos, particiones y sistemas de archivos
+blkid             # muestra UUID/TYPE/LABEL
+sudo fdisk -l     # tabla de particiones (MBR/GPT)
+df -hT            # uso de disco por sistemas montados
+```
+
+**Consejo de seguridad:** antes de `mkfs` o `fsck`, confirma 2 veces el dispositivo con `lsblk -f` para no operar sobre el disco equivocado.
+
+
+
+### 3.2. Montaje y Desmontaje de Unidades
 
 - **Asocia un dispositivo con un directorio (punto de montaje):** `mount`
    
@@ -86,7 +193,7 @@ Los dispositivos de almacenamiento (discos duros, USBs) necesitan ser "montados"
     sudo umount /mnt/mi_usb
 ```
 
-### 3.2. Formateo de Particiones
+### 3.3. Formateo de Particiones
 
 Formatear una partición borra todos sus datos y crea un nuevo sistema de archivos. ¡Usa este comando con mucho cuidado!
 
@@ -98,7 +205,7 @@ Formatear una partición borra todos sus datos y crea un nuevo sistema de archiv
     sudo mkfs.ext4 /dev/sdb1
 ```
 
-### 3.3. Comprobación y Reparación de Sistemas de Archivos
+### 3.4. Comprobación y Reparación de Sistemas de Archivos
 
 - **(File System Check):** `fsck`. Se usa para comprobar y, si es posible, reparar errores en un sistema de archivos. La unidad debe estar desmontada.
 
@@ -134,7 +241,10 @@ Un **Live USB** es una memoria USB que contiene un sistema operativo completo qu
 
 Realizar copias de seguridad es fundamental.
 
-- **`tar`**: Empaqueta múltiples archivos y directorios en un solo archivo (`.tar`).
+#### 4.3.1.  **`tar`** 
+
+Empaqueta múltiples archivos y directorios en un solo archivo (`.tar`).
+
     ```bash
     # Crear un archivo comprimido de la carpeta /home/alumno
     tar -czvf backup_alumno.tar.gz /home/alumno
@@ -144,7 +254,27 @@ Realizar copias de seguridad es fundamental.
     - `-v`: modo detallado (verbose), muestra los archivos que se procesan.
     - `-f`: indica el nombre del archivo de salida.
 
-- **`rsync`**: Sincroniza archivos y directorios entre dos ubicaciones (localmente o por red). Es muy eficiente, ya que solo copia los archivos que han cambiado.
+**Ejemplos:**
+
+```bash
+# Listar contenido sin extraer
+tar -tzf backup_alumno.tar.gz 
+
+# Extraer en el directorio actual
+tar -xzvf backup_alumno.tar.gz
+
+# Extraer en un destino concreto
+tar -xzvf backup_alumno.tar.gz -C /mnt/recuperacion
+```
+
+!!! Warning "Consejo"
+    `tar` **empaqueta**; la compresión la hace `-z` (gzip) 
+
+
+#### 4.3.2.  **`rsync`**: 
+
+Sincroniza archivos y directorios entre dos ubicaciones (localmente o por red). Es muy eficiente, ya que solo copia los archivos que han cambiado.
+
     ```bash
     # Sincronizar la carpeta /home/alumno a un disco externo montado en /mnt/backup
     rsync -avh /home/alumno/ /mnt/backup/
@@ -153,6 +283,24 @@ Realizar copias de seguridad es fundamental.
     - `-v`: modo detallado.
     - `-h`: formato legible para humanos (human-readable).
 
+
+`rsync` es ideal para backups *incrementales*.
+
+**Ejemplos:**
+
+```bash
+# Copia incremental (solo cambios) conservando atributos
+rsync -a /home/alumno/ /mnt/backup/alumno/
+
+# Mostrar progreso y estadísticas
+rsync -avh --progress --stats /home/alumno/ /mnt/backup/alumno/
+
+# Reflejo exacto (borra en destino lo que ya no existe en origen)
+rsync -avh --delete /home/alumno/ /mnt/backup/alumno/
+
+# Excluir patrones (caché, node_modules, etc.)
+rsync -avh --exclude=".cache/" --exclude="node_modules/" /home/alumno/ /mnt/backup/alumno/
+```
 
 ## 5. Actualización del Sistema
 
@@ -186,6 +334,52 @@ El proceso generalmente consta de dos pasos:
 ``` bash
     # Actualiza la lista y los paquetes en un solo comando
     sudo dnf upgrade
+```
+
+
+
+### 5.3. Repositorios
+
+Los gestores de paquetes descargan el software desde **repositorios** (servidores con paquetes firmados).
+
+En Debian/Ubuntu:
+- Lista principal: `/etc/apt/sources.list` y `/etc/apt/sources.list.d/*.list`
+- Actualizar índices: `sudo apt update`
+- Ver repos habilitados: `grep -R "^[^#]" /etc/apt/sources.list /etc/apt/sources.list.d/*.list 2>/dev/null`
+
+En Fedora/RHEL:
+- Repos: `/etc/yum.repos.d/*.repo`
+- Listar repos: `dnf repolist`
+
+Buenas prácticas:
+- Evita repositorios “raros” si no los necesitas.
+- Prioriza repos oficiales o de confianza, y mantenlos actualizados.
+
+### 5.4. Consultar paquetes
+
+**Con `apt` (Debian/Ubuntu):**
+```bash
+apt search nginx           # buscar
+apt show nginx             # información del paquete
+apt list --installed       # paquetes instalados
+apt depends nginx          # dependencias
+dpkg -L nginx              # lista de archivos instalados por el paquete
+```
+
+**Con `dnf` (Fedora):**
+```bash
+dnf search nginx
+dnf info nginx
+dnf list installed
+dnf repoquery --requires nginx   # dependencias (si está instalado repoquery)
+rpm -ql nginx                     # archivos instalados
+```
+
+**Limpiar y mantener el sistema (Debian/Ubuntu):**
+```bash
+sudo apt autoremove     # elimina dependencias huérfanas
+sudo apt autoclean      # limpia caché antigua
+sudo apt clean          # limpia toda la caché
 ```
 
 ## 6. Instalación/Desinstalación de Utilidades
@@ -226,6 +420,8 @@ Los gestores de paquetes también se usan para instalar y eliminar software.
     # Desinstalar GIMP
     sudo dnf remove gimp
 ```
+
+
 ### 6.3. Compilación de Software desde Código Fuente (Conceptual)
 
 A veces, un programa no está disponible en los repositorios. En esos casos, se puede compilar desde su **código fuente**. Aunque es un proceso avanzado, los pasos conceptuales son:
