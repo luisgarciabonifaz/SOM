@@ -90,6 +90,7 @@ alumno:x:1001:1001:Alumno FP:/home/alumno:/bin/bash
 ```
 
 Comandos útiles:
+
 - Ver tu UID/GID: `id`
 - Ver el “usuario real” de un UID: `getent passwd 1001`
 - Ver el shell configurado: `getent passwd alumno | cut -d: -f7`
@@ -99,6 +100,7 @@ Comandos útiles:
 Define los grupos del sistema. También es **legible por todos**.
 
 Formato (4 campos separados por `:`):
+
 1. **group_name** (ej. `sudo`)
 2. **group_password** (en desuso; suele ser `x` o vacío)
 3. **GID** (ej. `27`)
@@ -119,6 +121,7 @@ Comandos útiles:
 Contiene los *hashes* de contraseñas y políticas de expiración. **Solo debe leerlo root**.
 
 Formato típico (9 campos separados por `:`):
+
 1. **login**
 2. **hash**: algoritmo + hash (o `!`/`*` si está bloqueada)
 3. **lastchg**: último cambio de contraseña (días desde 1970-01-01)
@@ -144,6 +147,7 @@ Los dispositivos de almacenamiento (discos duros, USBs) necesitan ser "montados"
 En Linux, los discos y particiones aparecen como **archivos de dispositivo** dentro de `/dev`. Conocer la nomenclatura te ayuda a identificar *qué* estás montando o formateando (y evita accidentes).
 
 #### Discos SATA/SCSI/USB: `sdX`
+
 - **Disco**: `/dev/sda`, `/dev/sdb`, `/dev/sdc`… (`a` suele ser el primer disco detectado)
 - **Particiones**: se numeran: `/dev/sda1`, `/dev/sda2`, …
 
@@ -154,10 +158,12 @@ Ejemplos típicos:
 
 #### Discos NVMe: `nvmeXnY`
 En NVMe, el nombre incluye *controladora* y *namespace*:
+
 - **Disco**: `/dev/nvme0n1` (controladora 0, namespace 1)
 - **Particiones**: se añade `p`: `/dev/nvme0n1p1`, `/dev/nvme0n1p2`, …
 
 #### eMMC/SD: `mmcblkX`
+
 - **Disco**: `/dev/mmcblk0`
 - **Particiones**: también usan `p`: `/dev/mmcblk0p1`
 
@@ -170,7 +176,6 @@ df -hT            # uso de disco por sistemas montados
 ```
 
 **Consejo de seguridad:** antes de `mkfs` o `fsck`, confirma 2 veces el dispositivo con `lsblk -f` para no operar sobre el disco equivocado.
-
 
 
 ### 3.2. Montaje y Desmontaje de Unidades
@@ -343,15 +348,18 @@ El proceso generalmente consta de dos pasos:
 Los gestores de paquetes descargan el software desde **repositorios** (servidores con paquetes firmados).
 
 En Debian/Ubuntu:
+
 - Lista principal: `/etc/apt/sources.list` y `/etc/apt/sources.list.d/*.list`
 - Actualizar índices: `sudo apt update`
 - Ver repos habilitados: `grep -R "^[^#]" /etc/apt/sources.list /etc/apt/sources.list.d/*.list 2>/dev/null`
 
 En Fedora/RHEL:
+
 - Repos: `/etc/yum.repos.d/*.repo`
 - Listar repos: `dnf repolist`
 
 Buenas prácticas:
+
 - Evita repositorios “raros” si no los necesitas.
 - Prioriza repos oficiales o de confianza, y mantenlos actualizados.
 
@@ -443,7 +451,6 @@ La mayoría de las distribuciones modernas usan **NetworkManager**, que proporci
 En servidores o sistemas sin entorno gráfico, se usan herramientas como:
 
 - **`netplan`**: Sistema moderno para configurar redes en Ubuntu usando archivos YAML.
-
 - **`ifconfig`** (obsoleto) / **`ip`**: Comandos para ver y configurar interfaces de red.
 
 ``` bash
