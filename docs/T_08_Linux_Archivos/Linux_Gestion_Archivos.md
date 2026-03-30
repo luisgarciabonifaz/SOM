@@ -346,6 +346,7 @@ Así, un permiso como **rwxr-xr--** se traduciría a **754**:
 - Grupo **(r-x)**: 4 + 0 + 1 = **5**
 - Otros **(r--)**: 4 + 0 + 0 = **4**
 
+![Permisos Linux](./Permisos_Linux.jpg)
 
 ### 4.3. Comandos `chmod`, `chown`, `chgrp`
 
