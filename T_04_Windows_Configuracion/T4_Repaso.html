@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOM - Windows Configuración Básica - Repaso</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #0078d4; /* Color azul de Windows */
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        header img {
+            height: 50px;
+            margin-right: 20px;
+            /* Placeholder para un logo de Windows o uno genérico */
+            /* Puedes reemplazar esto con una URL a tu imagen de logo, por ejemplo: */
+            /* src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Windows_logo_-_2012.svg" */
+            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230078d4"/><path d="M10 20 L45 15 L45 48 L10 52 Z M50 14 L90 10 L90 48 L50 50 Z M10 58 L45 52 L45 85 L10 80 Z M50 54 L90 50 L90 88 L50 90 Z" fill="white"/></svg>'); /* Simple SVG de Windows */
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+            letter-spacing: 1px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 25px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+        h2, h3 {
+            color: #0056b3;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        .question-block {
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 5px solid #0078d4;
+            border-radius: 4px;
+        }
+        .question-block p.question-text {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #222;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 8px 0;
+            transition: background-color 0.2s ease;
+        }
+        .options label:hover {
+            background-color: #e6f2fa;
+        }
+        .options input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.1);
+        }
+        textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            min-height: 100px;
+            resize: vertical;
+            font-size: 1em;
+            box-sizing: border-box; /* Incluye padding en el ancho */
+        }
+        .submit-btn {
+            display: block;
+            width: 200px;
+            padding: 12px 20px;
+            margin: 30px auto 0;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+        .results {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            display: none; /* Oculto por defecto */
+        }
+        .results h3 {
+            text-align: center;
+            color: #0056b3;
+            border-bottom: none;
+        }
+        .results p {
+            font-size: 1.2em;
+            text-align: center;
+            font-weight: bold;
+            color: #0078d4;
+        }
+        .correct-answer {
+            color: green;
+            font-weight: bold;
+        }
+        .incorrect-answer {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Puedes reemplazar el 'src' con la URL de tu logo de Windows o cualquier otro logo -->
+        <!-- La imagen SVG incrustada es un placeholder simple para el logo de Windows -->
+        <img alt="Logo Windows">
+        <h1>SOM - Windows Configuración Básica</h1>
+    </header>
+
+    <div class="container">
+        <h2>Examen de Repaso: Configuración y Personalización de Windows</h2>
+        <p>Responde a las siguientes preguntas para repasar los conceptos clave sobre la configuración y el manejo del sistema operativo Windows.</p>
+
+        <h3>Parte 1: Preguntas de Tipo Test</h3>
+        <form id="quizForm">
+            <!-- Pregunta 1 -->
+            <div class="question-block" id="q1">
+                <p class="question-text">1. ¿Cuál de las siguientes es la primera pantalla que se ve al iniciar Windows y actúa como un "tablero de trabajo" con acceso directo a programas y archivos?</p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="a"> El Escritorio</label>
+                    <label><input type="radio" name="q1" value="b"> El Menú Inicio</label>
+                    <label><input type="radio" name="q1" value="c"> La Barra de Tareas</label>
+                    <label><input type="radio" name="q1" value="d"> El Explorador de Archivos</label>
+                </div>
+            </div>
+
+            <!-- Pregunta 2 -->
+            <div class="question-block" id="q2">
+                <p class="question-text">2. ¿Cuál de las siguientes acciones NO se puede realizar directamente desde el Menú Inicio, según la información proporcionada?</p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="a"> Acceder a todas vuestras aplicaciones instaladas</label>
+                    <label><input type="radio" name="q2" value="b"> Buscar programas y archivos</label>
+                    <label><input type="radio" name="q2" value="c"> Formatear una unidad de almacenamiento</label>
+                    <label><input type="radio" name="q2" value="d"> Apagar, reiniciar o suspender el equipo</label>
+                </div>
+            </div>
+
+            <!-- Pregunta 3 -->
+            <div class="question-block" id="q3">
+                <p class="question-text">3. ¿Cuál es la combinación de teclas utilizada para abrir rápidamente el Explorador de Archivos en Windows?</p>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="a"> Windows + E</label>
+                    <label><input type="radio" name="q3" value="b"> Ctrl + Alt + Supr</label>
+                    <label><input type="radio" name="q3" value="c"> Alt + F4</label>
+                    <label><input type="radio" name="q3" value="d"> Ctrl + Shift + Esc</label>
+                </div>
+            </div>
+
+            <!-- Pregunta 4 -->
+            <div class="question-block" id="q4">
+                <p class="question-text">4. ¿Cuál de las siguientes interfaces es la más moderna, introducida con Windows 10, que ofrece una forma más sencilla y visual de ajustar la mayoría de las preferencias del sistema?</p>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="a"> El Panel de Control</label>
+                    <label><input type="radio" name="q4" value="b"> La aplicación Configuración</label>
+                    <label><input type="radio" name="q4" value="c"> El Explorador de Archivos</label>
+                    <label><input type="radio" name="q4" value="d"> El Administrador de Dispositivos</label>
+                </div>
+            </div>
+
+            <!-- Pregunta 5 -->
+            <div class="question-block" id="q5">
+                <p class="question-text">5. ¿Qué tipo de cuenta de usuario en Windows tiene control total sobre el sistema, pudiendo instalar software y cambiar configuraciones importantes?</p>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="a"> Administrador</label>
+                    <label><input type="radio" name="q5" value="b"> Estándar</label>
+                    <label><input type="radio" name="q5" value="c"> Invitado</label>
+                    <label><input type="radio" name="q5" value="d"> Limitada</label>
+                </div>
+            </div>
+
+            <!-- Pregunta 6 -->
+            <div class="question-block" id="q6">
+                <p class="question-text">6. ¿Qué sistema de archivos es el predeterminado para las instalaciones modernas de Windows y soporta archivos y particiones de gran tamaño, así como permisos de seguridad a nivel de archivo?</p>
+                <div class="options">
+                    <label><input type="radio" name="q6" value="a"> NTFS</label>
+                    <label><input type="radio" name="q6" value="b"> FAT32</label>
+                    <label><input type="radio" name="q6" value="c"> exFAT</label>
+                    <label><input type="radio" name="q6" value="d"> APFS</label>
+                </div>
+            </div>
+
+            <!-- Pregunta 7 -->
+            <div class="question-block" id="q7">
+                <p class="question-text">7. ¿Cuál es la herramienta fundamental en Windows para detectar y corregir errores en el sistema de archivos o en los sectores físicos de un disco duro?</p>
+                <div class="options">
+                    <label><input type="radio" name="q7" value="a"> Defrag</label>
+                    <label><input type="radio" name="q7" value="b"> Formatear</label>
+                    <label><input type="radio" name="q7" value="c"> chkdsk</label>
+                    <label><input type="radio" name="q7" value="d"> Scandisk</label>
+                </div>
+            </div>
+
+            <!-- Pregunta 8 -->
+            <div class="question-block" id="q8">
+                <p class="question-text">8. Para las unidades de estado sólido (SSD), en lugar de la desfragmentación, ¿qué tipo de operación se realiza para ayudar a prolongar su vida útil y mantener su rendimiento?</p>
+                <div class="options">
+                    <label><input type="radio" name="q8" value="a"> Formateo completo</label>
+                    <label><input type="radio" name="q8" value="b"> Comprobación de errores</label>
+                    <label><input type="radio" name="q8" value="c"> Optimización mediante el comando TRIM</label>
+                    <label><input type="radio" name="q8" value="d"> Creación de puntos de restauración</label>
+                </div>
+            </div>
+
+            <!-- Pregunta 9 -->
+            <div class="question-block" id="q9">
+                <p class="question-text">9. ¿Qué es una "instantánea" del estado del sistema en un momento dado que incluye archivos de sistema, programas instalados y configuración del registro, pero NO afecta a los documentos personales al revertir?</p>
+                <div class="options">
+                    <label><input type="radio" name="q9" value="a"> Un punto de restauración del sistema</label>
+                    <label><input type="radio" name="q9" value="b"> Una copia de seguridad de archivos</label>
+                    <label><input type="radio" name="q9" value="c"> Una imagen del sistema</label>
+                    <label><input type="radio" name="q9" value="d"> Un script de recuperación</label>
+                </div>
+            </div>
+
+            <!-- Pregunta 10 -->
+            <div class="question-block" id="q10">
+                <p class="question-text">10. Si el sistema Windows no arranca normalmente o si se tienen problemas persistentes, ¿cuál es la forma de iniciar Windows con un conjunto mínimo de controladores y servicios para diagnosticar y solucionar problemas?</p>
+                <div class="options">
+                    <label><input type="radio" name="q10" value="a"> Arranque normal con diagnóstico</label>
+                    <label><input type="radio" name="q10" value="b"> Arranque en modo de recuperación avanzada</label>
+                    <label><input type="radio" name="q10" value="c"> Modo Seguro</label>
+                    <label><input type="radio" name="q10" value="d"> Reinstalación del sistema</label>
+                </div>
+            </div>
+
+            <button type="button" class="submit-btn" onclick="gradeQuiz()">Enviar Respuestas (Test)</button>
+        </form>
+
+        <div class="results" id="quizResults">
+            <h3>Resultados del Test</h3>
+            <p id="scoreDisplay"></p>
+            <div id="feedbackDisplay"></div>
+        </div>
+
+        <h3>Parte 2: Preguntas de Desarrollo Breve</h3>
+        <p>Responde a las siguientes preguntas de manera concisa y clara, basándote en la información proporcionada. Estas preguntas deben ser revisadas manualmente.</p>
+
+        <!-- Pregunta Desarrollo 1 -->
+        <div class="question-block">
+            <p class="question-text">1. Explorador de Archivos: Funciones clave.<br>Según las fuentes, mencione y describa brevemente <b>tres funciones principales</b> que se pueden realizar con el Explorador de Archivos en Windows.</p>
+            <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
+        </div>
+
+        <!-- Pregunta Desarrollo 2 -->
+        <div class="question-block">
+            <p class="question-text">2. Configuración Regional e Idioma: Aspectos cruciales.<br>Las fuentes mencionan que la configuración regional e idioma es crucial. Cite <b>tres aspectos</b> que se pueden ajustar en esta sección de Windows y explique brevemente por qué son importantes.</p>
+            <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
+        </div>
+
+        <!-- Pregunta Desarrollo 3 -->
+        <div class="question-block">
+            <p class="question-text">3. Copia de Seguridad y Restauración: Tipos.<br>Las fuentes describen diferentes tipos de copias de seguridad para proteger los datos y el sistema. Describa la diferencia principal entre una <b>"Copia de seguridad de archivos"</b> y una <b>"Copia de seguridad de imagen del sistema"</b>.</p>
+            <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
+        </div>
+
+        <!-- Pregunta Desarrollo 4 -->
+        <div class="question-block">
+            <p class="question-text">4. Actualizaciones de Drivers: Importancia y métodos.<br>Explique por qué es importante mantener los drivers (controladores) actualizados y mencione <b>dos métodos</b> para actualizar drivers en Windows, según las fuentes.</p>
+            <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
+        </div>
+
+        <!-- Pregunta Desarrollo 5 -->
+        <div class="question-block">
+            <p class="question-text">5. Scripts de Automatización: Batch vs. PowerShell.<br>Las fuentes mencionan los scripts Batch y PowerShell para la automatización de tareas. Describa la <b>diferencia fundamental</b> entre ambos en términos de sus capacidades para la automatización del sistema, según lo explicado.</p>
+            <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
+        </div>
+    </div>
+
+    <script>
+        // Objeto con las respuestas correctas para las preguntas de tipo test
+        // Las claves son los nombres de los grupos de radio buttons (q1, q2, etc.)
+        // Los valores son las letras de las opciones correctas (a, b, c, d)
+        const correctAnswers = {
+            q1: 'a', // El Escritorio [2]
+            q2: 'c', // Formatear una unidad de almacenamiento [2, 3]
+            q3: 'a', // Windows + E [4]
+            q4: 'b', // La aplicación Configuración [5]
+            q5: 'a', // Administrador [6]
+            q6: 'a', // NTFS [3]
+            q7: 'c', // chkdsk [7]
+            q8: 'c', // Optimización mediante el comando TRIM [8]
+            q9: 'a', // Un punto de restauración del sistema [9]
+            q10: 'c' // Modo Seguro [10]
+        };
+
+        function gradeQuiz() {
+            let score = 0;
+            const totalQuestions = Object.keys(correctAnswers).length;
+            const feedbackDisplay = document.getElementById('feedbackDisplay');
+            feedbackDisplay.innerHTML = ''; // Limpiar retroalimentación anterior
+
+            // Iterar sobre cada pregunta de tipo test
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = 'q' + i;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                const questionBlock = document.getElementById(questionName);
+                const optionsLabels = questionBlock.querySelectorAll('.options label');
+
+                // Quitar cualquier estilo de feedback previo
+                optionsLabels.forEach(label => {
+                    label.classList.remove('correct-answer', 'incorrect-answer');
+                });
+
+                if (selectedOption) {
+                    // Si el usuario seleccionó una opción
+                    if (selectedOption.value === correctAnswers[questionName]) {
+                        score += 1; // 100%
+                        selectedOption.parentElement.classList.add('correct-answer');
+                        feedbackDisplay.innerHTML += `<p>Pregunta ${i}: <span class="correct-answer">Correcta</span></p>`;
+                    } else {
+                        score -= 0.25; // -25%
+                        selectedOption.parentElement.classList.add('incorrect-answer');
+                        // Mostrar la respuesta correcta
+                        optionsLabels.forEach(label => {
+                            if (label.querySelector('input').value === correctAnswers[questionName]) {
+                                label.classList.add('correct-answer');
+                            }
+                        });
+                        feedbackDisplay.innerHTML += `<p>Pregunta ${i}: <span class="incorrect-answer">Incorrecta</span> (La respuesta correcta era ${correctAnswers[questionName].toUpperCase()})</p>`;
+                    }
+                } else {
+                    // Si el usuario no seleccionó ninguna opción para una pregunta
+                    feedbackDisplay.innerHTML += `<p>Pregunta ${i}: <span class="incorrect-answer">No respondida</span></p>`;
+                }
+            }
+
+            // Mostrar la puntuación final
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            scoreDisplay.textContent = `Tu puntuación final es: ${score} / ${totalQuestions}`;
+
+            // Mostrar el área de resultados
+            document.getElementById('quizResults').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
