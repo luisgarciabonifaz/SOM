@@ -6,6 +6,14 @@ En este tema, exploraremos las técnicas avanzadas para administrar y optimizar 
 
 La administración de usuarios y grupos es fundamental para la seguridad y el control de acceso en Linux.
 
+Recuerda que la información de usuarios y grupos se almacena en los siguientes archivos de configuración: 
+
+- /etc/passwd para los usuarios
+- /etc/shadow para las contraseñas 
+- /etc/group para los grupos
+
+En Linux, cada usuario pertenece a un **grupo primario**, que es el grupo principal asociado al usuario y se utiliza para determinar los permisos predeterminados al crear archivos. Además, los usuarios pueden pertenecer a **grupos secundarios**, que son grupos adicionales que otorgan permisos específicos sin cambiar el grupo primario.
+
 ### 1.1. Administración avanzada de usuarios y grupos
 
 Podemos crear, modificar y eliminar usuarios y grupos, así como gestionar sus pertenencias.
@@ -156,6 +164,14 @@ El comando `sudo` (SuperUser DO) permite a usuarios autorizados ejecutar comando
 Estos comandos son herramientas potentes para buscar archivos y contenido dentro de ellos.
 
 - **find:** Busca archivos y directorios en un sistema de archivos basándose en criterios complejos (nombre, tipo, tamaño, fecha de modificación, etc.).
+
+    La sintaxis básica del comando find es: `find [ruta] [expresión]`, 
+    
+    - [ruta] es el directorio desde donde empezar la búsqueda 
+    - [expresión] define los criterios de búsqueda, como -name para el nombre, -type para el tipo de archivo, etc.
+  
+    Ejemplos:
+
     - `find /home/usuario -name "*.txt"`: Busca todos los archivos `.txt` en el directorio `/home/usuario` y sus subdirectorios.
     - `find /var/log -type f -size +1G`: Busca archivos regulares (`-type f`) mayores de 1 GB (`-size +1G`) en `/var/log`.
     - `find . -mtime -7`: Busca archivos modificados en los últimos 7 días en el directorio actual.
@@ -236,7 +252,24 @@ Muestra los procesos en ejecución en un momento dado.
 
 #### 3.1.2. **top**
 
-Muestra en tiempo real los procesos que más recursos consumen.
+El comando `top` proporciona una vista en tiempo real de los procesos del sistema. 
+
+En la parte superior muestra estadísticas del sistema como el tiempo de actividad, promedio de carga, número de tareas activas, uso de CPU (dividido en usuario, sistema, nice, idle, etc.) y uso de memoria (RAM y swap). 
+
+La lista de procesos incluye columnas como:
+
+- PID (identificador del proceso)
+- USER (propietario)
+- PR (prioridad)
+- NI (valor nice)
+- VIRT (memoria virtual)
+- RES (memoria residente)
+- SHR (memoria compartida)
+- S (estado del proceso)
+- %CPU (porcentaje de CPU usado)
+- %MEM (porcentaje de memoria usado)
+- TIME+ (tiempo total de CPU)
+- COMMAND (nombre del comando).
 
 **Atajos útiles dentro de `top`:**
 
@@ -248,6 +281,7 @@ Muestra en tiempo real los procesos que más recursos consumen.
 | `P`   | Ordenar por uso de CPU           |
 
 
+Atajos adicionales incluyen: `h` para mostrar ayuda, `z` para alternar colores, `1` para mostrar uso de CPUs individuales (en sistemas multi-core), `f` para seleccionar qué campos mostrar, `s` para cambiar el intervalo de actualización, y `u` para filtrar por usuario.
 
 #### 3.1.3. **htop**
 
@@ -264,7 +298,7 @@ Versión interactiva y mejorada de `top`, con interfaz más amigable.
 Estos comandos se utilizan para enviar señales a los procesos, comúnmente para terminarlos.
 
 - **kill:** Envía una señal a un proceso específico usando su **PID** (Process ID).
-    - `kill PID_del_proceso`: Envía la señal TERM (por defecto), que intenta terminar el proceso de forma "amigable".
+    - `kill PID_del_proceso`: Envía la señal TERM (-15) (por defecto), que intenta terminar el proceso de forma "amigable".
     - `kill -9 PID_del_proceso`: Envía la señal KILL, que termina el proceso de forma forzada y sin preguntar. Útil para procesos que no responden.
 - **killall:** Envía una señal a todos los procesos que tienen un nombre específico.
     - `killall nombre_del_proceso`: Termina todos los procesos con el nombre especificado.
@@ -272,7 +306,12 @@ Estos comandos se utilizan para enviar señales a los procesos, comúnmente para
 
 ### 3.3. Gestión de trabajos en segundo plano (`bg`, `fg`, `jobs`)
 
-A menudo, necesitamos ejecutar comandos en segundo plano para liberar el terminal o gestionar tareas largas.
+Los trabajos en segundo plano permiten ejecutar procesos sin bloquear el terminal. 
+
+- Si un proceso se detiene con Ctrl+Z, puedes reanudarlo en segundo plano usando `bg` para que continúe ejecutándose. 
+- Para finalizar un trabajo, utiliza `kill %número_de_trabajo`. 
+- Los trabajos están ligados a la sesión de shell actual; al cerrar el terminal, se terminan. 
+- Para que un proceso persista después de cerrar la sesión, puedes usar `nohup comando &` o `disown` después de enviarlo a segundo plano.
 
 - **Ctrl + Z:** Envía el proceso actual a segundo plano y lo detiene (stop).
 - **jobs:** Lista los trabajos (procesos) que se están ejecutando o están detenidos en segundo plano.
@@ -284,6 +323,7 @@ A menudo, necesitamos ejecutar comandos en segundo plano para liberar el termina
 - **Ejecutar un comando directamente en segundo plano:**
     - `comando &`: Ejecuta `comando` directamente en segundo plano.
 
+
 ## 4. Servicios del sistema
 
 Los servicios del sistema son programas que se ejecutan en segundo plano (demonios) y proporcionan funcionalidades como servidores web, bases de datos o servicios de red.
@@ -292,29 +332,16 @@ Los servicios del sistema son programas que se ejecutan en segundo plano (demoni
 
 **systemd** es el sistema de inicio y gestor de servicios moderno en la mayoría de las distribuciones Linux. **systemctl** es su principal herramienta de control.
 
-- **Iniciar un servicio:** `sudo systemctl start nombre_del_servicio`
-- **Detener un servicio:** `sudo systemctl stop nombre_del_servicio`
-- **Reiniciar un servicio:** `sudo systemctl restart nombre_del_servicio` 
-- **Recargar la configuración de un servicio (sin reiniciarlo completamente):** `sudo systemctl reload nombre_del_servicio`
-- **Comprobar el estado de un servicio:** `systemctl status nombre_del_servicio   # Esto muestra si el servicio está activo, si ha habido errores, etc.`
-- **Habilitar un servicio para que se inicie automáticamente en el arranque:** `sudo systemctl enable nombre_del_servicio`
-- **Deshabilitar un servicio para que no se inicie automáticamente en el arranque:** `sudo systemctl disable nombre_del_servicio`
-- **Ver todos los servicios cargados:** `systemctl list-units --type=service`
-
-### 4.2. `SysVinit` (`service`)
-
-Antes de `systemd`, `SysVinit` era el sistema de inicio dominante. Aunque `systemd` lo ha reemplazado en la mayoría de las distribuciones modernas, es útil conocer su concepto, ya que aún puedes encontrar sistemas que lo utilicen o scripts heredados.
-
-- Los servicios se controlaban con el comando `service` o directamente con scripts en `/etc/init.d/`.
-
-``` bash
-  sudo service nombre_del_servicio start
-  sudo service nombre_del_servicio stop
-  sudo service nombre_del_servicio restart
-  sudo service nombre_del_servicio status
-```
-
-- Aunque `systemctl` es el método preferido, muchas distribuciones con `systemd` todavía permiten usar la sintaxis `service` para compatibilidad.
+| Acción | Comando |
+|--------|---------|
+| Iniciar un servicio | `sudo systemctl start nombre_del_servicio` |
+| Detener un servicio | `sudo systemctl stop nombre_del_servicio` |
+| Reiniciar un servicio | `sudo systemctl restart nombre_del_servicio` |
+| Recargar la configuración de un servicio (sin reiniciarlo completamente) | `sudo systemctl reload nombre_del_servicio` |
+| Comprobar el estado de un servicio | `systemctl status nombre_del_servicio` |
+| Habilitar un servicio para que se inicie automáticamente en el arranque | `sudo systemctl enable nombre_del_servicio` |
+| Deshabilitar un servicio para que no se inicie automáticamente en el arranque | `sudo systemctl disable nombre_del_servicio` |
+| Ver todos los servicios cargados | `systemctl list-units --type=service` |
 
 
 ## 5. Optimización de la memoria
@@ -322,6 +349,8 @@ Antes de `systemd`, `SysVinit` era el sistema de inicio dominante. Aunque `syste
 La memoria RAM es un recurso crítico. Una buena gestión puede mejorar significativamente el rendimiento.
 
 ### 5.1. Configuración de la partición `swap`
+
+Durante la instalación de una distribución Linux, se recomienda crear una partición dedicada para swap. El tamaño típico es de 1 a 2 veces la cantidad de RAM instalada, aunque con sistemas modernos con mucha RAM, se puede optar por un swap más pequeño o incluso omitirlo si se planea usar un archivo swap posteriormente. La partición swap se crea con el tipo de sistema de archivos 'linux-swap'.
 
 La **partición swap** (o espacio de intercambio) es un área en el disco duro que Linux utiliza como memoria virtual cuando la RAM física se agota. No es un sustituto de la RAM, ya que el acceso al disco es mucho más lento, pero ayuda a evitar fallos del sistema por falta de memoria.
 
@@ -372,23 +401,15 @@ Puedes editar `/etc/fstab` con `sudo nano /etc/fstab`.
     vm.swappiness=10
 ```
 
-### 5.2. Liberar caché
-
-Linux utiliza caché de disco para mejorar el rendimiento, guardando datos recientes en RAM. Si necesitas liberar RAM rápidamente, puedes vaciar la caché, aunque el sistema la reconstruirá.
-
-- **Liberar caché de página, dentry e inode:**
-``` bash
-  sudo sync; echo 3 | sudo tee /proc/sys/vm/drop_caches
-```
-    - `sync`: Asegura que todos los datos en búfer se escriban en disco.
-    - `echo 3 > /proc/sys/vm/drop_caches`: Le indica al kernel que libere la caché.
-
 
 ## 6. Análisis de la actividad del sistema
 
 Los archivos de log y las herramientas de registro son vitales para diagnosticar problemas, auditar actividades y monitorizar el sistema.
 
+Un archivo de log (o registro) es un archivo que contiene un registro cronológico de eventos, mensajes y actividades del sistema operativo, aplicaciones o servicios. Estos archivos son esenciales para el diagnóstico de problemas, la auditoría de seguridad y la monitorización del rendimiento.
+
 ### 6.1. Archivos de log (`/var/log/syslog`, `/var/log/auth.log`, etc.)
+
 
 El directorio `/var/log/` contiene la mayoría de los archivos de registro del sistema.
 
