@@ -499,6 +499,55 @@ Compartir recursos en red es una parte fundamental de la administración de sist
 - **Ventajas:** Facilita la colaboración en entornos mixtos.
 - **Configuración principal:** Se realiza en el archivo `/etc/samba/smb.conf`, donde se definen los directorios a compartir, permisos de acceso, usuarios, etc.
 
+??? info "Configuración Samba"
+
+    **Instalación en el servidor:**
+
+    ``` bash
+    sudo apt update
+    sudo apt install samba
+    ``` 
+
+    Crear la carpeta:  
+    ``` bash
+    mkdir -p /home/tu_usuario/compartida
+    ```
+    Asignar permisos: 
+    ``` bash
+    chmod 777 /home/tu_usuario/compartida
+    ``` 
+    **Configuración del servidor samba**
+
+    ``` bash
+    sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.bak
+    sudo nano /etc/samba/smb.conf
+    ```
+    
+    Pegar al final
+
+    ``` bash
+    [CarpetaCompartida]
+    path = /home/tu_usuario/compartida
+    browseable = yes
+    read only = no
+    guest ok = yes
+    force user = tu_usuario
+    ```
+ 
+    Ejecutar
+ 
+    ``` bash
+     sudo systemctl restart smbd
+    ```
+ 
+    **Conexión desde los clientes:**
+
+    Abre el Explorador de Archivos.
+    
+    En la barra de direcciones superior, escribe: \\192.168.1.15\CarpetaCompartida
+
+
+
 ### 8.2. Montaje de unidades de red (NFS, SMB)
 
 Podemos montar directorios compartidos desde otros sistemas en nuestro propio sistema de archivos, haciéndolos parecer como directorios locales.
