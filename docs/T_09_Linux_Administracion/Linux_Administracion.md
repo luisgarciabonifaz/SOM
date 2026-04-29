@@ -157,6 +157,18 @@ El comando `sudo` (SuperUser DO) permite a usuarios autorizados ejecutar comando
 ```
     Después de añadir al usuario, este deberá cerrar sesión y volver a iniciarla para que los cambios surtan efecto.
 
+- **Cambiar a otro usuario con `su`:** El comando `su` permite iniciar una sesión temporal como otro usuario, normalmente root si no se especifica usuario. A diferencia de `sudo`, `su` pide la contraseña del usuario destino y mantiene la sesión hasta que se sale con `exit` o `Ctrl+D`.
+
+``` bash
+  su -
+```
+
+  `su -` inicia una sesión de login como root, cargando el entorno y el directorio HOME de ese usuario.
+
+- **Uso de `/etc/skel`:** El directorio `/etc/skel` contiene los archivos y carpetas de configuración predeterminados que se copian al directorio HOME de un nuevo usuario cuando se crea con `useradd -m` o `adduser`. Es útil para definir un entorno inicial común, por ejemplo con `.bashrc`, `.profile` o carpetas iniciales como `Desktop`.
+
+  Si quieres personalizar la configuración inicial de todos los usuarios nuevos, edita los archivos dentro de `/etc/skel`.
+
 ## 2. Organización de archivos del sistema
 
 ### 2.1. Comandos `find`, `locate`, `grep`
@@ -202,19 +214,6 @@ Los editores de texto de consola son esenciales para editar archivos de configur
         - `Ctrl + W`: Buscar texto.
         - `Ctrl + K`: Cortar línea.
         - `Ctrl + U`: Pegar línea.
-- **vi/vim:** Vi (y su versión mejorada Vim) es un editor más potente y complejo, con dos modos principales:
-    - **Modo Normal (o de comandos):** Para navegar, copiar, pegar y eliminar texto.
-    - **Modo de Inserción:** Para escribir texto.
-    - `vi nombre_de_archivo`: Abre `nombre_de_archivo`.
-    - **Comandos básicos en vi/vim:**
-        - `i`: Entrar en modo de inserción (para escribir).
-        - `Esc`: Volver al modo normal.
-        - `:w`: Guardar el archivo.
-        - `:q`: Salir del editor (solo si no hay cambios sin guardar).
-        - `:wq` o `ZZ`: Guardar y salir.
-        - `:q!`: Salir sin guardar los cambios.
-        - `x`: Borrar el carácter bajo el cursor (en modo normal).
-        - `dd`: Borrar la línea actual (en modo normal).
 
 
 ## 3. Procesos del usuario
