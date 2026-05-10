@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasapalabra Linux - Gestión de Archivos</title>
+    <style>
+        :root {
+            --blue-main: #0047ab;
+            --green-success: #2ecc71;
+            --red-error: #e74c3c;
+            --yellow-waiting: #f1c40f;
+            --bg-color: #f0f2f5;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header {
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: var(--blue-main);
+            margin-bottom: 5px;
+        }
+
+        .game-info {
+            display: flex;
+            justify-content: space-around;
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* El Rosco */
+        .rosco-container {
+            position: relative;
+            width: 350px;
+            height: 350px;
+            margin: 40px auto;
+        }
+
+        .letter {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            background: var(--blue-main);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+
+        .letter.current {
+            transform: scale(1.3);
+            box-shadow: 0 0 15px var(--blue-main);
+            z-index: 10;
+        }
+
+        .letter.success { background-color: var(--green-success); }
+        .letter.error { background-color: var(--red-error); }
+        .letter.waiting { background-color: var(--blue-main); }
+
+        /* Pregunta y Controles */
+        .question-box {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            min-height: 150px;
+        }
+
+        .letter-hint {
+            font-size: 1.5rem;
+            color: var(--blue-main);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .definition {
+            font-size: 1.1rem;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        input[type="text"] {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            width: 200px;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--blue-main);
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: opacity 0.2s;
+        }
+
+        .btn-send { background-color: var(--green-success); color: white; }
+        .btn-pasapalabra { background-color: var(--yellow-waiting); color: #333; }
+        
+        button:hover { opacity: 0.9; }
+
+        /* Pantalla Final */
+        #end-screen {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255,255,255,0.95);
+            z-index: 100;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .result-score {
+            font-size: 3rem;
+            color: var(--blue-main);
+            margin: 20px 0;
+        }
+
+        @media (max-width: 500px) {
+            .rosco-container { width: 280px; height: 280px; }
+            .letter { width: 28px; height: 28px; font-size: 11px; }
+            input[type="text"] { width: 120px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="game-container">
+    <header>
+        <h1>Pasapalabra Linux</h1>
+        <p>Gestión de Archivos, Directorios y Permisos</p>
+    </header>
+
+    <div class="game-info">
+        <div id="timer">Tiempo: 300</div>
+        <div id="score">Aciertos: 0</div>
+        <div id="errors">Errores: 0</div>
+    </div>
+
+    <div class="rosco-container" id="rosco">
+        <!-- Las letras se generarán con JS -->
+    </div>
+
+    <div class="question-box">
+        <div id="hint-text" class="letter-hint">Empieza por A</div>
+        <p id="definition-text" class="definition">Cargando definición...</p>
+        
+        <div class="input-group">
+            <input type="text" id="answer-input" placeholder="Escribe tu respuesta..." autocomplete="off">
+            <button class="btn-send" id="btn-submit">Enviar</button>
+            <button class="btn-pasapalabra" id="btn-pasapalabra">Pasapalabra</button>
+        </div>
+    </div>
+</div>
+
+<div id="end-screen">
+    <h1>¡Juego Terminado!</h1>
+    <div class="result-score" id="final-score">0</div>
+    <p id="final-message">Has completado el rosco de Linux.</p>
+    <button onclick="location.reload()" style="background: var(--blue-main); color: white;">Jugar de nuevo</button>
+</div>
+
+<script>
+    // Datos del juego basados en "Linux_Gestion_Archivos.md"
+    const questions = [
+        { letter: 'A', answer: 'absoluta', status: 0, hint: 'Contiene la A', question: 'Tipo de ruta que siempre empieza desde la raíz (/), indicando el camino completo.' },
+        { letter: 'B', answer: 'bin', status: 0, hint: 'Empieza por B', question: 'Directorio que guarda los comandos y programas esenciales (binarios) del sistema.' },
+        { letter: 'C', answer: 'chmod', status: 0, hint: 'Empieza por C', question: 'Comando que se utiliza para cambiar los permisos de acceso de un archivo o directorio.' },
+        { letter: 'D', answer: 'directorio', status: 0, hint: 'Empieza por D', question: 'Equivalente a una "carpeta", se utiliza para organizar archivos de forma jerárquica.' },
+        { letter: 'E', answer: 'etc', status: 0, hint: 'Empieza por E', question: 'Directorio que contiene los archivos de configuración del sistema y aplicaciones.' },
+        { letter: 'F', answer: 'find', status: 0, hint: 'Empieza por F', question: 'Comando potente para buscar archivos basándose en criterios como nombre, tamaño o fecha.' },
+        { letter: 'G', answer: 'grep', status: 0, hint: 'Empieza por G', question: 'Comando que permite buscar un texto o patrón específico dentro de uno o varios archivos.' },
+        { letter: 'H', answer: 'home', status: 0, hint: 'Empieza por H', question: 'Directorio principal donde se guardan las carpetas personales de los usuarios.' },
+        { letter: 'I', answer: 'inodo', status: 0, hint: 'Empieza por I', question: 'Estructura de datos que almacena toda la información de un archivo excepto su nombre y el contenido.' },
+        { letter: 'J', answer: 'jerarquica', status: 0, hint: 'Contiene la J', question: 'Tipo de estructura que usa Linux para organizar archivos, empezando desde la raíz.' },
+        { letter: 'L', answer: 'ln', status: 0, hint: 'Empieza por L', question: 'Comando utilizado para crear enlaces (links) entre archivos.' },
+        { letter: 'M', answer: 'mkdir', status: 0, hint: 'Empieza por M', question: 'Comando que permite crear un nuevo directorio vacío.' },
+        { letter: 'N', answer: 'navegacion', status: 0, hint: 'Contiene la N', question: 'Acción de moverse por la estructura de directorios usando comandos como cd.' },
+        { letter: 'O', answer: 'chown', status: 0, hint: 'Contiene la O', question: 'Comando para cambiar el propietario (Owner) de un archivo o directorio.' },
+        { letter: 'P', answer: 'permisos', status: 0, hint: 'Empieza por P', question: 'Atributos que determinan quién puede leer, escribir o ejecutar un archivo.' },
+        { letter: 'Q', answer: 'bloque', status: 0, hint: 'Contiene la Q', question: 'Unidad de almacenamiento en el disco donde se guarda el contenido real de los archivos.' },
+        { letter: 'R', answer: 'raiz', status: 0, hint: 'Empieza por R', question: 'Punto de partida de todo el sistema de archivos de Linux, representado por el símbolo /.' },
+        { letter: 'S', answer: 'simbolico', status: 0, hint: 'Empieza por S', question: 'Tipo de enlace que funciona como un acceso directo a otro archivo o directorio.' },
+        { letter: 'T', answer: 'tmp', status: 0, hint: 'Empieza por T', question: 'Directorio donde se guardan los archivos temporales que se borran al reiniciar.' },
+        { letter: 'U', answer: 'usuario', status: 0, hint: 'Empieza por U', question: 'Sujeto al que se le asignan los primeros tres caracteres de los permisos rwx.' },
+        { letter: 'V', answer: 'var', status: 0, hint: 'Empieza por V', question: 'Directorio que guarda datos variables como registros de actividad (logs).' },
+        { letter: 'W', answer: 'write', status: 0, hint: 'Empieza por W', question: 'Permiso de escritura (representado por "w") que permite modificar un archivo.' },
+        { letter: 'X', answer: 'ejecucion', status: 0, hint: 'Contiene la X', question: 'Permiso representado por la letra x que permite correr un programa o entrar en un directorio.' },
+        { letter: 'Y', answer: 'sticky', status: 0, hint: 'Contiene la Y', question: 'Bit especial (____ bit) que impide que usuarios borren archivos de otros en carpetas compartidas.' },
+        { letter: 'Z', answer: 'raiz', status: 0, hint: 'Contiene la Z', question: 'Sinónimo del directorio principal / (contiene la Z en su nombre en español).' }
+    ];
+
+    let currentIndex = 0;
+    let timeLeft = 300;
+    let score = 0;
+    let errors = 0;
+    let timerId = null;
+    let gameEnded = false;
+
+    // Initialize the Rosco (Circle)
+    function initRosco() {
+        const rosco = document.getElementById('rosco');
+        const total = questions.length;
+        const radius = 150; 
+
+        questions.forEach((q, i) => {
+            const angle = (i * 2 * Math.PI / total) - (Math.PI / 2);
+            const x = Math.cos(angle) * radius + 150;
+            const y = Math.sin(angle) * radius + 150;
+
+            const div = document.createElement('div');
+            div.id = `letter-${i}`;
+            div.className = 'letter';
+            div.style.left = `${x}px`;
+            div.style.top = `${y}px`;
+            div.textContent = q.letter;
+            rosco.appendChild(div);
+        });
+        updateCurrentQuestion();
+    }
+
+    // Update current UI question
+    function updateCurrentQuestion() {
+        if (gameEnded) return;
+
+        let start = currentIndex;
+        while (questions[currentIndex].status !== 0) {
+            currentIndex = (currentIndex + 1) % questions.length;
+            if (currentIndex === start) {
+                endGame();
+                return;
+            }
+        }
+
+        const q = questions[currentIndex];
+        document.getElementById('hint-text').textContent = q.hint;
+        document.getElementById('definition-text').textContent = q.question;
+        document.getElementById('answer-input').value = '';
+        document.getElementById('answer-input').focus();
+
+        document.querySelectorAll('.letter').forEach((el, idx) => {
+            el.classList.remove('current');
+            if (idx === currentIndex) el.classList.add('current');
+        });
+    }
+
+    function checkAnswer() {
+        const input = document.getElementById('answer-input').value.toLowerCase().trim();
+        if (!input) return;
+
+        const q = questions[currentIndex];
+        const letterEl = document.getElementById(`letter-${currentIndex}`);
+
+        // Handle simple normalization for Spanish accents if needed
+        const normalizedInput = input.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        const normalizedAnswer = q.answer.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+        if (normalizedInput === normalizedAnswer) {
+            q.status = 1; 
+            score++;
+            letterEl.classList.add('success');
+            document.getElementById('score').textContent = `Aciertos: ${score}`;
+        } else {
+            q.status = 2; 
+            errors++;
+            letterEl.classList.add('error');
+            document.getElementById('errors').textContent = `Errores: ${errors}`;
+        }
+
+        nextQuestion();
+    }
+
+    function nextQuestion() {
+        const pending = questions.filter(q => q.status === 0).length;
+        if (pending === 0) {
+            endGame();
+        } else {
+            currentIndex = (currentIndex + 1) % questions.length;
+            updateCurrentQuestion();
+        }
+    }
+
+    function pasapalabra() {
+        currentIndex = (currentIndex + 1) % questions.length;
+        updateCurrentQuestion();
+    }
+
+    function startTimer() {
+        timerId = setInterval(() => {
+            timeLeft--;
+            document.getElementById('timer').textContent = `Tiempo: ${timeLeft}`;
+            if (timeLeft <= 0) {
+                endGame();
+            }
+        }, 1000);
+    }
+
+    function endGame() {
+        gameEnded = true;
+        clearInterval(timerId);
+        document.getElementById('end-screen').style.display = 'flex';
+        document.getElementById('final-score').textContent = `${score} / ${questions.length}`;
+        
+        let msg = "";
+        if (score === questions.length) msg = "¡Increíble! Dominas el sistema de archivos de Linux.";
+        else if (score > 15) msg = "¡Muy bien! Conoces bien la estructura y los permisos.";
+        else msg = "Sigue practicando la navegación y gestión de archivos.";
+        
+        document.getElementById('final-message').textContent = msg;
+    }
+
+    // UI Events
+    document.getElementById('btn-submit').onclick = checkAnswer;
+    document.getElementById('btn-pasapalabra').onclick = pasapalabra;
+    document.getElementById('answer-input').onkeypress = (e) => {
+        if (e.key === 'Enter') checkAnswer();
+    };
+
+    window.onload = () => {
+        initRosco();
+        startTimer();
+    };
+</script>
+
+</body>
+</html>

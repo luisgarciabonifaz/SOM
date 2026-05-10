@@ -425,3 +425,8 @@ Estos son **permisos especiales** que añaden funcionalidades adicionales a los 
   chmod o+t /tmp
   chmod 1777 /tmp
 ```
+
+
+## 5. Repaso
+
+[Repaso del tema](Pasapalabra_08.html)

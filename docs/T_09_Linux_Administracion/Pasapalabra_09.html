@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasapalabra Linux - Administración y Rendimiento</title>
+    <style>
+        :root {
+            --blue-main: #0047ab;
+            --green-success: #2ecc71;
+            --red-error: #e74c3c;
+            --yellow-waiting: #f1c40f;
+            --bg-color: #f0f2f5;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header {
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: var(--blue-main);
+            margin-bottom: 5px;
+        }
+
+        .game-info {
+            display: flex;
+            justify-content: space-around;
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* El Rosco */
+        .rosco-container {
+            position: relative;
+            width: 350px;
+            height: 350px;
+            margin: 40px auto;
+        }
+
+        .letter {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            background: var(--blue-main);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+
+        .letter.current {
+            transform: scale(1.3);
+            box-shadow: 0 0 15px var(--blue-main);
+            z-index: 10;
+        }
+
+        .letter.success { background-color: var(--green-success); }
+        .letter.error { background-color: var(--red-error); }
+        .letter.waiting { background-color: var(--blue-main); }
+
+        /* Pregunta y Controles */
+        .question-box {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            min-height: 150px;
+        }
+
+        .letter-hint {
+            font-size: 1.5rem;
+            color: var(--blue-main);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .definition {
+            font-size: 1.1rem;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        input[type="text"] {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            width: 200px;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--blue-main);
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: opacity 0.2s;
+        }
+
+        .btn-send { background-color: var(--green-success); color: white; }
+        .btn-pasapalabra { background-color: var(--yellow-waiting); color: #333; }
+        
+        button:hover { opacity: 0.9; }
+
+        /* Pantalla Final */
+        #end-screen {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255,255,255,0.95);
+            z-index: 100;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .result-score {
+            font-size: 3rem;
+            color: var(--blue-main);
+            margin: 20px 0;
+        }
+
+        @media (max-width: 500px) {
+            .rosco-container { width: 280px; height: 280px; }
+            .letter { width: 28px; height: 28px; font-size: 11px; }
+            input[type="text"] { width: 120px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="game-container">
+    <header>
+        <h1>Pasapalabra Linux</h1>
+        <p>Administración de Sistemas y Rendimiento</p>
+    </header>
+
+    <div class="game-info">
+        <div id="timer">Tiempo: 300</div>
+        <div id="score">Aciertos: 0</div>
+        <div id="errors">Errores: 0</div>
+    </div>
+
+    <div class="rosco-container" id="rosco">
+        <!-- Letras generadas por JS -->
+    </div>
+
+    <div class="question-box">
+        <div id="hint-text" class="letter-hint">Cargando...</div>
+        <p id="definition-text" class="definition">Seleccionando pregunta de administración...</p>
+        
+        <div class="input-group">
+            <input type="text" id="answer-input" placeholder="Tu respuesta..." autocomplete="off">
+            <button class="btn-send" id="btn-submit">Enviar</button>
+            <button class="btn-pasapalabra" id="btn-pasapalabra">Pasapalabra</button>
+        </div>
+    </div>
+</div>
+
+<div id="end-screen">
+    <h1>Administración Completada</h1>
+    <div class="result-score" id="final-score">0</div>
+    <p id="final-message">Resultado de tu examen de administración Linux.</p>
+    <button onclick="location.reload()" style="background: var(--blue-main); color: white;">Reintentar</button>
+</div>
+
+<script>
+    // Datos basados en "Linux_Administracion.md"
+    const questions = [
+        { letter: 'A', answer: 'admin', status: 0, hint: 'Contiene la A', question: 'Perfil del usuario que realiza tareas enfocadas a gestionar usuarios, grupos, procesos y servicios.' },
+        { letter: 'B', answer: 'bash', status: 0, hint: 'Empieza por B', question: 'Shell por defecto que se le suele asignar a los nuevos usuarios en Linux.' },
+        { letter: 'C', answer: 'cpu', status: 0, hint: 'Empieza por C', question: 'Recurso del sistema que comandos como "top" o "ps" monitorizan para ver el uso de procesos.' },
+        { letter: 'D', answer: 'deluser', status: 0, hint: 'Empieza por D', question: 'Comando que se utiliza para eliminar una cuenta de usuario del sistema.' },
+        { letter: 'E', answer: 'estado', status: 0, hint: 'Empieza por E', question: 'Lo que muestra "systemctl status": el ____ de un servicio (activo, inactivo, etc.).' },
+        { letter: 'F', answer: 'free', status: 0, hint: 'Empieza por F', question: 'Comando que muestra la cantidad de memoria RAM libre y usada en el sistema.' },
+        { letter: 'G', answer: 'groupadd', status: 0, hint: 'Empieza por G', question: 'Comando utilizado para crear un nuevo grupo en el sistema.' },
+        { letter: 'H', answer: 'host', status: 0, hint: 'Contiene la H', question: 'Nombre o dirección de destino que recibe los paquetes cuando ejecutamos un "ping".' },
+        { letter: 'I', answer: 'ip', status: 0, hint: 'Empieza por I', question: 'Comando moderno (ip a) que sustituye a ifconfig para ver direcciones de red.' },
+        { letter: 'J', answer: 'ejecucion', status: 0, hint: 'Contiene la J', question: 'Un proceso es básicamente un programa en estado de ____.' },
+        { letter: 'K', answer: 'kill', status: 0, hint: 'Empieza por K', question: 'Comando para enviar señales a procesos, comúnmente usado para terminarlos.' },
+        { letter: 'L', answer: 'load', status: 0, hint: 'Empieza por L', question: 'Carga media del sistema que se puede visualizar con el comando "uptime".' },
+        { letter: 'M', answer: 'modificar', status: 0, hint: 'Empieza por M', question: 'Acción que realiza el comando "usermod" sobre las cuentas de usuario.' },
+        { letter: 'N', answer: 'nice', status: 0, hint: 'Empieza por N', question: 'Comando que permite iniciar un proceso con una prioridad de CPU específica.' },
+        { letter: 'O', answer: 'secundarios', status: 0, hint: 'Contiene la O', question: 'Grupos adicionales a los que puede pertenecer un usuario además del primario.' },
+        { letter: 'P', answer: 'passwd', status: 0, hint: 'Empieza por P', question: 'Archivo (/etc/____) que almacena la información básica de las cuentas de usuario.' },
+        { letter: 'Q', answer: 'bloqueado', status: 0, hint: 'Contiene la Q', question: 'Estado en el que puede quedar un usuario si su contraseña expira o se inhabilita.' },
+        { letter: 'R', answer: 'renice', status: 0, hint: 'Empieza por R', question: 'Comando para cambiar la prioridad de un proceso que ya se está ejecutando.' },
+        { letter: 'S', answer: 'ss', status: 0, hint: 'Empieza por S', question: 'Sucesor de netstat que muestra estadísticas de sockets y puertos abiertos.' },
+        { letter: 'T', answer: 'top', status: 0, hint: 'Empieza por T', question: 'Herramienta interactiva que muestra en tiempo real los procesos que más recursos consumen.' },
+        { letter: 'U', answer: 'uptime', status: 0, hint: 'Empieza por U', question: 'Comando que indica cuánto tiempo lleva el sistema encendido y la carga media.' },
+        { letter: 'V', answer: 'variables', status: 0, hint: 'Contiene la V', question: 'Tipo de datos que guarda el directorio /var, como los logs de administración.' },
+        { letter: 'W', answer: 'swap', status: 0, hint: 'Contiene la W', question: 'Memoria de intercambio en disco que se usa cuando la RAM está llena.' },
+        { letter: 'X', answer: 'exit', status: 0, hint: 'Contiene la X', question: 'Comando para cerrar una sesión de terminal o salir de un shell.' },
+        { letter: 'Y', answer: 'systemctl', status: 0, hint: 'Contiene la Y', question: 'Comando principal de systemd para gestionar servicios y unidades del sistema.' },
+        { letter: 'Z', answer: 'interfaz', status: 0, hint: 'Contiene la Z', question: 'Lo que listamos con "ip a": las ____ de red disponibles (eth0, wlan0, lo).' }
+    ];
+
+    let currentIndex = 0;
+    let timeLeft = 300;
+    let score = 0;
+    let errors = 0;
+    let timerId = null;
+    let gameEnded = false;
+
+    function initRosco() {
+        const rosco = document.getElementById('rosco');
+        const total = questions.length;
+        const radius = 150; 
+
+        questions.forEach((q, i) => {
+            const angle = (i * 2 * Math.PI / total) - (Math.PI / 2);
+            const x = Math.cos(angle) * radius + 150;
+            const y = Math.sin(angle) * radius + 150;
+
+            const div = document.createElement('div');
+            div.id = `letter-${i}`;
+            div.className = 'letter';
+            div.style.left = `${x}px`;
+            div.style.top = `${y}px`;
+            div.textContent = q.letter;
+            rosco.appendChild(div);
+        });
+        updateCurrentQuestion();
+    }
+
+    function updateCurrentQuestion() {
+        if (gameEnded) return;
+
+        let start = currentIndex;
+        while (questions[currentIndex].status !== 0) {
+            currentIndex = (currentIndex + 1) % questions.length;
+            if (currentIndex === start) {
+                endGame();
+                return;
+            }
+        }
+
+        const q = questions[currentIndex];
+        document.getElementById('hint-text').textContent = q.hint;
+        document.getElementById('definition-text').textContent = q.question;
+        document.getElementById('answer-input').value = '';
+        document.getElementById('answer-input').focus();
+
+        document.querySelectorAll('.letter').forEach((el, idx) => {
+            el.classList.remove('current');
+            if (idx === currentIndex) el.classList.add('current');
+        });
+    }
+
+    function checkAnswer() {
+        const input = document.getElementById('answer-input').value.toLowerCase().trim();
+        if (!input) return;
+
+        const q = questions[currentIndex];
+        const letterEl = document.getElementById(`letter-${currentIndex}`);
+
+        const normInput = input.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        const normAnswer = q.answer.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+        if (normInput === normAnswer) {
+            q.status = 1; 
+            score++;
+            letterEl.classList.add('success');
+            document.getElementById('score').textContent = `Aciertos: ${score}`;
+        } else {
+            q.status = 2; 
+            errors++;
+            letterEl.classList.add('error');
+            document.getElementById('errors').textContent = `Errores: ${errors}`;
+        }
+
+        nextQuestion();
+    }
+
+    function nextQuestion() {
+        const pending = questions.filter(q => q.status === 0).length;
+        if (pending === 0) {
+            endGame();
+        } else {
+            currentIndex = (currentIndex + 1) % questions.length;
+            updateCurrentQuestion();
+        }
+    }
+
+    function pasapalabra() {
+        currentIndex = (currentIndex + 1) % questions.length;
+        updateCurrentQuestion();
+    }
+
+    function startTimer() {
+        timerId = setInterval(() => {
+            timeLeft--;
+            document.getElementById('timer').textContent = `Tiempo: ${timeLeft}`;
+            if (timeLeft <= 0) endGame();
+        }, 1000);
+    }
+
+    function endGame() {
+        gameEnded = true;
+        clearInterval(timerId);
+        document.getElementById('end-screen').style.display = 'flex';
+        document.getElementById('final-score').textContent = `${score} / ${questions.length}`;
+        
+        let msg = "";
+        if (score === questions.length) msg = "¡Administrador de élite! Has optimizado el rosco al 100%.";
+        else if (score > 18) msg = "¡Excelente nivel! Sabes monitorizar y gestionar el sistema con soltura.";
+        else if (score > 10) msg = "Buen conocimiento base, pero revisa los comandos de red y señales.";
+        else msg = "Necesitas repasar la administración avanzada de procesos y usuarios.";
+        
+        document.getElementById('final-message').textContent = msg;
+    }
+
+    document.getElementById('btn-submit').onclick = checkAnswer;
+    document.getElementById('btn-pasapalabra').onclick = pasapalabra;
+    document.getElementById('answer-input').onkeypress = (e) => {
+        if (e.key === 'Enter') checkAnswer();
+    };
+
+    window.onload = () => {
+        initRosco();
+        startTimer();
+    };
+</script>
+
+</body>
+</html>

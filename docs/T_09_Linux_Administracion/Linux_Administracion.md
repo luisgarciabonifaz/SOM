@@ -609,3 +609,7 @@ Estos comandos son fundamentales para verificar la conectividad de red y solucio
     - `ss -tunl`: Muestra todos los puertos TCP y UDP en escucha (`-t` TCP, `-u` UDP, `-n` numérico, `-l` listening).
 - **`dig` (domain information groper):** Herramienta para consultar servidores DNS y resolver nombres de dominio.
     - `dig google.com`: Muestra información DNS para `google.com`.
+
+## 10. Repaso
+
+[Repaso del tema](Pasapalabra_09.html)

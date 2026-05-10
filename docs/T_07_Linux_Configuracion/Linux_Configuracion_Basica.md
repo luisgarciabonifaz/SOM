@@ -613,3 +613,8 @@ Un **script de shell** es un archivo de texto que contiene una secuencia de coma
 ``` bash
    ./actualizar.sh
 ```
+
+
+## 9. Repaso
+
+[Repaso del tema](Pasapalabra_07.html)
