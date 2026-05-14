@@ -1,0 +1,246 @@
+#!/bin/bash
+
+# =========================================================
+# PLANTILLA DE RESPUESTAS - EXAMEN ADMINISTRACIÓN Y OPTIMIZACIÓN LINUX
+# Alumno:
+# Fecha:
+# =========================================================
+
+clear
+
+echo "======================================================="
+echo " EXAMEN ADMINISTRACIÓN Y OPTIMIZACIÓN LINUX"
+echo "======================================================="
+
+# =========================================================
+# PARTE 1 — ADMINISTRACIÓN DE USUARIOS Y GRUPOS
+# =========================================================
+
+echo ""
+echo "========== EJERCICIO 1 =========="
+
+echo ""
+echo "1. Crear grupo administracion:"
+# Comando
+
+
+
+echo ""
+echo "2. Crear usuario tecnico:"
+# Comando
+
+
+
+echo ""
+echo "3. Añadir tecnico al grupo sudo:"
+# Comando
+
+
+
+echo ""
+echo "4. Cambiar contraseña del usuario tecnico:"
+# Comando
+
+
+
+echo ""
+echo "========== EJERCICIO 2 =========="
+
+echo ""
+echo "1. Diferencia entre grupo primario y secundario:"
+# Respuesta
+
+
+
+echo ""
+echo "2. ¿Para qué sirve /etc/skel?"
+# Respuesta
+
+
+
+echo ""
+echo "3. Diferencia entre sudo y su -:"
+# Respuesta
+
+
+
+# =========================================================
+# PARTE 2 — BÚSQUEDA Y EDICIÓN DE ARCHIVOS
+# =========================================================
+
+echo ""
+echo "========== EJERCICIO 3 =========="
+
+echo ""
+echo "1. Buscar archivos .log en /var/log:"
+# Comando
+
+
+
+echo ""
+echo "2. Buscar archivos mayores de 100 MB en /home:"
+# Comando
+
+
+
+echo ""
+echo "3. Buscar la palabra error en /var/log/syslog:"
+# Comando
+
+
+
+# =========================================================
+# PARTE 3 — PROCESOS Y MONITORIZACIÓN
+# =========================================================
+
+echo ""
+echo "========== EJERCICIO 4 =========="
+
+echo ""
+echo "1. Mostrar todos los procesos:"
+# Comando
+
+
+
+echo ""
+echo "2. Ejecutar sleep 300:"
+# Comando
+
+
+
+echo ""
+echo "3. Enviar proceso a segundo plano:"
+# Comando
+
+
+
+echo ""
+echo "========== EJERCICIO 5 =========="
+
+echo ""
+echo "1. Ver procesos ordenados por consumo de memoria:"
+# Comando
+
+
+
+echo ""
+echo "2. ¿Cuántas tareas hay en ejecución?"
+# Respuesta / Pega en modo texto la parte de salida de pantalla que lo demuestra
+
+
+
+# =========================================================
+# PARTE 4 — SERVICIOS DEL SISTEMA
+# =========================================================
+
+echo ""
+echo "========== EJERCICIO 6 =========="
+
+echo ""
+echo "1. Comprobar estado del servicio ssh:"
+# Comando
+
+
+
+echo ""
+echo "2. Iniciar servicio ssh:"
+# Comando
+
+
+
+echo ""
+echo "3. Reiniciar servicio ssh:"
+# Comando
+
+
+
+# =========================================================
+# PARTE 5 — MEMORIA Y ALMACENAMIENTO
+# =========================================================
+
+echo ""
+echo "========== EJERCICIO 7 =========="
+
+echo ""
+echo "1. Mostrar espacio libre de los sistemas de archivos:"
+# Comando
+
+
+
+echo ""
+echo "2. Mostrar tamaño total de /var/log:"
+# Comando
+
+
+
+echo ""
+echo "3. Mostrar los 5 archivos/directorios más grandes en /home:"
+# Comando
+
+
+
+# =========================================================
+# PARTE 6 — LOGS Y ANÁLISIS DEL SISTEMA
+# =========================================================
+
+echo ""
+echo "========== EJERCICIO 8 =========="
+
+echo ""
+echo "1. Visualizar últimas líneas de /var/log/syslog:"
+# Comando
+
+
+
+# =========================================================
+# PARTE 7 — RED Y CONFIGURACIÓN DEL SISTEMA
+# =========================================================
+
+echo ""
+echo "========== EJERCICIO 9 =========="
+
+echo ""
+echo "1. Mostrar dirección IP:"
+# Comando
+
+
+
+echo ""
+echo "2. Mostrar tabla de rutas:"
+# Comando
+
+
+
+echo ""
+echo "3. Mostrar puertos abiertos en escucha:"
+# Comando
+
+
+
+echo ""
+echo "4. Función de /etc/fstab:"
+# Respuesta
+
+
+
+# =========================================================
+# PARTE 8 — COMPARTICIÓN DE RECURSOS
+# =========================================================
+
+echo ""
+echo "========== EJERCICIO 10 =========="
+
+echo ""
+echo "1. Diferencia entre NFS y SMB:"
+# Respuesta
+
+
+
+# =========================================================
+# FIN DEL EXAMEN
+# =========================================================
+
+echo ""
+echo "======================================================="
+echo " FIN DEL EXAMEN"
+echo "======================================================="

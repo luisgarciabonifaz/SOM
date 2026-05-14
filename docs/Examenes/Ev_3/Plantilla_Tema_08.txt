@@ -1,0 +1,304 @@
+#!/bin/bash
+
+# =========================================================
+# PLANTILLA DE RESPUESTAS - EXAMEN GESTIÓN DE ARCHIVOS LINUX
+# Alumno:
+# Fecha:
+# =========================================================
+
+clear
+
+echo "==============================================="
+echo " EXAMEN GESTIÓN DE ARCHIVOS EN LINUX"
+echo "==============================================="
+
+# =========================================================
+# PARTE 1 — ESTRUCTURA DEL SISTEMA DE ARCHIVOS
+# =========================================================
+
+echo ""
+echo "========== EJERCICIO 1 =========="
+
+echo ""
+echo "1. Mostrar directorio actual:"
+# Comando
+
+
+
+echo ""
+echo "2. Acceder /var/log usando una ruta absoluta (un solo comando)"
+# Comando
+
+
+
+echo ""
+echo "3. Volver al directorio personal usando una ruta relativa (un solo comando) "
+# Comando
+
+
+
+echo ""
+echo "4. Mostrar contenido de /etc: usando rutas absolutas (un solo comando)"
+# Comando
+
+
+
+echo ""
+echo "5. Explicación de directorios:"
+echo "--------------------------------------"
+
+echo "/home:"
+# Explicación
+
+
+
+echo "/etc:"
+# Explicación
+
+
+
+echo "/var:"
+# Explicación
+
+
+
+echo "/dev:"
+# Explicación
+
+
+
+# =========================================================
+# PARTE 2 — GESTIÓN DE ARCHIVOS Y DIRECTORIOS
+# =========================================================
+
+echo ""
+echo "========== EJERCICIO 2 =========="
+
+echo ""
+echo "1. Crear estructura de directorios:"
+# Comando/s
+
+
+
+echo ""
+echo "2. Crear archivos notas.txt y tareas.txt:"
+# Comando/s
+
+
+
+echo ""
+echo "3. Copiar notas.txt a backups:"
+# Comando
+
+
+
+echo ""
+echo "4. Renombrar tareas.txt:"
+# Comando
+
+
+
+echo ""
+echo "5. Mover tareas_final.txt a backups:"
+# Comando
+
+
+
+echo ""
+echo "6. Eliminar directorio imagenes:"
+# Comando
+
+
+
+# =========================================================
+# PARTE 3 — VISUALIZACIÓN DE CONTENIDO
+# =========================================================
+
+echo ""
+echo "========== EJERCICIO 3 =========="
+
+echo ""
+echo "1. Crear log.txt con 15 líneas:"
+# Comando
+
+
+
+echo ""
+echo "2. Mostrar las 5 primeras líneas:"
+# Comando
+
+
+
+echo ""
+echo "3. Mostrar las 3 últimas líneas:"
+# Comando
+
+
+
+# =========================================================
+# PARTE 4 — ENLACES Y ATRIBUTOS
+# =========================================================
+
+echo ""
+echo "========== EJERCICIO 4 =========="
+
+echo ""
+echo "1. Crear original.txt:"
+# Comando
+
+
+
+echo ""
+echo "2. Crear enlace simbólico:"
+# Comando
+
+
+
+echo ""
+echo "3. Crear enlace duro:"
+# Comando
+
+
+
+# =========================================================
+# PARTE 5 — PERMISOS EN LINUX
+# =========================================================
+
+echo ""
+echo "========== EJERCICIO 5 =========="
+
+echo ""
+echo "1. Crear script.sh:"
+# Comando
+
+
+
+echo ""
+echo "2. Asignar permisos:"
+# Comando
+
+
+
+echo ""
+echo "3. Mostrar permisos:"
+# Comando
+
+
+
+echo ""
+echo "4. Permisos en formato simbólico:"
+# Respuesta
+
+
+
+echo ""
+echo "5. Permisos en formato octal:"
+# Respuesta
+
+
+
+echo ""
+echo "========== EJERCICIO 6 =========="
+
+echo ""
+echo "1. Añadir permiso de ejecución al grupo:"
+# Comando
+
+
+
+echo ""
+echo "2. Quitar permiso de lectura a otros:"
+# Comando
+
+
+
+echo ""
+echo "3. Dar permisos completos al propietario:"
+# Comando
+
+
+
+echo ""
+echo "4. Mostrar permisos finales:"
+# Pega en modo texto la salida del comando
+
+
+
+echo ""
+echo "========== EJERCICIO 7 =========="
+
+echo ""
+echo "1. Crear directorio compartido:"
+# Comando
+
+
+
+echo ""
+echo "2. Asignar permisos:"
+# Comando
+
+
+# =========================================================
+# PARTE 6 — PROPIETARIOS Y GRUPOS
+# =========================================================
+
+echo ""
+echo "========== EJERCICIO 9 =========="
+
+echo ""
+echo "1. Cambiar propietario a alumno:"
+# Comando
+
+
+
+echo ""
+echo "2. Cambiar grupo a informatica:"
+# Comando
+
+
+
+echo ""
+echo "3. Cambio recursivo sobre practica:"
+# Comando
+
+
+
+# =========================================================
+# PARTE 7 — REFLEXIÓN PRÁCTICA
+# =========================================================
+
+echo ""
+echo "========== EJERCICIO 10 =========="
+
+echo ""
+echo "1. Diferencia entre enlace duro y simbólico:"
+# Respuesta
+
+
+
+echo ""
+echo "2. ¿Qué ocurre al borrar un archivo con enlace duro?"
+# Respuesta
+
+
+
+echo ""
+echo "3. ¿Para qué sirve el permiso de ejecución en un directorio?"
+# Respuesta
+
+
+
+echo ""
+echo "4. ¿Por qué puede ser peligroso rm -rf?"
+# Respuesta
+
+
+
+# =========================================================
+# FIN DEL EXAMEN
+# =========================================================
+
+echo ""
+echo "==============================================="
+echo " FIN DEL EXAMEN"
+echo "==============================================="
