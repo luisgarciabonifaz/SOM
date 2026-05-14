@@ -1,0 +1,42 @@
+Tema 9:
+# Criterios de evaluación
+
+| Aspecto                        | Puntuación    |
+| ------------------------------ | ------------- |
+| Usuarios y grupos              | 2 puntos      |
+| Búsqueda y edición de archivos | 1,5 puntos    |
+| Procesos y monitorización      | 2 puntos      |
+| Servicios del sistema          | 1 punto       |
+| Memoria y almacenamiento       | 1,5 puntos    |
+| Logs y análisis                | 0.5 puntos    |
+| Red y configuración            | 1,5 puntos    |
+| Compartición de recursos       | 1 punto       |
+
+
+Tema 8:
+# Criterios de evaluación
+
+| Aspecto                           | Puntuación    |
+| --------------------------------- | ------------- |
+| Navegación y estructura Linux     | 1,5 puntos    |
+| Gestión de archivos y directorios | 1,5 puntos    |
+| Visualización de contenido        | 1 punto       |
+| Enlaces y atributos               | 1 punto       |
+| Permisos Linux                    | 3 puntos      |
+| Propietarios y grupos             | 1 punto       |
+| Reflexión práctica                | 1 punto       |
+
+
+Tema 7:
+# Criterios de evaluación
+
+| Aspecto                      | Puntuación    |
+| ---------------------------- | ------------- |
+| Gestión de usuarios y grupos | 2 puntos      |
+| Gestión de discos y montaje  | 2 puntos      |
+| Copias de seguridad          | 2 puntos      |
+| Gestión de paquetes          | 1,5 puntos    |
+| Automatización con cron      | 1,5 puntos    |
+| Scripts Bash                 | 1 punto       |
+
+

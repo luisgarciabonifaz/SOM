@@ -1,0 +1,210 @@
+#!/bin/bash
+
+# =========================================================
+# PLANTILLA DE RESPUESTAS - EXAMEN CONFIGURACIÓN BÁSICA LINUX
+# Alumno:
+# Fecha:
+# =========================================================
+
+clear
+
+echo "==============================================="
+echo " EXAMEN CONFIGURACIÓN BÁSICA LINUX"
+echo "==============================================="
+
+# =========================================================
+# PARTE 1 — GESTIÓN DE USUARIOS Y GRUPOS
+# =========================================================
+
+echo ""
+echo "========== EJERCICIO 1 =========="
+
+echo ""
+echo "1. UID y GID del usuario:"
+# Escribe aquí el comando
+
+
+
+echo ""
+echo "2. Grupos a los que pertenece:"
+# Escribe aquí el comando
+
+
+
+echo ""
+echo "========== EJERCICIO 2 =========="
+
+echo ""
+echo "Información en /etc/passwd:"
+# Escribe aquí el comando
+
+
+
+echo ""
+echo "Información en /etc/group:"
+# Escribe aquí el comando
+
+
+
+echo ""
+echo "Explicación de los campos principales:"
+echo "--------------------------------------"
+# Escribe aquí tu explicación
+#
+#
+#
+
+
+# =========================================================
+# PARTE 2 — GESTIÓN DE DISCOS Y SISTEMAS DE ARCHIVOS
+# =========================================================
+
+echo ""
+echo "========== EJERCICIO 3 =========="
+
+echo ""
+echo "1. Discos y particiones:"
+# Comando utilizado
+
+
+
+echo ""
+echo "2. Tipo de sistema de archivos:"
+# Comando utilizado
+
+
+
+echo ""
+echo "3. Espacio utilizado y disponible:"
+# Comando utilizado
+
+
+
+echo ""
+echo "========== EJERCICIO 4 =========="
+
+echo ""
+echo "1. Crear punto de montaje:"
+# Comando
+
+
+
+echo ""
+echo "2. Montar unidad USB:"
+# Comando
+
+
+
+echo ""
+echo "3. Comprobar montaje:"
+# Comando
+
+
+
+echo ""
+echo "4. Desmontar unidad:"
+# Comando
+
+
+
+# =========================================================
+# PARTE 3 — COPIAS DE SEGURIDAD
+# =========================================================
+
+echo ""
+echo "========== EJERCICIO 5 =========="
+
+echo ""
+echo "1. Crear copia comprimida:"
+# Comando
+
+
+
+echo ""
+echo "2. Mostrar contenido del archivo:"
+# Comando
+
+
+
+echo ""
+echo "3. Extraer copia en /mnt/recuperacion:"
+# Comando
+
+
+
+# =========================================================
+# PARTE 4 — GESTIÓN DE PAQUETES
+# =========================================================
+
+echo ""
+echo "========== EJERCICIO 6 =========="
+
+echo ""
+echo "1. Buscar paquete nginx:"
+# Comando
+
+
+
+echo ""
+echo "2. Mostrar información del paquete:"
+# Comando
+
+
+
+echo ""
+echo "3. Instalar nginx:"
+# Comando
+
+
+
+# =========================================================
+# PARTE 5 — CRON
+# =========================================================
+
+echo ""
+echo "========== EJERCICIO 7 =========="
+
+echo ""
+echo "1. Editar crontab:"
+# Comando
+
+
+
+echo ""
+echo "2. Línea completa del cron:"
+# Escribe aquí la línea
+
+
+
+echo ""
+echo "3. Explicación de cada campo:"
+echo "--------------------------------------"
+# Escribe aqui la explicacion de cada campo
+
+
+# =========================================================
+# PARTE 6 — SCRIPT BASH
+# =========================================================
+
+echo ""
+echo "========== EJERCICIO 8 =========="
+
+echo ""
+echo "Contenido del script actualizar_sistema.sh"
+# Escribe aquí el contenido del script
+
+
+echo ""
+echo "Permisos de ejecución:"
+# Comando utilizado
+
+
+
+# =========================================================
+# FIN DEL EXAMEN
+# =========================================================
+
+echo ""
+echo "==============================================="
+echo " FIN DEL EXAMEN"
+echo "==============================================="
