@@ -1,0 +1,92 @@
+site_name: Sistemas Operativos Monopuesto
+site_description: Apuntes del módulo de Sistemas Operativos Monopuesto (SMR)
+site_author: Departamento de Informática
+
+theme:
+  name: material
+  language: es
+  font: false
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Cambiar a modo oscuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Cambiar a modo claro
+  features:
+#    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search
+  - privacy
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - attr_list
+  - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:
+      permalink: true
+      title: En esta página
+  - tables
+  - footnotes
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Inicio: index.md
+  - Proyecto TechPyme: proyecto-techpyme.md
+  - Evaluación y horas: evaluacion.md
+  - Entregas: entregas.md
+  - Semipresencial:
+      - semipresencial/index.md
+  - 1ª Evaluación - SO y Virtualización:
+      - primera-evaluacion/index.md
+      - "UT1. Introducción a los SO y sistemas de archivo": primera-evaluacion/ut1-introduccion-so.md
+      - "UT2. Hardware y requisitos de instalación": primera-evaluacion/ut2-hardware-instalacion.md
+      - "UT3. Virtualización": primera-evaluacion/ut3-virtualizacion.md
+  - 2ª Evaluación - Windows:
+      - segunda-evaluacion/index.md
+      - "UT4. Instalación de Windows": segunda-evaluacion/ut4-instalacion-windows.md
+      - "UT5. Configuración básica de Windows": segunda-evaluacion/ut5-configuracion-windows.md
+      - "UT6. Administración de Windows": segunda-evaluacion/ut6-administracion-windows.md
+  - 3ª Evaluación - Linux:
+      - tercera-evaluacion/index.md
+      - "UT7. Instalación de Linux": tercera-evaluacion/ut7-instalacion-linux.md
+      - "UT8. Configuración básica de Linux": tercera-evaluacion/ut8-configuracion-linux.md
+      - "UT9. Administración de Linux": tercera-evaluacion/ut9-administracion-linux.md
+      - "UT10. Compartición de archivos y cierre": tercera-evaluacion/ut10-comparticion-cierre.md
