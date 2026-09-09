@@ -6,12 +6,14 @@
 | Hito | Fecha |
 |---|---|
 | Inicio de curso | 9 de septiembre de 2026 |
-| 1ª evaluación (1-AVA Primers) | 1 de diciembre de 2026 |
+| 1ª Evaluación | 17 de noviembre de 2026 |
 | Vacaciones de Navidad | 21 de diciembre de 2026 – 10 de enero de 2027 |
-| 2ª evaluación (2-AVA Primers) | 9 de marzo de 2027 |
+| 2ª Evaluación | 23 de febrero de 2027 |
 | Fallas | 16 - 21 de marzo de 2027 |
 | Semana Santa | 25 de marzo – 5 de abril de 2027 |
-| Evaluación ordinaria final | 14 de junio de 2027 |
+| 3ª Evaluación | 18 de mayo de 2027 |
+| Evaluación ordinaria | 7 de junio de 2027 |
+| Evaluación extraordinaria | 23 de junio de 2027 |
 
 ---
 
@@ -22,22 +24,21 @@
 | 1ª | UT1 | Introducción a los SO y sistemas de archivo | 9 – 27 sept | 3 | 12h |
 | 1ª | UT2 | Hardware y requisitos de instalación | 28 sept – 18 oct | 3 | 10h |
 | 1ª | UT3 | Virtualización | 19 oct – 15 nov | 4 | 14h |
-| 1ª | — | **Exámenes / evaluación** | 16 – 29 nov | 2 | — |
-| | | | **1-AVA Primers: 1 dic** | | **36h** |
+| 1ª | — | **Exámenes 1 evaluación** | 16 – 29 nov | 2 | — |
 | 2ª | UT4 | Instalación de Windows | 30 Nov – 20 dic | 3 | 12h |
 | | | *(Vacaciones de Navidad: 21 dic – 10 ene)* | | | |
 | 2ª | UT5 | Configuración básica de Windows + introducción a PowerShell | 21 dic – 24 ene | 3 | 14h |
 | 2ª | UT6 | Administración de Windows — usuarios, grupos y permisos NTFS (parte 1) | 25 ene – 21 feb | 3 | 16h |
-| 2ª | — | **Exámenes / evaluación** | 22 feb – 7 mar | 2 | — |
-| | | | **2-AVA Primers: 9 mar** | | **42h** |
+| 2ª | — | **Exámenes  2 evaluación** | 22 feb – 7 mar | 2 | — |
 | 3ª | UT7 | Instalación de Linux | 8 – 28 mar | 3 | 10h |
 | | | *(Fallas: 16 mar – 21 mar)* | | | |
 | | | *(Semana Santa: 25 mar – 5 abr)* | | | |
-| 3ª | UT8 | Configuración básica de Linux + introducción a Bash | 5 – 25 abr | 3 | 10h |
-| 3ª | UT9 | Administración de Linux — permisos y ACL | 26 abr – 16 mayo | 3 | 12h |
-| 3ª | UT10 | Compartición de archivos y cierre del proyecto TechPyme | 17 – 30 mayo | 2 | 10h |
-| 3ª | — | **Exámenes / evaluación** | 31 mayo – 13 jun | 2 | — |
-| | | | **Avaluació Ordinària 1r: 14 jun** | | **42h** |
+| 3ª | UT8 | Configuración básica de Linux + introducción a Bash | 5 – 18 abr | 2 | 10h |
+| 3ª | UT9 | Administración de Linux — permisos y ACL | 19 abr – 9 mayo | 3 | 12h |
+| 3ª | UT10 | Compartición de archivos y cierre del proyecto TechPyme | 10 – 17 mayo | 1 | 10h |
+| 3ª | — | **Exámenes   3 evaluación** | 17 mayo – 31 mayo | 2 | — |
+|  |  | **Exámenes Ordinaria** | 6 junio - 13 junio |  |  |
+|  |  | **Exámenes Extraordinaria** | 22 junio - 25 junio |  |  |
 
 
 ---
