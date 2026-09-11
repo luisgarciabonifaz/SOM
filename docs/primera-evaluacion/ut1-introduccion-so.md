@@ -21,22 +21,7 @@ La idea central de esta arquitectura es el **concepto de programa almacenado**: 
 - **Dispositivos de entrada/salida (E/S)**: periféricos por los que el sistema recibe información del exterior (teclado, ratón, red...) o la envía (pantalla, impresora...)
 - **Buses**: canales físicos que conectan todos los componentes y por los que circulan datos, direcciones de memoria y señales de control
 
-```mermaid
-graph TD
-    CPU["CPU"]
-    UC["Unidad de Control"]
-    ALU["ALU"]
-    REG["Registros"]
-    MEM["Memoria RAM<br/>(instrucciones + datos)"]
-    IO["Dispositivos de E/S"]
-
-    CPU --> UC
-    CPU --> ALU
-    CPU --> REG
-    UC <--> MEM
-    ALU <--> MEM
-    MEM <--> IO
-```
+![Arquitectura Von Neuman](../ArquitecturaVonNeuman.jpeg)
 
 !!! note "El «cuello de botella» de Von Neumann"
     Como instrucciones y datos comparten la misma memoria y el mismo bus de acceso a ella, la CPU no puede leer una instrucción y un dato al mismo tiempo. Este límite se conoce como **cuello de botella de Von Neumann** y es una de las razones por las que existen las memorias caché: reducen la necesidad de acceder constantemente a la RAM.
