@@ -1,0 +1,1421 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Apuntes del módulo de Sistemas Operativos Monopuesto (SMR)">
+      
+      
+        <meta name="author" content="Departamento de Informática">
+      
+      
+      
+        <link rel="prev" href="../ut9-administracion-linux/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>UT10. Compartición de archivos y cierre - Sistemas Operativos Monopuesto</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ut10-comparticion-de-archivos-y-cierre-del-proyecto" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Sistemas Operativos Monopuesto" class="md-header__button md-logo" aria-label="Sistemas Operativos Monopuesto" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Sistemas Operativos Monopuesto
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UT10. Compartición de archivos y cierre
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Sistemas Operativos Monopuesto" class="md-nav__button md-logo" aria-label="Sistemas Operativos Monopuesto" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Sistemas Operativos Monopuesto
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../proyecto-techpyme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proyecto TechPyme
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../evaluacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evaluación y horas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../entregas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entregas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../semipresencial/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semipresencial
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Semipresencial
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../primera-evaluacion/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1ª Evaluación - SO y Virtualización
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1ª Evaluación - SO y Virtualización
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../primera-evaluacion/ut1-introduccion-so/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT1. Introducción a los SO y sistemas de archivo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../primera-evaluacion/ut2-hardware-instalacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT2. Hardware y requisitos de instalación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../primera-evaluacion/ut3-virtualizacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT3. Virtualización
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../segunda-evaluacion/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2ª Evaluación - Windows
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2ª Evaluación - Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../segunda-evaluacion/ut4-instalacion-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT4. Instalación de Windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../segunda-evaluacion/ut5-configuracion-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT5. Configuración básica de Windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../segunda-evaluacion/ut6-administracion-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT6. Administración de Windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3ª Evaluación - Linux
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3ª Evaluación - Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ut7-instalacion-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT7. Instalación de Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ut8-configuracion-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT8. Configuración básica de Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ut9-administracion-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT9. Administración de Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT10. Compartición de archivos y cierre
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT10. Compartición de archivos y cierre
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="En esta página">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      En esta página
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#101-compartir-archivos-entre-sistemas-distintos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1. Compartir archivos entre sistemas distintos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#102-samba-conceptos-basicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2. Samba: conceptos básicos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#103-vm-linux-como-cliente-samba" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3. VM-LINUX como cliente Samba
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#104-mencion-guiada-como-se-instalaria-un-servidor-samba" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4. Mención guiada: cómo se instalaría un servidor Samba
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#105-nfs-como-alternativa-nativa-linux-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5. NFS como alternativa nativa Linux-Linux
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#106-integracion-final-del-proyecto-techpyme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6. Integración final del proyecto TechPyme
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#107-practicas-de-la-unidad-cierre-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.7. Prácticas de la unidad — Cierre del proyecto
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="En esta página">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      En esta página
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#101-compartir-archivos-entre-sistemas-distintos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1. Compartir archivos entre sistemas distintos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#102-samba-conceptos-basicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2. Samba: conceptos básicos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#103-vm-linux-como-cliente-samba" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3. VM-LINUX como cliente Samba
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#104-mencion-guiada-como-se-instalaria-un-servidor-samba" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4. Mención guiada: cómo se instalaría un servidor Samba
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#105-nfs-como-alternativa-nativa-linux-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5. NFS como alternativa nativa Linux-Linux
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#106-integracion-final-del-proyecto-techpyme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6. Integración final del proyecto TechPyme
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#107-practicas-de-la-unidad-cierre-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.7. Prácticas de la unidad — Cierre del proyecto
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ut10-comparticion-de-archivos-y-cierre-del-proyecto">UT10. Compartición de archivos y cierre del proyecto<a class="headerlink" href="#ut10-comparticion-de-archivos-y-cierre-del-proyecto" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Resultados de aprendizaje</p>
+<p><strong>RA1.</strong> Reconoce las características de los sistemas de archivo, describiendo sus tipos y aplicaciones.
+<strong>RA4.</strong> Realiza operaciones básicas de administración de sistemas operativos, interpretando requerimientos y optimizando el sistema para su uso.</p>
+</div>
+<h2 id="101-compartir-archivos-entre-sistemas-distintos">10.1. Compartir archivos entre sistemas distintos<a class="headerlink" href="#101-compartir-archivos-entre-sistemas-distintos" title="Permanent link">&para;</a></h2>
+<p>Windows y Linux no "hablan" el mismo protocolo de red para compartir archivos de forma nativa. Para que ambos mundos puedan intercambiar información, hace falta un protocolo común: <strong>SMB/CIFS</strong>, el mismo que usan de forma nativa los recursos compartidos de Windows vistos en la <strong>UT6</strong>.</p>
+<pre class="mermaid"><code>graph LR
+    A[VM-WIN] -- SMB/CIFS --&gt; S[Servidor Samba&lt;br/&gt;equipo del profesor]
+    B[VM-LINUX] -- SMB/CIFS --&gt; S
+    H[Host físico] -- SMB/CIFS --&gt; S</code></pre>
+<hr />
+<h2 id="102-samba-conceptos-basicos">10.2. Samba: conceptos básicos<a class="headerlink" href="#102-samba-conceptos-basicos" title="Permanent link">&para;</a></h2>
+<p><strong>Samba</strong> es el software que permite a un sistema Linux implementar el protocolo SMB/CIFS, tanto para <strong>ofrecer</strong> recursos compartidos (actuando de servidor) como para <strong>acceder</strong> a recursos compartidos de otros equipos, sean Windows o Linux (actuando de cliente).</p>
+<h3 id="conceptos-clave">Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Concepto</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Grupo de trabajo</strong></td>
+<td>Agrupación lógica de equipos en una red local (equivalente al grupo de trabajo de Windows visto en UT5)</td>
+</tr>
+<tr>
+<td><strong>Recurso compartido (share)</strong></td>
+<td>Una carpeta concreta que un servidor Samba pone a disposición de la red</td>
+</tr>
+<tr>
+<td><strong>Usuario Samba</strong></td>
+<td>Cuenta con la que un cliente se autentica ante el servidor Samba; puede coincidir o no con el usuario del sistema</td>
+</tr>
+</tbody>
+</table>
+<h3 id="servidor-vs-cliente-samba">Servidor vs cliente Samba<a class="headerlink" href="#servidor-vs-cliente-samba" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Servidor Samba</strong>: aloja recursos compartidos y controla qué usuarios pueden acceder a ellos</li>
+<li><strong>Cliente Samba</strong>: se conecta a recursos compartidos ofrecidos por un servidor (Samba u otro Windows)</li>
+</ul>
+<p>En el proyecto TechPyme, el <strong>servidor</strong> Samba está centralizado en el equipo del profesor; VM-WIN y VM-LINUX actúan como <strong>clientes</strong>.</p>
+<hr />
+<h2 id="103-vm-linux-como-cliente-samba">10.3. VM-LINUX como cliente Samba<a class="headerlink" href="#103-vm-linux-como-cliente-samba" title="Permanent link">&para;</a></h2>
+<h3 id="instalacion-del-cliente">Instalación del cliente<a class="headerlink" href="#instalacion-del-cliente" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>smbclient<span class="w"> </span>cifs-utils
+</code></pre></div>
+<ul>
+<li><code>smbclient</code>: herramienta para explorar y navegar recursos compartidos desde la terminal</li>
+<li><code>cifs-utils</code>: permite montar recursos SMB/CIFS como si fueran una carpeta más del sistema de archivos</li>
+</ul>
+<h3 id="explorar-recursos-compartidos-disponibles">Explorar recursos compartidos disponibles<a class="headerlink" href="#explorar-recursos-compartidos-disponibles" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>smbclient<span class="w"> </span>-L<span class="w"> </span>//192.168.1.50<span class="w"> </span>-U<span class="w"> </span>nombre_usuario
+</code></pre></div>
+<p>Este comando lista los recursos compartidos disponibles en el servidor indicado, tras pedir la contraseña del usuario.</p>
+<h3 id="montar-un-recurso-remoto">Montar un recurso remoto<a class="headerlink" href="#montar-un-recurso-remoto" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/mnt/techpyme
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>cifs<span class="w"> </span>//192.168.1.50/techpyme<span class="w"> </span>/mnt/techpyme<span class="w"> </span>-o<span class="w"> </span><span class="nv">username</span><span class="o">=</span>nombre_usuario
+</code></pre></div>
+<p>Para que el recurso se monte automáticamente en cada arranque, se puede añadir una entrada en <code>/etc/fstab</code> (visto en la UT9), usando el tipo <code>cifs</code> en lugar de <code>ext4</code>.</p>
+<h3 id="acceso-desde-el-gestor-de-archivos-grafico">Acceso desde el gestor de archivos gráfico<a class="headerlink" href="#acceso-desde-el-gestor-de-archivos-grafico" title="Permanent link">&para;</a></h3>
+<p>La mayoría de gestores de archivos gráficos de Linux permiten conectarse directamente a un recurso SMB escribiendo una dirección con el formato:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>smb://192.168.1.50/techpyme
+</code></pre></div>
+<p>sin necesidad de montarlo previamente por terminal.</p>
+<hr />
+<h2 id="104-mencion-guiada-como-se-instalaria-un-servidor-samba">10.4. Mención guiada: cómo se instalaría un servidor Samba<a class="headerlink" href="#104-mencion-guiada-como-se-instalaria-un-servidor-samba" title="Permanent link">&para;</a></h2>
+<p>Aunque en TechPyme el servidor real está centralizado en el equipo del profesor, es importante entender <strong>conceptualmente</strong> cómo se configuraría, ya que forma parte del resultado de aprendizaje RA1 sobre sistemas de archivo y su aplicación en red.</p>
+<h3 id="el-paquete-samba-y-su-configuracion">El paquete samba y su configuración<a class="headerlink" href="#el-paquete-samba-y-su-configuracion" title="Permanent link">&para;</a></h3>
+<p>Un servidor Samba se instalaría con:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>samba
+</code></pre></div>
+<p>Y se configuraría editando el fichero <code>/etc/samba/smb.conf</code>, donde se definen los recursos compartidos:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">[techpyme]</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">   </span><span class="na">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/srv/samba/techpyme</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">   </span><span class="na">browseable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">yes</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">   </span><span class="na">read only</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">no</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">   </span><span class="na">valid users</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">@contabilidad, @tecnico</span>
+</code></pre></div>
+<p>Cada bloque entre corchetes (<code>[techpyme]</code>) define un recurso compartido: su ruta en el disco, si es visible al explorar la red, si admite escritura, y qué usuarios o grupos pueden acceder.</p>
+<h3 id="herramientas-de-verificacion-y-gestion">Herramientas de verificación y gestión<a class="headerlink" href="#herramientas-de-verificacion-y-gestion" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>testparm</code></td>
+<td>Comprueba que la sintaxis de <code>smb.conf</code> es correcta antes de aplicar cambios</td>
+</tr>
+<tr>
+<td><code>smbpasswd -a usuario</code></td>
+<td>Da de alta a un usuario del sistema como usuario Samba, con su propia contraseña de acceso</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Por qué no se instala en cada VM del alumno</p>
+<p>Como se explicó en el <strong>Proyecto TechPyme</strong>, mantener un servidor Samba en cada equipo de alumno exigiría una tercera VM, agravando la falta de recursos (disco y RAM) de las máquinas del aula. Por eso el servidor está centralizado en el equipo del profesor, y el alumno se centra en el papel de <strong>cliente</strong>, que es además el escenario más habitual en un puesto de trabajo real.</p>
+</div>
+<hr />
+<h2 id="105-nfs-como-alternativa-nativa-linux-linux">10.5. NFS como alternativa nativa Linux-Linux<a class="headerlink" href="#105-nfs-como-alternativa-nativa-linux-linux" title="Permanent link">&para;</a></h2>
+<p><strong>NFS</strong> (<em>Network File System</em>) es otro protocolo de compartición de archivos en red, nativo del mundo Unix/Linux.</p>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>Samba (SMB/CIFS)</th>
+<th>NFS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Origen</td>
+<td>Protocolo de Windows, implementado en Linux</td>
+<td>Protocolo nativo Unix/Linux</td>
+</tr>
+<tr>
+<td>Redes mixtas (Windows + Linux)</td>
+<td>Sí, es su punto fuerte</td>
+<td>No de forma nativa (requiere software adicional en Windows)</td>
+</tr>
+<tr>
+<td>Uso típico</td>
+<td>Redes de oficina con equipos Windows y Linux</td>
+<td>Redes homogéneas de servidores/equipos Linux</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">¿Cuándo usar cada uno?</p>
+<p>En una empresa como TechPyme, con equipos Windows y Linux que deben compartir el mismo servidor de ficheros, <strong>Samba</strong> es la opción natural. NFS tendría sentido si TechPyme fuera una infraestructura compuesta únicamente por servidores y equipos Linux, sin necesidad de dar servicio a clientes Windows.</p>
+</div>
+<hr />
+<h2 id="106-integracion-final-del-proyecto-techpyme">10.6. Integración final del proyecto TechPyme<a class="headerlink" href="#106-integracion-final-del-proyecto-techpyme" title="Permanent link">&para;</a></h2>
+<p>Con todo lo trabajado a lo largo del curso, llega el momento de comprobar que las piezas encajan:</p>
+<pre class="mermaid"><code>graph TD
+    subgraph ALUMNO["Equipo del alumno"]
+        VMWIN["VM-WIN&lt;br/&gt;Dirección, Compras, Ventas"]
+        VMLINUX["VM-LINUX&lt;br/&gt;Contabilidad, Técnico"]
+        HOST["Host físico"]
+    end
+    SRV["VM-SRV-TECHPYME&lt;br/&gt;Servidor Samba&lt;br/&gt;(equipo del profesor)"]
+    VMWIN --&gt;|Ruta UNC \\\\servidor\\recurso| SRV
+    VMLINUX --&gt;|smbclient / mount -t cifs| SRV
+    HOST --&gt;|smb://servidor/recurso| SRV</code></pre>
+<h3 id="comprobaciones-finales">Comprobaciones finales<a class="headerlink" href="#comprobaciones-finales" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Desde VM-WIN</strong>: acceso al recurso compartido del servidor mediante ruta UNC o unidad de red (visto en UT6)</li>
+<li><strong>Desde VM-LINUX</strong>: acceso al mismo recurso como cliente Samba (apartado 10.3 de esta unidad)</li>
+<li><strong>Desde el host físico</strong>: comprobación adicional, aplicando lo visto sobre el host como tercer nodo de red desde la UT3</li>
+</ol>
+<h3 id="revision-de-la-matriz-de-permisos-y-accesos">Revisión de la matriz de permisos y accesos<a class="headerlink" href="#revision-de-la-matriz-de-permisos-y-accesos" title="Permanent link">&para;</a></h3>
+<p>Se retoma y completa la documentación empezada en la UT6 (matriz de permisos NTFS de VM-WIN) y en la UT9 (permisos y ACL de VM-LINUX), añadiendo ahora la capa final: qué usuario de cada equipo puede acceder a qué recurso del servidor Samba centralizado.</p>
+<hr />
+<h2 id="107-practicas-de-la-unidad-cierre-del-proyecto">10.7. Prácticas de la unidad — Cierre del proyecto<a class="headerlink" href="#107-practicas-de-la-unidad-cierre-del-proyecto" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Práctica 1 — Cliente Samba en VM-LINUX</p>
+<ol>
+<li>Instala <code>smbclient</code> y <code>cifs-utils</code> en VM-LINUX</li>
+<li>Explora los recursos disponibles en el servidor del profesor con <code>smbclient -L</code></li>
+<li>Monta el recurso compartido correspondiente con <code>mount -t cifs</code></li>
+<li>Comprueba el acceso también desde el gestor de archivos gráfico con <code>smb://</code></li>
+</ol>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Práctica 2 — Acceso desde VM-WIN</p>
+<p>Desde VM-WIN, conecta al mismo recurso del servidor mediante su ruta UNC, tal como se practicó en la UT6, y comprueba que el acceso funciona correctamente.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Práctica 3 — Comprobación desde el host físico</p>
+<p>Desde el equipo físico del alumno, accede al recurso compartido del servidor mediante <code>smb://</code> (o el explorador de archivos, según el sistema operativo del host), confirmando que el servidor centralizado es accesible desde los tres puntos de la infraestructura de TechPyme.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Práctica 4 — Documentación final</p>
+<p>Elabora la <strong>matriz final de accesos</strong> de TechPyme, indicando para cada usuario/grupo (Dirección, Compras, Ventas, Contabilidad, Técnico):</p>
+<ul>
+<li>Desde qué equipo(s) trabaja habitualmente</li>
+<li>Qué recursos locales tiene disponibles (carpetas NTFS o Linux de su propio equipo)</li>
+<li>Qué recursos del servidor Samba centralizado puede consultar o modificar</li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Práctica 5 — Snapshots finales</p>
+<p>Toma una snapshot <code>VM-WIN completa</code> y otra <code>VM-LINUX completa</code>, que recojan el estado final de ambas máquinas al terminar el curso.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Práctica 6 — Entrega y demostración</p>
+<p>Presenta la infraestructura completa de TechPyme en funcionamiento: usuarios y grupos de ambos sistemas operativos, permisos diferenciados por departamento, y acceso funcional al servidor de ficheros centralizado desde las tres ubicaciones (VM-WIN, VM-LINUX y host físico).</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="../../assets/external/unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/external/unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

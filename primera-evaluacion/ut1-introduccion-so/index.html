@@ -1,0 +1,1670 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Apuntes del módulo de Sistemas Operativos Monopuesto (SMR)">
+      
+      
+        <meta name="author" content="Departamento de Informática">
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../ut2-hardware-instalacion/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>UT1. Introducción a los SO y sistemas de archivo - Sistemas Operativos Monopuesto</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ut1-introduccion-a-los-sistemas-operativos-y-sistemas-de-archivo" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Sistemas Operativos Monopuesto" class="md-header__button md-logo" aria-label="Sistemas Operativos Monopuesto" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Sistemas Operativos Monopuesto
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UT1. Introducción a los SO y sistemas de archivo
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Sistemas Operativos Monopuesto" class="md-nav__button md-logo" aria-label="Sistemas Operativos Monopuesto" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Sistemas Operativos Monopuesto
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../proyecto-techpyme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proyecto TechPyme
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../evaluacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evaluación y horas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../entregas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entregas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../semipresencial/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semipresencial
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Semipresencial
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1ª Evaluación - SO y Virtualización
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1ª Evaluación - SO y Virtualización
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT1. Introducción a los SO y sistemas de archivo
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT1. Introducción a los SO y sistemas de archivo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="En esta página">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      En esta página
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-conceptos-generales-de-sistemas-operativos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Conceptos generales de Sistemas Operativos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-estructura-fisica-y-logica-del-almacenamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Estructura física y lógica del almacenamiento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-sistemas-de-archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Sistemas de archivos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-gestion-de-particiones-y-discos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Gestión de particiones y discos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-practicas-de-la-unidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5. Prácticas de la unidad
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ut2-hardware-instalacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT2. Hardware y requisitos de instalación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ut3-virtualizacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT3. Virtualización
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../segunda-evaluacion/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2ª Evaluación - Windows
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2ª Evaluación - Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../segunda-evaluacion/ut4-instalacion-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT4. Instalación de Windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../segunda-evaluacion/ut5-configuracion-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT5. Configuración básica de Windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../segunda-evaluacion/ut6-administracion-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT6. Administración de Windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../tercera-evaluacion/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3ª Evaluación - Linux
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3ª Evaluación - Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tercera-evaluacion/ut7-instalacion-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT7. Instalación de Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tercera-evaluacion/ut8-configuracion-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT8. Configuración básica de Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tercera-evaluacion/ut9-administracion-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT9. Administración de Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tercera-evaluacion/ut10-comparticion-cierre/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT10. Compartición de archivos y cierre
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="En esta página">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      En esta página
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-conceptos-generales-de-sistemas-operativos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Conceptos generales de Sistemas Operativos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-estructura-fisica-y-logica-del-almacenamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Estructura física y lógica del almacenamiento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-sistemas-de-archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Sistemas de archivos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-gestion-de-particiones-y-discos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Gestión de particiones y discos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-practicas-de-la-unidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5. Prácticas de la unidad
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ut1-introduccion-a-los-sistemas-operativos-y-sistemas-de-archivo">UT1. Introducción a los Sistemas Operativos y Sistemas de Archivo<a class="headerlink" href="#ut1-introduccion-a-los-sistemas-operativos-y-sistemas-de-archivo" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Resultado de aprendizaje</p>
+<p><strong>RA1.</strong> Reconoce las características de los sistemas de archivo, describiendo sus tipos y aplicaciones.</p>
+</div>
+<h2 id="11-conceptos-generales-de-sistemas-operativos">1.1. Conceptos generales de Sistemas Operativos<a class="headerlink" href="#11-conceptos-generales-de-sistemas-operativos" title="Permanent link">&para;</a></h2>
+<h3 id="arquitectura-von-neumann">Arquitectura Von Neumann<a class="headerlink" href="#arquitectura-von-neumann" title="Permanent link">&para;</a></h3>
+<p>Antes de hablar de qué es un Sistema Operativo conviene entender sobre qué <strong>arquitectura física</strong> se ejecuta: la inmensa mayoría de los ordenadores actuales (PCs, portátiles, smartphones, servidores...) siguen, con variaciones, el modelo propuesto en 1945 por el matemático <strong>John von Neumann</strong>.</p>
+<p>La idea central de esta arquitectura es el <strong>concepto de programa almacenado</strong>: tanto las instrucciones (el programa) como los datos que ese programa maneja se guardan en la <strong>misma memoria</strong>, con el mismo formato binario. Gracias a esto un ordenador es una máquina de propósito general: basta con cargar un programa distinto en memoria para que realice una tarea diferente, sin cambiar el hardware.</p>
+<p><strong>Componentes principales</strong></p>
+<ul>
+<li><strong>CPU (Unidad Central de Proceso)</strong>, formada a su vez por:<ul>
+<li><strong>Unidad de Control (UC)</strong>: lee las instrucciones de la memoria, las interpreta y coordina al resto de componentes para ejecutarlas</li>
+<li><strong>Unidad Aritmético-Lógica (ALU)</strong>: realiza las operaciones aritméticas (suma, resta...) y lógicas (comparaciones, AND, OR...)</li>
+<li><strong>Registros</strong>: memorias ultrarrápidas dentro de la CPU que guardan los datos con los que se está operando en cada instante</li>
+</ul>
+</li>
+<li><strong>Memoria principal (RAM)</strong>: almacena tanto las instrucciones del programa en ejecución como los datos que este utiliza</li>
+<li><strong>Dispositivos de entrada/salida (E/S)</strong>: periféricos por los que el sistema recibe información del exterior (teclado, ratón, red...) o la envía (pantalla, impresora...)</li>
+<li><strong>Buses</strong>: canales físicos que conectan todos los componentes y por los que circulan datos, direcciones de memoria y señales de control</li>
+</ul>
+<p><img alt="Arquitectura Von Neuman" src="../../ArquitecturaVonNeuman.jpeg" /></p>
+<div class="admonition note">
+<p class="admonition-title">El «cuello de botella» de Von Neumann</p>
+<p>Como instrucciones y datos comparten la misma memoria y el mismo bus de acceso a ella, la CPU no puede leer una instrucción y un dato al mismo tiempo. Este límite se conoce como <strong>cuello de botella de Von Neumann</strong> y es una de las razones por las que existen las memorias caché: reducen la necesidad de acceder constantemente a la RAM.</p>
+</div>
+<p>Sobre esta arquitectura física —CPU, memoria, dispositivos de E/S— se ejecuta todo el software. Pero el hardware, por sí solo, no hace nada útil: necesita un primer programa que arranque, tome el control de todos estos recursos y permita después ejecutar el resto de aplicaciones. Ese programa es precisamente el <strong>Sistema Operativo</strong>.</p>
+<h3 id="que-es-un-sistema-operativo">¿Qué es un Sistema Operativo?<a class="headerlink" href="#que-es-un-sistema-operativo" title="Permanent link">&para;</a></h3>
+<p>Un <strong>Sistema Operativo (SO)</strong> es el software que gestiona los recursos hardware y software de un ordenador y proporciona servicios comunes a los programas de aplicación. Actúa como intermediario entre el usuario, las aplicaciones y el hardware.</p>
+<pre class="mermaid"><code>graph LR
+    U[Usuario] --&gt; A[Aplicaciones]
+    A --&gt; SO[Sistema Operativo]
+    SO --&gt; H[Hardware]</code></pre>
+<h3 id="funciones-de-un-sistema-operativo">Funciones de un Sistema Operativo<a class="headerlink" href="#funciones-de-un-sistema-operativo" title="Permanent link">&para;</a></h3>
+<p>Un sistema operativo desempeña seis grandes funciones. A continuación se desarrolla cada una en detalle, ya que son la base para entender el resto del módulo (procesos y rendimiento, memoria, sistemas de archivo, drivers, usuarios y permisos...).</p>
+<h4 id="gestion-de-procesos">Gestión de procesos<a class="headerlink" href="#gestion-de-procesos" title="Permanent link">&para;</a></h4>
+<p>Un <strong>proceso</strong> es un programa en ejecución. El SO es responsable de crear, planificar, ejecutar y finalizar los procesos, repartiendo el tiempo de CPU entre todos ellos.</p>
+<ul>
+<li><strong>Creación y finalización</strong>: cada vez que se abre una aplicación, el SO crea un proceso nuevo con su propio espacio de memoria e identificador (PID en Linux, PID también en Windows)</li>
+<li><strong>Planificación (scheduling)</strong>: como una CPU solo puede ejecutar una instrucción por núcleo en cada instante, el SO decide qué proceso se ejecuta y durante cuánto tiempo, mediante algoritmos de planificación. Esto es lo que permite la sensación de "multitarea" aunque haya pocos núcleos</li>
+<li>
+<p><strong>Estados de un proceso</strong>: un proceso pasa por distintos estados a lo largo de su vida</p>
+<pre class="mermaid"><code>graph LR
+    A[Nuevo] --&gt; B[Listo]
+    B --&gt; C[En ejecución]
+    C --&gt; B
+    C --&gt; D[Bloqueado]
+    D --&gt; B
+    C --&gt; E[Terminado]</code></pre>
+</li>
+<li>
+<p><strong>Procesos e hilos (threads)</strong>: un proceso puede dividirse internamente en varios hilos de ejecución que comparten memoria pero se ejecutan de forma más o menos independiente, mejorando el aprovechamiento de CPUs con varios núcleos</p>
+</li>
+<li><strong>Herramientas para observar procesos</strong>: en Windows, el <strong>Administrador de tareas</strong>; en Linux, comandos como <code>ps</code>, <code>top</code> o <code>htop</code></li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">En la práctica</p>
+<p>Cuando un programa "deja de responder", normalmente es porque su proceso se ha quedado bloqueado o en un bucle. El SO permite finalizarlo manualmente (<code>Finalizar tarea</code> en Windows, <code>kill</code> en Linux) sin necesidad de reiniciar todo el equipo.</p>
+</div>
+<h4 id="gestion-de-memoria">Gestión de memoria<a class="headerlink" href="#gestion-de-memoria" title="Permanent link">&para;</a></h4>
+<p>La memoria RAM es un recurso limitado que deben compartir todos los procesos en ejecución. El SO se encarga de:</p>
+<ul>
+<li><strong>Asignar memoria</strong> a cada proceso cuando se crea, y <strong>liberarla</strong> cuando termina</li>
+<li><strong>Aislar</strong> el espacio de memoria de cada proceso, para que uno no pueda leer ni modificar la memoria de otro (protección de memoria)</li>
+<li><strong>Memoria virtual</strong>: técnica que permite que los programas "crean" que tienen más memoria disponible de la que realmente hay, usando parte del disco como extensión de la RAM<ul>
+<li>En Windows se denomina <strong>archivo de paginación</strong> (pagefile)</li>
+<li>En Linux se denomina <strong>memoria de intercambio</strong> (swap), habitualmente en una partición o fichero dedicado</li>
+</ul>
+</li>
+<li><strong>Paginación</strong>: la memoria se divide en bloques de tamaño fijo (páginas) que se pueden mover entre RAM y disco según se necesiten</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Efecto de quedarse sin RAM</p>
+<p>Cuando la RAM se agota y el sistema depende demasiado de la memoria virtual (disco), el rendimiento cae drásticamente, ya que el disco es mucho más lento que la RAM. Este fenómeno se conoce coloquialmente como <em>thrashing</em>.</p>
+</div>
+<h4 id="gestion-de-almacenamiento-sistemas-de-archivos">Gestión de almacenamiento (sistemas de archivos)<a class="headerlink" href="#gestion-de-almacenamiento-sistemas-de-archivos" title="Permanent link">&para;</a></h4>
+<p>El SO organiza la información en los dispositivos de almacenamiento mediante un <strong>sistema de archivos</strong>, que define cómo se guardan, nombran y localizan los ficheros y carpetas. Esta función incluye:</p>
+<ul>
+<li>Llevar el control de qué espacio del disco está libre y cuál está ocupado</li>
+<li>Mantener la estructura jerárquica de carpetas y archivos</li>
+<li>Guardar los metadatos de cada archivo: nombre, tamaño, fechas, permisos, ubicación física</li>
+<li>Ofrecer a los programas una interfaz sencilla (abrir, leer, escribir, cerrar un archivo) sin que estos tengan que preocuparse de en qué sector físico del disco están los datos</li>
+</ul>
+<p>Esta función se desarrolla en profundidad en el apartado <strong>1.3</strong> de esta misma unidad, dedicado íntegramente a los sistemas de archivos.</p>
+<h4 id="gestion-de-dispositivos-entradasalida">Gestión de dispositivos (entrada/salida)<a class="headerlink" href="#gestion-de-dispositivos-entradasalida" title="Permanent link">&para;</a></h4>
+<p>El SO actúa de intermediario entre los programas y todo el hardware conectado al equipo: teclado, ratón, pantalla, disco, tarjeta de red, impresora, etc.</p>
+<ul>
+<li><strong>Drivers (controladores)</strong>: cada dispositivo necesita un programa específico que "traduce" las órdenes genéricas del SO a las instrucciones concretas que entiende ese hardware. Sin el driver adecuado, el dispositivo no funciona o no aprovecha todas sus capacidades</li>
+<li><strong>Buffers y colas</strong>: el SO gestiona zonas de memoria temporal para compensar diferencias de velocidad entre dispositivos (por ejemplo, entre una impresora lenta y una CPU rápida)</li>
+<li><strong>Plug and Play</strong>: capacidad de detectar automáticamente un dispositivo nuevo conectado y asignarle el driver correspondiente sin intervención manual</li>
+<li>Gestión centralizada:<ul>
+<li>Windows: <strong>Administrador de dispositivos</strong></li>
+<li>Linux: muchos dispositivos se gestionan mediante módulos del kernel, visibles con comandos como <code>lsusb</code>, <code>lspci</code> o <code>lsblk</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="gestion-de-la-interfaz-de-usuario">Gestión de la interfaz de usuario<a class="headerlink" href="#gestion-de-la-interfaz-de-usuario" title="Permanent link">&para;</a></h4>
+<p>El SO proporciona el medio por el cual el usuario interactúa con el equipo:</p>
+<ul>
+<li><strong>CLI (Command Line Interface / interfaz de línea de comandos)</strong>: el usuario escribe comandos de texto. Ejemplos: la Terminal de Linux (bash, zsh), o PowerShell/CMD en Windows. Suele ser más rápida para tareas repetitivas o automatizables mediante scripts</li>
+<li><strong>GUI (Graphical User Interface / interfaz gráfica)</strong>: el usuario interactúa mediante ventanas, iconos, menús y el ratón. Es más intuitiva para el usuario general</li>
+<li>Un mismo SO puede ofrecer ambas: Windows tiene su escritorio gráfico y también PowerShell/CMD; la mayoría de distribuciones Linux de escritorio ofrecen un entorno gráfico (GNOME, KDE, XFCE...) además de la terminal</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">¿Por qué aprenderemos también la línea de comandos?</p>
+<p>Aunque el uso diario suele ser gráfico, muchas tareas de administración (crear usuarios, configurar redes, automatizar backups) son más rápidas, más precisas y más fáciles de documentar mediante comandos. A lo largo del curso usaremos ambas interfaces, tanto en Windows como en Linux.</p>
+</div>
+<h4 id="gestion-de-la-seguridad-y-control-de-acceso">Gestión de la seguridad y control de acceso<a class="headerlink" href="#gestion-de-la-seguridad-y-control-de-acceso" title="Permanent link">&para;</a></h4>
+<p>El SO es responsable de proteger el sistema y sus datos frente a accesos no autorizados, tanto de otros usuarios como de otros procesos:</p>
+<ul>
+<li><strong>Autenticación</strong>: comprobar que un usuario es quien dice ser, habitualmente mediante usuario y contraseña</li>
+<li><strong>Autorización</strong>: una vez autenticado, determinar qué puede hacer ese usuario (qué archivos puede leer/modificar, qué programas puede ejecutar, qué configuraciones puede cambiar)</li>
+<li><strong>Usuarios y grupos</strong>: el SO permite crear distintas cuentas de usuario y agruparlas, para poder asignar permisos de forma conjunta a varios usuarios con el mismo perfil (por ejemplo, todo el departamento de Contabilidad)</li>
+<li><strong>Permisos sobre archivos y carpetas</strong>: cada sistema de archivos con soporte avanzado (NTFS, ext4...) permite definir quién puede leer, escribir o ejecutar cada elemento</li>
+<li><strong>Niveles de privilegio</strong>: distinción entre un usuario estándar y uno con permisos administrativos (Administrador en Windows, root/sudo en Linux), para limitar qué cambios puede hacer cada perfil en el sistema</li>
+</ul>
+<p>Esta función será especialmente relevante en las evaluaciones 2ª y 3ª, cuando configuremos los usuarios y grupos de TechPyme (Dirección, Compras, Ventas, Contabilidad, Técnico) tanto en Windows como en Linux.</p>
+<hr />
+<h3 id="clasificacion-de-los-sistemas-operativos">Clasificación de los sistemas operativos<a class="headerlink" href="#clasificacion-de-los-sistemas-operativos" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Tipos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Número de usuarios</td>
+<td>Monousuario / Multiusuario</td>
+</tr>
+<tr>
+<td>Número de tareas</td>
+<td>Monotarea / Multitarea</td>
+</tr>
+<tr>
+<td>Gestión de puestos</td>
+<td>Monopuesto / Red</td>
+</tr>
+<tr>
+<td>Tiempo de respuesta</td>
+<td>Tiempo real / Tiempo compartido</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Sistemas monopuesto vs sistemas en red</p>
+<p>Un <strong>SO monopuesto</strong> está diseñado para funcionar en un único equipo de forma autónoma. Un <strong>SO de red</strong> (o servidor) está preparado para gestionar recursos compartidos entre varios equipos. En este módulo trabajaremos principalmente con la vertiente monopuesto de Windows y Linux, aunque en la 3ª evaluación configuraremos un servidor de ficheros básico.</p>
+</div>
+<h3 id="componentes-de-un-sistema-operativo">Componentes de un Sistema Operativo<a class="headerlink" href="#componentes-de-un-sistema-operativo" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Kernel (núcleo)</strong>: parte central que gestiona CPU, memoria y dispositivos</li>
+<li><strong>Shell</strong>: intérprete de comandos que permite interactuar con el kernel</li>
+<li><strong>Sistema de archivos</strong>: estructura que organiza la información en el almacenamiento</li>
+<li><strong>Drivers</strong>: programas que permiten al SO comunicarse con dispositivos concretos</li>
+</ul>
+<h3 id="panorama-de-sistemas-operativos-actuales">Panorama de sistemas operativos actuales<a class="headerlink" href="#panorama-de-sistemas-operativos-actuales" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Windows</label><label for="__tabbed_1_2">Linux</label><label for="__tabbed_1_3">macOS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Desarrollado por Microsoft. Es el SO de escritorio más extendido en entornos domésticos y empresariales. Interfaz gráfica orientada al usuario final.</p>
+</div>
+<div class="tabbed-block">
+<p>Núcleo de código abierto sobre el que se construyen múltiples <strong>distribuciones</strong> (Ubuntu, Debian, Fedora, etc.). Muy usado en servidores, pero también en escritorio.</p>
+</div>
+<div class="tabbed-block">
+<p>Sistema operativo de Apple, basado en Unix, exclusivo para hardware propio.</p>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="12-estructura-fisica-y-logica-del-almacenamiento">1.2. Estructura física y lógica del almacenamiento<a class="headerlink" href="#12-estructura-fisica-y-logica-del-almacenamiento" title="Permanent link">&para;</a></h2>
+<h3 id="dispositivos-de-almacenamiento">Dispositivos de almacenamiento<a class="headerlink" href="#dispositivos-de-almacenamiento" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>HDD (disco duro mecánico)</strong>: platos magnéticos giratorios, económico, más lento</li>
+<li><strong>SSD (unidad de estado sólido)</strong>: memoria flash, mucho más rápido, sin partes móviles</li>
+<li>Otros: memorias USB, tarjetas SD, unidades de red (NAS)</li>
+</ul>
+<h3 id="estructura-fisica-de-un-disco-hdd">Estructura física de un disco (HDD)<a class="headerlink" href="#estructura-fisica-de-un-disco-hdd" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Plato</strong>: superficie circular donde se graba la información</li>
+<li><strong>Pista</strong>: círculo concéntrico dentro del plato</li>
+<li><strong>Sector</strong>: división mínima de una pista (habitualmente 512 bytes o 4 KB)</li>
+<li><strong>Cilindro</strong>: conjunto de pistas a la misma distancia del centro en todos los platos</li>
+</ul>
+<h3 id="estructura-logica-particiones">Estructura lógica: particiones<a class="headerlink" href="#estructura-logica-particiones" title="Permanent link">&para;</a></h3>
+<p>Una <strong>partición</strong> es una división lógica de un disco que el sistema operativo trata como una unidad independiente.</p>
+<ul>
+<li><strong>Partición primaria</strong>: puede contener un sistema de archivos y ser de arranque. Máximo 4 en un disco MBR.</li>
+<li><strong>Partición extendida</strong>: contenedor especial que permite crear particiones lógicas (solo en MBR)</li>
+<li><strong>Partición lógica</strong>: partición dentro de una extendida</li>
+</ul>
+<h3 id="esquemas-de-particionado-mbr-vs-gpt">Esquemas de particionado: MBR vs GPT<a class="headerlink" href="#esquemas-de-particionado-mbr-vs-gpt" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>MBR</th>
+<th>GPT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Año de origen</td>
+<td>1983</td>
+<td>2010 (parte de UEFI)</td>
+</tr>
+<tr>
+<td>Máximo de particiones primarias</td>
+<td>4</td>
+<td>128 (en Windows)</td>
+</tr>
+<tr>
+<td>Tamaño máximo de disco</td>
+<td>2 TB</td>
+<td>&gt; 9 ZB</td>
+</tr>
+<tr>
+<td>Redundancia de la tabla de particiones</td>
+<td>No</td>
+<td>Sí (copia de seguridad)</td>
+</tr>
+<tr>
+<td>Arranque asociado</td>
+<td>BIOS/Legacy</td>
+<td>UEFI</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Importante</p>
+<p>Aunque GPT puede usarse con BIOS Legacy en algunos casos, la combinación habitual y recomendada hoy en día es <strong>GPT + UEFI</strong>, especialmente para discos superiores a 2 TB o instalaciones modernas de Windows y Linux.</p>
+</div>
+<h3 id="arranque-del-sistema-bioslegacy-vs-uefi">Arranque del sistema: BIOS/Legacy vs UEFI<a class="headerlink" href="#arranque-del-sistema-bioslegacy-vs-uefi" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>BIOS (Legacy)</strong>: firmware más antiguo, arranca a través del <strong>MBR</strong>, interfaz de texto</li>
+<li><strong>UEFI</strong>: firmware moderno, arranca a través de la <strong>partición EFI</strong> en discos GPT, más rápido, soporta discos grandes, interfaz gráfica y ratón</li>
+</ul>
+<hr />
+<h2 id="13-sistemas-de-archivos">1.3. Sistemas de archivos<a class="headerlink" href="#13-sistemas-de-archivos" title="Permanent link">&para;</a></h2>
+<h3 id="que-es-un-sistema-de-archivos">¿Qué es un sistema de archivos?<a class="headerlink" href="#que-es-un-sistema-de-archivos" title="Permanent link">&para;</a></h3>
+<p>Un <strong>sistema de archivos</strong> es la estructura lógica que un SO utiliza para organizar, nombrar, almacenar y recuperar los datos en una partición. Define cómo se guardan los ficheros y carpetas, sus metadatos (nombre, fecha, permisos) y cómo se gestiona el espacio libre.</p>
+<h3 id="sistemas-de-archivos-en-windows">Sistemas de archivos en Windows<a class="headerlink" href="#sistemas-de-archivos-en-windows" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Sistema</th>
+<th>Características principales</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FAT16</strong></td>
+<td>Muy antiguo, limitado a particiones pequeñas. En desuso</td>
+</tr>
+<tr>
+<td><strong>FAT32</strong></td>
+<td>Compatible con casi cualquier dispositivo, pero limita archivos a 4 GB</td>
+</tr>
+<tr>
+<td><strong>exFAT</strong></td>
+<td>Pensado para memorias flash, sin límite práctico de tamaño de archivo, buena compatibilidad multiplataforma</td>
+</tr>
+<tr>
+<td><strong>NTFS</strong></td>
+<td>Sistema nativo de Windows moderno: soporta journaling, permisos avanzados (ACL), cifrado, compresión y archivos de gran tamaño</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sistemas-de-archivos-en-linux">Sistemas de archivos en Linux<a class="headerlink" href="#sistemas-de-archivos-en-linux" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Sistema</th>
+<th>Características principales</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ext2</strong></td>
+<td>Sin journaling, en desuso salvo casos concretos</td>
+</tr>
+<tr>
+<td><strong>ext3</strong></td>
+<td>Añade journaling sobre ext2</td>
+</tr>
+<tr>
+<td><strong>ext4</strong></td>
+<td>Estándar actual en muchas distribuciones, journaling, buen rendimiento, soporta archivos y particiones muy grandes</td>
+</tr>
+<tr>
+<td><strong>btrfs / xfs</strong></td>
+<td>Sistemas más avanzados con funciones como snapshots o mejor escalabilidad (mención)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="concepto-de-journaling">Concepto de journaling<a class="headerlink" href="#concepto-de-journaling" title="Permanent link">&para;</a></h3>
+<p>El <strong>journaling</strong> es una técnica mediante la cual el sistema de archivos registra los cambios que va a realizar antes de aplicarlos. Si se produce un corte de energía o un fallo, el sistema puede recuperar su consistencia leyendo ese "diario" de operaciones pendientes, evitando la corrupción de datos.</p>
+<h3 id="comparativa-general">Comparativa general<a class="headerlink" href="#comparativa-general" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Criterio</th>
+<th>FAT32</th>
+<th>exFAT</th>
+<th>NTFS</th>
+<th>ext4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tamaño máx. de archivo</td>
+<td>4 GB</td>
+<td>~16 EB</td>
+<td>~16 TB</td>
+<td>~16 TB</td>
+</tr>
+<tr>
+<td>Journaling</td>
+<td>No</td>
+<td>No</td>
+<td>Sí</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>Permisos avanzados (ACL)</td>
+<td>No</td>
+<td>No</td>
+<td>Sí</td>
+<td>Sí (POSIX)</td>
+</tr>
+<tr>
+<td>Compatibilidad Windows</td>
+<td>Sí</td>
+<td>Sí</td>
+<td>Nativo</td>
+<td>No (sin software extra)</td>
+</tr>
+<tr>
+<td>Compatibilidad Linux</td>
+<td>Sí</td>
+<td>Sí (con paquete)</td>
+<td>Sí (lectura/escritura)</td>
+<td>Nativo</td>
+</tr>
+<tr>
+<td>Uso recomendado</td>
+<td>Dispositivos muy compatibles</td>
+<td>USB/SD modernas</td>
+<td>Disco de Windows</td>
+<td>Disco de Linux</td>
+</tr>
+</tbody>
+</table>
+<h3 id="que-sistema-de-archivos-elegir">¿Qué sistema de archivos elegir?<a class="headerlink" href="#que-sistema-de-archivos-elegir" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Disco interno de Windows</strong> → NTFS</li>
+<li><strong>Disco interno de Linux</strong> → ext4</li>
+<li><strong>Memoria USB para intercambiar archivos entre SO</strong> → exFAT (o FAT32 si son archivos pequeños y el dispositivo es antiguo)</li>
+<li><strong>Disco de una cámara o dispositivo muy antiguo</strong> → FAT32</li>
+</ul>
+<hr />
+<h2 id="14-gestion-de-particiones-y-discos">1.4. Gestión de particiones y discos<a class="headerlink" href="#14-gestion-de-particiones-y-discos" title="Permanent link">&para;</a></h2>
+<h3 id="herramientas-en-windows">Herramientas en Windows<a class="headerlink" href="#herramientas-en-windows" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Administrador de discos</strong> (<code>diskmgmt.msc</code>): herramienta gráfica para crear, redimensionar, eliminar y formatear particiones</li>
+<li><strong>diskpart</strong>: herramienta de línea de comandos para las mismas tareas, útil en scripts o cuando la interfaz gráfica falla</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">diskpart</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">list</span> <span class="n">disk</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">select </span><span class="n">disk</span> <span class="n">1</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">clean</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">create</span> <span class="n">partition</span> <span class="n">primary</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">format</span> <span class="n">fs</span><span class="p">=</span><span class="n">ntfs</span> <span class="n">quick</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">assign</span> <span class="n">letter</span><span class="p">=</span><span class="n">E</span>
+</code></pre></div>
+<h3 id="herramientas-en-linux">Herramientas en Linux<a class="headerlink" href="#herramientas-en-linux" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>GParted</strong>: herramienta gráfica muy extendida, similar en concepto al administrador de discos de Windows</li>
+<li><strong>fdisk</strong>: herramienta de texto para particionar discos con MBR (y soporte parcial de GPT)</li>
+<li><strong>parted</strong>: herramienta de texto más moderna, con soporte completo de GPT</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>fdisk<span class="w"> </span>-l
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>parted<span class="w"> </span>/dev/sdb
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="o">(</span>parted<span class="o">)</span><span class="w"> </span>mklabel<span class="w"> </span>gpt
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="o">(</span>parted<span class="o">)</span><span class="w"> </span>mkpart<span class="w"> </span>primary<span class="w"> </span>ext4<span class="w"> </span><span class="m">0</span>%<span class="w"> </span><span class="m">100</span>%
+</code></pre></div>
+<h3 id="herramientas-multiplataforma">Herramientas multiplataforma<a class="headerlink" href="#herramientas-multiplataforma" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>GParted Live</strong>: distribución live booteable que permite particionar discos sin necesidad de un SO instalado, útil para tareas de mantenimiento</li>
+</ul>
+<h3 id="operaciones-habituales">Operaciones habituales<a class="headerlink" href="#operaciones-habituales" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Crear</strong> una partición nueva en espacio libre</li>
+<li><strong>Formatear</strong>: aplicar un sistema de archivos a una partición</li>
+<li><strong>Redimensionar</strong>: ampliar o reducir el tamaño de una partición existente</li>
+<li><strong>Eliminar</strong>: borrar una partición (y su contenido)</li>
+<li><strong>Montar/desmontar</strong>: hacer visible o retirar una partición del árbol de directorios (especialmente relevante en Linux)</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">Precaución</p>
+<p>Las operaciones de particionado son <strong>destructivas</strong>: eliminar o reformatear una partición borra su contenido. Antes de practicar sobre un disco con datos reales, asegúrate de trabajar sobre una máquina virtual o un disco de pruebas.</p>
+</div>
+<hr />
+<h2 id="15-practicas-de-la-unidad">1.5. Prácticas de la unidad<a class="headerlink" href="#15-practicas-de-la-unidad" title="Permanent link">&para;</a></h2>
+<div class="admonition abstract">
+<p class="admonition-title">Crear una máquina virtual en VirtualBox a partir de un archivo OVA</p>
+<p>Para crear una máquina virtual en VirtualBox a partir de un archivo OVA, solo debes seguir estos pasos:</p>
+<ol>
+<li>Haz doble clic sobre el archivo .ova en tu explorador de archivos.</li>
+<li>VirtualBox se abrirá automáticamente y mostrará una ventana emergente llamada "Importar servicio virtual".</li>
+<li>Revisa la configuración en la lista (puedes cambiar el nombre, la RAM o la CPU si lo deseas, aunque los valores por defecto suelen ser los correctos).</li>
+<li>Haz clic en el botón "Importar" (o "Terminar") en la esquina inferior derecha.</li>
+<li>Espera a que termine la barra de progreso.</li>
+</ol>
+</div>
+<p>Las entregas de las prácticas se realizaran siguiendo el formato definido <a href="../../entregas/">aqui</a></p>
+<div class="admonition example">
+<p class="admonition-title">Práctica 1 — Observando las funciones del SO en acción</p>
+<p>El objetivo de esta práctica es identificar, con herramientas reales del sistema, cada una de las seis funciones del SO explicadas en el apartado 1.1.</p>
+<p><strong>Parte A — Gestión de procesos</strong></p>
+<ol>
+<li>Abre el Administrador de tareas (Windows) o <code>htop</code>/<code>top</code> (Linux)</li>
+<li>Identifica al menos 5 procesos en ejecución y anota su PID</li>
+<li>Abre una aplicación nueva (por ejemplo, el navegador) y observa cómo aparece un proceso nuevo</li>
+<li>Fuerza el cierre de un proceso no crítico (por ejemplo, el propio navegador) desde el Administrador de tareas / con <code>kill</code> y comprueba el efecto</li>
+</ol>
+<p><strong>Parte B — Gestión de memoria</strong></p>
+<ol>
+<li>Anota la cantidad total de RAM del equipo y la que está en uso en este momento</li>
+<li>Identifica los 3 procesos que más memoria están consumiendo</li>
+<li>Localiza dónde está configurada la memoria virtual: el archivo de paginación en Windows (<code>Propiedades del sistema → Configuración avanzada → Rendimiento</code>) o la partición/fichero de swap en Linux (<code>swapon --show</code> o <code>free -h</code>)</li>
+</ol>
+<p><strong>Parte C — Gestión de dispositivos</strong></p>
+<ol>
+<li>Abre el Administrador de dispositivos (Windows) o ejecuta <code>lsusb</code> y <code>lspci</code> (Linux)</li>
+<li>Localiza al menos 3 dispositivos distintos (por ejemplo, tarjeta de red, tarjeta gráfica, controlador USB)</li>
+<li>Comprueba si alguno tiene algún aviso de driver no instalado o con problemas</li>
+</ol>
+<p><strong>Parte D — Interfaz de usuario</strong></p>
+<ol>
+<li>Realiza una misma tarea sencilla de dos formas distintas: mediante la interfaz gráfica y mediante línea de comandos. Por ejemplo, crear una carpeta nueva:<ul>
+<li>Gráfico: clic derecho → Nueva carpeta</li>
+<li>Comandos: <code>mkdir nombre_carpeta</code> (funciona en CMD/PowerShell y en la terminal de Linux)</li>
+</ul>
+</li>
+<li>Anota qué diferencias observas entre ambos métodos (rapidez, claridad, posibilidad de automatizar)</li>
+</ol>
+<p><strong>Parte E — Seguridad y control de acceso</strong></p>
+<ol>
+<li>Comprueba con qué usuario has iniciado sesión y si tiene privilegios de administrador/root</li>
+<li>Intenta realizar una acción que requiera privilegios elevados (por ejemplo, instalar un programa o modificar un archivo del sistema) y observa cómo el SO te lo impide o te pide confirmación/contraseña</li>
+</ol>
+<p><strong>Entrega</strong></p>
+<p>Sigue el formato único descrito en <a href="../../entregas/">Entregas</a>: un apartado por cada parte (A-E), con su evidencia, explicación breve y autoevaluación.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Práctica 2 — Inventario de almacenamiento</p>
+<p>Sobre tu equipo (o una VM), identifica y documenta:</p>
+<ol>
+<li>Tipo de disco (HDD/SSD), tamaño y esquema de particionado (MBR o GPT)</li>
+<li>Número y tipo de particiones existentes</li>
+<li>Sistema de archivos de cada partición</li>
+</ol>
+<p><strong>Entrega:</strong> formato único de <a href="../../entregas/">Entregas</a>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Práctica 3 — Particionado comparado</p>
+<p>En una máquina virtual con un disco secundario vacío:</p>
+<ol>
+<li>Crea un esquema de particiones en <strong>MBR</strong> con dos particiones primarias</li>
+<li>Formatea una en FAT32 y otra en NTFS</li>
+<li>Repite el proceso creando un disco con esquema <strong>GPT</strong> y formatéalo en ext4 usando GParted</li>
+<li>Anota las diferencias observadas en el proceso</li>
+</ol>
+<p><strong>Entrega:</strong> formato único de <a href="../../entregas/">Entregas</a>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Práctica 4 — Comparativa de sistemas de archivo</p>
+<p>Copia el mismo conjunto de archivos (incluyendo alguno mayor de 4 GB si es posible) a particiones FAT32, exFAT y NTFS. Comprueba y documenta qué ocurre en cada caso.</p>
+<p><strong>Entrega:</strong> formato único de <a href="../../entregas/">Entregas</a>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Práctica 5 — Simulación de incidencia</p>
+<p>Elimina una partición de prueba (sin datos importantes) y utiliza una herramienta de recuperación básica (p. ej. TestDisk) para intentar recuperar la estructura. Documenta el proceso y el resultado.</p>
+<p><strong>Entrega:</strong> formato único de <a href="../../entregas/">Entregas</a>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="../../assets/external/unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/external/unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
