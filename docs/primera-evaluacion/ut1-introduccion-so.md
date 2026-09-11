@@ -305,7 +305,8 @@ sudo parted /dev/sdb
 
 !!! abstract "Crear una máquina virtual en VirtualBox a partir de un archivo OVA"
     Para crear una máquina virtual en VirtualBox a partir de un archivo OVA, solo debes seguir estos pasos:
-    - Haz doble clic sobre el archivo .ova en tu explorador de archivos.
+
+    1. Haz doble clic sobre el archivo .ova en tu explorador de archivos.
     - VirtualBox se abrirá automáticamente y mostrará una ventana emergente llamada "Importar servicio virtual".
     - Revisa la configuración en la lista (puedes cambiar el nombre, la RAM o la CPU si lo deseas, aunque los valores por defecto suelen ser los correctos).
     - Haz clic en el botón "Importar" (o "Terminar") en la esquina inferior derecha.

@@ -58,6 +58,7 @@ markdown_extensions:
   - toc:
       permalink: true
       title: En esta página
+      toc_depth: 2
   - tables
   - footnotes
   - pymdownx.arithmatex:
