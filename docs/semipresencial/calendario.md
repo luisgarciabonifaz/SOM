@@ -21,9 +21,9 @@
 
 | Evaluación | Unidad | Título | Fechas | Semanas | Horas |
 |---|---|---|---|---|---|
-| 1ª | UT1 | Introducción a los SO y sistemas de archivo | 9 – 27 sept | 3 | 12h |
-| 1ª | UT2 | Hardware y requisitos de instalación | 28 sept – 18 oct | 3 | 10h |
-| 1ª | UT3 | Virtualización | 19 oct – 15 nov | 4 | 14h |
+| 1ª | UT1 | Introducción a los SO y sistemas de archivo | 9 – 4 oct | 3 | 12h |
+| 1ª | UT2 | Hardware y requisitos de instalación | 5 oct – 25 oct | 3 | 10h |
+| 1ª | UT3 | Virtualización | 26 oct – 15 nov | 3 | 14h |
 | 1ª | — | **Exámenes 1 evaluación** | 16 – 29 nov | 2 | — |
 | 2ª | UT4 | Instalación de Windows | 30 Nov – 20 dic | 3 | 12h |
 | | | *(Vacaciones de Navidad: 21 dic – 10 ene)* | | | |

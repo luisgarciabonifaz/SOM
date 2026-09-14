@@ -6,7 +6,7 @@ title: "Guía didáctica — UT1"
 
 !!! info "Duración"
     **Desde:** 9 de septiembre de 2026
-    **Hasta:** 27 de septiembre de 2026
+    **Hasta:** 4 de octubre de 2026
     **Duración estimada:** 3 semanas (12h)
 
 ## Contenido
@@ -30,6 +30,6 @@ Esta unidad, como casi todas las de la primera evaluación, tiene un componente 
 
 ## Sesión presencial semanal (1h)
 
-1. **Semana 1** — Presentación del módulo, del proyecto TechPyme S.L. y de la infraestructura de aula; resumen de los elementos funcionales de un sistema operativo. *(Trabajo en casa: lectura de la documentación de elementos funcionales de un SO y arquitectura Von Neumann).*
-2. **Semana 2** — Resumen de la arquitectura Von Neumann, la representación de la información y la gestión de procesos y estados. *(Trabajo en casa: actividades sobre codificación de la información y estados de proceso).*
-3. **Semana 3** — Resumen de sistemas de archivo y permisos básicos; resolución de dudas antes de la entrega. *(Trabajo en casa: finalización y repaso de todas las actividades de la unidad).*
+1. **Semana 1 - 15/09/26** — Presentación del módulo, del proyecto TechPyme S.L. y de la infraestructura de aula; resumen de los elementos funcionales de un sistema operativo. *(Trabajo en casa: lectura de la documentación de elementos funcionales de un SO y arquitectura Von Neumann).*
+2. **Semana 2 - 22/09/26** — Resumen de la arquitectura Von Neumann, la representación de la información y la gestión de procesos y estados. *(Trabajo en casa: actividades sobre codificación de la información y estados de proceso).*
+3. **Semana 3 - 29/09/26** — Resumen de sistemas de archivo y permisos básicos; resolución de dudas antes de la entrega. *(Trabajo en casa: finalización y repaso de todas las actividades de la unidad).*
