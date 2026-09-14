@@ -1,0 +1,1576 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Apuntes del módulo de Sistemas Operativos Monopuesto (SMR)">
+      
+      
+        <meta name="author" content="Departamento de Informática">
+      
+      
+      
+        <link rel="prev" href="../ut4-instalacion-windows/">
+      
+      
+        <link rel="next" href="../ut6-administracion-windows/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>UT5. Configuración básica de Windows - Sistemas Operativos Monopuesto</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ut5-configuracion-basica-de-windows" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Sistemas Operativos Monopuesto" class="md-header__button md-logo" aria-label="Sistemas Operativos Monopuesto" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Sistemas Operativos Monopuesto
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UT5. Configuración básica de Windows
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Sistemas Operativos Monopuesto" class="md-nav__button md-logo" aria-label="Sistemas Operativos Monopuesto" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Sistemas Operativos Monopuesto
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../proyecto-techpyme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proyecto TechPyme
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../evaluacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evaluación y horas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../entregas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entregas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../semipresencial/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semipresencial
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Semipresencial
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../primera-evaluacion/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1ª Evaluación - SO y Virtualización
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1ª Evaluación - SO y Virtualización
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../primera-evaluacion/ut1-introduccion-so/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT1. Introducción a los SO y sistemas de archivo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../primera-evaluacion/ut2-hardware-instalacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT2. Hardware y requisitos de instalación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../primera-evaluacion/ut3-virtualizacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT3. Virtualización
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2ª Evaluación - Windows
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2ª Evaluación - Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ut4-instalacion-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT4. Instalación de Windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT5. Configuración básica de Windows
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT5. Configuración básica de Windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="En esta página">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      En esta página
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-configuracion-regional-y-de-idioma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Configuración regional y de idioma
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52-introduccion-a-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Introducción a PowerShell
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-configuracion-de-red-con-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3. Configuración de red con PowerShell
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54-cuentas-de-usuario-y-personalizacion-basica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4. Cuentas de usuario y personalización básica
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#55-herramientas-de-configuracion-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5. Herramientas de configuración del sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#56-actualizaciones-y-mantenimiento-basico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6. Actualizaciones y mantenimiento básico
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#57-practicas-de-la-unidad-configuracion-de-vm-win" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7. Prácticas de la unidad — Configuración de VM-WIN
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ut6-administracion-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT6. Administración de Windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../tercera-evaluacion/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3ª Evaluación - Linux
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3ª Evaluación - Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tercera-evaluacion/ut7-instalacion-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT7. Instalación de Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tercera-evaluacion/ut8-configuracion-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT8. Configuración básica de Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tercera-evaluacion/ut9-administracion-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT9. Administración de Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tercera-evaluacion/ut10-comparticion-cierre/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UT10. Compartición de archivos y cierre
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="En esta página">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      En esta página
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-configuracion-regional-y-de-idioma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Configuración regional y de idioma
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52-introduccion-a-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Introducción a PowerShell
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-configuracion-de-red-con-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3. Configuración de red con PowerShell
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54-cuentas-de-usuario-y-personalizacion-basica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4. Cuentas de usuario y personalización básica
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#55-herramientas-de-configuracion-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5. Herramientas de configuración del sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#56-actualizaciones-y-mantenimiento-basico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6. Actualizaciones y mantenimiento básico
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#57-practicas-de-la-unidad-configuracion-de-vm-win" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7. Prácticas de la unidad — Configuración de VM-WIN
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ut5-configuracion-basica-de-windows">UT5. Configuración básica de Windows<a class="headerlink" href="#ut5-configuracion-basica-de-windows" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Resultado de aprendizaje</p>
+<p><strong>RA3.</strong> Realiza tareas básicas de configuración de sistemas operativos, interpretando requerimientos y describiendo los procedimientos seguidos.</p>
+</div>
+<h2 id="51-configuracion-regional-y-de-idioma">5.1. Configuración regional y de idioma<a class="headerlink" href="#51-configuracion-regional-y-de-idioma" title="Permanent link">&para;</a></h2>
+<h3 id="region-y-formatos">Región y formatos<a class="headerlink" href="#region-y-formatos" title="Permanent link">&para;</a></h3>
+<p>Desde <code>Configuración → Hora e idioma → Región</code> se configura el país, que determina los formatos por defecto de fecha, hora, moneda y unidades de medida.</p>
+<h3 id="idiomas-y-teclado">Idiomas y teclado<a class="headerlink" href="#idiomas-y-teclado" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Es posible instalar varios <strong>idiomas de sistema</strong> y <strong>distribuciones de teclado</strong>, y alternar entre ellas</li>
+<li>El idioma "principal" determina en qué idioma aparecen los menús y textos del sistema</li>
+<li>Se puede añadir un teclado adicional (por ejemplo, inglés) sin cambiar el idioma general</li>
+</ul>
+<h3 id="zona-horaria">Zona horaria<a class="headerlink" href="#zona-horaria" title="Permanent link">&para;</a></h3>
+<p>Configurable manualmente o de forma automática (si el equipo tiene acceso a Internet y localización activada), en <code>Configuración → Hora e idioma → Fecha y hora</code>.</p>
+<hr />
+<h2 id="52-introduccion-a-powershell">5.2. Introducción a PowerShell<a class="headerlink" href="#52-introduccion-a-powershell" title="Permanent link">&para;</a></h2>
+<p>A partir de este punto, <strong>todas las tareas de línea de comandos en Windows se realizarán con PowerShell</strong>, que sustituye al símbolo del sistema (CMD) como herramienta de referencia durante el resto del curso.</p>
+<h3 id="que-es-powershell">¿Qué es PowerShell?<a class="headerlink" href="#que-es-powershell" title="Permanent link">&para;</a></h3>
+<p><strong>PowerShell</strong> es un shell de línea de comandos y lenguaje de scripting de Microsoft, diseñado para la administración y automatización de sistemas. A diferencia de CMD, PowerShell es mucho más potente porque:</p>
+<ul>
+<li>Trabaja con <strong>objetos</strong>, no con texto plano</li>
+<li>Tiene una sintaxis coherente y predecible en todos sus comandos</li>
+<li>Permite administrar prácticamente cualquier aspecto de Windows (usuarios, red, discos, servicios, registro...) desde la propia consola</li>
+</ul>
+<h3 id="el-concepto-de-cmdlet">El concepto de cmdlet<a class="headerlink" href="#el-concepto-de-cmdlet" title="Permanent link">&para;</a></h3>
+<p>Los comandos de PowerShell se llaman <strong>cmdlets</strong> (se pronuncia "command-lets") y siguen siempre la estructura:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Verbo-Nombre
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Verbo</th>
+<th>Significado</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Get</code></td>
+<td>Obtener/consultar información</td>
+<td><code>Get-Process</code></td>
+</tr>
+<tr>
+<td><code>Set</code></td>
+<td>Modificar una propiedad existente</td>
+<td><code>Set-LocalUser</code></td>
+</tr>
+<tr>
+<td><code>New</code></td>
+<td>Crear algo nuevo</td>
+<td><code>New-LocalUser</code></td>
+</tr>
+<tr>
+<td><code>Remove</code></td>
+<td>Eliminar</td>
+<td><code>Remove-LocalUser</code></td>
+</tr>
+<tr>
+<td><code>Add</code></td>
+<td>Añadir a algo existente</td>
+<td><code>Add-LocalGroupMember</code></td>
+</tr>
+<tr>
+<td><code>Start</code> / <code>Stop</code></td>
+<td>Iniciar/detener un proceso o servicio</td>
+<td><code>Stop-Process</code>, <code>Start-Service</code></td>
+</tr>
+</tbody>
+</table>
+<p>Esta coherencia hace que, una vez se conoce el patrón, sea fácil intuir el nombre de un cmdlet aunque no se haya usado antes.</p>
+<h3 id="objetos-no-texto">Objetos, no texto<a class="headerlink" href="#objetos-no-texto" title="Permanent link">&para;</a></h3>
+<p>Cuando un cmdlet de PowerShell "consulta algo" (por ejemplo, la lista de procesos), no devuelve simplemente texto: devuelve <strong>objetos</strong> con propiedades. Esto permite filtrar, ordenar y seleccionar datos con precisión, en lugar de tener que "recortar" texto como se haría en CMD o en un shell tradicional.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">Get-Process</span> <span class="p">|</span> <span class="nb">Sort-Object</span> <span class="n">CPU</span> <span class="n">-Descending</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">-First</span> <span class="n">5</span>
+</code></pre></div>
+<p>Este ejemplo obtiene todos los procesos, los ordena por consumo de CPU de mayor a menor, y muestra solo los 5 primeros.</p>
+<h3 id="el-pipeline">El pipeline (<code>|</code>)<a class="headerlink" href="#el-pipeline" title="Permanent link">&para;</a></h3>
+<p>El símbolo <code>|</code> (pipeline o "tubería") permite encadenar cmdlets, pasando el resultado de uno como entrada del siguiente. Es uno de los conceptos más potentes de PowerShell, y se usará constantemente a lo largo del curso.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">Get-Service</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">Status</span> <span class="o">-eq</span> <span class="s2">"Running"</span><span class="p">}</span>
+</code></pre></div>
+<p>Este ejemplo obtiene todos los servicios y filtra solo los que están en estado "en ejecución".</p>
+<h3 id="ayuda-integrada">Ayuda integrada<a class="headerlink" href="#ayuda-integrada" title="Permanent link">&para;</a></h3>
+<p>PowerShell incluye un sistema de ayuda muy completo:</p>
+<table>
+<thead>
+<tr>
+<th>Cmdlet</th>
+<th>Para qué sirve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Get-Help &lt;cmdlet&gt;</code></td>
+<td>Muestra la ayuda de un cmdlet concreto, con sintaxis y ejemplos</td>
+</tr>
+<tr>
+<td><code>Get-Command</code></td>
+<td>Lista los cmdlets disponibles; admite filtros como <code>Get-Command -Verb Get</code></td>
+</tr>
+<tr>
+<td><code>Get-Member</code></td>
+<td>Muestra las propiedades y métodos de un objeto devuelto por un cmdlet</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">Get-Help</span> <span class="nb">Get-Process</span> <span class="n">-Examples</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">Get-Command</span> <span class="n">-Noun</span> <span class="n">LocalUser</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">Get-Process</span> <span class="p">|</span> <span class="nb">Get-Member</span>
+</code></pre></div>
+<h3 id="alias">Alias<a class="headerlink" href="#alias" title="Permanent link">&para;</a></h3>
+<p>Por comodidad (y compatibilidad con quienes vienen de CMD o de Linux), muchos cmdlets tienen <strong>alias</strong>: nombres cortos alternativos.</p>
+<table>
+<thead>
+<tr>
+<th>Alias</th>
+<th>Cmdlet real</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ls</code>, <code>dir</code></td>
+<td><code>Get-ChildItem</code></td>
+</tr>
+<tr>
+<td><code>cd</code></td>
+<td><code>Set-Location</code></td>
+</tr>
+<tr>
+<td><code>cls</code>, <code>clear</code></td>
+<td><code>Clear-Host</code></td>
+</tr>
+<tr>
+<td><code>cp</code></td>
+<td><code>Copy-Item</code></td>
+</tr>
+<tr>
+<td><code>rm</code>, <code>del</code></td>
+<td><code>Remove-Item</code></td>
+</tr>
+<tr>
+<td><code>ps</code></td>
+<td><code>Get-Process</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Los alias son útiles para trabajar rápido, pero conviene conocer el nombre real del cmdlet (<code>Verbo-Nombre</code>), especialmente a la hora de escribir scripts que otras personas deban entender.</p>
+</div>
+<h3 id="politica-de-ejecucion-execution-policy">Política de ejecución (Execution Policy)<a class="headerlink" href="#politica-de-ejecucion-execution-policy" title="Permanent link">&para;</a></h3>
+<p>Por motivos de seguridad, PowerShell restringe por defecto la ejecución de scripts (<code>.ps1</code>), para evitar que se ejecute código malicioso sin que el usuario sea consciente. Esto se controla con la <strong>política de ejecución</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">Get-ExecutionPolicy</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">Set-ExecutionPolicy</span> <span class="n">RemoteSigned</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Política</th>
+<th>Comportamiento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Restricted</code></td>
+<td>No se puede ejecutar ningún script (valor por defecto en muchos Windows)</td>
+</tr>
+<tr>
+<td><code>RemoteSigned</code></td>
+<td>Los scripts locales se ejecutan libremente; los descargados de Internet requieren firma digital</td>
+</tr>
+<tr>
+<td><code>Unrestricted</code></td>
+<td>Se ejecuta cualquier script (no recomendado salvo entornos controlados)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="donde-se-ejecuta-powershell">Dónde se ejecuta PowerShell<a class="headerlink" href="#donde-se-ejecuta-powershell" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Consola de PowerShell</strong>: la clásica, ventana azul</li>
+<li><strong>PowerShell ISE</strong>: entorno con editor de scripts integrado</li>
+<li><strong>Windows Terminal</strong>: aplicación moderna que permite tener PowerShell, CMD y otras consolas en pestañas dentro de la misma ventana</li>
+</ul>
+<h3 id="primeros-cmdlets-de-prueba">Primeros cmdlets de prueba<a class="headerlink" href="#primeros-cmdlets-de-prueba" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">Get-Process</span>        <span class="c"># Lista los procesos en ejecución</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">Get-Service</span>         <span class="c"># Lista los servicios del sistema</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">Get-Date</span>            <span class="c"># Muestra la fecha y hora actual</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nb">Get-ComputerInfo</span>    <span class="c"># Información general del sistema</span>
+</code></pre></div>
+<hr />
+<h2 id="53-configuracion-de-red-con-powershell">5.3. Configuración de red con PowerShell<a class="headerlink" href="#53-configuracion-de-red-con-powershell" title="Permanent link">&para;</a></h2>
+<h3 id="repaso-redes-privada-vs-publica">Repaso: redes privada vs pública<a class="headerlink" href="#repaso-redes-privada-vs-publica" title="Permanent link">&para;</a></h3>
+<p>Windows distingue entre:</p>
+<ul>
+<li><strong>Red privada</strong>: para entornos de confianza (casa, oficina), permite descubrimiento de red y recursos compartidos</li>
+<li><strong>Red pública</strong>: para entornos no confiables (cafeterías, aeropuertos), oculta el equipo en la red</li>
+</ul>
+<p>Para TechPyme, la red del aula se configurará como <strong>red privada</strong>, ya que necesitamos compartir recursos entre equipos.</p>
+<h3 id="consultar-la-configuracion-de-red">Consultar la configuración de red<a class="headerlink" href="#consultar-la-configuracion-de-red" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">Get-NetIPConfiguration</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">Get-NetAdapter</span>
+</code></pre></div>
+<p><code>Get-NetIPConfiguration</code> muestra un resumen de la IP, puerta de enlace y DNS del adaptador activo; <code>Get-NetAdapter</code> lista los adaptadores de red disponibles y su estado.</p>
+<h3 id="configuracion-de-ip">Configuración de IP<a class="headerlink" href="#configuracion-de-ip" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">IP automática (DHCP)</label><label for="__tabbed_1_2">IP manual (estática)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Es la configuración por defecto: el adaptador solicita una IP automáticamente al router/servidor DHCP de la red.</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">New-NetIPAddress</span> <span class="n">-InterfaceAlias</span> <span class="s2">"Ethernet"</span> <span class="p">`</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="n">-IPAddress</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">101</span> <span class="p">`</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">-PrefixLength</span> <span class="n">24</span> <span class="p">`</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="n">-DefaultGateway</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">1</span>
+</code></pre></div>
+<p>Si ya existe una IP asignada y se quiere cambiar:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">Set-NetIPAddress</span> <span class="n">-InterfaceAlias</span> <span class="s2">"Ethernet"</span> <span class="n">-IPAddress</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">101</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="configuracion-de-dns">Configuración de DNS<a class="headerlink" href="#configuracion-de-dns" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">Set-DnsClientServerAddress</span> <span class="n">-InterfaceAlias</span> <span class="s2">"Ethernet"</span> <span class="n">-ServerAddresses</span> <span class="p">(</span><span class="s2">"8.8.8.8"</span><span class="p">,</span><span class="s2">"8.8.4.4"</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="nombre-del-equipo-y-grupo-de-trabajo">Nombre del equipo y grupo de trabajo<a class="headerlink" href="#nombre-del-equipo-y-grupo-de-trabajo" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">Rename-Computer</span> <span class="n">-NewName</span> <span class="s2">"PC-TECHPYME-WIN"</span> <span class="n">-Restart</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nb">Add-Computer</span> <span class="n">-WorkgroupName</span> <span class="s2">"TECHPYME"</span>
+</code></pre></div>
+<h3 id="comprobacion-de-conectividad">Comprobación de conectividad<a class="headerlink" href="#comprobacion-de-conectividad" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">Test-Connection</span> <span class="n">-ComputerName</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">1</span> <span class="n">-Count</span> <span class="n">4</span>
+</code></pre></div>
+<p><code>Test-Connection</code> es el equivalente moderno de <code>ping</code> en PowerShell, pero devuelve objetos (por lo que se puede filtrar, guardar en variables, etc.) en lugar de solo texto.</p>
+<hr />
+<h2 id="54-cuentas-de-usuario-y-personalizacion-basica">5.4. Cuentas de usuario y personalización básica<a class="headerlink" href="#54-cuentas-de-usuario-y-personalizacion-basica" title="Permanent link">&para;</a></h2>
+<h3 id="administrador-vs-usuario-estandar">Administrador vs usuario estándar<a class="headerlink" href="#administrador-vs-usuario-estandar" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tipo de cuenta</th>
+<th>Puede...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Administrador</strong></td>
+<td>Instalar software, cambiar configuración del sistema, gestionar otros usuarios</td>
+</tr>
+<tr>
+<td><strong>Estándar</strong></td>
+<td>Usar el equipo y sus programas, pero no cambiar configuración crítica del sistema</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Buenas prácticas</p>
+<p>Se recomienda usar una cuenta estándar para el trabajo diario y reservar la cuenta de administrador solo para tareas de gestión, minimizando el riesgo de cambios accidentales o de software malicioso con permisos elevados.</p>
+</div>
+<h3 id="personalizacion">Personalización<a class="headerlink" href="#personalizacion" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Fondo de escritorio, colores, tema claro/oscuro: <code>Configuración → Personalización</code></li>
+<li>Configuración de energía y suspensión: <code>Configuración → Sistema → Energía y batería</code>, especialmente relevante en portátiles para equilibrar autonomía y rendimiento</li>
+<li>Accesibilidad: opciones de contraste, tamaño de texto, narrador (mención)</li>
+</ul>
+<hr />
+<h2 id="55-herramientas-de-configuracion-del-sistema">5.5. Herramientas de configuración del sistema<a class="headerlink" href="#55-herramientas-de-configuracion-del-sistema" title="Permanent link">&para;</a></h2>
+<h3 id="panel-de-control-vs-configuracion">Panel de control vs Configuración<a class="headerlink" href="#panel-de-control-vs-configuracion" title="Permanent link">&para;</a></h3>
+<p>Windows mantiene actualmente dos interfaces de configuración:</p>
+<ul>
+<li><strong>Panel de control</strong>: interfaz clásica, más completa en algunos aspectos avanzados</li>
+<li><strong>Configuración</strong> (app moderna): interfaz rediseñada, donde Microsoft va migrando progresivamente todas las opciones</li>
+</ul>
+<p>Muchas opciones existen en ambos sitios; otras solo en uno de los dos, por lo que conviene saber moverse en ambas.</p>
+<h3 id="el-registro-de-windows">El registro de Windows<a class="headerlink" href="#el-registro-de-windows" title="Permanent link">&para;</a></h3>
+<p>El <strong>registro</strong> es una base de datos jerárquica donde Windows almacena la configuración del sistema y de las aplicaciones.</p>
+<ul>
+<li>Estructura en <strong>colmenas</strong> (<em>hives</em>), las principales:<ul>
+<li><code>HKEY_LOCAL_MACHINE</code> (<code>HKLM:</code>): configuración del equipo, aplicable a todos los usuarios</li>
+<li><code>HKEY_CURRENT_USER</code> (<code>HKCU:</code>): configuración del usuario actual</li>
+</ul>
+</li>
+<li>Acceso gráfico mediante <code>regedit</code></li>
+<li>Acceso desde PowerShell, tratando las rutas del registro como si fueran unidades:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nb">Get-ItemProperty</span> <span class="n">-Path</span> <span class="s2">"HKCU:\Control Panel\Desktop"</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nb">Set-ItemProperty</span> <span class="n">-Path</span> <span class="s2">"HKCU:\Control Panel\Desktop"</span> <span class="n">-Name</span> <span class="s2">"Wallpaper"</span> <span class="n">-Value</span> <span class="s2">"C:\ruta\imagen.jpg"</span>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Precaución con el registro</p>
+<p>Modificar el registro incorrectamente puede provocar que Windows deje de funcionar correctamente. Antes de hacer cambios, especialmente en <code>HKLM:</code>, es recomendable exportar una copia de la clave que se va a modificar.</p>
+</div>
+<h3 id="editor-de-politicas-locales-gpeditmsc">Editor de políticas locales (gpedit.msc)<a class="headerlink" href="#editor-de-politicas-locales-gpeditmsc" title="Permanent link">&para;</a></h3>
+<p>Permite configurar políticas de seguridad y comportamiento del sistema a nivel local (por ejemplo, restricciones de contraseña, qué pueden hacer los usuarios estándar). Se amplía en la UT6 al hablar de administración de usuarios.</p>
+<h3 id="administrador-de-tareas-desde-powershell">Administrador de tareas desde PowerShell<a class="headerlink" href="#administrador-de-tareas-desde-powershell" title="Permanent link">&para;</a></h3>
+<p>Recuperando lo visto en la <strong>UT1</strong> sobre gestión de procesos:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">Get-Process</span> <span class="p">|</span> <span class="nb">Sort-Object</span> <span class="n">CPU</span> <span class="n">-Descending</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">-First</span> <span class="n">10</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nb">Stop-Process</span> <span class="n">-Name</span> <span class="s2">"notepad"</span> <span class="n">-Force</span>
+</code></pre></div>
+<hr />
+<h2 id="56-actualizaciones-y-mantenimiento-basico">5.6. Actualizaciones y mantenimiento básico<a class="headerlink" href="#56-actualizaciones-y-mantenimiento-basico" title="Permanent link">&para;</a></h2>
+<h3 id="windows-update-avanzado">Windows Update avanzado<a class="headerlink" href="#windows-update-avanzado" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Pausar actualizaciones temporalmente: <code>Configuración → Windows Update → Opciones avanzadas</code></li>
+<li>Consultar el historial de actualizaciones instaladas</li>
+</ul>
+<h3 id="gestion-desde-powershell">Gestión desde PowerShell<a class="headerlink" href="#gestion-desde-powershell" title="Permanent link">&para;</a></h3>
+<p>Existe un módulo específico, <code>PSWindowsUpdate</code> (no incluido por defecto, se instala aparte), que permite consultar e instalar actualizaciones desde PowerShell. Se menciona aquí como referencia para quien quiera automatizar esta tarea, sin entrar en detalle de instalación del módulo.</p>
+<h3 id="liberador-de-espacio-en-disco">Liberador de espacio en disco<a class="headerlink" href="#liberador-de-espacio-en-disco" title="Permanent link">&para;</a></h3>
+<p>Herramienta gráfica clásica (<code>cleanmgr</code>) que elimina archivos temporales, papelera, versiones antiguas de Windows tras una actualización, etc.</p>
+<h3 id="optimizacion-de-unidades">Optimización de unidades<a class="headerlink" href="#optimizacion-de-unidades" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">Optimize-Volume</span> <span class="n">-DriveLetter</span> <span class="n">C</span> <span class="n">-Defrag</span>    <span class="c"># Para HDD</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nb">Optimize-Volume</span> <span class="n">-DriveLetter</span> <span class="n">C</span> <span class="n">-ReTrim</span>    <span class="c"># Para SSD</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Desfragmentar un SSD no solo es innecesario, sino contraproducente (reduce su vida útil sin mejorar el rendimiento). Windows detecta automáticamente el tipo de unidad y aplica la operación de mantenimiento adecuada (TRIM en SSD, desfragmentación en HDD).</p>
+</div>
+<hr />
+<h2 id="57-practicas-de-la-unidad-configuracion-de-vm-win">5.7. Prácticas de la unidad — Configuración de VM-WIN<a class="headerlink" href="#57-practicas-de-la-unidad-configuracion-de-vm-win" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Práctica 1 — Primeros pasos con PowerShell</p>
+<p>Sobre VM-WIN:</p>
+<ol>
+<li>Abre PowerShell y ejecuta <code>Get-Help Get-Process -Examples</code></li>
+<li>Ejecuta <code>Get-Command -Noun Service</code> y observa los cmdlets disponibles relacionados con servicios</li>
+<li>Combina <code>Get-Process</code> con <code>Sort-Object</code> y <code>Select-Object</code> para mostrar los 5 procesos que más memoria consumen</li>
+</ol>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Práctica 2 — Región e idioma</p>
+<p>Configura región, idioma y zona horaria de VM-WIN adecuados a España.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Práctica 3 — Red con PowerShell</p>
+<ol>
+<li>Consulta la configuración de red actual con <code>Get-NetIPConfiguration</code></li>
+<li>Asigna una IP fija dentro del rango de red de TechPyme con <code>New-NetIPAddress</code></li>
+<li>Configura el DNS con <code>Set-DnsClientServerAddress</code></li>
+<li>Comprueba la conectividad con <code>Test-Connection</code> hacia el host físico del alumno y hacia el servidor del profesor</li>
+<li>Cambia el nombre del equipo a <code>PC-TECHPYME-WIN</code> con <code>Rename-Computer</code></li>
+</ol>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Práctica 4 — Personalización y energía</p>
+<p>Personaliza el escritorio de VM-WIN y ajusta el plan de energía a uno adecuado para un equipo de oficina.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Práctica 5 — Registro desde PowerShell</p>
+<p>Consulta una clave del registro relacionada con el fondo de escritorio (<code>HKCU:\Control Panel\Desktop</code>) usando <code>Get-ItemProperty</code>, y documenta qué información obtienes.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="../../assets/external/unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/external/unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
