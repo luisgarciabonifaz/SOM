@@ -328,8 +328,7 @@ Las entregas de las prácticas se realizaran siguiendo el formato definido [aqui
 
     1. Anota la cantidad total de RAM del equipo y la que está en uso en este momento
     2. Identifica los 3 procesos que más memoria están consumiendo
-    3. Localiza dónde está configurada la memoria virtual: el archivo de paginación en Windows (`Propiedades del sistema → Configuración avanzada → Rendimiento`) o la partición/fichero de swap en Linux (`swapon --show` o `free -h`)
-
+    
     **Parte C — Gestión de dispositivos**
 
     1. Abre el Administrador de dispositivos (Windows) o ejecuta `lsusb` y `lspci` (Linux)
