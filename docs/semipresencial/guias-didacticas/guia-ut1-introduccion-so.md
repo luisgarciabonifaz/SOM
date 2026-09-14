@@ -26,7 +26,7 @@ Esta unidad, como casi todas las de la primera evaluación, tiene un componente 
 
 !!! warning "Entrega"
     Recuerda entregar las actividades en formato PDF a través del aula virtual.
-    **El plazo de entrega finaliza el 27 de septiembre de 2026 a las 23:59.**
+    **El plazo de entrega finaliza el 4 de octubre de 2026 a las 23:59.**
 
 ## Sesión presencial semanal (1h)
 
