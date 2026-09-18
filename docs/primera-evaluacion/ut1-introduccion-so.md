@@ -21,7 +21,7 @@ La idea central de esta arquitectura es el **concepto de programa almacenado**: 
 - **Dispositivos de entrada/salida (E/S)**: periféricos por los que el sistema recibe información del exterior (teclado, ratón, red...) o la envía (pantalla, impresora...)
 - **Buses**: canales físicos que conectan todos los componentes y por los que circulan datos, direcciones de memoria y señales de control
 
-![Arquitectura Von Neuman](../ArquitecturaVonNeuman.jpeg)
+![Arquitectura Von Neuman](./Imagenes/ArquitecturaVonNeuman.jpeg)
 
 !!! note "El «cuello de botella» de Von Neumann"
     Como instrucciones y datos comparten la misma memoria y el mismo bus de acceso a ella, la CPU no puede leer una instrucción y un dato al mismo tiempo. Este límite se conoce como **cuello de botella de Von Neumann** y es una de las razones por las que existen las memorias caché: reducen la necesidad de acceder constantemente a la RAM.
@@ -77,6 +77,9 @@ La memoria RAM es un recurso limitado que deben compartir todos los procesos en 
     - En Windows se denomina **archivo de paginación** (pagefile)
     - En Linux se denomina **memoria de intercambio** (swap), habitualmente en una partición o fichero dedicado
 - **Paginación**: la memoria se divide en bloques de tamaño fijo (páginas) que se pueden mover entre RAM y disco según se necesiten
+
+
+![Memoria Virtual](./Imagenes/MemoriaVirtual.jpg)
 
 !!! warning "Efecto de quedarse sin RAM"
     Cuando la RAM se agota y el sistema depende demasiado de la memoria virtual (disco), el rendimiento cae drásticamente, ya que el disco es mucho más lento que la RAM. Este fenómeno se conoce coloquialmente como *thrashing*.
