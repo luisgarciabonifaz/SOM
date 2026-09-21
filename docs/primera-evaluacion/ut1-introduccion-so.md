@@ -161,6 +161,8 @@ Esta función será especialmente relevante en las evaluaciones 2ª y 3ª, cuand
 - **Sistema de archivos**: estructura que organiza la información en el almacenamiento
 - **Drivers**: programas que permiten al SO comunicarse con dispositivos concretos
 
+![Componetes del SO](./Imagenes/ComponentesSO.jpeg)
+
 ### Panorama de sistemas operativos actuales
 
 === "Windows"
@@ -332,37 +334,37 @@ Las entregas de las prácticas se realizaran siguiendo el formato definido [aqui
     El objetivo de esta práctica es identificar, con herramientas reales del sistema, cada una de las seis funciones del SO explicadas en el apartado 1.1.
 
     **Parte A — Gestión de procesos**
-
+    
     1. Abre el Administrador de tareas (Windows) o `htop`/`top` (Linux)
     2. Identifica al menos 5 procesos en ejecución y anota su PID
     3. Abre una aplicación nueva (por ejemplo, el navegador) y observa cómo aparece un proceso nuevo
     4. Fuerza el cierre de un proceso no crítico (por ejemplo, el propio navegador) desde el Administrador de tareas / con `kill` y comprueba el efecto
-
+    
     **Parte B — Gestión de memoria**
-
+    
     1. Anota la cantidad total de RAM del equipo y la que está en uso en este momento
     2. Identifica los 3 procesos que más memoria están consumiendo
     
     **Parte C — Gestión de dispositivos**
-
+    
     1. Abre el Administrador de dispositivos (Windows) o ejecuta `lsusb` y `lspci` (Linux)
     2. Localiza al menos 3 dispositivos distintos (por ejemplo, tarjeta de red, tarjeta gráfica, controlador USB)
     3. Comprueba si alguno tiene algún aviso de driver no instalado o con problemas
-
+    
     **Parte D — Interfaz de usuario**
-
+    
     1. Realiza una misma tarea sencilla de dos formas distintas: mediante la interfaz gráfica y mediante línea de comandos. Por ejemplo, crear una carpeta nueva:
         - Gráfico: clic derecho → Nueva carpeta
         - Comandos: `mkdir nombre_carpeta` (funciona en CMD/PowerShell y en la terminal de Linux)
     2. Anota qué diferencias observas entre ambos métodos (rapidez, claridad, posibilidad de automatizar)
-
+    
     **Parte E — Seguridad y control de acceso**
     
     1. Comprueba con qué usuario has iniciado sesión y si tiene privilegios de administrador/root
-    2. Intenta realizar una acción que requiera privilegios elevados (por ejemplo, instalar un programa o modificar un archivo del sistema) y observa cómo el SO te lo impide o te pide confirmación/contraseña
-
+    2. Intenta realizar una acción que requiera privilegios elevados (por ejemplo, instalar un programa o modificar un archivo del sistema) y observa cómo el SO te lo impide o te pide confirmación/contraseña. Ejemplo: Intenta crear una carpeta o archivo en c:\windows\system32
+    
     **Entrega**
-
+    
     Sigue el formato único descrito en [Entregas](../entregas.md): un apartado por cada parte (A-E), con su evidencia, explicación breve y autoevaluación.
 
 !!! example "Práctica 2 — Inventario de almacenamiento"
@@ -371,7 +373,7 @@ Las entregas de las prácticas se realizaran siguiendo el formato definido [aqui
     1. Tipo de disco (HDD/SSD), tamaño y esquema de particionado (MBR o GPT)
     2. Número y tipo de particiones existentes
     3. Sistema de archivos de cada partición
-
+    
     **Entrega:** formato único de [Entregas](../entregas.md).
 
 !!! example "Práctica 3 — Particionado comparado"
@@ -379,9 +381,7 @@ Las entregas de las prácticas se realizaran siguiendo el formato definido [aqui
 
     1. Crea un esquema de particiones en **MBR** con dos particiones primarias
     2. Formatea una en FAT32 y otra en NTFS
-    3. Repite el proceso creando un disco con esquema **GPT** y formatéalo en ext4 usando GParted
-    4. Anota las diferencias observadas en el proceso
-
+    
     **Entrega:** formato único de [Entregas](../entregas.md).
 
 !!! example "Práctica 4 — Comparativa de sistemas de archivo"
@@ -390,6 +390,6 @@ Las entregas de las prácticas se realizaran siguiendo el formato definido [aqui
     **Entrega:** formato único de [Entregas](../entregas.md).
 
 !!! example "Práctica 5 — Simulación de incidencia"
-    Elimina una partición de prueba (sin datos importantes) y utiliza una herramienta de recuperación básica (p. ej. TestDisk) para intentar recuperar la estructura. Documenta el proceso y el resultado.
+    Elimina una partición de prueba (sin datos importantes) y utiliza una herramienta de recuperación básica (p. ej. TestDisk https://www.cgsecurity.org/wiki/TestDisk_Download) para intentar recuperar la estructura. Documenta el proceso y el resultado.
 
     **Entrega:** formato único de [Entregas](../entregas.md).
