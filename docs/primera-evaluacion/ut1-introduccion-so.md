@@ -129,6 +129,17 @@ El SO es responsable de proteger el sistema y sus datos frente a accesos no auto
 
 Esta función será especialmente relevante en las evaluaciones 2ª y 3ª, cuando configuremos los usuarios y grupos de TechPyme (Dirección, Compras, Ventas, Contabilidad, Técnico) tanto en Windows como en Linux.
 
+
+#### Como averiguar que clase de usuario soy.
+
+=== "Windows"
+
+    Dentro del CMD o el PowerShell ejecuta el comando `whoami`.
+
+=== "Linux"
+
+    En la consola ejecuta el comando `whoami`.
+
 ---
 
 ### Clasificación de los sistemas operativos
@@ -346,7 +357,7 @@ Las entregas de las prácticas se realizaran siguiendo el formato definido [aqui
     2. Anota qué diferencias observas entre ambos métodos (rapidez, claridad, posibilidad de automatizar)
 
     **Parte E — Seguridad y control de acceso**
-
+    
     1. Comprueba con qué usuario has iniciado sesión y si tiene privilegios de administrador/root
     2. Intenta realizar una acción que requiera privilegios elevados (por ejemplo, instalar un programa o modificar un archivo del sistema) y observa cómo el SO te lo impide o te pide confirmación/contraseña
 
