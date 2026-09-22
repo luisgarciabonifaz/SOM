@@ -30,7 +30,7 @@
 | 2ª | UT5 | Configuración básica de Windows + introducción a PowerShell | 21 dic – 24 ene | 3 | 14h |
 | 2ª | UT6 | Administración de Windows — usuarios, grupos y permisos NTFS (parte 1) | 25 ene – 21 feb | 3 | 16h |
 | 2ª | — | **Exámenes  2 evaluación** | 22 feb – 7 mar | 2 | — |
-| 3ª | UT7 | Instalación de Linux | 8 – 28 mar | 3 | 10h |
+| 3ª | UT7 | Instalación de Linux | 8 mar– 4 may | 3 | 10h |
 | | | *(Fallas: 16 mar – 21 mar)* | | | |
 | | | *(Semana Santa: 25 mar – 5 abr)* | | | |
 | 3ª | UT8 | Configuración básica de Linux + introducción a Bash | 5 – 18 abr | 2 | 10h |
