@@ -4,5 +4,6 @@ Esta es la documentación especifica de modulo para los alumnos en modalidad de 
 
 - [Presentación del Módulo](SOM_presentacion.pdf)
 - [Carta Presentación](carta-presentacion-curso.md)
+- [Guía Didáctica](guia-didactica-som.md)
 - [Programación Temporal](calendario.md)
 - [Guias](guias-didacticas/index.md)

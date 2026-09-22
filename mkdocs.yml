@@ -75,6 +75,7 @@ nav:
   - Entregas: entregas.md
   - Semipresencial:
       - semipresencial/index.md
+      - Guía Didáctica: semipresencial/guia-didactica-som.md
   - 1ª Evaluación - SO y Virtualización:
       - primera-evaluacion/index.md
       - "UT1. Introducción a los SO y sistemas de archivo": primera-evaluacion/ut1-introduccion-so.md
