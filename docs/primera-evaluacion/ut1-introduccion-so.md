@@ -315,6 +315,16 @@ sudo parted /dev/sdb
 !!! danger "Precaución"
     Las operaciones de particionado son **destructivas**: eliminar o reformatear una partición borra su contenido. Antes de practicar sobre un disco con datos reales, asegúrate de trabajar sobre una máquina virtual o un disco de pruebas.
 
+### Resumen
+
+- **Disco**: el dispositivo de almacenamiento físico (HDD, SSD...). Es el hardware sobre el que se organiza todo lo demás.
+- **Partición**: una división lógica del espacio de un disco. Un disco puede tener una o varias particiones, cada una tratada por el sistema como si fuera un disco independiente.
+- **Volumen**: el espacio de almacenamiento, ya formateado con un sistema de archivos, al que el sistema operativo asigna una letra (Windows) o un punto de montaje (Linux) y que el usuario ve y utiliza para guardar archivos. Normalmente un volumen corresponde a una partición, pero también puede abarcar varias particiones o discos combinados (por ejemplo, con RAID o gestores de volúmenes como LVM).
+
+En definitiva: el **disco** es el hardware, la **partición** es cómo se divide ese hardware, y el **volumen** es la unidad de almacenamiento final, formateada y accesible, con la que trabaja el usuario.
+
+![Particiones](./Imagenes/Particiones.jpeg)
+
 ---
 
 ## 1.5. Prácticas de la unidad
