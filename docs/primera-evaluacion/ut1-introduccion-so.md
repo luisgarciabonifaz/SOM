@@ -397,6 +397,10 @@ Las entregas de las prácticas se realizaran siguiendo el formato definido [aqui
 !!! example "Práctica 4 — Comparativa de sistemas de archivo"
     Copia el mismo conjunto de archivos (incluyendo alguno mayor de 4 GB si es posible) a particiones FAT32, exFAT y NTFS. Comprueba y documenta qué ocurre en cada caso.
 
+    Para crear un fichero de 4Gb con CMD, escribir el comando:
+
+    `fsutil file createnew E:\archivo.dat 4294967296`  E o F o G, la unidad del disco donde lo quieras crear
+ 
     **Entrega:** formato único de [Entregas](../entregas.md).
 
 !!! example "Práctica 5 — Simulación de incidencia"
