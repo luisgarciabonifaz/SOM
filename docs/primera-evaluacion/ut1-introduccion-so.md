@@ -275,16 +275,16 @@ El **journaling** es una técnica mediante la cual el sistema de archivos regist
 ### Herramientas en Windows
 
 - **Administrador de discos** (`diskmgmt.msc`): herramienta gráfica para crear, redimensionar, eliminar y formatear particiones
-- **diskpart**: herramienta de línea de comandos para las mismas tareas, útil en scripts o cuando la interfaz gráfica falla
+- **diskpart**: herramienta de línea de comandos para las mismas tareas, útil en scripts o cuando la interfaz gráfica falla. !!! danger "Cuidado"
+    Solo funciona con particiones MBR
 
 ```powershell
-diskpart
 list disk
 select disk 1
-clean
-create partition primary
-format fs=ntfs quick
-assign letter=E
+create partition primary size=50000
+select partition 1
+format fs=ntfs quick label="MisDatos"
+assign letter=D
 ```
 
 ### Herramientas en Linux
