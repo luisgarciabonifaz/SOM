@@ -151,7 +151,7 @@ Antes de instalar un sistema operativo conviene responder a preguntas como:
     Descarga la imagen ISO de una distribución Linux y verifica su integridad mediante checksum. Repite el proceso localizando (sin necesidad de descargar) la vía oficial de obtención de una ISO de Windows.
 
 !!! example "Práctica 3 — Creación de un USB booteable"
-    Utilizando Rufus o balenaEtcher, crea un medio de instalación USB booteable a partir de una de las ISOs descargadas.
+    Utilizando Rufus o balenaEtcher, crea un medio de instalación USB booteable a partir de una de las ISOs descargadas. Si no dispondes del un USB, instala la aplicación e iniciala. Explica el proceso.
 
 !!! example "Práctica 4 — Checklist de TechPyme"
     Elabora la checklist de planificación de instalación para **cada uno** de los equipos previstos en el proyecto TechPyme (servidor y clientes), indicando SO, esquema de particionado y sistema de archivos que se usará en cada uno.
