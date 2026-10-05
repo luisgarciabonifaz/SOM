@@ -5,9 +5,9 @@ title: "Guía didáctica — UT2"
 # UT2 — Hardware y requisitos de instalación
 
 !!! info "Duración"
-    **Desde:** 28 de septiembre de 2026
+    **Desde:** 5 de septiembre de 2026
     **Hasta:** 18 de octubre de 2026
-    **Duración estimada:** 3 semanas (10h)
+    **Duración estimada:** 2 semanas (10h)
 
 ## Contenido
 
@@ -29,5 +29,5 @@ Lee en casa la documentación de la unidad prestando especial atención a las ta
 ## Sesión presencial semanal (1h)
 
 1. **Semana 1** — Resumen de componentes hardware, su relación con el software y el proceso de arranque (BIOS/UEFI). *(Trabajo en casa: lectura de componentes hardware y BIOS/UEFI).*
-2. **Semana 2** — Resumen de los esquemas de particionado MBR y GPT y de los requisitos hardware/software para elegir sistema operativo. *(Trabajo en casa: actividades de particionado y requisitos).*
-3. **Semana 3** — Resolución del caso práctico TechPyme sobre requisitos por puesto de trabajo y dudas antes de la entrega. *(Trabajo en casa: finalización y repaso de todas las actividades).*
+2. **Semana 2** — Resumen de los requisitos hardware/software para elegir sistema operativo. *(Trabajo en casa: actividades de particionado y requisitos).*
+Resolución del caso práctico TechPyme sobre requisitos por puesto de trabajo y dudas antes de la entrega. *(Trabajo en casa: finalización y repaso de todas las actividades).*
