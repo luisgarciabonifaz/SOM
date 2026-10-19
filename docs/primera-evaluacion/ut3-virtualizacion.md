@@ -9,14 +9,6 @@
 
 La **virtualización** es la tecnología que permite crear versiones virtuales de recursos informáticos (equipos completos, discos, redes...) sobre un único equipo físico. Un mismo ordenador (host) puede ejecutar varias **máquinas virtuales (VM)**, cada una funcionando como si fuera un equipo independiente, con su propio sistema operativo.
 
-```mermaid
-graph TD
-    HW[Hardware físico] --> HV[Hipervisor]
-    HV --> VM1[VM 1 - Windows]
-    HV --> VM2[VM 2 - Linux]
-    HV --> VM3[VM 3 - Linux Servidor]
-```
-
 ### Host vs Guest
 
 - **Host (anfitrión)**: equipo físico real sobre el que se ejecuta el software de virtualización
@@ -28,6 +20,8 @@ graph TD
 |---|---|---|
 | **Tipo 1 (bare-metal)** | Se instala directamente sobre el hardware, sin SO intermedio. Uso en servidores/empresas | VMware ESXi, Microsoft Hyper-V (modo servidor), KVM |
 | **Tipo 2 (hosted)** | Se instala como una aplicación sobre un SO ya existente. Uso habitual en equipos de escritorio | VirtualBox, VMware Workstation/Player |
+
+![Tipos Virtualización](./Imagenes/TiposVirtualizacion.jpeg)
 
 En este curso trabajaremos principalmente con **VirtualBox**, un hipervisor de tipo 2, gratuito y multiplataforma.
 
