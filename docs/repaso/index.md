@@ -12,6 +12,6 @@ El objetivo de este juego es confirmar la consolidación de los conocimientos de
 | Unidad | Título | Enlace Rosco |
 |---|---|---|
 | UT1 | Introducción a los SO y sistemas de archivo | [Repaso](./rosco-ut1.html) |
-| UT2 | Hardware y requisitos de instalación | [Repaso](./rosco-ut3.html) |
+| UT2 | Hardware y requisitos de instalación | [Repaso](./rosco-ut2.html) |
 | UT3 | Virtualización | [Repaso](./rosco-ut3.html) |
 

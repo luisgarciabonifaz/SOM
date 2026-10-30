@@ -173,8 +173,5 @@ VirtualBox permite compartir una carpeta del host con la VM, útil para intercam
 !!! example "Práctica 4 — Snapshot inicial"
     Toma una snapshot de cada VM recién creada (estado "vacía, sin SO") con un nombre descriptivo, de forma que se pueda volver a este punto de partida en cualquier momento.
 
-!!! example "Práctica 5 — Comprobación del host como tercer nodo"
-    Sin necesidad de tener aún un SO instalado en las VMs, comprueba con tu profesor/a que tu equipo físico tiene conectividad de red normal (por ejemplo, acceso a Internet), para asegurarte de que el modo puente funcionará correctamente cuando llegue el momento de usar el host como tercer equipo de TechPyme.
-
-!!! example "Práctica 6 — Documentación"
+!!! example "Práctica 5 — Documentación"
     Elabora un documento (puede ser el propio diagrama de red en formato imagen o Mermaid) que refleje la infraestructura virtual final de TechPyme —las 2 VMs y el papel del host físico—, listo para servir de referencia en las siguientes evaluaciones.
