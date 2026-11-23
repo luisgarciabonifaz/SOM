@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rosco UT1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light dark;
+    --bg:#eef1f5;
+    --surface:#ffffff;
+    --surface-2:#e6eaf0;
+    --border:#d3dae2;
+    --text:#151b22;
+    --text-dim:#5c6773;
+    --accent:#a8660c;
+    --accent-ink:#5c3703;
+    --accent-soft:#f6e6cd;
+    --correct:#1f8f52;
+    --correct-soft:#dcf3e6;
+    --wrong:#c93f34;
+    --wrong-soft:#fbe2de;
+    --ring-face:#ffffff;
+    --shadow-sm: 0 1px 2px rgba(20,26,31,.07);
+    --shadow-md: 0 10px 28px rgba(20,26,31,.10);
+    --mono:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --sans:'Public Sans', system-ui, -apple-system, sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0b0e13;
+      --surface:#141a22;
+      --surface-2:#1b2430;
+      --border:#2a3542;
+      --text:#e9eef3;
+      --text-dim:#8b97a5;
+      --accent:#f2b953;
+      --accent-ink:#1c1204;
+      --accent-soft:#3a2c11;
+      --correct:#3ddc91;
+      --correct-soft:#0f3324;
+      --wrong:#ff7a6e;
+      --wrong-soft:#3a1613;
+      --ring-face:#161d26;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.4);
+      --shadow-md: 0 14px 34px rgba(0,0,0,.5);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0b0e13;
+    --surface:#141a22;
+    --surface-2:#1b2430;
+    --border:#2a3542;
+    --text:#e9eef3;
+    --text-dim:#8b97a5;
+    --accent:#f2b953;
+    --accent-ink:#1c1204;
+    --accent-soft:#3a2c11;
+    --correct:#3ddc91;
+    --correct-soft:#0f3324;
+    --wrong:#ff7a6e;
+    --wrong-soft:#3a1613;
+    --ring-face:#161d26;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,.4);
+    --shadow-md: 0 14px 34px rgba(0,0,0,.5);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  [hidden]{display:none !important;}
+  img{max-width:100%;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    padding-inline:16px;
+    padding-block:20px 40px;
+  }
+  h1,h2,h3{font-family:var(--sans); text-wrap:balance; margin:0;}
+  button{font-family:inherit;}
+  .app{
+    max-width:1080px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+  }
+
+  /* ---------- topbar ---------- */
+  .topbar{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding:14px 18px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:14px;
+    box-shadow:var(--shadow-sm);
+  }
+  .brand{display:flex; align-items:center; gap:12px; min-width:0;}
+  .brand-mark{
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:1.05rem;
+    color:var(--accent);
+    background:var(--accent-soft);
+    border-radius:8px;
+    padding:6px 8px;
+    flex:none;
+  }
+  .brand h1{font-size:1.05rem; font-weight:700; letter-spacing:.01em;}
+  .brand p{margin:2px 0 0; font-size:.78rem; color:var(--text-dim); max-width:38ch;}
+
+  .stats{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+  .stat{
+    display:flex; flex-direction:column; align-items:center;
+    min-width:56px; padding:6px 10px;
+    border-radius:10px; background:var(--surface-2);
+    border:1px solid var(--border);
+  }
+  .stat span{font-family:var(--mono); font-weight:700; font-size:1rem; font-variant-numeric:tabular-nums;}
+  .stat label{font-size:.62rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:.06em; margin-top:1px;}
+  .stat.correct span{color:var(--correct);}
+  .stat.wrong span{color:var(--wrong);}
+  .timer{
+    font-family:var(--mono); font-weight:700; font-size:1.3rem;
+    font-variant-numeric:tabular-nums;
+    padding:8px 14px; border-radius:10px;
+    background:var(--accent-soft); color:var(--accent-ink);
+    border:1px solid var(--border);
+    transition:background .3s, color .3s;
+  }
+  .timer.low{background:var(--wrong-soft); color:var(--wrong); animation:pulseTimer 1s ease-in-out infinite;}
+  @keyframes pulseTimer{50%{opacity:.55;}}
+
+  /* ---------- board ---------- */
+  .board{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:26px;
+    align-items:start;
+  }
+  @media (min-width:760px){
+    .board{grid-template-columns:auto 1fr;}
+  }
+
+  .ring-wrap{
+    width:clamp(240px, 78vw, 380px);
+    margin-inline:auto;
+    position:relative;
+  }
+  @media (min-width:760px){
+    .ring-wrap{width:clamp(320px, 32vw, 420px); margin-inline:0;}
+  }
+  .ring{
+    position:relative;
+    width:100%;
+    aspect-ratio:1/1;
+    border-radius:50%;
+    background:
+      radial-gradient(circle at 50% 50%, var(--surface-2) 0 62%, transparent 63%),
+      var(--surface);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow-md);
+  }
+  .ring-center{
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    padding:18%;
+  }
+  .ring-center .rc-label{font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim);}
+  .ring-center .rc-count{font-family:var(--mono); font-weight:700; font-size:clamp(1.3rem,6vw,1.8rem); margin-top:4px;}
+  .ring-center .rc-sub{font-size:.7rem; color:var(--text-dim); margin-top:2px;}
+
+  .tile{
+    position:absolute;
+    top:0; left:0;
+    width:clamp(26px, 8.4%, 38px);
+    height:clamp(26px, 8.4%, 38px);
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    border:1.5px solid var(--border);
+    background:var(--ring-face);
+    color:var(--text);
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:clamp(.68rem, 2.6vw, .85rem);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    transition:transform .15s ease, background .2s, color .2s, border-color .2s, box-shadow .2s;
+  }
+  .tile:hover:not(:disabled){transform:translate(-50%,-50%) scale(1.08);}
+  .tile:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+  .tile:disabled{cursor:default;}
+  .tile.visited:not(.active)::after{
+    content:"";
+    position:absolute; bottom:2px; left:50%; transform:translateX(-50%);
+    width:4px; height:4px; border-radius:50%; background:var(--accent);
+  }
+  .tile.active{
+    background:var(--accent); color:var(--accent-ink); border-color:var(--accent);
+    box-shadow:0 0 0 4px var(--accent-soft);
+    animation:activePulse 1.6s ease-in-out infinite;
+  }
+  @keyframes activePulse{
+    0%,100%{box-shadow:0 0 0 4px var(--accent-soft);}
+    50%{box-shadow:0 0 0 8px var(--accent-soft);}
+  }
+  .tile.correct{background:var(--correct-soft); color:var(--correct); border-color:var(--correct);}
+  .tile.wrong{background:var(--wrong-soft); color:var(--wrong); border-color:var(--wrong);}
+  @media (prefers-reduced-motion: reduce){
+    .tile, .timer.low{animation:none !important; transition:none !important;}
+  }
+
+  /* ---------- panel ---------- */
+  .panel{max-width:460px; width:100%; margin-inline:auto;}
+  @media (min-width:760px){.panel{margin-inline:0;}}
+
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px;
+    box-shadow:var(--shadow-sm);
+  }
+
+  .start-card h2{font-size:1.15rem; margin-bottom:8px;}
+  .start-card p{color:var(--text-dim); font-size:.88rem; line-height:1.55; margin:0 0 14px;}
+  .start-card ul{margin:0 0 18px; padding-left:1.1em; color:var(--text-dim); font-size:.84rem; line-height:1.7;}
+  .start-card li b{color:var(--text);}
+
+  .btn{
+    appearance:none; border:1px solid transparent; border-radius:10px;
+    padding:11px 18px; font-weight:700; font-size:.9rem; cursor:pointer;
+    transition:filter .15s, transform .1s;
+  }
+  .btn:active{transform:translateY(1px);}
+  .btn-primary{background:var(--accent); color:var(--accent-ink);}
+  .btn-primary:hover{filter:brightness(1.06);}
+  .btn-ghost{background:var(--surface-2); color:var(--text); border-color:var(--border);}
+  .btn-ghost:hover{filter:brightness(1.04);}
+  .btn-danger-ghost{background:transparent; color:var(--wrong); border-color:var(--wrong);}
+  .btn-block{width:100%;}
+  .btn-row{display:flex; gap:10px; flex-wrap:wrap;}
+
+  .clue-card .cc-top{display:flex; align-items:center; gap:12px; margin-bottom:14px;}
+  .cc-letter{
+    font-family:var(--mono); font-weight:700; font-size:1.7rem;
+    width:52px; height:52px; flex:none;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--accent-soft); color:var(--accent-ink);
+    border-radius:12px;
+  }
+  .cc-type{font-size:.68rem; text-transform:uppercase; letter-spacing:.08em; color:var(--text-dim);}
+  .cc-progress{font-family:var(--mono); font-size:.78rem; color:var(--text-dim); margin-top:2px;}
+  .cc-clue{font-size:1rem; line-height:1.55; margin:0 0 18px; min-height:3.2em;}
+
+  #answerInput{
+    width:100%;
+    padding:12px 14px;
+    border-radius:10px;
+    border:1.5px solid var(--border);
+    background:var(--surface-2);
+    color:var(--text);
+    font-size:1rem;
+    font-family:var(--sans);
+    margin-bottom:12px;
+  }
+  #answerInput:focus{outline:2px solid var(--accent); outline-offset:1px; border-color:var(--accent);}
+  #answerInput.shake{animation:shake .35s;}
+  @keyframes shake{
+    20%,60%{transform:translateX(-6px);}
+    40%,80%{transform:translateX(6px);}
+  }
+
+  .feedback{
+    font-size:.84rem; font-weight:600; margin:-2px 0 12px; min-height:1.2em;
+  }
+  .feedback.ok{color:var(--correct);}
+  .feedback.bad{color:var(--wrong);}
+
+  .hint{font-size:.72rem; color:var(--text-dim); margin-top:14px; text-align:center;}
+  .hint kbd{
+    font-family:var(--mono); background:var(--surface-2); border:1px solid var(--border);
+    border-radius:5px; padding:1px 6px; font-size:.7rem;
+  }
+
+  /* ---------- end card ---------- */
+  .end-card h2{font-size:1.2rem; margin-bottom:4px;}
+  .end-card .end-sub{color:var(--text-dim); font-size:.85rem; margin:0 0 16px;}
+  .end-stats{display:flex; gap:10px; margin-bottom:18px;}
+  .end-stat{flex:1; text-align:center; padding:12px 6px; border-radius:10px; background:var(--surface-2); border:1px solid var(--border);}
+  .end-stat b{display:block; font-family:var(--mono); font-size:1.4rem; font-variant-numeric:tabular-nums;}
+  .end-stat.correct b{color:var(--correct);}
+  .end-stat.wrong b{color:var(--wrong);}
+  .end-stat span{font-size:.65rem; text-transform:uppercase; letter-spacing:.06em; color:var(--text-dim);}
+
+  .review-list{list-style:none; margin:0 0 18px; padding:0; display:flex; flex-direction:column; gap:6px; max-height:340px; overflow-y:auto;}
+  .review-item{
+    display:flex; align-items:flex-start; gap:10px;
+    padding:9px 10px; border-radius:9px; background:var(--surface-2); border:1px solid var(--border);
+    font-size:.82rem; line-height:1.4;
+  }
+  .review-badge{
+    flex:none; width:24px; height:24px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-weight:700; font-size:.72rem;
+  }
+  .review-item.correct .review-badge{background:var(--correct-soft); color:var(--correct);}
+  .review-item.wrong .review-badge{background:var(--wrong-soft); color:var(--wrong);}
+  .review-body b{color:var(--text);}
+  .review-body .rb-answer{color:var(--text-dim);}
+
+  /* ---------- legend ---------- */
+  .legend{
+    display:flex; flex-wrap:wrap; gap:14px; justify-content:center;
+    font-size:.76rem; color:var(--text-dim); padding-top:4px;
+  }
+  .legend-item{display:flex; align-items:center; gap:6px;}
+  .legend-dot{width:10px; height:10px; border-radius:50%; flex:none; border:1.5px solid var(--border);}
+  .legend-dot.pending{background:var(--ring-face);}
+  .legend-dot.active{background:var(--accent); border-color:var(--accent);}
+  .legend-dot.correct{background:var(--correct-soft); border-color:var(--correct);}
+  .legend-dot.wrong{background:var(--wrong-soft); border-color:var(--wrong);}
+</style>
+</head>
+<body>
+
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">://</span>
+      <div>
+        <h1>Rosco UT1</h1>
+        <p>Introducción a los Sistemas Operativos y Sistemas de Archivo</p>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat correct"><span id="statCorrect">0</span><label>Aciertos</label></div>
+      <div class="stat wrong"><span id="statWrong">0</span><label>Errores</label></div>
+      <div class="stat"><span id="statPending">27</span><label>Quedan</label></div>
+      <div class="timer" id="timer">04:00</div>
+    </div>
+  </header>
+
+  <main class="board">
+    <div class="ring-wrap">
+      <div class="ring" id="ring">
+        <div class="ring-center" id="ringCenter">
+          <div>
+            <div class="rc-label">Letras resueltas</div>
+            <div class="rc-count" id="rcCount">0 / 27</div>
+            <div class="rc-sub" id="rcSub">Pulsa «Comenzar»</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="panel">
+      <div class="card start-card" id="startCard">
+        <h2>¿Preparado para el rosco?</h2>
+        <p>27 letras, 27 preguntas sobre la Unidad 1: arquitectura del ordenador, funciones del sistema operativo, particiones (MBR/GPT), arranque (BIOS/UEFI) y sistemas de archivo.</p>
+        <ul>
+          <li><b>Comprobar</b> valida tu respuesta para la letra activa.</li>
+          <li><b>Pasapalabra</b> deja la letra para el final y pasa a la siguiente.</li>
+          <li><b>Ver respuesta</b> la da por fallada y muestra la solución.</li>
+          <li>Tienes <b>4 minutos</b>. ¡Suerte!</li>
+        </ul>
+        <button class="btn btn-primary btn-block" id="btnStart">Comenzar rosco</button>
+      </div>
+
+      <div class="card clue-card" id="clueCard" hidden>
+        <div class="cc-top">
+          <div class="cc-letter" id="ccLetter">A</div>
+          <div>
+            <div class="cc-type" id="ccType">Empieza por A</div>
+            <div class="cc-progress" id="ccProgress">Letra 1 de 27</div>
+          </div>
+        </div>
+        <p class="cc-clue" id="ccClue">…</p>
+        <form id="answerForm" autocomplete="off">
+          <input id="answerInput" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Escribe tu respuesta…" />
+          <div class="feedback" id="feedback"></div>
+          <div class="btn-row">
+            <button type="submit" class="btn btn-primary" id="btnCheck">Comprobar</button>
+            <button type="button" class="btn btn-ghost" id="btnPass">Pasapalabra</button>
+            <button type="button" class="btn btn-danger-ghost" id="btnGiveUp">Ver respuesta</button>
+          </div>
+        </form>
+        <p class="hint"><kbd>Enter</kbd> comprobar · <kbd>Esc</kbd> pasapalabra</p>
+      </div>
+
+      <div class="card end-card" id="endCard" hidden>
+        <h2 id="endTitle">¡Rosco completado!</h2>
+        <p class="end-sub" id="endSub"></p>
+        <div class="end-stats">
+          <div class="end-stat correct"><b id="endCorrect">0</b><span>Aciertos</span></div>
+          <div class="end-stat wrong"><b id="endWrong">0</b><span>Errores</span></div>
+          <div class="end-stat"><b id="endPct">0%</b><span>Nota</span></div>
+        </div>
+        <ul class="review-list" id="reviewList"></ul>
+        <button class="btn btn-primary btn-block" id="btnRestart">Volver a jugar</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="legend">
+    <div class="legend-item"><span class="legend-dot pending"></span>Pendiente</div>
+    <div class="legend-item"><span class="legend-dot active"></span>En juego</div>
+    <div class="legend-item"><span class="legend-dot correct"></span>Acierto</div>
+    <div class="legend-item"><span class="legend-dot wrong"></span>Error</div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var DATA = [
+    {l:"A", type:"empieza", clue:"Componente de la CPU que realiza las operaciones aritméticas (sumas, restas…) y lógicas (comparaciones, AND, OR…).", ans:["ALU","UNIDAD ARITMETICO LOGICA"]},
+    {l:"B", type:"empieza", clue:"Canales físicos que conectan todos los componentes del ordenador y por los que circulan datos, direcciones de memoria y señales de control.", ans:["BUS","BUSES"]},
+    {l:"C", type:"empieza", clue:"Unidad que lee, interpreta y ejecuta las instrucciones; el «cerebro» del ordenador (sigla de 3 letras).", ans:["CPU","UNIDAD CENTRAL DE PROCESO"]},
+    {l:"D", type:"empieza", clue:"Programa específico que traduce las órdenes genéricas del sistema operativo a las instrucciones que entiende un dispositivo concreto.", ans:["DRIVER","DRIVERS","CONTROLADOR"]},
+    {l:"E", type:"empieza", clue:"Sistema de archivos estándar actual en muchas distribuciones Linux: usa journaling y ofrece buen rendimiento.", ans:["EXT4","EXT 4"]},
+    {l:"F", type:"empieza", clue:"Sistema de archivos muy compatible con casi cualquier dispositivo, pero que limita cada archivo a 4 GB.", ans:["FAT32","FAT 32"]},
+    {l:"G", type:"empieza", clue:"Esquema de particionado moderno asociado a UEFI: admite hasta 128 particiones primarias en Windows y discos de más de 2 TB.", ans:["GPT"]},
+    {l:"H", type:"empieza", clue:"Disco duro mecánico formado por platos magnéticos giratorios; más económico y lento que un SSD (sigla).", ans:["HDD","DISCO DURO","DISCO DURO MECANICO"]},
+    {l:"I", type:"contiene", clue:"Firmware antiguo que arranca el equipo a través del MBR, con interfaz de texto.", ans:["BIOS"]},
+    {l:"J", type:"empieza", clue:"Técnica por la que un sistema de archivos registra los cambios antes de aplicarlos, para recuperar la consistencia tras un corte de energía.", ans:["JOURNALING"]},
+    {l:"K", type:"empieza", clue:"Parte central del sistema operativo que gestiona directamente la CPU, la memoria y los dispositivos.", ans:["KERNEL","NUCLEO"]},
+    {l:"L", type:"empieza", clue:"Núcleo de código abierto sobre el que se construyen distribuciones como Ubuntu, Debian o Fedora.", ans:["LINUX"]},
+    {l:"M", type:"empieza", clue:"Esquema de particionado clásico de 1983, limitado a 4 particiones primarias y discos de hasta 2 TB (sigla).", ans:["MBR"]},
+    {l:"N", type:"empieza", clue:"Sistema de archivos nativo de Windows moderno: soporta journaling, permisos avanzados, cifrado y compresión (sigla).", ans:["NTFS"]},
+    {l:"Ñ", type:"contiene", clue:"Atributo fijo de cada sector de un disco, habitualmente 512 bytes o 4 KB.", ans:["TAMAÑO","TAMANO"]},
+    {l:"O", type:"empieza", clue:"La palabra que completa «Sistema ___»: software que gestiona los recursos hardware y software y hace de intermediario entre usuario, aplicaciones y hardware.", ans:["OPERATIVO","SISTEMA OPERATIVO"]},
+    {l:"P", type:"empieza", clue:"División lógica de un disco que el sistema operativo trata como si fuera una unidad independiente.", ans:["PARTICION","PARTICIONES"]},
+    {l:"Q", type:"contiene", clue:"Parámetro del comando format en diskpart que realiza un formateo rápido, sin comprobar todo el disco (format fs=ntfs ___).", ans:["QUICK"]},
+    {l:"R", type:"empieza", clue:"Memoria principal donde se cargan las instrucciones del programa en ejecución y los datos que utiliza.", ans:["RAM","MEMORIA RAM"]},
+    {l:"S", type:"empieza", clue:"División mínima de una pista de un disco duro, habitualmente de 512 bytes o 4 KB.", ans:["SECTOR","SECTORES"]},
+    {l:"T", type:"empieza", clue:"Fenómeno por el que el rendimiento cae en picado cuando la RAM se agota y el sistema depende demasiado del disco como memoria virtual.", ans:["THRASHING"]},
+    {l:"U", type:"empieza", clue:"Firmware moderno que arranca a través de la partición EFI en discos GPT: más rápido que la BIOS y con interfaz gráfica (sigla).", ans:["UEFI"]},
+    {l:"V", type:"empieza", clue:"Adjetivo que acompaña a «memoria» cuando un programa «cree» tener más RAM de la que realmente hay, usando parte del disco como extensión.", ans:["VIRTUAL","MEMORIA VIRTUAL"]},
+    {l:"W", type:"empieza", clue:"Sistema operativo de Microsoft, el más extendido en entornos domésticos y empresariales de escritorio.", ans:["WINDOWS"]},
+    {l:"X", type:"contiene", clue:"Sistema de archivos avanzado de Linux (junto a btrfs) con funciones como snapshots y buena escalabilidad.", ans:["XFS"]},
+    {l:"Y", type:"contiene", clue:"Capacidad del sistema operativo de detectar automáticamente un dispositivo nuevo y asignarle el driver adecuado sin intervención manual.", ans:["PLUG AND PLAY","PLUGANDPLAY","PNP"]},
+    {l:"Z", type:"contiene", clue:"Unidad de medida con la que GPT expresa su tamaño máximo de disco soportado: más de 9 ___.", ans:["ZETTABYTES","ZETABYTES","ZB"]}
+  ];
+
+  var GAME_SECONDS = 240;
+
+  var els = {
+    ring: document.getElementById("ring"),
+    ringCenter: document.getElementById("ringCenter"),
+    rcCount: document.getElementById("rcCount"),
+    rcSub: document.getElementById("rcSub"),
+    statCorrect: document.getElementById("statCorrect"),
+    statWrong: document.getElementById("statWrong"),
+    statPending: document.getElementById("statPending"),
+    timer: document.getElementById("timer"),
+    startCard: document.getElementById("startCard"),
+    clueCard: document.getElementById("clueCard"),
+    endCard: document.getElementById("endCard"),
+    btnStart: document.getElementById("btnStart"),
+    ccLetter: document.getElementById("ccLetter"),
+    ccType: document.getElementById("ccType"),
+    ccProgress: document.getElementById("ccProgress"),
+    ccClue: document.getElementById("ccClue"),
+    answerForm: document.getElementById("answerForm"),
+    answerInput: document.getElementById("answerInput"),
+    feedback: document.getElementById("feedback"),
+    btnPass: document.getElementById("btnPass"),
+    btnGiveUp: document.getElementById("btnGiveUp"),
+    endTitle: document.getElementById("endTitle"),
+    endSub: document.getElementById("endSub"),
+    endCorrect: document.getElementById("endCorrect"),
+    endWrong: document.getElementById("endWrong"),
+    endPct: document.getElementById("endPct"),
+    reviewList: document.getElementById("reviewList"),
+    btnRestart: document.getElementById("btnRestart")
+  };
+
+  var tiles = [];
+  var state, timerHandle;
+
+  function normalize(str){
+    return String(str || "")
+      .toUpperCase()
+      .replace(/Ñ/g, "N")
+      .normalize("NFD").replace(/[̀-ͯ]/g, "")
+      .replace(/[^A-Z0-9]/g, "");
+  }
+
+  function freshState(){
+    return {
+      status: DATA.map(function(){ return "pending"; }),
+      visited: DATA.map(function(){ return false; }),
+      queue: DATA.map(function(_, i){ return i; }),
+      correct: 0,
+      wrong: 0,
+      timeLeft: GAME_SECONDS,
+      started: false,
+      ended: false
+    };
+  }
+
+  function buildRing(){
+    var n = DATA.length;
+    var r = 42;
+    DATA.forEach(function(item, i){
+      var angle = (i / n) * Math.PI * 2 - Math.PI / 2;
+      var x = 50 + r * Math.cos(angle);
+      var y = 50 + r * Math.sin(angle);
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "tile";
+      btn.style.left = x + "%";
+      btn.style.top = y + "%";
+      btn.textContent = item.l;
+      btn.setAttribute("aria-label", (item.type === "empieza" ? "Empieza por " : "Contiene la ") + item.l);
+      btn.addEventListener("click", function(){ jumpTo(i); });
+      els.ring.appendChild(btn);
+      tiles.push(btn);
+    });
+  }
+
+  function currentIndex(){
+    return state.queue.length ? state.queue[0] : -1;
+  }
+
+  function renderRing(){
+    tiles.forEach(function(tile, i){
+      tile.className = "tile" + (state.visited[i] ? " visited" : "");
+      var st = state.status[i];
+      if (st === "correct") tile.classList.add("correct");
+      else if (st === "wrong") tile.classList.add("wrong");
+      if (state.started && !state.ended && i === currentIndex()) tile.classList.add("active");
+      tile.disabled = st !== "pending" || state.ended || !state.started;
+    });
+    var solved = state.correct + state.wrong;
+    els.rcCount.textContent = solved + " / " + DATA.length;
+    els.rcSub.textContent = state.ended ? "Rosco terminado" : (state.started ? "en juego" : "Pulsa «Comenzar»");
+  }
+
+  function renderStats(){
+    els.statCorrect.textContent = state.correct;
+    els.statWrong.textContent = state.wrong;
+    els.statPending.textContent = state.queue.length;
+  }
+
+  function formatTime(s){
+    var m = Math.floor(s / 60), sec = s % 60;
+    return String(m).padStart(2, "0") + ":" + String(sec).padStart(2, "0");
+  }
+
+  function renderTimer(){
+    els.timer.textContent = formatTime(Math.max(0, state.timeLeft));
+    els.timer.classList.toggle("low", state.timeLeft <= 30 && !state.ended);
+  }
+
+  function renderClue(){
+    var i = currentIndex();
+    if (i === -1) return;
+    var item = DATA[i];
+    els.ccLetter.textContent = item.l;
+    els.ccType.textContent = (item.type === "empieza" ? "Empieza por " : "Contiene la ") + item.l;
+    els.ccProgress.textContent = "Van " + (state.correct + state.wrong) + " resueltas · quedan " + state.queue.length;
+    els.ccClue.textContent = item.clue;
+    els.answerInput.value = "";
+    els.feedback.textContent = "";
+    els.feedback.className = "feedback";
+    state.visited[i] = true;
+    if (!state.ended) els.answerInput.focus();
+  }
+
+  function jumpTo(i){
+    if (!state.started || state.ended) return;
+    if (state.status[i] !== "pending") return;
+    var pos = state.queue.indexOf(i);
+    if (pos <= 0) { renderRing(); return; }
+    state.queue.splice(pos, 1);
+    state.queue.unshift(i);
+    renderRing();
+    renderClue();
+  }
+
+  function checkGameOver(){
+    if (state.queue.length === 0 || state.timeLeft <= 0) {
+      endGame();
+      return true;
+    }
+    return false;
+  }
+
+  function resolveCurrent(result){
+    var i = currentIndex();
+    if (i === -1) return;
+    state.status[i] = result;
+    state.queue.shift();
+    if (result === "correct") state.correct++;
+    else state.wrong++;
+    renderStats();
+    renderRing();
+    if (!checkGameOver()) renderClue();
+  }
+
+  function submitAnswer(e){
+    if (e) e.preventDefault();
+    if (!state.started || state.ended) return;
+    var i = currentIndex();
+    if (i === -1) return;
+    var item = DATA[i];
+    var guess = normalize(els.answerInput.value);
+    if (!guess) {
+      els.answerInput.classList.remove("shake"); void els.answerInput.offsetWidth;
+      els.answerInput.classList.add("shake");
+      return;
+    }
+    var ok = item.ans.some(function(a){ return normalize(a) === guess; });
+    if (ok) {
+      els.feedback.textContent = "✓ Correcto — " + item.ans[0];
+      els.feedback.className = "feedback ok";
+      setTimeout(function(){ resolveCurrent("correct"); }, 380);
+    } else {
+      els.feedback.textContent = "✗ No es correcto";
+      els.feedback.className = "feedback bad";
+      els.answerInput.classList.remove("shake"); void els.answerInput.offsetWidth;
+      els.answerInput.classList.add("shake");
+    }
+  }
+
+  function passCurrent(){
+    if (!state.started || state.ended) return;
+    if (state.queue.length <= 1) return;
+    var i = state.queue.shift();
+    state.queue.push(i);
+    renderRing();
+    renderClue();
+  }
+
+  function giveUpCurrent(){
+    if (!state.started || state.ended) return;
+    var i = currentIndex();
+    if (i === -1) return;
+    var item = DATA[i];
+    els.feedback.textContent = "La respuesta era: " + item.ans[0];
+    els.feedback.className = "feedback bad";
+    setTimeout(function(){ resolveCurrent("wrong"); }, 700);
+  }
+
+  function tick(){
+    if (!state.started || state.ended) return;
+    state.timeLeft--;
+    renderTimer();
+    if (checkGameOver()) return;
+  }
+
+  function startGame(){
+    state = freshState();
+    state.started = true;
+    els.startCard.hidden = true;
+    els.endCard.hidden = true;
+    els.clueCard.hidden = false;
+    renderStats();
+    renderTimer();
+    renderRing();
+    renderClue();
+    clearInterval(timerHandle);
+    timerHandle = setInterval(tick, 1000);
+  }
+
+  function endGame(){
+    state.ended = true;
+    clearInterval(timerHandle);
+    els.clueCard.hidden = true;
+    els.endCard.hidden = false;
+    renderRing();
+    renderTimer();
+
+    var total = DATA.length;
+    var pending = total - state.correct - state.wrong;
+    els.endTitle.textContent = state.timeLeft <= 0 ? "¡Tiempo!" : "¡Rosco completado!";
+    els.endSub.textContent = pending > 0
+      ? "Se acabó el tiempo con " + pending + " letra" + (pending === 1 ? "" : "s") + " sin resolver."
+      : "Has resuelto las 27 letras. Revisa tus fallos abajo.";
+    els.endCorrect.textContent = state.correct;
+    els.endWrong.textContent = state.wrong + pending;
+    els.endPct.textContent = Math.round((state.correct / total) * 100) + "%";
+
+    els.reviewList.innerHTML = "";
+    DATA.forEach(function(item, i){
+      var st = state.status[i] === "pending" ? "wrong" : state.status[i];
+      var li = document.createElement("li");
+      li.className = "review-item " + st;
+      var badge = document.createElement("span");
+      badge.className = "review-badge";
+      badge.textContent = st === "correct" ? "✓" : "✗";
+      var body = document.createElement("span");
+      body.className = "review-body";
+      body.innerHTML = "<b>" + item.l + ".</b> " + (item.type === "empieza" ? "Empieza por " + item.l : "Contiene la " + item.l) +
+        " — <span class=\"rb-answer\">" + item.ans[0] + "</span>";
+      li.appendChild(badge);
+      li.appendChild(body);
+      els.reviewList.appendChild(li);
+    });
+  }
+
+  els.btnStart.addEventListener("click", startGame);
+  els.btnRestart.addEventListener("click", function(){
+    els.endCard.hidden = true;
+    els.startCard.hidden = false;
+  });
+  els.answerForm.addEventListener("submit", submitAnswer);
+  els.btnPass.addEventListener("click", passCurrent);
+  els.btnGiveUp.addEventListener("click", giveUpCurrent);
+  els.answerInput.addEventListener("keydown", function(e){
+    if (e.key === "Escape") { e.preventDefault(); passCurrent(); }
+  });
+
+  function init(){
+    buildRing();
+    state = freshState();
+    renderStats();
+    renderTimer();
+    renderRing();
+  }
+
+  init();
+})();
+</script>
+
+</body>
+</html>
