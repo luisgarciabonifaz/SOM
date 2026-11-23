@@ -73,6 +73,14 @@ Tras el primer reinicio, Windows lanza el asistente de configuración inicial (*
 !!! tip "Elección para TechPyme"
     En un entorno de empresa como TechPyme, y especialmente en un contexto de prácticas, se utilizará una **cuenta local**, ya que ofrece control total del equipo sin depender de servicios externos de Microsoft.
 
+!!! tip "Como seleccionar la cuenta local en Windows 11"
+    1. Avanza en el asistente inicial hasta llegar a la pantalla de red o inicio de sesión de Microsoft.
+    2. Pulsa Shift + F10 (o Fn + Shift + F10 en algunos portátiles) para abrir el símbolo del sistema.
+    3. Escribe start ms-cxh:localonly y pulsa Enter.
+    4. Introduce el nombre de usuario y contraseña que quieras para tu cuenta local y completa el asistente.
+
+
+
 ### Privacidad y telemetría
 
 El asistente pregunta por distintas opciones de privacidad (ubicación, diagnóstico, publicidad personalizada, etc.). Conviene revisarlas y desactivar las que no sean necesarias.
@@ -149,6 +157,8 @@ Windows permite configurar un rango de **horas activas** durante las cuales no s
     1. Monta la ISO de Windows en la unidad óptica virtual
     2. Comprueba el orden de arranque
     3. Confirma los recursos asignados y el modo de red (puente)
+     
+    Entrega una captura o capturas de pantalla completa en la que se vean claramente los apartados 2 y 3. Y explica lo que has hecho.
 
 !!! example "Práctica 2 — Instalación completa"
     Instala Windows en VM-WIN:
@@ -158,15 +168,23 @@ Windows permite configurar un rango de **horas activas** durante las cuales no s
     3. Completa el asistente OOBE con una **cuenta local** (no de Microsoft)
     4. Revisa y ajusta las opciones de privacidad propuestas durante el asistente
 
+    Entrega una captura o capturas de pantalla completa en la que se vean claramente los apartados 2 y 3. Y explica lo que opciones de privacidad has seleccionado y porque.
+
 !!! example "Práctica 3 — Drivers y Guest Additions"
     1. Revisa el Administrador de dispositivos en busca de avisos
     2. Instala las Guest Additions de VirtualBox
     3. Comprueba que la resolución de pantalla se adapta al redimensionar la ventana de la VM
+
+    Entrega una captura o capturas de pantalla completa en la que se vean claramente los apartados 1,2 y 3. Y explica lo que has hecho.
 
 !!! example "Práctica 4 — Actualizaciones"
     1. Comprueba si hay actualizaciones pendientes en Windows Update
     2. Instala las actualizaciones disponibles
     3. Configura un horario activo razonable
 
+    Entrega una captura o capturas de pantalla completa en la que se vean claramente los apartados 1,2 y 3. Y explica lo que has hecho.
+
 !!! example "Práctica 5 — Snapshot de partida"
     Una vez completada la instalación, actualizaciones y Guest Additions, toma una snapshot llamada `Windows recién instalado`, que servirá como punto de partida limpio para el resto de la evaluación.
+
+    Entrega una captura pantalla completa en la que se vean claramente que has realizado la snapshot.
